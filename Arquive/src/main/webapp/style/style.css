@@ -1,0 +1,54 @@
+@charset "ISO-8859-1";
+
+@font-face{
+	font-family: "Julius Sans One";
+	src: url(../fonts/JuliusSansOne-Regular.ttf) format("truetype");
+}
+@font-face{
+	font-family: "Open Sans";
+	src: url(../fonts/OpenSans_Condensed-Regular) format("truetype");
+}
+@font-face{
+	font-family: "Open Sans";
+	src: url(..fonts/OpenSans_Condensed-Light.ttf) format("truetype");
+	font-weight: 300;
+}
+@font-face{
+	font-family: "Open Sans";
+	src: url(..fontsfonts/OpenSans_Condensed-SemiBold.ttf) format("truetype");
+	font-weight: 600;
+}
+@font-face{
+	font-family: "Open Sans";
+	src: url(..fonts/OpenSans_Condensed-Italic.ttf) format("truetype");
+	font-style: italic;
+}
+
+:root{
+	--DARK: #362F2A;
+	--LIGHT: #EEE8E1;
+	--ACCENT1: #F2E9BD;
+	
+	--font-content: 'Open Sans', sans-serif;
+	--font-accent: 'Julius Sans One', sans-serif;
+}
+body{
+}
+.dark{
+	background-color: var(--DARK);
+}
+.light1{
+	color: var(--LIGHT);	
+}
+#escape-logo{
+	text-align: center;
+}
+#logomarca{
+	height: 60px;
+}
+.navbar ul li a.nav-link{
+	color: var(--ACCENT1);
+	font-family: var(--font-accent);
+	letter-spacing: 2px;
+	font-size: 1.3em;
+}
