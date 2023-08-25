@@ -28,27 +28,78 @@
 	--DARK: #362F2A;
 	--LIGHT: #EEE8E1;
 	--ACCENT1: #F2E9BD;
+	--ACCENT2: #498DB8;
+	--ACCENT3: #BF8360;
 	
 	--font-content: 'Open Sans', sans-serif;
 	--font-accent: 'Julius Sans One', sans-serif;
 }
+
 body{
+	height: 1600px;
 }
-.dark{
+
+.outline{
+	outline: 2px solid red;
+}
+header, #nav-fade-control{
+	transition: all .5s;
+}
+.dark-bg{
 	background-color: var(--DARK);
 }
-.light1{
+.light-text{
 	color: var(--LIGHT);	
 }
+
 #escape-logo{
 	text-align: center;
 }
+
 #logomarca{
 	height: 60px;
 }
+
 .navbar ul li a.nav-link{
 	color: var(--ACCENT1);
 	font-family: var(--font-accent);
 	letter-spacing: 2px;
-	font-size: 1.3em;
+	font-size: 1em;
 }
+
+#banner{
+	width: 100%;
+	background: url("../img/bg/banner4.jpg");
+	background-size: cover;
+	background-attachment: fixed;	
+	
+}
+.banner-mask{
+	padding: 10rem 0 6rem;
+	background-color: #362F2A88;
+	backdrop-filter: blur(12px);
+	color: var(--LIGHT);
+	font-weight: 100;
+	font-size: 1.4em;
+	letter-spacing: 1px;
+}
+
+footer p{
+	color: var(--ACCENT1);
+	font-family: var(--font-accent);
+	letter-spacing: 2px;
+	font-size: .8em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
