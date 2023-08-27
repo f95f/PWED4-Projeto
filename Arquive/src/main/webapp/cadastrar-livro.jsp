@@ -10,18 +10,19 @@
 	<link rel="icon" type = "image/x-icon" href = "img/vendor/favicon.ico">
   	<link href="style/bootstrap.min.css" rel="stylesheet">
   	<link href="style/style.css" rel="stylesheet">
+  	<link href="style/style-internal.css" rel="stylesheet">
   	
   	<script src="scripts/bootstrap.bundle.min.js"></script>
 	<script src="scripts/jquery.min.js"></script>
-	<script src="scripts/styling.js"></script>
+	<script src="scripts/buscar-livro.js"></script>
 	
-	<title>ARQUIVE | Home</title>
+	<title>ARQUIVE | Cadastrar Livro</title>
 </head>
 <body>
 	
-	<header class = "container-fluid fixed-top shadow">
-		
-		<div id = "nav-fade-control" class = "container py-4">
+	<header class = "container-fluid fixed-top dark-bg shadow">
+
+		<div class = "container py-2">
 			<div class = "navbar navbar-expand-md">
 	
 				<a class = "navbar-brand" href = "index.jsp">
@@ -49,46 +50,36 @@
 		</div>
 	
 	</header>
-	<main class = "container-fluid px-0" style = "min-height: 800px">		
-		
-		<div id = "banner">
-			<div class = "row mx-0 px-0 text-center banner-mask">
-				<!-- 
-				<img alt="Arquive - Logo" style = "width: 280px;" class = "mx-auto mb-5" src="img/vendor/logomarca.svg">
-				 -->
-			
-				<form action="#" method="" id = "search-form" class = "my-5">
-					<h1>Reserve um Livro:</h1>
-					<input type = "text" class = "form-control form-control-lg mt-4 w-50 p-3 mx-auto" placeholder = "Buscar...">
-				</form>
-				
-			</div>
-			
-		</div>	
-		
-		<div class = "container">
-		
-			<a class = "button" href = "cadastrar-livro.jsp">cadastrar</a>		 <br>
-		
-			<%
-			
-				if(request.getMethod().toLowerCase().equals("get")){
-					
-					String teste = request.getParameter("param");
-					String strSaida = "{\n\"param\": \"" + teste + "\"\n}";
-					//out.print(request.getMethod());
-					out.print(strSaida);
+	<main class = "container-fluid px-0" style = "min-height: 800px">
 	
-				}
+		<div class = "container">
+			
+			<form action="#" id = "formLivro">
+			
+				<label for = "txtIsbn" class = "form-label">ISBN</label>
+				<input type = "text" name = "txtIsbn" id = "txtIsbn" class = "form-control shadow-sm mb-4">
+			
+				<label for = "txtTitulo" class = "form-label">Título</label>
+				<input type = "text" name = "txtTitulo" id = "txtTitulo" class = "form-control shadow-sm mb-4">
 				
-			%>
+				<div class = "row mb-4">
+				
+					<div class = "col">
+						<label for = "txtAutor" class = "form-label">Autor</label>
+						<input type = "text" name = "txtAutor" id = "txtAutor" class = "form-control shadow-sm">		
+					</div>
+					
+					<div class = "col">
+						<label for = "txtEditora" class = "form-label">Editora</label>
+						<input type = "text" name = "txtEditora" id = "txtEditora" class = "form-control shadow-sm">		
+					</div>
+				</div>
+				
+				
+			</form>
 		
-		</div>	
-		
+		</div>
+	
 	</main>
-
-	<footer class = "mt-5 py-4 text-center dark-bg">
-		<p class = "mb-0">&copy; 3026965, 2023</p>
-	</footer>
 </body>
 </html>

@@ -25,22 +25,32 @@
 }
 
 :root{
+	
+	/* Variáveis para definição da paleta de cores principal. */
 	--DARK: #362F2A;
 	--LIGHT: #EEE8E1;
 	--ACCENT1: #F2E9BD;
 	--ACCENT2: #498DB8;
 	--ACCENT3: #BF8360;
 	
+	/* Variáveis para cores com opacidade,
+	   de acordo com a paleta de cores principal. */
+	--ACCENT1-TP: #EEE8E166;
+	--DARK-TP: #362F2Acc;
+	/* Variáveis para definição da tipografia principal. */
 	--font-content: 'Open Sans', sans-serif;
 	--font-accent: 'Julius Sans One', sans-serif;
 }
 
 body{
-	height: 1600px;
 }
 
-.outline{
+/* classe para teste/visualização do componente na página */
+.outline{  
 	outline: 2px solid red;
+}
+header{
+	backdrop-filter: blur(24px);
 }
 header, #nav-fade-control{
 	transition: all .5s;
@@ -65,8 +75,24 @@ header, #nav-fade-control{
 	font-family: var(--font-accent);
 	letter-spacing: 2px;
 	font-size: 1em;
+	transition: all .2s;
 }
-
+.navbar ul li{
+	position: relative;
+}
+.navbar ul li a::after{
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 1px;
+	left: 0;
+	bottom: 6px;
+	background-color: var(--ACCENT1);	
+	transition: aLL .2S;
+}
+.navbar ul li:hover a::after{
+	width: 100%;	
+}
 #banner{
 	width: 100%;
 	background: url("../img/bg/banner4.jpg");
@@ -77,11 +103,48 @@ header, #nav-fade-control{
 .banner-mask{
 	padding: 10rem 0 6rem;
 	background-color: #362F2A88;
-	backdrop-filter: blur(12px);
+	backdrop-filter: blur(8px);
 	color: var(--LIGHT);
 	font-weight: 100;
 	font-size: 1.4em;
 	letter-spacing: 1px;
+}
+
+h1{
+	color: var(--ACCENT1);
+	font-family: var(--font-accent);
+}
+
+/* ---> 1ª Versão: 
+
+#search-form input{
+	border-radius: 50px;
+	background-color: var(--LIGHT);
+	color: var(--DARK);
+	font-family: var(--font-content);
+	box-shadow: 2px 2px 6px 2px #333333cc;
+	transition: all .2s;
+	border: 0;
+	outline: 0;
+}
+*/
+
+#search-form input{
+	border-radius: 0;
+	background-color: var(--ACCENT1-TP);
+	font-family: var(--font-content);
+	letter-spacing: 1px;
+	border: 0;
+	border-bottom: 2px solid var(--ACCENT1);
+	box-shadow: nnone;
+	outline: 0;
+	transition: all .2s;
+}
+
+#search-form input:hover, #search-form input:focus{
+	box-shadow: 0px 2px 8px 2px var(--DARK-TP);
+	background-color: var(--LIGHT);
+	border-bottom: 2px solid var(--LIGHT);
 }
 
 footer p{
