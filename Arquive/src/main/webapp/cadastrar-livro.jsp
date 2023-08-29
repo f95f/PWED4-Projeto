@@ -50,29 +50,85 @@
 		</div>
 	
 	</header>
-	<main class = "container-fluid px-0" style = "min-height: 800px">
+	<main class = "container-fluid px-0">
 	
+		<div class = "container-fluid header-bg my-5 shadow">
+			<div class = "container py-5">
+				<h1 class = "mt-3">Cadastrar Livro</h1>
+				<p>Informe o ISBN. Se disponíveis, as outras informações serão preenchidas automaticamente.</p>
+			</div>
+		</div>
+		
 		<div class = "container">
 			
 			<form action="#" id = "formLivro">
-			
-				<label for = "txtIsbn" class = "form-label">ISBN</label>
-				<input type = "text" name = "txtIsbn" id = "txtIsbn" class = "form-control shadow-sm mb-4">
-			
-				<label for = "txtTitulo" class = "form-label">Título</label>
-				<input type = "text" name = "txtTitulo" id = "txtTitulo" class = "form-control shadow-sm mb-4">
 				
-				<div class = "row mb-4">
 				
-					<div class = "col">
-						<label for = "txtAutor" class = "form-label">Autor</label>
-						<input type = "text" name = "txtAutor" id = "txtAutor" class = "form-control shadow-sm">		
+				<div class = "row">
+				
+					<div class = "col-md-8">	
+				
+						<label for = "txtIsbn" class = "form-label">ISBN</label>
+						<input type = "text" name = "txtIsbn" id = "txtIsbn" placeholder = "Código de barra ISBN..." class = "form-control shadow-sm mb-4">
+					
+						<label for = "txtTitulo" class = "form-label">Título</label>
+						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "Título..." class = "form-control shadow-sm mb-4">
+						
+						<label for = "txtSubtítulo" class = "form-label">Subtítulo</label>
+						<input type = "text" name = "txtSubtítulo" id = "txtSubtítulo" placeholder = "Subtítulo, se houver..." class = "form-control shadow-sm mb-4">
+													
+						<div class = "row mb-4">
+						
+							<div class = "col">
+								<label for = "txtAutor" class = "form-label">Autor</label>
+								<input type = "text" name = "txtAutor" id = "txtAutor" placeholder = "Autores, separar por vírgula." class = "form-control shadow-sm">		
+							</div>
+							
+							<div class = "col">
+								<label for = "txtEditora" class = "form-label">Editora</label>
+								<input type = "text" name = "txtEditora" id = "txtEditora" placeholder = "Editora..."class = "form-control shadow-sm">		
+							</div>
+						</div>
+						
+						<label for = "txtDescription" class = "form-label">Descrição</label>
+						<textarea rows = "4" name = "txtDescription" id = "txtDescription" placeholder = "Descrição..." class = "form-control shadow-sm mb-4"></textarea>
+					
+						<div class = "row mb-4">
+						
+							<div class = "col-6">
+								<label for = "txtGenero" class = "form-label">Gênero</label>
+								<input type = "text" name = "txtGenero" id = "txtGenero" placeholder = "Gêneros, separar por vírgula" class = "form-control shadow-sm">		
+							</div>
+							
+							<div class = "col-4">
+							
+								<label for = "txtEstado" class = "form-label">Estado</label>
+								<select class="form-select form-control shadow-sm" aria-label="Estado">
+								    <option selected value = "1">Disponível para empréstimo</option>
+								    <option value="0">Indisponível para empréstimo</option>
+								</select>
+								
+							</div>
+							
+							<div class = "col">
+								<label for = "txtQuantidade" class = "form-label">Quantidade</label>
+								<input type = "number" name = "txtQuantidade" id = "txtQuantidade" placeholder = "Quantidade" class = "form-control shadow-sm">		
+							</div>							
+							
+						</div>
+						
+						<input type = "button" action = "#" id = "btn-salvar-livro" value = "Adicionar" class = "btn-gravar shadow my-4">
+						
 					</div>
 					
-					<div class = "col">
-						<label for = "txtEditora" class = "form-label">Editora</label>
-						<input type = "text" name = "txtEditora" id = "txtEditora" class = "form-control shadow-sm">		
-					</div>
+					<div class = "col-md-4">
+					
+						<label for = "txtImgurl" class = "form-label">Capa:</label>
+						<input type = "text" name = "txtImgurl" id = "txtImgurl" class = "form-control shadow-sm mb-4" placeholder = "Url da imagem...">
+					
+						<img alt="sem capa" src="img/vendor/sem-capa.png" class = "form-control" id = "capa-container">
+					</div>	
+							
 				</div>
 				
 				
@@ -81,5 +137,8 @@
 		</div>
 	
 	</main>
+	<footer class = "mt-5 py-4 text-center dark-bg">
+		<p class = "mb-0">&copy; 3026965, 2023</p>
+	</footer>
 </body>
 </html>
