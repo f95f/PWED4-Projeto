@@ -84,15 +84,19 @@
 				}
 				
 			%>
+			<hr>
 			<%
 			
 				Autor autores = new Autor();
 				ArrayList<Autor> listAutores = autores.listAutores();
 			
 				for(int i = 0; i < listAutores.size(); i++){
-					out.print(listAutores.get(i).toString());
+					//out.print(listAutores.get(i).toString());
+					
+					out.print(listAutores.get(i).getIdAutor() + " - " + listAutores.get(i).getNome() + " " + listAutores.get(i).getSobrenome());
 					out.print("<hr>");
 				}
+				
 			%>
 		
 		</div>	

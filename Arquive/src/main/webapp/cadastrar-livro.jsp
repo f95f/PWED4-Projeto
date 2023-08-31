@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="classes.models.Autor"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -81,8 +83,37 @@
 						
 							<div class = "col">
 								<label for = "txtAutor" class = "form-label">Autor</label>
+								<select class="form-select form-control shadow-sm" aria-label="Autor" id = "txtAutor" name = "txtAutor">
+								<%
+									Autor autores = new Autor();
+									ArrayList<Autor> listAutores = autores.listAutores();
+									
+									String selected = "selected ";
+				
+									for(int i = 0; i < listAutores.size(); i++){
+										
+										if(i > 0){ selected = ""; }
+										
+										out.print(
+											"<option " + selected + "value = " 
+											+ listAutores.get(i).getIdAutor() + ">" 
+											+ listAutores.get(i).getNome() + " " 
+											+ listAutores.get(i).getSobrenome() + 
+											"</option>"
+										);
+										
+									}
+								%>							    
+								</select>
+
+							<!-- 
 								<input type = "text" name = "txtAutor" id = "txtAutor" placeholder = "Autores, separar por vírgula." class = "form-control shadow-sm">		
-							</div>
+							-->
+
+							</div> 
+							
+							
+							
 							
 							<div class = "col">
 								<label for = "txtEditora" class = "form-label">Editora</label>
@@ -103,7 +134,7 @@
 							<div class = "col-4">
 							
 								<label for = "txtEstado" class = "form-label">Estado</label>
-								<select class="form-select form-control shadow-sm" aria-label="Estado">
+								<select class="form-select form-control shadow-sm" aria-label="Estado" id = "txtEstado" name = "txtEstado">
 								    <option selected value = "1">Disponível para empréstimo</option>
 								    <option value="0">Indisponível para empréstimo</option>
 								</select>
