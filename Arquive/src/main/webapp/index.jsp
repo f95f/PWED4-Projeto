@@ -55,9 +55,6 @@
 		
 		<div id = "banner">
 			<div class = "row mx-0 px-0 text-center banner-mask">
-				<!-- 
-				<img alt="Arquive - Logo" style = "width: 280px;" class = "mx-auto mb-5" src="img/vendor/logomarca.svg">
-				 -->
 			
 				<form action="#" method="" id = "search-form" class = "my-5">
 					<h1>Reserve um Livro:</h1>
@@ -85,19 +82,6 @@
 				
 			%>
 			<hr>
-			<%
-			
-				Autor autores = new Autor();
-				ArrayList<Autor> listAutores = autores.listAutores();
-			
-				for(int i = 0; i < listAutores.size(); i++){
-					//out.print(listAutores.get(i).toString());
-					
-					out.print(listAutores.get(i).getIdAutor() + " - " + listAutores.get(i).getNome() + " " + listAutores.get(i).getSobrenome());
-					out.print("<hr>");
-				}
-				
-			%>
 		
 		</div>	
 		

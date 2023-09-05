@@ -79,7 +79,7 @@ header, #nav-fade-control{
 	height: 60px;
 }
 
-.navbar ul li a.nav-link{
+.navbar ul li a.nav-link, .navbar ul li .header-dropdown{
 	color: var(--ACCENT1);
 	font-family: var(--font-accent);
 	letter-spacing: 2px;
@@ -102,6 +102,7 @@ header, #nav-fade-control{
 .navbar ul li:hover a::after{
 	width: 100%;	
 }
+
 #banner{
 	width: 100%;
 	background: url("../img/bg/banner4.jpg");

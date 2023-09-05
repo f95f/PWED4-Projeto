@@ -33,17 +33,27 @@
 	
 				<div class = "navbar-collapse justify-content-end">			
 					<ul class = "navbar-nav ml-auto">
+						
 						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "index.jsp">Início</a>
+						
+							<div class="dropdown">
+							
+								<button type="button" class = "btn dropdown-toggle header-dropdown" data-bs-toggle = "dropdown">
+								    Cadastrar
+								</button>
+								<ul class="dropdown-menu">
+								    <li> <a class="dropdown-item" href = "cadastrar-livro.jsp">Livros</a> </li> 
+									<li> <a class="dropdown-item" href = "cadastrar-autor.jsp">Autores</a> </li> 
+									<li> <a class="dropdown-item" href = "cadastrar-genero.jsp">Gêneros</a> </li> 
+									<li> <a class="dropdown-item" href = "cadastrar-editora.jsp">Editoras</a> </li> 
+								</ul>
+								  
+							</div>
+						
 						</li>
+
 						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "#">Sobre</a>
-						</li>
-						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "#">Contato</a>
-						</li>
-						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "#">Login</a>
+							<a class = "nav-link" href = "#">Sair</a>
 						</li>
 					</ul>
 				</div>
@@ -71,19 +81,19 @@
 					<div class = "col-md-8">	
 				
 						<label for = "txtIsbn" class = "form-label">ISBN</label>
-						<input type = "text" name = "txtIsbn" id = "txtIsbn" placeholder = "Código de barra ISBN..." class = "form-control shadow-sm mb-4">
+						<input type = "text" name = "txtIsbn" id = "txtIsbn" placeholder = "Código de barra ISBN..." class = "form-control shadow-sm mb-4 py-2">
 					
 						<label for = "txtTitulo" class = "form-label">Título</label>
-						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "Título..." class = "form-control shadow-sm mb-4">
+						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "Título..." class = "form-control shadow-sm mb-4 py-2">
 						
 						<label for = "txtSubtítulo" class = "form-label">Subtítulo</label>
-						<input type = "text" name = "txtSubtítulo" id = "txtSubtítulo" placeholder = "Subtítulo, se houver..." class = "form-control shadow-sm mb-4">
+						<input type = "text" name = "txtSubtítulo" id = "txtSubtítulo" placeholder = "Subtítulo, se houver..." class = "form-control shadow-sm mb-4 py-2">
 													
 						<div class = "row mb-4">
 						
 							<div class = "col">
 								<label for = "txtAutor" class = "form-label">Autor</label>
-								<select class="form-select form-control shadow-sm" aria-label="Autor" id = "txtAutor" name = "txtAutor">
+								<select class="form-select form-control shadow-sm py-2" aria-label="Autor" id = "txtAutor" name = "txtAutor">
 								<%
 									Autor autores = new Autor();
 									ArrayList<Autor> listAutores = autores.listAutores();
@@ -103,38 +113,53 @@
 										);
 										
 									}
-								%>							    
+								%>
+								
 								</select>
+								<a href = "cadastrar-autor.jsp">Novo</a>	
 
-							<!-- 
-								<input type = "text" name = "txtAutor" id = "txtAutor" placeholder = "Autores, separar por vírgula." class = "form-control shadow-sm">		
-							-->
-
-							</div> 
+							</div>
 							
+							<div class = "col-4">
+								<label for = "txtEdition" class = "form-label">Edição</label>
+								<input type = "text" name = "txtEdition" id = "txtEdition" placeholder = "Edição do exemplar..." class = "form-control shadow-sm mb-4 py-2">
+							</div>
 							
-							
-							
+						</div>
+						
+						<div class = "row">
+						
 							<div class = "col">
 								<label for = "txtEditora" class = "form-label">Editora</label>
-								<input type = "text" name = "txtEditora" id = "txtEditora" placeholder = "Editora..."class = "form-control shadow-sm">		
+								<input type = "text" name = "txtEditora" id = "txtEditora" placeholder = "Editora..."class = "form-control shadow-sm py-2">		
 							</div>
+							
+							<div class = "col-3">
+								<label for = "txtAno" class = "form-label">Ano</label>
+								<input type = "number" name = "txtAno" id = "txtAno" placeholder = "Ano de publicação..."class = "form-control shadow-sm py-2">		
+							</div>
+												
+							<div class = "col-3">
+								<label for = "txtPages" class = "form-label">Páginas</label>
+								<input type = "number" name = "txtPages" id = "txtPages" placeholder = "Número de páginas..." class = "form-control shadow-sm mb-4 py-2">
+							</div>
+							
 						</div>
 						
 						<label for = "txtDescription" class = "form-label">Descrição</label>
-						<textarea rows = "4" name = "txtDescription" id = "txtDescription" placeholder = "Descrição..." class = "form-control shadow-sm mb-4"></textarea>
+						<textarea rows = "4" name = "txtDescription" id = "txtDescription" placeholder = "Descrição..." class = "form-control shadow-sm mb-4 py-2"></textarea>
 					
 						<div class = "row mb-4">
 						
 							<div class = "col-6">
 								<label for = "txtGenero" class = "form-label">Gênero</label>
-								<input type = "text" name = "txtGenero" id = "txtGenero" placeholder = "Gêneros, separar por vírgula" class = "form-control shadow-sm">		
+								<input type = "text" name = "txtGenero" id = "txtGenero" placeholder = "Gêneros, separar por vírgula" class = "form-control shadow-sm py-2">		
 							</div>
 							
 							<div class = "col-4">
 							
-								<label for = "txtEstado" class = "form-label">Estado</label>
-								<select class="form-select form-control shadow-sm" aria-label="Estado" id = "txtEstado" name = "txtEstado">
+								<label for = "txtDisponibilidade" class = "form-label">Disponibilidade</label>
+								<select class="form-select form-control shadow-sm py-2" aria-label="Disponibilidade" id = "txtDisponibilidade" name = "txtDisponibilidade">
 								    <option selected value = "1">Disponível para empréstimo</option>
 								    <option value="0">Indisponível para empréstimo</option>
 								</select>
@@ -143,7 +168,7 @@
 							
 							<div class = "col">
 								<label for = "txtQuantidade" class = "form-label">Quantidade</label>
-								<input type = "number" name = "txtQuantidade" id = "txtQuantidade" placeholder = "Quantidade" class = "form-control shadow-sm">		
+								<input type = "number" name = "txtQuantidade" id = "txtQuantidade" placeholder = "Quantidade" class = "form-control shadow-sm py-2">		
 							</div>							
 							
 						</div>
@@ -155,9 +180,10 @@
 					<div class = "col-md-4">
 					
 						<label for = "txtImgurl" class = "form-label">Capa:</label>
-						<input type = "text" name = "txtImgurl" id = "txtImgurl" class = "form-control shadow-sm mb-4" placeholder = "Url da imagem...">
+						<input type = "text" name = "txtImgurl" id = "txtImgurl" class = "form-control shadow-sm mb-4 py-2" placeholder = "Url da imagem...">
 					
 						<img alt="sem capa" src="img/vendor/sem-capa.png" class = "form-control" id = "capa-container">
+						
 					</div>	
 							
 				</div>
