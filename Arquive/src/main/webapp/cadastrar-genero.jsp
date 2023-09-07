@@ -17,6 +17,28 @@
 	<script src="scripts/buscar-livro.js"></script>
 	
 	<title>ARQUIVE | Cadastrar Gêneros</title>
+	
+	<script>
+	
+		$(document).ready(function(){
+	
+			$("#formGenero").submit(function(event){ 
+				
+				event.preventDefault();
+				
+				let dataForm = $("#formGenero").serialize();
+				let url = "salvar-genero.jsp";
+				
+				$.post(url, dataForm, function(data, status){
+					
+					alert("Nome: " + data.nome); 
+					
+				}, "json");
+				
+			});
+		});
+	
+	</script>
 </head>
 <body>
 	
@@ -71,7 +93,7 @@
 		
 		<div class = "container">
 			
-			<form action="#" id = "formAutor">
+			<form method = "post" id = "formGenero">
 				
 				<div class = "row">
 				
@@ -83,7 +105,7 @@
 						<label for = "txtBio" class = "form-label">Descrição:</label>
 						<textarea rows = "5" name = "txtBio" id = "txtBio" placeholder = "Fale um pouco sobre este gênero ou categoria..." class = "form-control shadow-sm mb-4 py-2"></textarea>
 					
-						<input type = "button" action = "#" id = "btn-salvar-livro" value = "Adicionar" class = "btn-gravar shadow my-4">
+						<input type = "submit" id = "btn-salvar-livro" value = "Adicionar" class = "btn-gravar shadow my-4">
 					</div>
 					
 				</div>

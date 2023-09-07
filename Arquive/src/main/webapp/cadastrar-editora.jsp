@@ -17,6 +17,27 @@
 	<script src="scripts/buscar-livro.js"></script>
 	
 	<title>ARQUIVE | Cadastrar Editoras</title>
+	<script type="text/javascript">
+	
+		$(document).ready(function(){
+			
+			$("#formEditora").submit(function(event){
+				
+				event.preventDefault();
+				let dataForm = $("#formEditora").serialize();
+				let url = "salvar-editora.jsp";
+				
+				$.post(url, dataForm, function(data, status){
+					
+					alert("Nome: " + data.nome);
+					
+				}, "json");
+				
+			});
+			
+		});
+	
+	</script>
 </head>
 <body>
 	
@@ -64,14 +85,14 @@
 	
 		<div class = "container-fluid header-bg my-5 shadow">
 			<div class = "container py-5">
-				<h1 class = "mt-3">Cadastrar Gêneros</h1>
+				<h1 class = "mt-3">Cadastrar Editoras</h1>
 				<p>Use este formulário para adicionar uma nova editora.</p>
 			</div>
 		</div>
 		
 		<div class = "container">
 			
-			<form action="#" id = "formAutor">
+			<form method = "post" id = "formEditora">
 				
 				<div class = "row">
 				
@@ -83,7 +104,7 @@
 						<label for = "txtBio" class = "form-label">Descrição:</label>
 						<textarea rows = "5" name = "txtBio" id = "txtBio" placeholder = "Informação adicional sobre a editora..." class = "form-control shadow-sm mb-4 py-2"></textarea>
 					
-						<input type = "button" action = "#" id = "btn-salvar-livro" value = "Adicionar" class = "btn-gravar shadow my-4">
+						<input type = "submit" id = "btn-salvar-livro" value = "Adicionar" class = "btn-gravar shadow my-4">
 					</div>
 					
 				</div>

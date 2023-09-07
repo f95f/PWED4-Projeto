@@ -17,8 +17,31 @@
 	<script src="scripts/buscar-livro.js"></script>
 	
 	<title>ARQUIVE | Cadastrar Autor</title>
+	
+	<script>
+	
+		$(document).ready(function(){
+	
+			$("#formAutor").submit(function(event){ 
+				
+				event.preventDefault();
+				
+				let dataForm = $("#formAutor").serialize();
+				let url = "salvar-autor.jsp";
+				
+				$.post(url, dataForm, function(data, status){
+					
+					alert("Nome: " + data.nome + "\nSobrenome: " + data.sobrenome); // should work
+					
+				}, "json");
+				
+			});
+		});
+	
+	</script>
 </head>
 <body>
+
 	
 	<header class = "container-fluid fixed-top dark-bg shadow">
 
@@ -71,7 +94,7 @@
 		
 		<div class = "container">
 			
-			<form action="#" id = "formAutor">
+			<form method = "post" id = "formAutor">
 				
 				<div class = "row">
 				
@@ -86,16 +109,16 @@
 						<label for = "txtSobrenome" class = "form-label">Sobrenome</label>
 						<input type = "text" name = "txtSobrenome" id = "txtSobrenome" placeholder = "Sobrenome do autor..." class = "form-control shadow-sm mb-4 py-2">
 		
-						<label for = "txtBio" class = "form-label">Bibliografia:</label>
+						<label for = "txtBio" class = "form-label">Biografia:</label>
 						<textarea rows = "8" name = "txtBio" id = "txtBio" placeholder = "Fale um pouco sobre o autor e seus trabalhos, gêneros etc..." class = "form-control shadow-sm mb-4 py-2"></textarea>
 					
-						<input type = "button" action = "#" id = "btn-salvar-livro" value = "Adicionar" class = "btn-gravar shadow my-4">
+						<input type = "submit" id = "btn-salvar-autor" value = "Adicionar" class = "btn-gravar shadow my-4">
 					</div>
 			
 					<div class = "col-md-4">
 						
-						<label for = "txtImgurl" class = "form-label">Foto:</label>
-						<input type = "text" name = "txtImgurl" id = "txtImgurl" class = "form-control shadow-sm mb-4 py-2" placeholder = "Url da foto...">
+						<label for = "txtImgUrl" class = "form-label">Foto:</label>
+						<input type = "text" name = "txtImgUrl" id = "txtImgUrl" class = "form-control shadow-sm mb-4 py-2" placeholder = "Url da foto..." value = "img/vendor/sem-capa.png">
 					
 						<img alt="sem capa" src="img/vendor/sem-capa.png" class = "form-control" id = "capa-container">
 						
