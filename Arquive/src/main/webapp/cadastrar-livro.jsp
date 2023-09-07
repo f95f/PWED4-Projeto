@@ -1,3 +1,4 @@
+<%@page import="classes.models.Editora"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="classes.models.Autor"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -5,63 +6,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
-	<meta lang="pt-br">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-	<link rel="icon" type = "image/x-icon" href = "img/vendor/favicon.ico">
-  	<link href="style/bootstrap.min.css" rel="stylesheet">
-  	<link href="style/style.css" rel="stylesheet">
-  	<link href="style/style-internal.css" rel="stylesheet">
-  	
-  	<script src="scripts/bootstrap.bundle.min.js"></script>
-	<script src="scripts/jquery.min.js"></script>
+	<%@ include file = "components/head.jsp" %>
 	<script src="scripts/buscar-livro.js"></script>
 	
 	<title>ARQUIVE | Cadastrar Livro</title>
+	
 </head>
 <body>
 	
-	<header class = "container-fluid fixed-top dark-bg shadow">
-
-		<div class = "container py-2">
-			<div class = "navbar navbar-expand-md">
-	
-				<a class = "navbar-brand" href = "index.jsp">
-					<img alt="Arquive - Página Inicial" style = "height: 30px;" src="img/vendor/logomarca-h.png">
-				</a>
-	
-				<div class = "navbar-collapse justify-content-end">			
-					<ul class = "navbar-nav ml-auto">
-						
-						<li class = "nav-item mx-3"> 
-						
-							<div class="dropdown">
-							
-								<button type="button" class = "btn dropdown-toggle header-dropdown" data-bs-toggle = "dropdown">
-								    Cadastrar
-								</button>
-								<ul class="dropdown-menu">
-								    <li> <a class="dropdown-item" href = "cadastrar-livro.jsp">Livros</a> </li> 
-									<li> <a class="dropdown-item" href = "cadastrar-autor.jsp">Autores</a> </li> 
-									<li> <a class="dropdown-item" href = "cadastrar-genero.jsp">Gêneros</a> </li> 
-									<li> <a class="dropdown-item" href = "cadastrar-editora.jsp">Editoras</a> </li> 
-								</ul>
-								  
-							</div>
-						
-						</li>
-
-						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "#">Sair</a>
-						</li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-	
-	</header>
+	<%@ include file = "components/nav-internal.jsp" %>	
 	<main class = "container-fluid px-0">
 	
 		<div class = "container-fluid header-bg my-5 shadow">
@@ -94,6 +47,7 @@
 							<div class = "col">
 								<label for = "txtAutor" class = "form-label">Autor</label>
 								<select class="form-select form-control shadow-sm py-2" aria-label="Autor" id = "txtAutor" name = "txtAutor">
+								
 								<%
 									Autor autores = new Autor();
 									ArrayList<Autor> listAutores = autores.listAutores();
@@ -130,8 +84,35 @@
 						<div class = "row">
 						
 							<div class = "col">
+							
 								<label for = "txtEditora" class = "form-label">Editora</label>
-								<input type = "text" name = "txtEditora" id = "txtEditora" placeholder = "Editora..."class = "form-control shadow-sm py-2">		
+							    <div class="input-group mb-3">
+							    
+									<select class="form-select form-control shadow-sm py-2" aria-label="Editora" id = "txtEditora" name = "txtEditora" placeholder = "Selecione uma editora..." aria-label="Selecionar Editora">
+									    <%
+											Editora editoras = new Editora();
+												
+											ArrayList<Editora> listEditoras = editoras.listarEditoras();
+											
+											for(int i = 0; i < listEditoras.size(); i++){
+												
+												out.print(
+													"<option value = " + listEditoras.get(i).getIdEditora() + ">" 
+														+ listEditoras.get(i).getNome() + 
+													"</option>"
+												);
+												
+											}
+										%>
+									</select>
+									
+									<div class="input-group-append">
+									
+										<a class="btn btn-outline-secondary shadow-sm py-2" role="button" target = "_blank" href = "cadastrar-editora.jsp">Nova Editora</a>
+										<% //todo: fazer abrir o formulário em um modal na mesma página %>				
+									</div>
+								</div>
+						
 							</div>
 							
 							<div class = "col-3">
@@ -194,8 +175,8 @@
 		</div>
 	
 	</main>
-	<footer class = "mt-5 py-4 text-center dark-bg">
-		<p class = "mb-0">&copy; 3026965, 2023</p>
-	</footer>
+	
+	<%@ include file = "components/footer-internal.jsp" %>
+	
 </body>
 </html>

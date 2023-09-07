@@ -10,4 +10,5 @@
 	out.print("{\"nome\": \"" + novaEditora.getNome() + "\", \"descr\": \"" + novaEditora.getDescription() + "\" }");
 	
 	novaEditora.salvar();
+	
 %>
