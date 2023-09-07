@@ -51,6 +51,7 @@ create table editora(
     nome varchar(90) not null,
 	descr varchar(300)
 );
+select * from editora;
 
 drop table if exists livro_genero;
 create table livro_genero(
