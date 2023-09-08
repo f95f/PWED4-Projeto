@@ -12,7 +12,7 @@
 	
 	<%@ include file = "components/nav-internal.jsp" %>	
 	
-	<main class = "container-fluid px-0">
+	<main class = "container-fluid px-0 mt-5">
 	
 		<%@ include file = "components/forms/form-cadastrar-editora.jsp" %>
 	

@@ -66,7 +66,7 @@ header, #nav-fade-control{
 .dark-bg{
 	background-color: var(--DARK);
 }
-.header-bg{
+.header-bg, .footer-bg{
 	background-color: var(--ACCENT2);
 }
 .light-text{
@@ -166,6 +166,10 @@ label{
 }
 input{
 	font-family: var(--font-content);
+}
+#btnAdicionarEditora{
+	border-top-left-radius: 0 !important;
+	border-bottom-left-radius: 0;
 }
 .btn-gravar{
 	border: 0; background-color: var(--ACCENT2);

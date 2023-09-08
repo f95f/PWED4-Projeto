@@ -12,7 +12,7 @@
 					
 					$.post(url, dataForm, function(data, status){
 						
-						console.log("Nome: " + data.nome);
+						sessionStorage.setItem("novaEditora", JSON.stringify(data));	
 						
 					}, "json");
 					
@@ -22,7 +22,7 @@
 		
 		</script>
 		
-		<div class = "container-fluid header-bg my-5 shadow">
+		<div class = "container-fluid header-bg mb-5 shadow">
 			<div class = "container py-5">
 				<h1 class = "mt-3">Cadastrar Editoras</h1>
 				<p>Use este formulário para adicionar uma nova editora.</p>

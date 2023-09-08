@@ -18,10 +18,29 @@
 			$("#formLivro").submit(function(event){
 				
 				event.preventDefault();
-				alert("b");		
+				
+				let dataForm = $("#formLivro").serialize();
+				alert(dataForm);		
 				
 			});
+			$("#addEditoraFormModal").ready(function(){
 				
+				$("#btnSalvarEditora").attr("data-bs-dismiss", "modal");
+				
+			});
+			$("#addEditoraFormModal").on("hidden.bs.modal", (function(){
+				
+				let objeto = JSON.parse(sessionStorage.getItem("novaEditora"));
+				
+				if(objeto !== null){
+
+					let option = "<option selected value = " + objeto.id + "> " + objeto.nome + " </option>";
+					$("#txtEditora").append(option);
+					sessionStorage.removeItem("novaEditora");
+					
+				}
+			}));
+			
 		});
 		
 	</script>
@@ -103,16 +122,21 @@
 								<label for = "txtEditora" class = "form-label">Editora</label>
 							    <div class="input-group mb-3">
 							    
-									<select class="form-select form-control shadow-sm py-2" aria-label="Editora" id = "txtEditora" name = "txtEditora" placeholder = "Selecione uma editora..." aria-label="Selecionar Editora">
+									<select class="form-select form-control shadow-sm py-2" aria-label="Editora" id = "txtEditora" name = "txtEditora" aria-label="Selecionar Editora">
 									    <%
 											Editora editoras = new Editora();
 												
 											ArrayList<Editora> listEditoras = editoras.listarEditoras();
+											String selectedEditora = "";
 											
 											for(int i = 0; i < listEditoras.size(); i++){
 												
+												if(i == listEditoras.size() -1){
+													selectedEditora = "selected ";
+												}
+												
 												out.print(
-													"<option value = " + listEditoras.get(i).getIdEditora() + ">" 
+													"<option " + selectedEditora + "value = " + listEditoras.get(i).getIdEditora() + ">" 
 														+ listEditoras.get(i).getNome() + 
 													"</option>"
 												);
@@ -123,9 +147,8 @@
 									
 									<div class="input-group-append">
 									
-										<button class="btn btn-outline-secondary shadow-sm py-2" type="button" data-bs-toggle = "modal" data-bs-target="#addEditoraFormModal">Nova Editora</button>
-									
-										<% //todo: fazer abrir o formulário em um modal na mesma página %>				
+										<button class="btn btn-outline-secondary shadow-sm py-2" id = "btnAdicionarEditora" type="button" data-bs-toggle = "modal" data-bs-target="#addEditoraFormModal">Nova Editora</button>
+												
 									</div>
 								</div>
 						
@@ -153,20 +176,20 @@
 								<input type = "text" name = "txtGenero" id = "txtGenero" placeholder = "Gêneros, separar por vírgula" class = "form-control shadow-sm py-2">		
 							</div>
 							
-							<div class = "col-4">
-							
-								<label for = "txtDisponibilidade" class = "form-label">Disponibilidade</label>
-								<select class="form-select form-control shadow-sm py-2" aria-label="Disponibilidade" id = "txtDisponibilidade" name = "txtDisponibilidade">
-								    <option selected value = "1">Disponível para empréstimo</option>
-								    <option value="0">Indisponível para empréstimo</option>
-								</select>
-								
-							</div>
-							
 							<div class = "col">
 								<label for = "txtQuantidade" class = "form-label">Quantidade</label>
 								<input type = "number" name = "txtQuantidade" id = "txtQuantidade" placeholder = "Quantidade" class = "form-control shadow-sm py-2">		
 							</div>							
+							
+							<div class = "col-4">
+							
+								<label class="form-label" for="chkDisponibilidadeContainer">Disponibilidade</label>
+								<div class="form-check form-switch" id = "chkDisponibilidadeContainer">
+								    <input class="form-check-input" type="checkbox" id="chkDisponibilidade" checked>
+								    <label class="form-label" for="chkDisponibilidade">Disponível para empréstimo</label>
+								</div>
+				
+							</div>
 							
 						</div>
 						
@@ -189,24 +212,24 @@
 		
 		</div>
 	
-		<div id="addEditoraFormModal" class="modal fade" role="dialog">
+		<div id="addEditoraFormModal" class="modal modal-lg fade" role="dialog">
 			<div class="modal-dialog">
 			
 			    <div class="modal-content">
 				    
-				    <div class="modal-body">
-
-						<div class = "container">
+				    <div class="modal-body mx-0 my-0 px-0 py-0">
 							
-							<%@ include file = "components/forms/form-cadastrar-editora.jsp" %>
-							
-						</div>
+						<%@ include file = "components/forms/form-cadastrar-editora.jsp" %>
 
 				    </div>
-				    
-				    <div class="modal-footer">
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				    </div>
+			    
+		    		<div class = "container-fluid footer-bg py-3 px-0 mx-0 my-0">
+						<div class = "d-flex justify-content-end">
+						
+					        <button type="button" class="btn text-white mx-5" data-bs-dismiss="modal">Cancelar</button>
+					
+						</div>		
+					</div>
 				    
 			    </div>
 			
