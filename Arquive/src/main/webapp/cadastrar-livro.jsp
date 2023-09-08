@@ -6,10 +6,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<%@ include file = "components/head.jsp" %>
 	<script src="scripts/buscar-livro.js"></script>
 	
 	<title>ARQUIVE | Cadastrar Livro</title>
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+			$("#formLivro").submit(function(event){
+				
+				event.preventDefault();
+				alert("b");		
+				
+			});
+				
+		});
+		
+	</script>
 	
 </head>
 <body>
@@ -108,7 +123,8 @@
 									
 									<div class="input-group-append">
 									
-										<a class="btn btn-outline-secondary shadow-sm py-2" role="button" target = "_blank" href = "cadastrar-editora.jsp">Nova Editora</a>
+										<button class="btn btn-outline-secondary shadow-sm py-2" type="button" data-bs-toggle = "modal" data-bs-target="#addEditoraFormModal">Nova Editora</button>
+									
 										<% //todo: fazer abrir o formulário em um modal na mesma página %>				
 									</div>
 								</div>
@@ -154,7 +170,7 @@
 							
 						</div>
 						
-						<input type = "button" action = "#" id = "btn-salvar-livro" value = "Adicionar" class = "btn-gravar shadow my-4">
+						<input type = "submit" id = "btn-salvar-livro" value = "Adicionar" class = "btn-gravar shadow my-4">
 						
 					</div>
 					
@@ -167,13 +183,35 @@
 						
 					</div>	
 							
-				</div>
-				
+				</div>		
 				
 			</form>
 		
 		</div>
 	
+		<div id="addEditoraFormModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+			
+			    <div class="modal-content">
+				    
+				    <div class="modal-body">
+
+						<div class = "container">
+							
+							<%@ include file = "components/forms/form-cadastrar-editora.jsp" %>
+							
+						</div>
+
+				    </div>
+				    
+				    <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				    </div>
+				    
+			    </div>
+			
+			</div>
+		</div>
 	</main>
 	
 	<%@ include file = "components/footer-internal.jsp" %>
