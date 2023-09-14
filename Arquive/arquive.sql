@@ -43,6 +43,7 @@ create table genero(
     nome varchar(90) not null,
 	descr varchar(300)
 );
+insert into genero(nome, descr) values("asdfasd", "sdfafdsa");
 select * from genero;
 
 drop table if exists editora;
@@ -53,7 +54,7 @@ create table editora(
 );
 insert into editora(nome, descr) values("asdfasd", "sdfafdsa");
 select * from editora;
-
+delete from editora;
 drop table if exists livro_genero;
 create table livro_genero(
 	id int not null auto_increment primary key,

@@ -1,3 +1,4 @@
+<%@page import="classes.models.Genero"%>
 <%@page import="classes.models.Editora"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="classes.models.Autor"%>
@@ -33,7 +34,9 @@
 				let objeto = JSON.parse(sessionStorage.getItem("novaEditora"));
 				
 				if(objeto !== null){
-
+					
+					$("#optionSemEditora").remove();
+					
 					let option = "<option selected value = " + objeto.id + "> " + objeto.nome + " </option>";
 					$("#txtEditora").append(option);
 					sessionStorage.removeItem("novaEditora");
@@ -122,13 +125,23 @@
 								<label for = "txtEditora" class = "form-label">Editora</label>
 							    <div class="input-group mb-3">
 							    
-									<select class="form-select form-control shadow-sm py-2" aria-label="Editora" id = "txtEditora" name = "txtEditora" aria-label="Selecionar Editora">
+									<select class="form-select form-control shadow-sm py-2" id = "txtEditora" name = "txtEditora" aria-label="Selecionar Editora">
 									    <%
 											Editora editoras = new Editora();
 												
 											ArrayList<Editora> listEditoras = editoras.listarEditoras();
 											String selectedEditora = "";
 											
+											if(listEditoras.size() == 0){
+												
+												out.print(
+													"<option id = 'optionSemEditora' selected value = -1> " +
+														"Nenhuma encontrada!" +	
+													"</option>"
+												);
+												
+											}
+																						
 											for(int i = 0; i < listEditoras.size(); i++){
 												
 												if(i == listEditoras.size() -1){
@@ -147,7 +160,7 @@
 									
 									<div class="input-group-append">
 									
-										<button class="btn btn-outline-secondary shadow-sm py-2" id = "btnAdicionarEditora" type="button" data-bs-toggle = "modal" data-bs-target="#addEditoraFormModal">Nova Editora</button>
+										<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarEditora" type="button" data-bs-toggle = "modal" data-bs-target="#addEditoraFormModal">Nova Editora</button>
 												
 									</div>
 								</div>
@@ -171,10 +184,26 @@
 					
 						<div class = "row mb-4">
 						
-							<div class = "col-6">
+							<div class = "col">
+							
 								<label for = "txtGenero" class = "form-label">Gênero</label>
-								<input type = "text" name = "txtGenero" id = "txtGenero" placeholder = "Gêneros, separar por vírgula" class = "form-control shadow-sm py-2">		
+								<div class = "input-group mb-3">
+								
+									<button class="btn btn-outline-secondary w-75 shadow-sm py-2 inline-select-button" id = "btnSelecionarGenero" type="button" data-bs-toggle = "modal" data-bs-target="#selectGeneroModal">Selecionar... </button>
+									<%// <input type = "text" name = "txtGenero" id = "txtGenero" placeholder = "Clique para selecionar..." class = "form-control shadow-sm py-2" disabled = "true" type="button" data-bs-toggle = "modal" data-bs-target="#addEditoraFormModal">	%>	
+
+									<div class="input-group-append">
+									
+										<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarGenero" type="button" data-bs-toggle = "modal" data-bs-target="#addGeneroFormModal">Novo Gênero</button>
+												
+									</div>
+																	
+								</div>
 							</div>
+								
+						</div>
+						
+						<div class = "row mb-4">
 							
 							<div class = "col">
 								<label for = "txtQuantidade" class = "form-label">Quantidade</label>
@@ -220,6 +249,69 @@
 				    <div class="modal-body mx-0 my-0 px-0 py-0">
 							
 						<%@ include file = "components/forms/form-cadastrar-editora.jsp" %>
+
+				    </div>
+			    
+		    		<div class = "container-fluid footer-bg py-3 px-0 mx-0 my-0">
+						<div class = "d-flex justify-content-end">
+						
+					        <button type="button" class="btn text-white mx-5" data-bs-dismiss="modal">Cancelar</button>
+					
+						</div>		
+					</div>
+				    
+			    </div>
+			
+			</div>
+		</div>
+		
+		<div id="addGeneroFormModal" class="modal modal-lg fade" role="dialog">
+			<div class="modal-dialog">
+			
+			    <div class="modal-content">
+				    
+				    <div class="modal-body mx-0 my-0 px-0 py-0">
+							
+						<%@ include file = "components/forms/form-cadastrar-genero.jsp" %>
+
+				    </div>
+			    
+		    		<div class = "container-fluid footer-bg py-3 px-0 mx-0 my-0">
+						<div class = "d-flex justify-content-end">
+						
+					        <button type="button" class="btn text-white mx-5" data-bs-dismiss="modal">Cancelar</button>
+					
+						</div>		
+					</div>
+				    
+			    </div>
+			
+			</div>
+		</div>
+		
+		<div id="selectGeneroModal" class="modal modal-lg fade" role="dialog">
+			<div class="modal-dialog">
+			
+			    <div class="modal-content">
+				    
+				    <div class="modal-body mx-0 my-0 px-0 py-5">
+							
+						<%
+							Genero generos = new Genero();
+							ArrayList<Genero> listarGeneros = generos.listarGeneros();
+							
+							for(int i = 0; i < listarGeneros.size(); i++){
+
+								out.print(
+										
+									"<input type= 'checkbox' id = " + listarGeneros.get(i).getIdGenero() + " value=" + listarGeneros.get(i).getIdGenero() + ">" + listarGeneros.get(i).getNome()
+											
+								);
+								
+							}
+							
+						%>
+							
 
 				    </div>
 			    

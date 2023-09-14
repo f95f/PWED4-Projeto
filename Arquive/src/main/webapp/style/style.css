@@ -167,9 +167,20 @@ label{
 input{
 	font-family: var(--font-content);
 }
-#btnAdicionarEditora{
-	border-top-left-radius: 0 !important;
+.inline-add-button{
+	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
+}
+.inline-select-button{
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+#chkDisponibilidade{
+	transition: all .2s;
+}
+#chkDisponibilidade:checked{
+	background-color: var(--ACCENT2);
+	border: 2px solid var(--ACCENT2);
 }
 .btn-gravar{
 	border: 0; background-color: var(--ACCENT2);
