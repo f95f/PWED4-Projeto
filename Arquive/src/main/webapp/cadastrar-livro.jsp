@@ -43,7 +43,6 @@
 					
 				}
 			}));
-			
 		});
 		
 	</script>
@@ -255,7 +254,7 @@
 		    		<div class = "container-fluid footer-bg py-3 px-0 mx-0 my-0">
 						<div class = "d-flex justify-content-end">
 						
-					        <button type="button" class="btn text-white mx-5" data-bs-dismiss="modal">Cancelar</button>
+					        <button type="button" class="btn text-white mx-5 btn-fechar-modal" data-bs-dismiss="modal">Cancelar</button>
 					
 						</div>		
 					</div>
@@ -279,7 +278,7 @@
 		    		<div class = "container-fluid footer-bg py-3 px-0 mx-0 my-0">
 						<div class = "d-flex justify-content-end">
 						
-					        <button type="button" class="btn text-white mx-5" data-bs-dismiss="modal">Cancelar</button>
+					        <button type="button" class="btn text-white mx-5 btn-fechar-modal" data-bs-dismiss="modal">Cancelar</button>
 					
 						</div>		
 					</div>
@@ -289,7 +288,7 @@
 			</div>
 		</div>
 		
-		<div id="selectGeneroModal" class="modal modal-lg fade" role="dialog">
+		<div id="selectGeneroModal" class="modal fade" role="dialog">
 			<div class="modal-dialog">
 			
 			    <div class="modal-content">
@@ -299,15 +298,7 @@
 						<%@ include file = "components/forms/form-pesquisar-generos.jsp" %>
 						
 				    </div>
-			    
-		    		<div class = "container-fluid footer-bg py-3 px-0 mx-0 my-0">
-						<div class = "d-flex justify-content-end my-0 py-0">
-						
-					        <button type="button" class="btn text-white mx-5" data-bs-dismiss="modal">Cancelar</button>
-					
-						</div>		
-					</div>
-				    
+			    				    
 			    </div>
 			
 			</div>

@@ -51,8 +51,9 @@ VALUES
     ('Comedy', 'Comedies aim to entertain and amuse, using humor and satire to create laughter and joy among the audience.'),
     ('Science Fiction', 'Sci-fi movies explore futuristic and speculative concepts, often involving advanced technology, space travel, and extraterrestrial life.'),
     ('Horror', 'Horror films are designed to scare and unsettle the audience, often featuring supernatural elements, monsters, or psychological horror');
-
+    
 select * from genero;
+delete from genero;
 
 drop table if exists editora;
 create table editora(
