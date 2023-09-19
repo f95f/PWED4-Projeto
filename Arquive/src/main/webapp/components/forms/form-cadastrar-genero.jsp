@@ -14,8 +14,6 @@
 			
 			$.post(url, dataForm, function(data, status){
 				
-				alert("Nome: " + data.nome); 
-				
 			}, "json");
 			
 		});

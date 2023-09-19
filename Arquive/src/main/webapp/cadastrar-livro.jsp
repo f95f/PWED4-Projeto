@@ -294,29 +294,14 @@
 			
 			    <div class="modal-content">
 				    
-				    <div class="modal-body mx-0 my-0 px-0 py-5">
-							
-						<%
-							Genero generos = new Genero();
-							ArrayList<Genero> listarGeneros = generos.listarGeneros();
-							
-							for(int i = 0; i < listarGeneros.size(); i++){
+				    <div class="modal-body mx-0 my-0 px-0 py-0">
 
-								out.print(
-										
-									"<input type= 'checkbox' id = " + listarGeneros.get(i).getIdGenero() + " value=" + listarGeneros.get(i).getIdGenero() + ">" + listarGeneros.get(i).getNome()
-											
-								);
-								
-							}
-							
-						%>
-							
-
+						<%@ include file = "components/forms/form-pesquisar-generos.jsp" %>
+						
 				    </div>
 			    
 		    		<div class = "container-fluid footer-bg py-3 px-0 mx-0 my-0">
-						<div class = "d-flex justify-content-end">
+						<div class = "d-flex justify-content-end my-0 py-0">
 						
 					        <button type="button" class="btn text-white mx-5" data-bs-dismiss="modal">Cancelar</button>
 					

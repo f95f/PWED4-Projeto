@@ -30,6 +30,7 @@ create table livro(
     img_url varchar(180) default '/img/livros/sem-capa.png',
     editora_id int,
     edition int,
+    section varchar(90) not null,
     ano_pub int,
     page_count int,
     descr varchar(600),
@@ -43,7 +44,14 @@ create table genero(
     nome varchar(90) not null,
 	descr varchar(300)
 );
-insert into genero(nome, descr) values("asdfasd", "sdfafdsa");
+INSERT INTO genero (nome, descr)
+VALUES
+    ('Action', 'Action movies typically involve fast-paced sequences, explosions, and intense physical activities.'),
+    ('Drama', 'Drama films focus on character development and emotional themes, often dealing with personal struggles and conflicts.'),
+    ('Comedy', 'Comedies aim to entertain and amuse, using humor and satire to create laughter and joy among the audience.'),
+    ('Science Fiction', 'Sci-fi movies explore futuristic and speculative concepts, often involving advanced technology, space travel, and extraterrestrial life.'),
+    ('Horror', 'Horror films are designed to scare and unsettle the audience, often featuring supernatural elements, monsters, or psychological horror');
+
 select * from genero;
 
 drop table if exists editora;
