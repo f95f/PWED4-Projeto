@@ -7,8 +7,9 @@
 	novaEditora.setNome(request.getParameter("txtNome"));
 	novaEditora.setDescription(request.getParameter("txtBio"));
 
+	novaEditora.salvar();
+
 	out.print("{\"id\": \"" + novaEditora.getIdEditora() + "\", \"nome\": \"" + novaEditora.getNome() + "\", \"descr\": \"" + novaEditora.getDescription() + "\" }");
 	
-	novaEditora.salvar();
 	
 %>

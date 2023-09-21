@@ -6,8 +6,9 @@
 	novoGenero.setNome(request.getParameter("txtNome"));
 	novoGenero.setDescription(request.getParameter("txtBio"));
 	
-	out.print("{\"nome\": \"" + novoGenero.getNome() + "\", \"descr\": \"" + novoGenero.getDescription() + "\"}");
-	
 	novoGenero.salvar();
+	
+	out.print("{\"id\": \"" + novoGenero.getIdGenero() + "\", \"nome\": \"" + novoGenero.getNome() + "\", \"descr\": \"" + novoGenero.getDescription() + "\"}");
+	
 	
 %>

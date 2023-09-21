@@ -13,6 +13,8 @@
 			let url = "jsp-scripts/salvar-genero.jsp";
 			
 			$.post(url, dataForm, function(data, status){
+				alert(JSON.stringify(data));
+				sessionStorage.setItem("novoGenero", JSON.stringify(data));
 				
 			}, "json");
 			
@@ -41,7 +43,7 @@
 				<label for = "txtBio" class = "form-label">Descrição:</label>
 				<textarea rows = "5" name = "txtBio" id = "txtBio" placeholder = "Fale um pouco sobre este gênero ou categoria..." class = "form-control shadow-sm mb-4 py-2"></textarea>
 			
-				<input type = "submit" id = "btn-salvar-livro" value = "Adicionar" class = "btn-gravar shadow my-4">
+				<input type = "submit" id = "btnSalvarGenero" value = "Adicionar" class = "btn-gravar shadow my-4">
 			</div>
 			
 		</div>

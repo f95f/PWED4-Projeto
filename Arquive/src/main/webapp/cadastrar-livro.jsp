@@ -24,6 +24,7 @@
 				alert(dataForm);		
 				
 			});
+			
 			$("#addEditoraFormModal").ready(function(){
 				
 				$("#btnSalvarEditora").attr("data-bs-dismiss", "modal");
@@ -36,12 +37,56 @@
 				if(objeto !== null){
 					
 					$("#optionSemEditora").remove();
-					
+
 					let option = "<option selected value = " + objeto.id + "> " + objeto.nome + " </option>";
 					$("#txtEditora").append(option);
-					sessionStorage.removeItem("novaEditora");
 					
 				}
+				sessionStorage.removeItem("novaEditora");
+			}));
+			
+			$("#addGeneroFormModal").ready(function(){
+				
+				$("#btnSalvarGenero").attr("data-bs-dismiss", "modal");
+				
+			});
+			$("#addGeneroFormModal").on("hidden.bs.modal", (function(){
+				
+				let novoObjeto = JSON.parse(sessionStorage.getItem("novoGenero"));
+				
+				if(novoObjeto !== null){
+
+					let option =
+						
+						"<div class = 'form-check my-2'>" +
+							"<input type = 'checkbox' class = 'form-check-input' name = 'selectedGeneros[]' id = 'chk_" + novoObjeto.id + "' value=" + novoObjeto.id + ">" +
+							"<label class = 'form-check-label' for = 'chk_" + novoObjeto.id + "'>" + novoObjeto.nome + "</label>" +
+						"</div>"
+					;
+					
+					$("#generoOptionsContainer").append(option);
+					
+				}
+				sessionStorage.removeItem("novoGenero");
+				
+			})); 
+			$("#selectGeneroModal").on("hidden.bs.modal", (function(){
+				
+				let objeto = sessionStorage.getItem("itensSelecionados");
+				let nomesSelecionados = sessionStorage.getItem("mostrarItensSelecionados");
+
+				if(objeto !== null){
+
+					$("#btnSelecionarGenero").html("Selecionados: " + nomesSelecionados);
+					
+				}
+				else{
+					$("#btnSelecionarGenero").html("Clique para selecionar...");
+				}
+				
+				sessionStorage.removeItem("itensSelecionados");
+				sessionStorage.removeItem("mostrarItensSelecionados");
+				
 			}));
 		});
 		
@@ -140,7 +185,7 @@
 												);
 												
 											}
-																						
+																					
 											for(int i = 0; i < listEditoras.size(); i++){
 												
 												if(i == listEditoras.size() -1){
@@ -185,11 +230,10 @@
 						
 							<div class = "col">
 							
-								<label for = "txtGenero" class = "form-label">Gênero</label>
+								<label for = "btnSelecionarGenero" class = "form-label">Gênero</label>
 								<div class = "input-group mb-3">
 								
-									<button class="btn btn-outline-secondary w-75 shadow-sm py-2 inline-select-button" id = "btnSelecionarGenero" type="button" data-bs-toggle = "modal" data-bs-target="#selectGeneroModal">Selecionar... </button>
-									<%// <input type = "text" name = "txtGenero" id = "txtGenero" placeholder = "Clique para selecionar..." class = "form-control shadow-sm py-2" disabled = "true" type="button" data-bs-toggle = "modal" data-bs-target="#addEditoraFormModal">	%>	
+									<button class="btn btn-outline-secondary w-75 shadow-sm py-2 inline-select-button" id = "btnSelecionarGenero" type="button" data-bs-toggle = "modal" data-bs-target="#selectGeneroModal">Selecionar... </button>	
 
 									<div class="input-group-append">
 									

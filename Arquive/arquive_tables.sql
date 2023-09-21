@@ -61,9 +61,6 @@ create table editora(
     nome varchar(90) not null,
 	descr varchar(300)
 );
-insert into editora(nome, descr) values("asdfasd", "sdfafdsa");
-select * from editora;
-delete from editora;
 
 drop table if exists section;
 create table section(
@@ -71,6 +68,10 @@ create table section(
     nome varchar(90) not null,
     descr varchar(300)
 );
+
+insert into editora(nome, descr) values("asdfasd", "sdfafdsa");
+select * from editora;
+delete from editora;
 
 drop table if exists livro_genero;
 create table livro_genero(

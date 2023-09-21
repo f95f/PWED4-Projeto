@@ -24,6 +24,7 @@
 							    <li> <a class="dropdown-item" href = "cadastrar-livro.jsp">Livros</a> </li> 
 								<li> <a class="dropdown-item" href = "cadastrar-autor.jsp">Autores</a> </li> 
 								<li> <a class="dropdown-item" href = "cadastrar-genero.jsp">Gêneros</a> </li> 
+								<li> <a class="dropdown-item" href = "cadastrar-section.jsp">Seções</a> </li> 
 								<li> <a class="dropdown-item" href = "cadastrar-editora.jsp">Editoras</a> </li> 
 							</ul>
 							  

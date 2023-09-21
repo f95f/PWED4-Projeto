@@ -2,13 +2,6 @@
 <%@ page import="classes.models.Autor"%>
 <%
 	
-	/* 
-	String olid = request.getParameter("txtOlid");
-	String nome = request.getParameter("txtNome");
-	String sobrenome = request.getParameter("txtSobrenome");
-	String txtImgUrl = request.getParameter("txtImgUrl");
-	*/
-
 	Autor novoAutor = new Autor();	
 	
 	novoAutor.setOlid(request.getParameter("txtOlid"));
