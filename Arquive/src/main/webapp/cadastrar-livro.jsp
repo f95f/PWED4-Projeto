@@ -25,11 +25,11 @@
 				
 			});
 			
-			$("#addEditoraFormModal").ready(function(){
+			/*$("#addEditoraFormModal").ready(function(){  ------------------------------->  
 				
 				$("#btnSalvarEditora").attr("data-bs-dismiss", "modal");
 				
-			});
+			});*/
 			$("#addEditoraFormModal").on("hidden.bs.modal", (function(){
 				
 				let objeto = JSON.parse(sessionStorage.getItem("novaEditora"));
@@ -115,10 +115,10 @@
 					<div class = "col-md-8">	
 				
 						<label for = "txtIsbn" class = "form-label">ISBN</label>
-						<input type = "text" name = "txtIsbn" id = "txtIsbn" placeholder = "Código de barra ISBN..." class = "form-control shadow-sm mb-4 py-2">
+						<input type = "text" name = "txtIsbn" id = "txtIsbn" placeholder = "Código de barra ISBN..." class = "form-control shadow-sm mb-4 py-2" maxlength = "15">
 					
 						<label for = "txtTitulo" class = "form-label">Título</label>
-						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "Título..." class = "form-control shadow-sm mb-4 py-2">
+						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "Título..." class = "form-control shadow-sm mb-4 py-2" required>
 						
 						<label for = "txtSubtítulo" class = "form-label">Subtítulo</label>
 						<input type = "text" name = "txtSubtítulo" id = "txtSubtítulo" placeholder = "Subtítulo, se houver..." class = "form-control shadow-sm mb-4 py-2">
@@ -127,7 +127,7 @@
 						
 							<div class = "col">
 								<label for = "txtAutor" class = "form-label">Autor</label>
-								<select class="form-select form-control shadow-sm py-2" aria-label="Autor" id = "txtAutor" name = "txtAutor">
+								<select class="form-select form-control shadow-sm py-2" aria-label="Autor" id = "txtAutor" name = "txtAutor" required>
 								
 								<%
 									Autor autores = new Autor();
@@ -169,7 +169,7 @@
 								<label for = "txtEditora" class = "form-label">Editora</label>
 							    <div class="input-group mb-3">
 							    
-									<select class="form-select form-control shadow-sm py-2" id = "txtEditora" name = "txtEditora" aria-label="Selecionar Editora">
+									<select class="form-select form-control shadow-sm py-2" id = "txtEditora" name = "txtEditora" aria-label="Selecionar Editora" required>
 									    <%
 											Editora editoras = new Editora();
 												
@@ -213,18 +213,18 @@
 							
 							<div class = "col-3">
 								<label for = "txtAno" class = "form-label">Ano</label>
-								<input type = "number" name = "txtAno" id = "txtAno" placeholder = "Ano de publicação..."class = "form-control shadow-sm py-2">		
+								<input type = "number" name = "txtAno" id = "txtAno" placeholder = "Ano de publicação..." class = "form-control shadow-sm py-2" min = 0>		
 							</div>
 												
 							<div class = "col-3">
 								<label for = "txtPages" class = "form-label">Páginas</label>
-								<input type = "number" name = "txtPages" id = "txtPages" placeholder = "Número de páginas..." class = "form-control shadow-sm mb-4 py-2">
+								<input type = "number" name = "txtPages" id = "txtPages" placeholder = "Número de páginas..." class = "form-control shadow-sm mb-4 py-2" min = 0>
 							</div>
 							
 						</div>
 						
 						<label for = "txtDescription" class = "form-label">Descrição</label>
-						<textarea rows = "4" name = "txtDescription" id = "txtDescription" placeholder = "Descrição..." class = "form-control shadow-sm mb-4 py-2"></textarea>
+						<textarea rows = "4" name = "txtDescription" id = "txtDescription" placeholder = "Descrição..." class = "form-control shadow-sm mb-4 py-2" maxlength = 300></textarea>
 					
 						<div class = "row mb-4">
 						
@@ -250,7 +250,7 @@
 							
 							<div class = "col">
 								<label for = "txtQuantidade" class = "form-label">Quantidade</label>
-								<input type = "number" name = "txtQuantidade" id = "txtQuantidade" placeholder = "Quantidade" class = "form-control shadow-sm py-2">		
+								<input type = "number" name = "txtQuantidade" id = "txtQuantidade" placeholder = "Quantidade" class = "form-control shadow-sm py-2" min = 0>		
 							</div>							
 							
 							<div class = "col-4">

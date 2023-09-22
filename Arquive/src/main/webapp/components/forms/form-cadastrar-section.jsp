@@ -38,10 +38,10 @@
 					<div class = "col-md-6 mx-auto">	
 				
 						<label for = "txtNome" class = "form-label">Nome</label>
-						<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome da seção..." class = "form-control shadow-sm mb-4 py-2">
+						<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome da seção..." class = "form-control shadow-sm mb-4 py-2" required>
 		
 						<label for = "txtBio" class = "form-label">Descrição:</label>
-						<textarea rows = "5" name = "txtDesc" id = "txtDesc" placeholder = "Descreva brevemente sobre a seção..." class = "form-control shadow-sm mb-4 py-2"></textarea>
+						<textarea rows = "5" name = "txtDesc" id = "txtDesc" placeholder = "Descreva brevemente sobre a seção..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
 					
 						<input type = "submit" id = "btnSalvarSection" value = "Adicionar" class = "btn-gravar shadow my-4">
 					</div>

@@ -140,6 +140,11 @@ h1{
 	outline: 0;
 }
 */
+
+#generoOptionsContainer{
+	max-height: 40vh;
+	overflow: auto;
+}
 .content{
 	font-family: var(--font-content);
 	font-weight: 300;
@@ -152,7 +157,7 @@ h1{
 	letter-spacing: 1px;
 	border: 0;
 	border-bottom: 2px solid var(--ACCENT1);
-	box-shadow: nnone;
+	box-shadow: none;
 	outline: 0;
 	transition: all .2s;
 }
@@ -224,6 +229,23 @@ input, input[type = text]{
 .form-control:hover{
 	outline: 2px solid #498DB8ff;
 }
+
+.submit-status{
+	font-family: var(--font-content);
+	color: var(--ACCENT2);
+	letter-spacing: 1px;
+	display: hidden;
+	text-align: center;
+	padding-left: 20px;
+}
+
+
+
+
+
+
+
+
 
 footer p{
 	color: var(--ACCENT1);
