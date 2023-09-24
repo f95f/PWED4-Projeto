@@ -101,194 +101,249 @@
 		<div class = "container-fluid header-bg my-5 shadow">
 			<div class = "container py-5">
 				<h1 class = "mt-3">Cadastrar Livro</h1>
-				<p>Informe o ISBN. Se disponíveis, as outras informações serão preenchidas automaticamente.</p>
+				<p>Informe as informações pertinentes ao livro.</p>
 			</div>
 		</div>
 		
-		<div class = "container">
+		<div class = "container px-5">
 			
 			<form action="#" id = "formLivro">
 				
+				<div class = "row my-4">
 				
-				<div class = "row">
+					<div class = "col-md-10 mx-auto">							
+				    
+						<label for = "txtIsbn" class = "form-label md-2 mb-0 h4-like">ISBN</label>
+					    <p class="form-text text-muted mb-4" id = "txtIsbnDescription">
+					    	Informe o código de barra ISBN para o livro. Esse código pode ser encontrado atrás do livro, ou na contra-capa.
+					    </p>
+						<input type = "text" name = "txtIsbn" id = "txtIsbn" placeholder = "" class = "form-control shadow-sm mb-4 py-2" maxlength = "15" aria-describedby = "txtIsbnDescription">
+						
+					</div>
+					<hr>
+				</div>
 				
-					<div class = "col-md-8">	
-				
-						<label for = "txtIsbn" class = "form-label">ISBN</label>
-						<input type = "text" name = "txtIsbn" id = "txtIsbn" placeholder = "Código de barra ISBN..." class = "form-control shadow-sm mb-4 py-2" maxlength = "15">
+				<div class = "row my-4">	
 					
+					
+					<div class = "col-md-10 mx-auto">
+					
+						<h4 class = "mb-2">Informações de Capa</h4>
+					    <p class="form-text text-muted mb-4">
+					    	Os dados informados nesta seção serão as primeiras informações exibidas ao usuário em pesquisas e na página principal.
+					    </p>
+				    
+				    </div>
+				    
+				</div>
+				
+				<div class = "row my-4">	
+				
+				    <div class = "col"></div>
+				    
+					<div class = "col-md-7">						
+					    
 						<label for = "txtTitulo" class = "form-label">Título</label>
-						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "Título..." class = "form-control shadow-sm mb-4 py-2" required>
+						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "Título do livro." class = "form-control shadow-sm mb-4 py-2" required>
 						
 						<label for = "txtSubtítulo" class = "form-label">Subtítulo</label>
-						<input type = "text" name = "txtSubtítulo" id = "txtSubtítulo" placeholder = "Subtítulo, se houver..." class = "form-control shadow-sm mb-4 py-2">
+						<input type = "text" name = "txtSubtítulo" id = "txtSubtítulo" placeholder = "Subtítulo, se houver." class = "form-control shadow-sm mb-4 py-2">
 													
-						<div class = "row mb-4">
+						<label for = "txtAutor" class = "form-label">Autor</label>
+						<select class="form-select form-control shadow-sm py-2 mb-4" aria-label="Autor" id = "txtAutor" name = "txtAutor" required>
 						
-							<div class = "col">
-								<label for = "txtAutor" class = "form-label">Autor</label>
-								<select class="form-select form-control shadow-sm py-2" aria-label="Autor" id = "txtAutor" name = "txtAutor" required>
+						<%
+							Autor autores = new Autor();
+							ArrayList<Autor> listAutores = autores.listAutores();
+							
+							String selected = "selected ";
+		
+							for(int i = 0; i < listAutores.size(); i++){
 								
-								<%
-									Autor autores = new Autor();
-									ArrayList<Autor> listAutores = autores.listAutores();
-									
-									String selected = "selected ";
-				
-									for(int i = 0; i < listAutores.size(); i++){
+								if(i > 0){ selected = ""; }
+								
+								out.print(
+									"<option " + selected + "value = " 
+									+ listAutores.get(i).getIdAutor() + ">" 
+									+ listAutores.get(i).getNome() + " " 
+									+ listAutores.get(i).getSobrenome() + 
+									"</option>"
+								);
+								
+							}
+						%>
+						
+						</select>	
+						
+						<label for = "txtDescription" class = "form-label">Descrição</label>
+						<textarea rows = "4" name = "txtDescription" id = "txtDescription" placeholder = "Informe uma breve sinopse para o livro..." class = "form-control shadow-sm mb-4 py-2" maxlength = 300></textarea>
+					
+						<label for = "btnSelecionarGenero" class = "form-label">Gêneros:</label>
+						<div class = "input-group mb-4">
+						
+							<button class="btn btn-outline-secondary w-75 shadow-sm py-2 inline-select-button" id = "btnSelecionarGenero" type="button" data-bs-toggle = "modal" data-bs-target="#selectGeneroModal">Selecionar... </button>	
+
+							<div class="input-group-append">
+							
+								<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarGenero" type="button" data-bs-toggle = "modal" data-bs-target="#addGeneroFormModal">Novo Gênero</button>
 										
-										if(i > 0){ selected = ""; }
+							</div>
+												
+						</div>
+					</div>
+					
+					<div class = "col-md-3">
+					
+						<label for = "txtImgurl" class = "form-label">Capa:</label>
+						<input type = "text" name = "txtImgurl" id = "txtImgurl" class = "form-control shadow-sm mb-4 py-2" placeholder = "Url da imagem.">
+					
+						<img alt="sem capa" src="img/vendor/sem-capa.png" class = "form-control" id = "capa-container">
+						
+					</div>	
+					<div class = "col"></div>
+					<hr>
+					
+				</div>
+					<% // d-flex  justify-content-center align-items-center  %>
+				<div class = "row my-4">
+					
+					<div class = "col-md-10 mx-auto">
+					
+						<h4 class = "mb-2">Dados de Catálogo</h4>
+					    <p class="form-text text-muted mb-4">
+					    	Informe aqui os dados técnicos e demais detalhes sobre o livro.
+					    </p>
+				    
+				    </div>
+				</div>
+					<% // d-flex  justify-content-center align-items-center  %>
+				<div class = "row my-4">
+				
+					<div class = "col"></div>		
+				
+					<div class = "col-md-6">
+						
+						<label for = "txtEditora" class = "form-label">Editora</label>
+					    <div class="input-group mb-3">
+					    
+							<select class="form-select form-control shadow-sm py-2" id = "txtEditora" name = "txtEditora" aria-label="Selecionar Editora" required>
+							    <%
+									Editora editoras = new Editora();
+										
+									ArrayList<Editora> listEditoras = editoras.listarEditoras();
+									String selectedEditora = "";
+									
+									if(listEditoras.size() == 0){
 										
 										out.print(
-											"<option " + selected + "value = " 
-											+ listAutores.get(i).getIdAutor() + ">" 
-											+ listAutores.get(i).getNome() + " " 
-											+ listAutores.get(i).getSobrenome() + 
+											"<option id = 'optionSemEditora' selected value = -1> " +
+												"Nenhuma encontrada!" +	
+											"</option>"
+										);
+										
+									}
+																			
+									for(int i = 0; i < listEditoras.size(); i++){
+										
+										if(i == listEditoras.size() -1){
+											selectedEditora = "selected ";
+										}
+										
+										out.print(
+											"<option " + selectedEditora + "value = " + listEditoras.get(i).getIdEditora() + ">" 
+												+ listEditoras.get(i).getNome() + 
 											"</option>"
 										);
 										
 									}
 								%>
-								
-								</select>
-								<a href = "cadastrar-autor.jsp">Novo</a>	
-
-							</div>
+							</select>
+							<div class="input-group-append">
 							
-							<div class = "col-4">
-								<label for = "txtEdition" class = "form-label">Edição</label>
-								<input type = "text" name = "txtEdition" id = "txtEdition" placeholder = "Edição do exemplar..." class = "form-control shadow-sm mb-4 py-2">
+								<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarEditora" type="button" data-bs-toggle = "modal" data-bs-target="#addEditoraFormModal">Nova Editora</button>
+										
 							</div>
-							
 						</div>
-						
-						<div class = "row">
-						
-							<div class = "col">
+					</div>
 							
-								<label for = "txtEditora" class = "form-label">Editora</label>
-							    <div class="input-group mb-3">
-							    
-									<select class="form-select form-control shadow-sm py-2" id = "txtEditora" name = "txtEditora" aria-label="Selecionar Editora" required>
-									    <%
-											Editora editoras = new Editora();
-												
-											ArrayList<Editora> listEditoras = editoras.listarEditoras();
-											String selectedEditora = "";
-											
-											if(listEditoras.size() == 0){
-												
-												out.print(
-													"<option id = 'optionSemEditora' selected value = -1> " +
-														"Nenhuma encontrada!" +	
-													"</option>"
-												);
-												
-											}
-																					
-											for(int i = 0; i < listEditoras.size(); i++){
-												
-												if(i == listEditoras.size() -1){
-													selectedEditora = "selected ";
-												}
-												
-												out.print(
-													"<option " + selectedEditora + "value = " + listEditoras.get(i).getIdEditora() + ">" 
-														+ listEditoras.get(i).getNome() + 
-													"</option>"
-												);
-												
-											}
-										%>
-									</select>
-									
-									<div class="input-group-append">
-									
-										<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarEditora" type="button" data-bs-toggle = "modal" data-bs-target="#addEditoraFormModal">Nova Editora</button>
-												
-									</div>
-								</div>
+					<div class = "col-md-2">
+						<label for = "txtAno" class = "form-label">Ano</label>
+						<input type = "number" name = "txtAno" id = "txtAno" placeholder = "Ano de publicação" class = "form-control shadow-sm py-2" min = 0>		
+					</div>
+					<div class = "col-md-2">
+						<label for = "txtPages" class = "form-label">Páginas</label>
+						<input type = "number" name = "txtPages" id = "txtPages" placeholder = "Número de páginas" class = "form-control shadow-sm mb-4 py-2" min = 0>
+					</div>
 						
-							</div>
-							
-							<div class = "col-3">
-								<label for = "txtAno" class = "form-label">Ano</label>
-								<input type = "number" name = "txtAno" id = "txtAno" placeholder = "Ano de publicação..." class = "form-control shadow-sm py-2" min = 0>		
-							</div>
-												
-							<div class = "col-3">
-								<label for = "txtPages" class = "form-label">Páginas</label>
-								<input type = "number" name = "txtPages" id = "txtPages" placeholder = "Número de páginas..." class = "form-control shadow-sm mb-4 py-2" min = 0>
-							</div>
-							
-						</div>
-						
-						<label for = "txtDescription" class = "form-label">Descrição</label>
-						<textarea rows = "4" name = "txtDescription" id = "txtDescription" placeholder = "Descrição..." class = "form-control shadow-sm mb-4 py-2" maxlength = 300></textarea>
+					<div class = "col"></div>
 					
-						<div class = "row mb-4">
+				</div>
 						
-							<div class = "col">
+				<div class = "row my-4">
+					
+					<div class = "col"></div>
+					
+					<div class = "col-md-6">
 							
-								<label for = "btnSelecionarGenero" class = "form-label">Gênero</label>
-								<div class = "input-group mb-3">
-								
-									<button class="btn btn-outline-secondary w-75 shadow-sm py-2 inline-select-button" id = "btnSelecionarGenero" type="button" data-bs-toggle = "modal" data-bs-target="#selectGeneroModal">Selecionar... </button>	
-
-									<div class="input-group-append">
-									
-										<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarGenero" type="button" data-bs-toggle = "modal" data-bs-target="#addGeneroFormModal">Novo Gênero</button>
-												
-									</div>
-																	
-								</div>
+						<label for = "txtSection" class = "form-label">Seção</label>
+					    <div class="input-group mb-3">
+					    
+							<select class="form-select form-control shadow-sm py-2" id = "txtSection" name = "txtSection" aria-label="Selecionar seção" required>
+		
+							</select>
+							<div class="input-group-append">
+							
+								<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarSection" type="button" data-bs-toggle = "modal" data-bs-target="#addSectionFormModal">Nova Seção</button>
+										
 							</div>
-								
 						</div>
-						
-						<div class = "row mb-4">
-							
-							<div class = "col">
-								<label for = "txtQuantidade" class = "form-label">Quantidade</label>
-								<input type = "number" name = "txtQuantidade" id = "txtQuantidade" placeholder = "Quantidade" class = "form-control shadow-sm py-2" min = 0>		
-							</div>							
-							
-							<div class = "col-4">
-							
-								<label class="form-label" for="chkDisponibilidadeContainer">Disponibilidade</label>
-								<div class="form-check form-switch" id = "chkDisponibilidadeContainer">
-								    <input class="form-check-input" type="checkbox" id="chkDisponibilidade" checked>
-								    <label class="form-label" for="chkDisponibilidade">Disponível para empréstimo</label>
-								</div>
-				
-							</div>
-							
-						</div>
-						
-						<input type = "submit" id = "btn-salvar-livro" value = "Adicionar" class = "btn-gravar shadow my-4">
-						
 					</div>
 					
-					<div class = "col-md-4">
+					<div class = "col-md-2">
+						<label for = "txtEdition" class = "form-label">Edição</label>
+						<input type = "text" name = "txtEdition" id = "txtEdition" placeholder = "Edição do exemplar..." class = "form-control shadow-sm mb-4 py-2">
+					</div>
 					
-						<label for = "txtImgurl" class = "form-label">Capa:</label>
-						<input type = "text" name = "txtImgurl" id = "txtImgurl" class = "form-control shadow-sm mb-4 py-2" placeholder = "Url da imagem...">
-					
-						<img alt="sem capa" src="img/vendor/sem-capa.png" class = "form-control" id = "capa-container">
-						
+					<div class = "col-md-2">
+						<label for = "txtQuantidade" class = "form-label">Quantidade</label>
+						<input type = "number" name = "txtQuantidade" id = "txtQuantidade" placeholder = "Quantidade" value = 1 class = "form-control shadow-sm py-2" min = 0>		
 					</div>	
-							
-				</div>		
+					
+					<div class = "col"></div>	
+										
+					<hr>
+				</div>
+						
+				<div class = "row my-4">
+				
+					<div class = "col-md-10 mx-auto">
+								
+						<h4 class = "mt-3 mb-2">Disponibilidade</h4>
+					    <p id="chkDisponibilidadeDescription" class="form-text text-muted">
+							Ao desmarcar esta opção, o livro ficará visível aos usuários, mas não poderá ser reservado para empréstimos.
+						</p>
+						<div class="form-check form-switch my-4" id = "chkDisponibilidadeContainer">
+						    <input class="form-check-input" type="checkbox" id="chkDisponibilidade" checked aria-describedby = "chkDisponibilidadeDescription">
+						    <label class="form-label" for="chkDisponibilidade">Disponibilizar para empréstimo</label>
+						</div>
+		
+					</div>
+						
+				</div>
+				
+				<div class = "row my-4">					
+					<div class = "col md-10 mx-auto">
+						<input type = "submit" id = "btn-salvar-livro" value = "Adicionar Livro" class = "btn-gravar shadow my-4 px-5">			
+					</div>
+				</div>
 				
 			</form>
-		
 		</div>
-	
+		
+		
 		<div id="addEditoraFormModal" class="modal modal-lg fade" role="dialog">
 			<div class="modal-dialog">
-			
 			    <div class="modal-content">
-				    
 				    <div class="modal-body mx-0 my-0 px-0 py-0">
 							
 						<%@ include file = "components/forms/form-cadastrar-editora.jsp" %>
@@ -308,11 +363,10 @@
 			</div>
 		</div>
 		
+		
 		<div id="addGeneroFormModal" class="modal modal-lg fade" role="dialog">
 			<div class="modal-dialog">
-			
 			    <div class="modal-content">
-				    
 				    <div class="modal-body mx-0 my-0 px-0 py-0">
 							
 						<%@ include file = "components/forms/form-cadastrar-genero.jsp" %>
@@ -332,11 +386,10 @@
 			</div>
 		</div>
 		
+		
 		<div id="selectGeneroModal" class="modal fade" role="dialog">
 			<div class="modal-dialog">
-			
 			    <div class="modal-content">
-				    
 				    <div class="modal-body mx-0 my-0 px-0 py-0">
 
 						<%@ include file = "components/forms/form-pesquisar-generos.jsp" %>

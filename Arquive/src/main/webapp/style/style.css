@@ -126,7 +126,16 @@ h1{
 	color: var(--ACCENT1);
 	font-family: var(--font-accent);
 }
-
+h4{
+	color: var(--ACCENT2);
+	font-family: var(--font-accent);
+}
+.h4-like{
+	color: var(--ACCENT2);
+	font-family: var(--font-accent);
+	font-size: 1.6em;
+	
+}
 /* ---> 1ª Versão: 
 
 #search-form input{
@@ -167,7 +176,10 @@ h1{
 	background-color: var(--LIGHT);
 	border-bottom: 2px solid var(--LIGHT);
 }
-
+.form-text{
+	font-family: var(--font-content);
+	font-size: 1em;
+}
 label{
 	font-family: var(--font-content);
 	font-weight: 300;
