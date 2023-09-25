@@ -11,5 +11,4 @@
 
 	out.print("{\"id\": \"" + novaEditora.getIdEditora() + "\", \"nome\": \"" + novaEditora.getNome() + "\", \"descr\": \"" + novaEditora.getDescription() + "\" }");
 	
-	
 %>

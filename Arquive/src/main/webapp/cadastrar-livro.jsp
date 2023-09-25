@@ -148,7 +148,41 @@
 						
 						<label for = "txtSubtítulo" class = "form-label">Subtítulo</label>
 						<input type = "text" name = "txtSubtítulo" id = "txtSubtítulo" placeholder = "Subtítulo, se houver." class = "form-control shadow-sm mb-4 py-2">
-													
+						
+						<label for = "txtAutor" class = "form-label">Autor</label>
+						<select class="form-select form-control shadow-sm py-2 mb-4" aria-label="Autor" id = "txtAutor" multiple 	name = "txtAutor[]" required>
+						
+							<%
+							Autor autores = new Autor();
+							ArrayList<Autor> listAutores = autores.listAutores();
+		
+							for(int i = 0; i < listAutores.size(); i++){
+								
+								out.print(
+									"<option " + ((i == 0)? "selected " : null) + "value = " 
+									+ listAutores.get(i).getIdAutor() + ">" 
+									+ listAutores.get(i).getNome() + " " 
+									+ listAutores.get(i).getSobrenome() + 
+									"</option>"
+								);	
+								
+							}
+							%>
+						
+						</select>
+			
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<%/*
 						<label for = "txtAutor" class = "form-label">Autor</label>
 						<select class="form-select form-control shadow-sm py-2 mb-4" aria-label="Autor" id = "txtAutor" name = "txtAutor" required>
 						
@@ -171,9 +205,10 @@
 								);
 								
 							}
-						%>
+						% >
 						
 						</select>	
+						*/%>							
 						
 						<label for = "txtDescription" class = "form-label">Descrição</label>
 						<textarea rows = "4" name = "txtDescription" id = "txtDescription" placeholder = "Informe uma breve sinopse para o livro..." class = "form-control shadow-sm mb-4 py-2" maxlength = 300></textarea>

@@ -12,7 +12,7 @@
 			let dataForm = $("#formGenero").serialize();
 			let url = "jsp-scripts/salvar-genero.jsp";
 			
-			$.post(url, dataForm, function(data, status){
+			$.post(url, dataForm, function7(data, status){
 
 				sessionStorage.setItem("novoGenero", JSON.stringify(data));
 				
@@ -35,7 +35,7 @@
 		
 		<div class = "row">
 		
-			<div class = "col-md-6 mx-auto">	
+			<div class = "col-md-6 mx-auto">
 		
 				<label for = "txtNome" class = "form-label">Nome</label>
 				<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome do gênero ou categoria" class = "form-control shadow-sm mb-4 py-2" required>

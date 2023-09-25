@@ -11,16 +11,37 @@
 					let url = "jsp-scripts/salvar-editora.jsp";
 					
 					$.post(url, dataForm, function(data, status){
+						
+						if(data){
+							
+							$("ion-icon").attr("name", "checkmark");
+							$("ion-icon").css("color", "var(--ACCENT2)");
+							sessionStorage.setItem("novaEditora", JSON.stringify(data));	
 
-						$("#submitEditoraStatus").text("Editora " + data.nome + " adicionada.");
-						$("#submitEditoraStatus").fadeIn();
+							$("#submitEditoraStatus").text("Editora " + data.nome + " adicionada.");
+
+						}
+						else{
+							$("ion-icon").attr("name", "close");
+							$("ion-icon").css("color", "var(--DANGER)");
+							$("#submitEditoraStatus").text("Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
+						}	
 						
-						$("#submitEditoraStatus").fadeOut(3000);
-												
-						sessionStorage.setItem("novaEditora", JSON.stringify(data));	
 						
-					}, "json");
-					
+						let timerId = 0;
+						if(timerId){
+							clearInterval(timer);
+						}
+						
+						$("#submitEditoraStatus").fadeIn(1);
+						timerId = setTimeout(function(){
+						
+							$("#submitEditoraStatus").fadeOut(200);
+	
+						}, 3000);
+						
+						
+					}, "JSON");
 					
 					$("#txtNome").val(null);
 					$("#txtBio").val(null);
@@ -38,11 +59,11 @@
 			</div>
 		</div>
 		
-		<div class = "container">
+		<div class = "container w-75">
 			
 			<form method = "post" id = "formEditora">
 				<div class = "row">
-					<div class = "col-md-6 mx-auto">	
+					<div class = "col">	
 				
 						<label for = "txtNome" class = "form-label">Nome</label>
 						<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome da editora..." class = "form-control shadow-sm mb-4 py-2" required>
@@ -50,12 +71,18 @@
 						<label for = "txtBio" class = "form-label">Descrição:</label>
 						<textarea rows = "5" name = "txtBio" id = "txtBio" placeholder = "Informação adicional sobre a editora..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
 						
-						<input type = "submit" id = "btnSalvarEditora" value = "Adicionar" class = "btn-gravar shadow my-4">
 												
 					</div>
 				</div>
-				<div class = row>
-					<span class = "alert submit-status" id = "submitEditoraStatus"></span>									
+				<div class = "row mb-5">
+
+					<div class = "col-sm">	
+						<input type = "submit" id = "btnSalvarEditora" value = "Adicionar" class = "btn-gravar shadow mt-2">
+						<span class = "alert submit-status" id = "submitEditoraStatus">
+							<ion-icon></ion-icon>
+						</span>									
+					</div>
+
 				</div>
 			</form>
 			

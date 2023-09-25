@@ -33,6 +33,8 @@
 	--ACCENT2: #498DB8;
 	--ACCENT3: #BF8360;
 	
+	--DANGER: rgb(177, 49, 31);
+	
 	/* Variáveis para cores com opacidade,
 	   de acordo com a paleta de cores principal. */
 	--ACCENT1-TP: #EEE8E166;
@@ -56,6 +58,12 @@ p{
 /* classe para teste/visualização do componente na página */
 .outline{  
 	outline: 2px solid red;
+}
+.submit-status ion-icon{
+	color: var(--ACCENT2);
+	margin: 0 5px;
+	font-size: 16px;	
+	--ionicon-stroke-width: 48px;
 }
 header{
 	backdrop-filter: blur(24px);
@@ -224,10 +232,10 @@ input, input[type = text]{
 	border: 0; background-color: var(--ACCENT2);
 	color: white;
 	font-family: var(--font-content);
-	padding: 1rem 3rem;
 	text-transform: uppercase;
-	letter-spacing: 2px;
-	border-radius: 5px;
+	padding: 1em 2em;
+	letter-spacing: 1px;
+	border-radius: 3px;
 	transition: all .2s;
 	box-shadow: none;
 }
