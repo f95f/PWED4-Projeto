@@ -14,20 +14,14 @@
 						
 						if(data){
 							
-							$("ion-icon").attr("name", "checkmark");
-							$("ion-icon").css("color", "var(--ACCENT2)");
 							sessionStorage.setItem("novaEditora", JSON.stringify(data));	
-
-							$("#submitEditoraStatus").text("Editora " + data.nome + " adicionada.");
+							$("#submitEditoraStatus").html("<ion-icon name = 'checkmark'></ion-icon>Editora " + data.nome + " adicionada.");
 
 						}
 						else{
-							$("ion-icon").attr("name", "close");
-							$("ion-icon").css("color", "var(--DANGER)");
-							$("#submitEditoraStatus").text("Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
+							$("#submitEditoraStatus").text("<ion-icon name = 'close'></ion-icon>Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
 						}	
-						
-						
+												
 						let timerId = 0;
 						if(timerId){
 							clearInterval(timer);
@@ -70,7 +64,6 @@
 		
 						<label for = "txtBio" class = "form-label">Descrição:</label>
 						<textarea rows = "5" name = "txtBio" id = "txtBio" placeholder = "Informação adicional sobre a editora..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
-						
 												
 					</div>
 				</div>
@@ -78,9 +71,7 @@
 
 					<div class = "col-sm">	
 						<input type = "submit" id = "btnSalvarEditora" value = "Adicionar" class = "btn-gravar shadow mt-2">
-						<span class = "alert submit-status" id = "submitEditoraStatus">
-							<ion-icon></ion-icon>
-						</span>									
+						<span class = "notify submit-status" id = "submitEditoraStatus"></span>									
 					</div>
 
 				</div>

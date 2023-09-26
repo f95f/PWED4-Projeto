@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import classes.models.Section;
 
-/**
- * Servlet implementation class SectionController
- */
 @WebServlet("/section")
 public class SectionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -21,15 +18,13 @@ public class SectionController extends HttpServlet {
 	private PrintWriter out;
     public SectionController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		out = response.getWriter();
+		out.print("sla lkkkk");
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	

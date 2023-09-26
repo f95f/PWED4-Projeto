@@ -11,20 +11,18 @@
 					let url = "section";
 					
 					$.post(url, dataForm, function(data, status){
-						alert(data.nome);
+
 						if(data){
 							
-							$("ion-icon").attr("name", "checkmark");
-							$("ion-icon").css("color", "var(--ACCENT2)");
 							sessionStorage.setItem("newSection", JSON.stringify(data));	
 
-							$("#submitSectionStatus").text("Seção " + data.nome + " adicionada.");
+							$("#submitSectionStatus").html("<ion-icon name = 'checkmark'></ion-icon>Seção " + data.nome + " adicionada.");
 
 						}
 						else{
 							$("ion-icon").attr("name", "close");
 							$("ion-icon").css("color", "var(--DANGER)");
-							$("#submitSectionStatus").text("Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
+							$("#submitSectionStatus").html("<ion-icon name = 'close'></ion-icon>Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
 						}	
 						
 						let timerId = 0;
@@ -74,8 +72,7 @@
 					<div class = "col-sm">	
 				
 						<input type = "submit" id = "btnSalvarSection" value = "Adicionar" class = "btn-gravar shadow mt-2">
-						<span class = "alert submit-status" id = "submitSectionStatus">
-							<ion-icon></ion-icon>
+						<span class = "notify submit-status" id = "submitSectionStatus">
 						</span>
 						
 					</div>

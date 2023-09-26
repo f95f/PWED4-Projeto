@@ -16,7 +16,7 @@
 	<script type="text/javascript">
 		
 		$(document).ready(function(){
-			
+			getAllEditoras();
 			$("#formLivro").submit(function(event){
 				
 				event.preventDefault();
@@ -56,17 +56,14 @@
 				sessionStorage.removeItem("newSection");
 			}));
 			
-			$("#addGeneroFormModal").ready(function(){
-				
-				$("#btnSalvarGenero").attr("data-bs-dismiss", "modal");
-				
-			});
 			$("#addGeneroFormModal").on("hidden.bs.modal", (function(){
 				
 				let novoObjeto = JSON.parse(sessionStorage.getItem("novoGenero"));
 				
 				if(novoObjeto !== null){
-
+					
+					$("#optionSemGeneros").remove();
+					
 					let option =
 						
 						"<div class = 'form-check my-2'>" +
@@ -178,10 +175,10 @@
 					<div class = "col-md-7">						
 					    
 						<label for = "txtTitulo" class = "form-label">Título</label>
-						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "Título do livro." class = "form-control shadow-sm mb-4 py-2" required>
+						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "Título do livro" class = "form-control shadow-sm mb-4 py-2" required>
 						
 						<label for = "txtSubtítulo" class = "form-label">Subtítulo</label>
-						<input type = "text" name = "txtSubtítulo" id = "txtSubtítulo" placeholder = "Subtítulo, se houver." class = "form-control shadow-sm mb-4 py-2">
+						<input type = "text" name = "txtSubtítulo" id = "txtSubtítulo" placeholder = "Subtítulo, se houver" class = "form-control shadow-sm mb-4 py-2">
 						
 						<div class = "row">
 						
@@ -267,7 +264,9 @@
 					    <div class="input-group mb-3">
 					    
 							<select class="form-select form-control shadow-sm py-2" id = "txtEditora" name = "txtEditora" aria-label="Selecionar Editora" required>
-							    <%
+							    
+							   
+							    <%/*
 									Editora editoras = new Editora();
 										
 									ArrayList<Editora> listEditoras = editoras.listarEditoras();
@@ -296,7 +295,7 @@
 										);
 										
 									}
-								%>
+								*/%>
 							</select>
 							<div class="input-group-append">
 							

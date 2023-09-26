@@ -53,13 +53,15 @@
 				</div>
 				
 			</div>
+			<span class = "alert submit-status" id = "selectAutoresStatus"></span>
+			
 		</div>
 		<div class = "row footer-bg d-flex justify-content-end mt-3 py-3">			
 		
 			 <div class = "container-fluid d-flex justify-content-end">
 
 		        <button type="button" class="btn text-white content mx-2 btn-fechar-modal" data-bs-dismiss="modal">Cancelar</button>
-				<button type="submit" class="btn content mx-2 btn-outline-light" id = "btnSelecionarGeneros" data-bs-dismiss="modal">Adicionar</button>
+				<button type="submit" class="btn content mx-2 btn-outline-light" id = "btnSelecionarGeneros">Adicionar</button>
 				
 			</div>
 		</div>
@@ -76,22 +78,44 @@
 			event.preventDefault();
 			
 			let dataForm = $("#formSelecionarAutor").serialize();
-			sessionStorage.setItem("itensSelecionados", dataForm);
-			
-			let displaySelectedAutores = "";
-
-			$(':checkbox[name="selectedAutores[]"]:checked').each(function(){
+			if(!dataForm){
 				
-				if(displaySelectedAutores !== ""){
-					displaySelectedAutores += ", ";
+				$("#selectAutoresStatus").html("<ion-icon name = 'close'></ion-icon>Selecione as opções para adicionar.");	
+				
+				let timerId = 0;
+				if(timerId){
+					clearInterval(timer);
 				}
 				
-				displaySelectedAutores += $('label[for="' + $(this).attr('id') + '"]').text();
+				$("#selectAutoresStatus").fadeIn(1);
+				timerId = setTimeout(function(){
 				
-			});
+					$("#selectAutoresStatus").fadeOut(200);
+
+				}, 3000);
+			}
+			else{
+					
+				sessionStorage.setItem("itensSelecionados", dataForm);
 				
-			displaySelectedAutores += ".";
-			sessionStorage.setItem("mostrarItensSelecionados", displaySelectedAutores);
+				let displaySelectedAutores = "";
+	
+				$(':checkbox[name="selectedAutores[]"]:checked').each(function(){
+					
+					if(displaySelectedAutores !== ""){
+						displaySelectedAutores += ", ";
+					}
+					
+					displaySelectedAutores += $('label[for="' + $(this).attr('id') + '"]').text();
+					
+				});
+					
+				displaySelectedAutores += ".";
+				sessionStorage.setItem("mostrarItensSelecionados", displaySelectedAutores);
+				
+
+				$("#selectAutorModal").modal('hide');
+			}
 		});
 		
 	});

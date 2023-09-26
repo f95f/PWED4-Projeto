@@ -36,6 +36,10 @@
 						Genero generos = new Genero();
 						ArrayList<Genero> listarGeneros = generos.listarGeneros();
 						
+						if(listarGeneros.size() == 0){
+							out.print(" <div class = 'text-center my-5 py-3 text-muted background-text' id = 'optionSemGeneros'> Nenhum gênero cadastrado. </div> ");
+						}
+						
 						for(int i = 0; i < listarGeneros.size(); i++){
 				
 							out.print(
@@ -49,17 +53,18 @@
 							
 						}
 					%>
-							
 				</div>
 				
 			</div>
+			<span class = "alert submit-status" id = "selectGenerosStatus">
+			</span>	
 		</div>
 		<div class = "row footer-bg d-flex justify-content-end mt-3 py-3">			
 		
 			 <div class = "container-fluid d-flex justify-content-end">
 
 		        <button type="button" class="btn text-white content mx-2 btn-fechar-modal" data-bs-dismiss="modal">Cancelar</button>
-				<button type="submit" class="btn content mx-2 btn-outline-light" id = "btnSelecionarGeneros" data-bs-dismiss="modal">Adicionar</button>
+				<button type="submit" class="btn content mx-2 btn-outline-light" id = "btnSelecionarGeneros">Adicionar</button>
 				
 			</div>
 		</div>
@@ -76,21 +81,44 @@
 			event.preventDefault();
 			
 			let dataForm = $("#formSelecionarGenero").serialize();
-			sessionStorage.setItem("itensSelecionados", dataForm);
-			
-			let displaySelected = "";
-
-			$(':checkbox[name="selectedGeneros[]"]:checked').each(function(){
-				if(displaySelected !== ""){
-					displaySelected += ", ";
+			if(!dataForm){
+				
+				$("#selectGenerosStatus").html("<ion-icon name = 'close'></ion-icon>Selecione as opções para adicionar.");	
+				
+				let timerId = 0;
+				if(timerId){
+					clearInterval(timer);
 				}
 				
-				displaySelected += $('label[for="' + $(this).attr('id') + '"]').text();
+				$("#selectGenerosStatus").fadeIn(1);
+				timerId = setTimeout(function(){
 				
-			});
+					$("#selectGenerosStatus").fadeOut(200);
 
-			displaySelected += ".";
-			sessionStorage.setItem("mostrarItensSelecionados", displaySelected);
+				}, 3000);
+				
+			}
+			else{
+			
+				sessionStorage.setItem("itensSelecionados", dataForm);
+			
+				let displaySelected = "";
+
+				$(':checkbox[name="selectedGeneros[]"]:checked').each(function(){
+					if(displaySelected !== ""){
+						displaySelected += ", ";
+					}
+					
+					displaySelected += $('label[for="' + $(this).attr('id') + '"]').text();
+					
+				});
+
+				displaySelected += ".";
+				sessionStorage.setItem("mostrarItensSelecionados", displaySelected);
+				$("#selectGeneroModal").modal('hide');
+				
+			}
+			
 		});
 		
 	});
