@@ -68,7 +68,7 @@ public class Autor {
 		
 	} 
 	
-	public ArrayList<Autor> listAutores(){
+	public ArrayList<Autor> listarAutores(){
 		
 		ArrayList<Autor> autoresLista = new ArrayList<Autor>();
 		ResultSet rs = this.dbQuery.select("");

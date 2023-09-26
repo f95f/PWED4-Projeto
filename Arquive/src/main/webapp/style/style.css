@@ -157,7 +157,13 @@ h4{
 	outline: 0;
 }
 */
-
+.multi-select-span{
+	display: block;
+	font-family: var(--font-content);
+	letter-spacing: 1px;
+	font-weight: 300;	
+	
+}
 #generoOptionsContainer{
 	max-height: 40vh;
 	overflow: auto;
@@ -200,6 +206,18 @@ input, input[type = text]{
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 }
+.icon-redirect{
+	line-height: 2px;
+	font-size: 16px;
+	transform: translateY(2px) rotate(-45deg);	
+	color:#6C757D;
+	transition: all .3s;
+}
+
+#btnAdicionarAutor:hover .icon-redirect{
+	color: white;
+}
+
 .inline-select-button{
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
@@ -258,9 +276,6 @@ input, input[type = text]{
 	text-align: center;
 	padding-left: 20px;
 }
-
-
-
 
 
 

@@ -25,11 +25,6 @@
 				
 			});
 			
-			/*$("#addEditoraFormModal").ready(function(){  ------------------------------->  
-				
-				$("#btnSalvarEditora").attr("data-bs-dismiss", "modal");
-				
-			});*/
 			$("#addEditoraFormModal").on("hidden.bs.modal", (function(){
 				
 				let objeto = JSON.parse(sessionStorage.getItem("novaEditora"));
@@ -70,6 +65,7 @@
 				sessionStorage.removeItem("novoGenero");
 				
 			})); 
+			
 			$("#selectGeneroModal").on("hidden.bs.modal", (function(){
 				
 				let objeto = sessionStorage.getItem("itensSelecionados");
@@ -77,17 +73,39 @@
 
 				if(objeto !== null){
 
-					$("#btnSelecionarGenero").html("Selecionados: " + nomesSelecionados);
+					$("#generosSelecionados").html("Selecionados: " + nomesSelecionados);
 					
 				}
 				else{
-					$("#btnSelecionarGenero").html("Clique para selecionar...");
+					$("#GenerosSelecionados").html("Nenhum selecionado");
 				}
 				
 				sessionStorage.removeItem("itensSelecionados");
 				sessionStorage.removeItem("mostrarItensSelecionados");
 				
 			}));
+			//  /\
+			//  ||===> Juntar estas duas funções 
+			//  \/
+ 			$("#selectAutorModal").on("hidden.bs.modal", (function(){
+				
+				let objeto = sessionStorage.getItem("itensSelecionados");
+				let nomesSelecionados = sessionStorage.getItem("mostrarItensSelecionados");
+
+				if(objeto !== null){
+
+					$("#autoresSelecionados").html("Selecionados: " + nomesSelecionados);
+					
+				}
+				else{
+					$("#autoresSelecionados").html("Nenhum selecionado");
+				}
+				
+				sessionStorage.removeItem("itensSelecionados");
+				sessionStorage.removeItem("mostrarItensSelecionados");
+				
+			}));
+			
 		});
 		
 	</script>
@@ -117,7 +135,7 @@
 					    <p class="form-text text-muted mb-4" id = "txtIsbnDescription">
 					    	Informe o código de barra ISBN para o livro. Esse código pode ser encontrado atrás do livro, ou na contra-capa.
 					    </p>
-						<input type = "text" name = "txtIsbn" id = "txtIsbn" placeholder = "" class = "form-control shadow-sm mb-4 py-2" maxlength = "15" aria-describedby = "txtIsbnDescription">
+						<input type = "text" name = "txtIsbn" id = "txtIsbn" placeholder = "Código ISBN" class = "form-control shadow-sm mb-4 py-2" maxlength = "15" aria-describedby = "txtIsbnDescription">
 						
 					</div>
 					<hr>
@@ -149,82 +167,53 @@
 						<label for = "txtSubtítulo" class = "form-label">Subtítulo</label>
 						<input type = "text" name = "txtSubtítulo" id = "txtSubtítulo" placeholder = "Subtítulo, se houver." class = "form-control shadow-sm mb-4 py-2">
 						
-						<label for = "txtAutor" class = "form-label">Autor</label>
-						<select class="form-select form-control shadow-sm py-2 mb-4" aria-label="Autor" id = "txtAutor" multiple 	name = "txtAutor[]" required>
+						<div class = "row">
 						
-							<%
-							Autor autores = new Autor();
-							ArrayList<Autor> listAutores = autores.listAutores();
-		
-							for(int i = 0; i < listAutores.size(); i++){
-								
-								out.print(
-									"<option " + ((i == 0)? "selected " : null) + "value = " 
-									+ listAutores.get(i).getIdAutor() + ">" 
-									+ listAutores.get(i).getNome() + " " 
-									+ listAutores.get(i).getSobrenome() + 
-									"</option>"
-								);	
-								
-							}
-							%>
-						
-						</select>
-			
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						<%/*
-						<label for = "txtAutor" class = "form-label">Autor</label>
-						<select class="form-select form-control shadow-sm py-2 mb-4" aria-label="Autor" id = "txtAutor" name = "txtAutor" required>
-						
-						<%
-							Autor autores = new Autor();
-							ArrayList<Autor> listAutores = autores.listAutores();
+							<div class = "col-lg">
 							
-							String selected = "selected ";
+								<label for = "btnSelecionarAutor" class = "form-label">Autor</label>
+								<span id = "autoresSelecionados" class = "mb-2 px-2 multi-select-span">Nenhum selecionado.</span>
 		
-							for(int i = 0; i < listAutores.size(); i++){
+								<div class = "input-group mb-4">						
+							
+									<button class="btn btn-outline-secondary shadow-sm py-2 px-3 inline-select-button flex-fill" id = "btnSelecionarAutor" type="button" data-bs-toggle = "modal" data-bs-target="#selectAutorModal">Selecionar... </button>	
+		
+									<div class="input-group-append">
+									
+										<a class="btn btn-outline-secondary shadow-sm py-2 px-3 inline-add-button" id = "btnAdicionarAutor" type="button" href = "cadastrar-autor.jsp" target = "_blank">
+											Novo 
+											<ion-icon name="arrow-forward-outline" class = "icon-redirect"></ion-icon>
+										</a>
+												
+									</div>
+														
+								</div>
+							</div>	
+			
+							<div class = "col-lg">
+							
+								<label for = "btnSelecionarGenero" class = "form-label">Gêneros</label>
+								<span id = "generosSelecionados" class = "mb-2 px-2 multi-select-span">Nenhum selecionado.</span>
+		
+								<div class = "input-group mb-4">						
+							
+									<button class="btn btn-outline-secondary shadow-sm py-2 px-3 inline-select-button flex-fill" id = "btnSelecionarGenero" type="button" data-bs-toggle = "modal" data-bs-target="#selectGeneroModal">Selecionar... </button>	
+		
+									<div class="input-group-append">
+									
+										<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarGenero" type="button" data-bs-toggle = "modal" data-bs-target="#addGeneroFormModal">Novo</button>
 								
-								if(i > 0){ selected = ""; }
-								
-								out.print(
-									"<option " + selected + "value = " 
-									+ listAutores.get(i).getIdAutor() + ">" 
-									+ listAutores.get(i).getNome() + " " 
-									+ listAutores.get(i).getSobrenome() + 
-									"</option>"
-								);
-								
-							}
-						% >
+									</div>
+														
+								</div>
+							
+							</div>
 						
-						</select>	
-						*/%>							
+						</div>
 						
 						<label for = "txtDescription" class = "form-label">Descrição</label>
 						<textarea rows = "4" name = "txtDescription" id = "txtDescription" placeholder = "Informe uma breve sinopse para o livro..." class = "form-control shadow-sm mb-4 py-2" maxlength = 300></textarea>
-					
-						<label for = "btnSelecionarGenero" class = "form-label">Gêneros:</label>
-						<div class = "input-group mb-4">
-						
-							<button class="btn btn-outline-secondary w-75 shadow-sm py-2 inline-select-button" id = "btnSelecionarGenero" type="button" data-bs-toggle = "modal" data-bs-target="#selectGeneroModal">Selecionar... </button>	
 
-							<div class="input-group-append">
-							
-								<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarGenero" type="button" data-bs-toggle = "modal" data-bs-target="#addGeneroFormModal">Novo Gênero</button>
-										
-							</div>
-												
-						</div>
 					</div>
 					
 					<div class = "col-md-3">
@@ -239,7 +228,7 @@
 					<hr>
 					
 				</div>
-					<% // d-flex  justify-content-center align-items-center  %>
+
 				<div class = "row my-4">
 					
 					<div class = "col-md-10 mx-auto">
@@ -251,7 +240,7 @@
 				    
 				    </div>
 				</div>
-					<% // d-flex  justify-content-center align-items-center  %>
+				
 				<div class = "row my-4">
 				
 					<div class = "col"></div>		
@@ -428,6 +417,21 @@
 				    <div class="modal-body mx-0 my-0 px-0 py-0">
 
 						<%@ include file = "components/forms/form-pesquisar-generos.jsp" %>
+						
+				    </div>
+			    				    
+			    </div>
+			
+			</div>
+		</div>
+		
+		
+		<div id="selectAutorModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+			    <div class="modal-content">
+				    <div class="modal-body mx-0 my-0 px-0 py-0">
+
+						<%@ include file = "components/forms/form-pesquisar-autores.jsp" %>
 						
 				    </div>
 			    				    

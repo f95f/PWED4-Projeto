@@ -12,7 +12,7 @@
 			let dataForm = $("#formGenero").serialize();
 			let url = "jsp-scripts/salvar-genero.jsp";
 			
-			$.post(url, dataForm, function7(data, status){
+			$.post(url, dataForm, function(data, status){
 
 				sessionStorage.setItem("novoGenero", JSON.stringify(data));
 				
