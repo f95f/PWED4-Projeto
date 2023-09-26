@@ -8,13 +8,39 @@
 					
 					event.preventDefault();
 					let dataForm = $("#formSection").serialize();
-					let url = "Section";
+					let url = "section";
 					
 					$.post(url, dataForm, function(data, status){
+						alert(data.nome);
+						if(data){
+							
+							$("ion-icon").attr("name", "checkmark");
+							$("ion-icon").css("color", "var(--ACCENT2)");
+							sessionStorage.setItem("newSection", JSON.stringify(data));	
+
+							$("#submitSectionStatus").text("Seção " + data.nome + " adicionada.");
+
+						}
+						else{
+							$("ion-icon").attr("name", "close");
+							$("ion-icon").css("color", "var(--DANGER)");
+							$("#submitSectionStatus").text("Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
+						}	
 						
-						sessionStorage.setItem("novaSection", JSON.stringify(data));	
+						let timerId = 0;
+						if(timerId){ clearInterval(timer); }
 						
-					}, "json");
+						$("#submitSectionStatus").fadeIn(1);
+						timerId = setTimeout(function(){
+						
+							$("#submitSectionStatus").fadeOut(200);
+	
+						}, 3000);
+						
+					}, "JSON");
+					
+					$("#txtNome").val(null);
+					$("#txtDescr").val(null);
 					
 				});
 				
@@ -29,25 +55,32 @@
 			</div>
 		</div>
 		
-		<div class = "container">
+		<div class = "container w-75">
 			
-			<form method = "post" id = "formEditora">
+			<form method = "post" id = "formSection">
 				
 				<div class = "row">
-				
-					<div class = "col-md-6 mx-auto">	
+					<div class = "col">	
 				
 						<label for = "txtNome" class = "form-label">Nome</label>
 						<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome da seção..." class = "form-control shadow-sm mb-4 py-2" required>
 		
 						<label for = "txtBio" class = "form-label">Descrição:</label>
-						<textarea rows = "5" name = "txtDesc" id = "txtDesc" placeholder = "Descreva brevemente sobre a seção..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
+						<textarea rows = "5" name = "txtDescr" id = "txtDescr" placeholder = "Descreva brevemente sobre a seção..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
 					
-						<input type = "submit" id = "btnSalvarSection" value = "Adicionar" class = "btn-gravar shadow my-4">
 					</div>
-					
 				</div>
-			
+				<div class = "row mb-5">
+					<div class = "col-sm">	
+				
+						<input type = "submit" id = "btnSalvarSection" value = "Adicionar" class = "btn-gravar shadow mt-2">
+						<span class = "alert submit-status" id = "submitSectionStatus">
+							<ion-icon></ion-icon>
+						</span>
+						
+					</div>
+				</div>
+				
 			</form>
 			
 		</div>

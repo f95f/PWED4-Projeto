@@ -1,3 +1,4 @@
+<%@page import="classes.models.Section"%>
 <%@page import="classes.models.Genero"%>
 <%@page import="classes.models.Editora"%>
 <%@page import="java.util.ArrayList"%>
@@ -38,6 +39,21 @@
 					
 				}
 				sessionStorage.removeItem("novaEditora");
+			}));
+			
+			$("#addSectionFormModal").on("hidden.bs.modal", (function(){
+				
+				let objeto = JSON.parse(sessionStorage.getItem("newSection"));
+				
+				if(objeto !== null){
+					
+					$("#optionSemSection").remove();
+
+					let option = "<option selected value = " + objeto.id + "> " + objeto.nome + " </option>";
+					$("#txtSection").append(option);
+					
+				}
+				sessionStorage.removeItem("newSection");
 			}));
 			
 			$("#addGeneroFormModal").ready(function(){
@@ -313,7 +329,32 @@
 					    <div class="input-group mb-3">
 					    
 							<select class="form-select form-control shadow-sm py-2" id = "txtSection" name = "txtSection" aria-label="Selecionar seção" required>
-		
+								<%
+									Section sections = new Section();
+										
+									ArrayList<Section> listSections = sections.listSections();
+									String selectedSection = "";
+									
+									if(listSections.size() == 0){
+										
+										out.print(
+											"<option id = 'optionSemSection' selected value = -1> " +
+												"Nenhuma encontrada!" +	
+											"</option>"
+										);
+										
+									}
+																			
+									for(int i = 0; i < listSections.size(); i++){
+										
+										out.print(
+											"<option " + ((i == listSections.size() -1)? "selected" : null) + "value = " + listSections.get(i).getIdSection() + ">" 
+												+ listSections.get(i).getNome() + 
+											"</option>"
+										);
+										
+									}
+								%>
 							</select>
 							<div class="input-group-append">
 							
@@ -371,6 +412,29 @@
 				    <div class="modal-body mx-0 my-0 px-0 py-0">
 							
 						<%@ include file = "components/forms/form-cadastrar-editora.jsp" %>
+
+				    </div>
+			    
+		    		<div class = "container-fluid footer-bg py-3 px-0 mx-0 my-0">
+						<div class = "d-flex justify-content-end">
+						
+					        <button type="button" class="btn text-white mx-5 btn-fechar-modal" data-bs-dismiss="modal">Cancelar</button>
+					
+						</div>		
+					</div>
+				    
+			    </div>
+			
+			</div>
+		</div>
+		
+		
+		<div id="addSectionFormModal" class="modal modal-lg fade" role="dialog">
+			<div class="modal-dialog">
+			    <div class="modal-content">
+				    <div class="modal-body mx-0 my-0 px-0 py-0">
+							
+						<%@ include file = "components/forms/form-cadastrar-section.jsp" %>
 
 				    </div>
 			    

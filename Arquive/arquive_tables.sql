@@ -68,6 +68,7 @@ create table section(
     nome varchar(90) not null,
     descr varchar(300)
 );
+select * from section;
 
 insert into editora(nome, descr) values("asdfasd", "sdfafdsa");
 select * from editora;

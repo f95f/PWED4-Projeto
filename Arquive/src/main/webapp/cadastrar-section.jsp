@@ -12,7 +12,7 @@
 	
 	<main class = "container-fluid px-0 mt-5">
 	
-		<%//@ include file = "components/forms/form-cadastrar-section.jsp" %>
+		<%@ include file = "components/forms/form-cadastrar-section.jsp" %>
 	
 	</main>
 	<%@ include file = "components/footer-internal.jsp" %>
