@@ -2,6 +2,7 @@ package classes.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,17 +17,35 @@ public class SectionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private PrintWriter out;
+	private Section sections = new Section();
     public SectionController() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		out = response.getWriter();
-		out.print("sla lkkkk");
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		ArrayList<Section> listSections = sections.listSections();
+		
+		String sectionsJSON = "[]";
+		
+		if(listSections.size() != 0){
+
+			sectionsJSON = "[";					
+			for(int i = 0; i < listSections.size(); i++){
+				
+				sectionsJSON += "   {\"id\": \"" + listSections.get(i).getIdSection() + "\", " 
+								+ "\"nome\": \"" + listSections.get(i).getNome() + "\", "
+							   + "\"descr\": \"" + listSections.get(i).getDescription() + "\"},";
+					
+			}
+			sectionsJSON += "]";
+		}
+		
+		out.print(sectionsJSON);
+		
 		
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -42,16 +61,10 @@ public class SectionController extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
-	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
-	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}

@@ -12,13 +12,11 @@ create table autor(
     biografia text(300),
     foto varchar(90) default '/img/autores/sem-foto.png'
 );
-
 INSERT INTO autor (nome, sobrenome, biografia, foto, olid) VALUES
 ('John', 'Doe', 'John Doe is a bestselling author known for his mystery novels.', '/img/authors/john-doe.jpg', 'OL12345678'),
 ('Jane', 'Smith', 'Jane Smith is a renowned science fiction writer with a passion for technology.', '/img/authors/jane-smith.jpg', 'OL23456789'),
 ('Alice', 'Johnson', 'Alice Johnson is a poet and essayist whose work explores themes of nature and self-discovery.', '/img/authors/alice-johnson.jpg', 'OL34567890'),
 ('David', 'Brown', 'David Brown is a historian specializing in ancient civilizations and empires.', '/img/authors/david-brown.jpg', 'OL45678901');
-
 select * from autor;
 
 drop table if exists livro;
@@ -46,12 +44,15 @@ create table genero(
 );
 INSERT INTO genero (nome, descr)
 VALUES
-    ('Action', 'Action movies typically involve fast-paced sequences, explosions, and intense physical activities.'),
-    ('Drama', 'Drama films focus on character development and emotional themes, often dealing with personal struggles and conflicts.'),
-    ('Comedy', 'Comedies aim to entertain and amuse, using humor and satire to create laughter and joy among the audience.'),
-    ('Science Fiction', 'Sci-fi movies explore futuristic and speculative concepts, often involving advanced technology, space travel, and extraterrestrial life.'),
-    ('Horror', 'Horror films are designed to scare and unsettle the audience, often featuring supernatural elements, monsters, or psychological horror');
-    
+    ('Science Fiction', 'Books that explore futuristic and speculative concepts.'),
+    ('Fantasy', 'Books set in fantastical worlds with magical elements.'),
+    ('Mystery', 'Books that involve solving mysteries or crimes.'),
+    ('Romance', 'Books centered around love and romantic relationships.'),
+    ('Historical Fiction', 'Books set in a historical time period with fictional elements.'),
+    ('Thriller', 'Books that create suspense and excitement.'),
+    ('Non-Fiction', 'Books based on facts and real-life events.'),
+    ('Biography', 'Books detailing the life stories of real individuals.'),
+    ('Self-Help', 'Books that offer advice and guidance for personal development.');
 select * from genero;
 delete from genero;
 
@@ -65,13 +66,35 @@ create table editora(
 drop table if exists section;
 create table section(
 	id int not null auto_increment primary key,
-    nome varchar(90) not null,
+    nome varchar(90) not null, -- unique
     descr varchar(300)
 );
+INSERT INTO section (nome, descr)
+VALUES
+    ('Fiction', 'Books of imaginative storytelling and creativity.'),
+    ('Non-Fiction', 'Books based on facts and real-life events.'),
+    ('Mystery', 'Books that involve solving mysteries or crimes.'),
+    ('Science Fiction', 'Books that explore futuristic and speculative concepts.'),
+    ('Biography', 'Books detailing the life stories of real individuals.'),
+    ('History', 'Books about past events, civilizations, and societies.'),
+    ('Self-Help', 'Books that offer advice and guidance for personal development.'),
+    ('Romance', 'Books centered around love and romantic relationships.'),
+    ('Fantasy', 'Books set in fantastical worlds with magical elements.');
 select * from section;
+delete from section;
 
-insert into editora(nome, descr) values("asdfasd", "sdfafdsa");
-select * from editora;
+INSERT INTO editora (nome, descr)
+VALUES
+    ('Penguin Random House', 'One of the largest and most well-known publishing companies.'),
+    ('HarperCollins', 'A global publishing company with a wide range of titles.'),
+    ('Simon & Schuster', 'Publishes a diverse range of books across various genres.'),
+    ('Macmillan Publishers', 'Known for its academic and educational publications.'),
+    ('Hachette Book Group', 'Publishes books for both adults and children.'),
+    ('Scholastic Corporation', 'Specializes in publishing books for young readers and educational materials.'),
+    ('Oxford University Press', 'Focuses on academic and scholarly publishing.'),
+    ('Wiley', 'Publishes scientific, technical, and academic books.'),
+    ('Random House', 'A division of Penguin Random House, known for its literary fiction and non-fiction.');
+SELECT * FROM editora;
 delete from editora;
 
 drop table if exists livro_genero;

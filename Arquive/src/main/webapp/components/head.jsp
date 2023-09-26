@@ -12,4 +12,4 @@
   	
 	<script src="scripts/bootstrap.bundle.min.js"></script>
 	<script src="scripts/jquery.min.js"></script>
-	<script src="scripts/get-form-options.js"></script>
+	<script src="scripts/get-all-requests.js"></script>

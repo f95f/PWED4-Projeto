@@ -14,7 +14,7 @@ public class Section{
 	
 	String tableName = "arquive.section";
 	String fieldsName = "id,nome,descr";
-	String fieldKey = "idGenero";
+	String fieldKey = "idSection";
 	
 	private DBQuery dbQuery = new DBQuery(tableName, fieldsName, fieldKey);
 	
@@ -52,7 +52,7 @@ public class Section{
 		try {
 			while(rs.next()) {
 				sectionList.add(new Section(
-					rs.getInt("idSection"),
+					rs.getInt("id"),
 					rs.getString("nome"),
 					rs.getString("descr")
 				));
