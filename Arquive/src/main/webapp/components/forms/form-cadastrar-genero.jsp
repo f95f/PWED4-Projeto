@@ -40,8 +40,8 @@
 				<label for = "txtNome" class = "form-label">Nome</label>
 				<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome do gênero ou categoria" class = "form-control shadow-sm mb-4 py-2" required>
 
-				<label for = "txtBio" class = "form-label">Descrição:</label>
-				<textarea rows = "5" name = "txtBio" id = "txtBio" placeholder = "Fale um pouco sobre este gênero ou categoria..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
+				<label for = "txtDescr" class = "form-label">Descrição:</label>
+				<textarea rows = "5" name = "txtDescr" id = "txtDescr" placeholder = "Fale um pouco sobre este gênero ou categoria..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
 			
 				<input type = "submit" id = "btnSalvarGenero" value = "Adicionar" class = "btn-gravar shadow my-4">
 			</div>

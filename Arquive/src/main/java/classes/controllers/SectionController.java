@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import classes.models.Section;
 
-@WebServlet("/section")
+@WebServlet("/sections")
 public class SectionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,7 +36,7 @@ public class SectionController extends HttpServlet {
 				
 				sectionsJSON += "   {\"id\": \"" + listSections.get(i).getIdSection() + "\", " 
 								+ "\"nome\": \"" + listSections.get(i).getNome() + "\", "
-							   + "\"descr\": \"" + listSections.get(i).getDescription() + "\"},";
+							   + "\"descr\": \"" + listSections.get(i).getDescription() + "\"}" + ((i < listSections.size() -1)? ", " : "");
 					
 			}
 			sectionsJSON += "]";

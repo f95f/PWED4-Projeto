@@ -16,7 +16,7 @@
 	<script type="text/javascript">
 		
 		$(document).ready(function(){
-			//getAllEditoras();
+			getAllEditoras();
 			getAllSections();
 			$("#formLivro").submit(function(event){
 				
@@ -267,7 +267,7 @@
 							<select class="form-select form-control shadow-sm py-2" id = "txtEditora" name = "txtEditora" aria-label="Selecionar Editora" required>
 							    
 							   
-							    <%
+							    <% /*
 									Editora editoras = new Editora();
 										
 									ArrayList<Editora> listEditoras = editoras.listarEditoras();
@@ -296,7 +296,7 @@
 										);
 										
 									}
-								%>
+								*/ %>
 							</select>
 							<div class="input-group-append">
 							

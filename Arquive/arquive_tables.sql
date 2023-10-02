@@ -54,7 +54,7 @@ VALUES
     ('Biography', 'Books detailing the life stories of real individuals.'),
     ('Self-Help', 'Books that offer advice and guidance for personal development.');
 select * from genero;
-delete from genero;
+-- delete from genero;
 
 drop table if exists editora;
 create table editora(
@@ -62,11 +62,12 @@ create table editora(
     nome varchar(90) not null,
 	descr varchar(300)
 );
+select * from editora;
 
 drop table if exists section;
 create table section(
 	id int not null auto_increment primary key,
-    nome varchar(90) not null, -- unique
+    nome varchar(90) not null unique,
     descr varchar(300)
 );
 INSERT INTO section (nome, descr)
@@ -81,7 +82,7 @@ VALUES
     ('Romance', 'Books centered around love and romantic relationships.'),
     ('Fantasy', 'Books set in fantastical worlds with magical elements.');
 select * from section;
-delete from section;
+-- delete from section;
 
 INSERT INTO editora (nome, descr)
 VALUES
@@ -95,7 +96,7 @@ VALUES
     ('Wiley', 'Publishes scientific, technical, and academic books.'),
     ('Random House', 'A division of Penguin Random House, known for its literary fiction and non-fiction.');
 SELECT * FROM editora;
-delete from editora;
+-- delete from editora;
 
 drop table if exists livro_genero;
 create table livro_genero(
