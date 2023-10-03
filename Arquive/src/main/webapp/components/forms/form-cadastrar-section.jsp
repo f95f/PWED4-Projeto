@@ -3,7 +3,7 @@
 		<script type="text/javascript">
 		
 			$(document).ready(function(){
-				
+
 				$("#formSection").submit(function(event){
 					
 					event.preventDefault();
@@ -63,7 +63,7 @@
 						<label for = "txtNome" class = "form-label">Nome</label>
 						<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome da seção..." class = "form-control shadow-sm mb-4 py-2" required>
 		
-						<label for = "txtBio" class = "form-label">Descrição:</label>
+						<label for = "txtDescr" class = "form-label">Descrição:</label>
 						<textarea rows = "5" name = "txtDescr" id = "txtDescr" placeholder = "Descreva brevemente sobre a seção..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
 					
 					</div>

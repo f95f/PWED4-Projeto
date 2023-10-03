@@ -1,13 +1,12 @@
-/***/
 
 let getAllSections = function(){
 	
 	let url = "sections";
 	$.get(url, function(data){	
 		
-		alert(data);
+		alert("Nome: " + data[2].nome);
 		
-	});
+	}, "json");
 }
 let getAllEditoras = function(){
 	

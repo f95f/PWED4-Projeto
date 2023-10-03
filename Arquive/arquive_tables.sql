@@ -21,7 +21,7 @@ select * from autor;
 
 drop table if exists livro;
 create table livro(
-	id int not null auto_increment primary key,
+	idLivro int not null auto_increment primary key,
     isbn varchar(13),
     titulo varchar(90) not null,
     subtitulo varchar(180),

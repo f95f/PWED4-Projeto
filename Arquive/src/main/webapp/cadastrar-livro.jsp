@@ -10,17 +10,19 @@
 <head>
 
 	<%@ include file = "components/head.jsp" %>
+	
 	<script src="scripts/buscar-livro.js"></script>
 	
 	<title>ARQUIVE | Cadastrar Livro</title>
 	<script type="text/javascript">
 		
 		$(document).ready(function(){
-			getAllEditoras();
 			getAllSections();
+			
 			$("#formLivro").submit(function(event){
 				
 				event.preventDefault();
+				getAllSections();
 				
 				let dataForm = $("#formLivro").serialize();
 				alert(dataForm);		
