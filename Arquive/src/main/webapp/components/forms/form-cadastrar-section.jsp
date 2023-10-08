@@ -15,12 +15,10 @@
 						if(data){
 							
 							sessionStorage.setItem("newSection", JSON.stringify(data));	
-
 							$("#submitSectionStatus").html("<ion-icon name = 'checkmark'></ion-icon>Seção " + data.nome + " adicionada.");
-
+							$("ion-icon").css("color", "var(--ACCENT2)");
 						}
 						else{
-							$("ion-icon").attr("name", "close");
 							$("ion-icon").css("color", "var(--DANGER)");
 							$("#submitSectionStatus").html("<ion-icon name = 'close'></ion-icon>Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
 						}	

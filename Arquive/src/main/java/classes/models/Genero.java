@@ -11,13 +11,13 @@ public class Genero {
 	private int idGenero;
 	private String nome;
 	private String description;
-	
+
 	String tableName = "arquive.genero";
 	String fieldsName = "id,nome,descr";
 	String fieldKey = "idGenero";
-	
+
 	private DBQuery dbQuery = new DBQuery(tableName, fieldsName, fieldKey);
-	
+
 	public Genero(){}
 	public Genero(int idGenero, String nome, String description) {
 		super();
@@ -26,29 +26,29 @@ public class Genero {
 		this.description = description;
 	}
 	public String[] toArray() {
-		
+
 		String[] generoArray = {
-				
+
 			this.getIdGenero() + "",
 			this.getNome(),
 			this.getDescription()
-				
+
 		};
-		
+
 		return generoArray;
 	}
-	
+
 	public int salvar() {
-		
+
 		return this.dbQuery.insert(this.toArray());
-		
+
 	}
-	
+
 	public ArrayList<Genero> listarGeneros(){
-		
-		ArrayList<Genero> generosLista = new ArrayList<Genero>();
+
+		ArrayList<Genero> generosLista = new ArrayList<>();
 		ResultSet rs = this.dbQuery.select("");
-		
+
 		try {
 			while(rs.next()) {
 				generosLista.add(new Genero(
@@ -61,9 +61,9 @@ public class Genero {
 			e.printStackTrace();
 		}
 		return generosLista;
-		
+
 	}
-	
+
 	public int getIdGenero() {
 		return idGenero;
 	}
@@ -86,8 +86,8 @@ public class Genero {
 	public String toString() {
 		return "Genero [idGenero=" + idGenero + ", nome=" + nome + ", description=" + description + "]";
 	}
-	
-	
-	
-	
+
+
+
+
 }

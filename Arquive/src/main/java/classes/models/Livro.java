@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import classes.database.DBQuery;
 
 public class Livro{
-	
+
 	private int idLivro;
 	private String isbn;
 	private String titulo;
@@ -21,7 +21,7 @@ public class Livro{
 	private String description;
 	private String imagemCapa;
 	private Boolean disponibilidade;
-	
+
 	public Livro() {}
 
 	public Livro(int idLivro, String isbn, String titulo, String subtitulo, String editora, String section,
@@ -46,13 +46,13 @@ public class Livro{
 	String tableName = "arquive.livro";
 	String fieldsName = "idLivro,isbn,titulo,subtitulo,editora,section,edition,quantidadePaginas,quantidadeEstoque,anoPublication,description,imagemCapa,disponibilidade";
 	String fieldKey = "idLivro";
-	
+
 	private DBQuery dbQuery = new DBQuery( tableName, fieldsName, fieldKey);
 
 	public String[] toArray() {
-		
+
 		String[] livroString = {
-				
+
 			this.getIdLivro() + "",
 			this.getIsbn(),
 			this.getTitulo(),
@@ -66,14 +66,15 @@ public class Livro{
 			this.description,
 			this.imagemCapa,
 			this.disponibilidade + ""
-				
+
 		};
 		return livroString;
-		
+
 	}
-	
+
+	@Override
 	public String toString() {
-		
+
 		return
 			"Livro ["
 				+ "idLivro=" + idLivro
@@ -91,17 +92,17 @@ public class Livro{
 				+ "disponibilidade=" + disponibilidade
 			+ "]";
 	}
-	
+
 	public ArrayList<Livro> listarLivro(){
-		
-		ArrayList<Livro> livrosLista = new ArrayList<Livro>();
+
+		ArrayList<Livro> livrosLista = new ArrayList<>();
 		ResultSet rs = this.dbQuery.select("");
-		
+
 		try {
 			while(rs.next()) {
-			
+
 				livrosLista.add(new Livro(
-			
+
 					rs.getInt("idLivro"),
 					rs.getString("isbn"),
 					rs.getString("titulo"),
@@ -118,23 +119,23 @@ public class Livro{
 				));
 			}
 		} catch (SQLException e) {
-				
+
 				e.printStackTrace();
 		}
 		return livrosLista;
-		
+
 	}
-	
+
 	public int salvar() {
-		
+
 		int resposta = this.dbQuery.insert(this.toArray());
 		return resposta;
-		
+
 	}
-	
-	
+
+
 	// Só getters e setters
-	
+
 	public int getIdLivro() {
 		return idLivro;
 	}
@@ -238,6 +239,6 @@ public class Livro{
 	public void setDisponibilidade(Boolean disponibilidade) {
 		this.disponibilidade = disponibilidade;
 	}
-	
-		
+
+
 }

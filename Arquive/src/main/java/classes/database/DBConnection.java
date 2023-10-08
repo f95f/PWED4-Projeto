@@ -12,9 +12,9 @@ public class DBConnection {
 	private String schema;
 	private String user;
 	private String password;
-	
+
 	private Connection connection = null;
-	
+
 	public DBConnection(String host, String port, String schema, String user, String password) {
 		this.setHost(host);
 		this.setPort(port);
@@ -23,7 +23,7 @@ public class DBConnection {
 		this.setPassword(password);
 		this.doConnection();
 	}
-	
+
 	public DBConnection() {
 		this.setHost	("localhost");
 		this.setPort	("3306");
@@ -32,7 +32,7 @@ public class DBConnection {
 		this.setPassword("");
 		this.doConnection();
 	}
-	
+
 	private void doConnection() {
 		String timezone = "&useTimezone=true&serverTimezone=UTC";// use o &useTimezone=true&serverTimezone=UTC para não ter problemas de data;
 		String url = "jdbc:mysql://"+this.host+":"+port+"/"+this.schema+"?user="+this.user+"&password="+this.password+timezone;
@@ -61,47 +61,47 @@ public class DBConnection {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public String getHost() {
 		return host;
 	}
-	
+
 	public void setHost(String host) {
 		this.host = ( host.isEmpty() ? "localhost" : host ) ;
 	}
-	
+
 	public String getPort() {
 		return port;
 	}
-	
+
 	public void setPort(String port) {
 		this.port = ( port.isEmpty() ? "3306" : port ) ;
 	}
-	
+
 	public String getSchema() {
 		return schema;
 	}
-	
+
 	public void setSchema(String schema) {
 		this.schema = schema;
 	}
-	
+
 	public String getUser() {
 		return user;
 	}
-	
+
 	public void setUser(String user) {
 		this.user = user;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public Connection getConnection() {
 		return (this.connection);
 	}

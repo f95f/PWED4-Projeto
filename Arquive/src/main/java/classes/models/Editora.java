@@ -11,13 +11,13 @@ public class Editora {
 	private int idEditora;
 	private String nome;
 	private String description;
-	
+
 	String tableName = "arquive.editora";
 	String fieldsName = "id,nome,descr";
 	String fieldKey = "idEditora";
-	
+
 	private DBQuery dbQuery = new DBQuery(tableName, fieldsName, fieldKey);
-	
+
 	public Editora(){}
 	public Editora(int idEditora, String nome, String description) {
 		super();
@@ -26,29 +26,29 @@ public class Editora {
 		this.description = description;
 	}
 	public String[] toArray() {
-		
+
 		String[] editoraArray = {
-				
+
 			this.getIdEditora() + "",
 			this.getNome(),
 			this.getDescription()
-				
+
 		};
-		
+
 		return editoraArray;
 	}
-	
+
 	public int salvar() {
-		
+
 		return this.dbQuery.insert(this.toArray());
-		
+
 	}
-	
+
 	public ArrayList<Editora> listarEditoras(){
-		
-		ArrayList<Editora> editorasLista = new ArrayList<Editora>();
+
+		ArrayList<Editora> editorasLista = new ArrayList<>();
 		ResultSet rs = this.dbQuery.select("");
-		
+
 		try {
 			while(rs.next()) {
 				editorasLista.add(new Editora(
@@ -61,9 +61,9 @@ public class Editora {
 			e.printStackTrace();
 		}
 		return editorasLista;
-		
+
 	}
-	
+
 	public int getIdEditora() {
 		return idEditora;
 	}
@@ -86,5 +86,5 @@ public class Editora {
 	public String toString() {
 		return "Editora [idEditora=" + idEditora + ", nome=" + nome + ", description=" + description + "]";
 	}
-	
+
 }

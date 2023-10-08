@@ -11,13 +11,13 @@ public class Section{
 	private int idSection;
 	private String nome;
 	private String description;
-	
+
 	String tableName = "arquive.section";
 	String fieldsName = "id,nome,descr";
 	String fieldKey = "idSection";
-	
+
 	private DBQuery dbQuery = new DBQuery(tableName, fieldsName, fieldKey);
-	
+
 	public Section() {}
 
 	public Section(int idSection, String nome, String description) {
@@ -26,29 +26,29 @@ public class Section{
 		this.nome = nome;
 		this.description = description;
 	}
-	
+
 	public String[] toArray() {
-		
+
 		String[] sectionArray = {
-				
+
 			this.getIdSection() + "",
 			this.getNome(),
 			this.getDescription()
-				
+
 		};
-		
+
 		return sectionArray;
 	}
-	
+
 	public int salvar() {
 		return this.dbQuery.insert(this.toArray());
 	}
-	
+
 	public ArrayList<Section> listSections(){
-		
-		ArrayList<Section> sectionList = new ArrayList<Section>();
+
+		ArrayList<Section> sectionList = new ArrayList<>();
 		ResultSet rs = this.dbQuery.select("");
-		
+
 		try {
 			while(rs.next()) {
 				sectionList.add(new Section(
@@ -60,7 +60,7 @@ public class Section{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return sectionList;
 	}
 
@@ -87,6 +87,6 @@ public class Section{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
+
+
 }

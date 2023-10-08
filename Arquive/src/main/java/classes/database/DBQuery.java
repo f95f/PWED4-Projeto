@@ -1,19 +1,19 @@
 package classes.database;
 
 
-import java.sql.ResultSet; 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DBQuery {
-	
+
 	private Statement statement =  null;
 	private String    tableName 	= "";
 	private String[]  fieldsName 	= new String[]{};
 	private String    fieldKey  	= "";
 	private int		  keyFieldIndex = -1;
-	
-	
+
+
 	public DBQuery() {
 		try {
 			this.statement = new DBConnection().getConnection().createStatement();
@@ -21,27 +21,27 @@ public class DBQuery {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	public String[] dontInjectionStrings(String[] values) {
 		String[] tempValues = values;
 		for (int i = 0; i < tempValues.length; i++) {
-			
+
 		}
 		return null;
 	}
-	
+
 	public DBQuery(	String tableName, String fieldsName,  String fieldKey) {
 		this.setTableName	( tableName  );
 		this.setFieldsName	( fieldsName );
-		this.setFieldKey	( fieldKey   ); 
+		this.setFieldKey	( fieldKey   );
 		try {
 			this.statement = new DBConnection().getConnection().createStatement();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private int whereIsKeyField() {
 		for ( int i =0; i < this.fieldsName.length; i ++ ){
 			if( this.fieldsName[i].equals(this.fieldKey) ){
@@ -50,7 +50,7 @@ public class DBQuery {
 		}
 		return(-1);
 	}
-	
+
 	public ResultSet query(String sql) { // select
 		try {
 			ResultSet rs = statement.executeQuery(sql);
@@ -60,7 +60,7 @@ public class DBQuery {
 		}
 		return null;
 	}
-	
+
 	public String joinElements (String[] elements, String separator ){
 		String out = "";
 		for (int i=0; i< elements.length; i++) {
@@ -68,7 +68,7 @@ public class DBQuery {
 		}
 		return (out);
 	}
-	
+
 	public int execute(String sql) { // insert, delete, update
 		try {
 			int rs = statement.executeUpdate(sql);
@@ -76,7 +76,7 @@ public class DBQuery {
 		}catch (SQLException e) {
 			System.out.println("\nErro: Verifique o comando ou a dependencia de chave extrangeira!");
 		}
-		
+
 		return 0;
 	}
 
@@ -86,7 +86,7 @@ public class DBQuery {
 		System.out.print(sql);
 		return this.query(sql);
 	}
-	
+
 	public int insert(String[] values) {
 		for (String value : values) {
 			System.out.println(value);
@@ -98,16 +98,16 @@ public class DBQuery {
 			return ( this.execute(sql));
 		}else{
 			System.out.print("O n�mero de valores informados n�o � equivalente aos campos da tabela!");
-		}	
+		}
 		return 0;
 	}
-	
+
 	public int delete(String[] values) {
 		if (values.length != this.fieldsName.length){
 			System.out.println("\n A quantidade de campos � diferente da quantidade de valores!");
 			return ( 0 );
 		}
-		
+
 		String sql = "\nDELETE FROM "+this.tableName+" ";
 		if ( this.keyFieldIndex < 0 ){
 			return(0);
@@ -116,18 +116,18 @@ public class DBQuery {
 		System.out.print( sql );
 		return ( this.execute(sql) );
 	}
-	
+
 	public int update(String[] values) {
-		
+
 		if (values.length != this.fieldsName.length){
 			System.out.println("\n A quantidade de campos � diferente da quantidade de valores!");
 			return ( 0 );
 		}
-		
+
 		String sql = "\nUPDATE "+this.tableName+" SET ";
 		for( int i=0; i <  values.length; i++){
 			sql += "\n\t "+
-				this.fieldsName[i] + " = '"+values[i].trim()+"'" 
+				this.fieldsName[i] + " = '"+values[i].trim()+"'"
 				+  ((i == values.length-1) ? "" : ", ");
 		}
 		if ( this.keyFieldIndex < 0 ){
@@ -157,7 +157,7 @@ public class DBQuery {
 		this.fieldsName	= fieldsName.split(",");
 		for (int i=0;  i< this.fieldsName.length; i++) {
 			this.fieldsName[i] = this.fieldsName[i].trim();
-		};
+		}
 	}
 
 	public String getFieldKey() {

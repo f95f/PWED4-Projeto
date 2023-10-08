@@ -15,11 +15,11 @@ public class Autor {
 	private String sobrenome;
 	private String biografia;
 	private String foto;
-	
+
 	String tableName = "arquive.autor";
 	String fieldsName = "id,olid,nome,sobrenome,biografia,foto";
 	String fieldKey = "idAutor";
-	
+
 	private DBQuery dbQuery = new DBQuery( tableName, fieldsName, fieldKey);
 
 	public Autor(){}
@@ -33,67 +33,67 @@ public class Autor {
 		this.setBiografia(biografia);
 		this.setFoto(foto);
 	}
-	
+
 	public String[] toArray() {
-		
+
 		String[] autorString = {
-				
+
 			this.getIdAutor() + "",
 			this.getOlid(),
 			this.getNome(),
 			this.getSobrenome(),
 			this.getBiografia(),
-			this.getFoto()				
+			this.getFoto()
 		};
 		return autorString;
 	}
 
 	@Override
 	public String toString() {
-		return 
+		return
 			"Autor ["
 				+ "idAutor=" + idAutor
-				+ ", olid=" + olid 
-				+ ", nome=" + nome 
-				+ ", sobrenome=" + sobrenome 
+				+ ", olid=" + olid
+				+ ", nome=" + nome
+				+ ", sobrenome=" + sobrenome
 				+ ", biografia=" + biografia
-				+ ", foto=" + foto 
+				+ ", foto=" + foto
 			+ "]";
 	}
-	
+
 	public int salvar() {
-		
+
 		int resposta = this.dbQuery.insert(this.toArray());
 		return resposta;
-		
-	} 
-	
+
+	}
+
 	public ArrayList<Autor> listarAutores(){
-		
-		ArrayList<Autor> autoresLista = new ArrayList<Autor>();
+
+		ArrayList<Autor> autoresLista = new ArrayList<>();
 		ResultSet rs = this.dbQuery.select("");
-		
+
 		try {
 			while(rs.next()) {
 				autoresLista.add(
 					new Autor(
-							
+
 						rs.getInt("id"),
 						rs.getString("olid"),
 						rs.getString("nome"),
 						rs.getString("sobrenome"),
 						rs.getString("biografia"),
 						rs.getString("foto")
-							
+
 					)
 				);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return autoresLista;
-		
+
 	}
 
 	public int getIdAutor() {
@@ -144,5 +144,5 @@ public class Autor {
 		this.foto = foto;
 	}
 
-	
+
 }

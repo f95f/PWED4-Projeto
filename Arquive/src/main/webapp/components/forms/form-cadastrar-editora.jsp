@@ -8,6 +8,7 @@
 					
 					event.preventDefault();
 					let dataForm = $("#formEditora").serialize();
+					alert(dataForm);
 					let url = "editoras";
 					
 					$.post(url, dataForm, function(data, status){
@@ -16,10 +17,12 @@
 							
 							sessionStorage.setItem("novaEditora", JSON.stringify(data));	
 							$("#submitEditoraStatus").html("<ion-icon name = 'checkmark'></ion-icon>Editora " + data.nome + " adicionada.");
-
+							$("ion-icon").css("color", "var(--ACCENT2)");
+							
 						}
 						else{
-							$("#submitEditoraStatus").text("<ion-icon name = 'close'></ion-icon>Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
+							$("#submitEditoraStatus").html("<ion-icon name = 'close'></ion-icon>Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
+							$("ion-icon").css("color", "var(--DANGER)");
 						}	
 												
 						let timerId = 0;

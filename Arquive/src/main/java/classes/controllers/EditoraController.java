@@ -12,56 +12,53 @@ import javax.servlet.http.HttpServletResponse;
 
 import classes.models.Editora;
 
-/**
- * Servlet implementation class EditoraController
- */
 @WebServlet("/editoras")
 public class EditoraController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Editora editora = new Editora();
-    private PrintWriter out; 
-    
+    private PrintWriter out;
+
     public EditoraController() {
         super();
     }
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		out = response.getWriter();
 		ArrayList<Editora> listEditoras = editora.listarEditoras();
-		
+
 		String editorasJSON = "[]";
-		
+
 		if(listEditoras.size() != 0) {
-			
+
 			editorasJSON = "[";
 			for(int i = 0; i < listEditoras.size(); i++) {
-				
-				editorasJSON += "   {\"id\": \"" + listEditoras.get(i).getIdEditora() + "\", " 
+
+				editorasJSON += "   {\"id\": \"" + listEditoras.get(i).getIdEditora() + "\", "
 								+ "\"nome\": \"" + listEditoras.get(i).getNome() + "\", "
 						       + "\"descr\": \"" + listEditoras.get(i).getDescription() + "\"}" + ((i < listEditoras.size() -1)? ", " : "");
-				
+
 			}
 			editorasJSON += "]";
-			
+
 		}
 		out.print(editorasJSON);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		out = response.getWriter();
-		
+
 		editora.setNome(request.getParameter("txtNome"));
 		editora.setNome(request.getParameter("txtBio"));
 		editora.salvar();
-		
+
 		out.print("{\"id\": \"" + editora.getIdEditora() + "\", \"nome\": \"" + editora.getNome() + "\", \"descr\": \"" + editora.getDescription() + "\" }");
-		
+
 	}
 
-	/**
-	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
-	 */
+	@Override
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -69,6 +66,7 @@ public class EditoraController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
+	@Override
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
