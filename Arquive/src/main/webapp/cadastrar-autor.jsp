@@ -17,13 +17,40 @@
 				event.preventDefault();
 				
 				let dataForm = $("#formAutor").serialize();
-				let url = "jsp-scripts/salvar-autor.jsp";
+				let url = "autores";
 				
 				$.post(url, dataForm, function(data, status){
 					
-					alert("Nome: " + data.nome + "\nSobrenome: " + data.sobrenome); 
+					if(data){
+						
+						sessionStorage.setItem("novoAutor", JSON.stringify(data));	
+						$("#submitAutorStatus").html("<ion-icon name = 'checkmark'></ion-icon>Autor " + data.nome + " " + data.sobrenome + " adicionado.");
+
+					}
+					else{
+						$("#submitAutorStatus").text("<ion-icon name = 'close'></ion-icon>Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
+					}	
+											
+					let timerId = 0;
+					if(timerId){
+						clearInterval(timer);
+					}
+					
+					$("#submitAutorStatus").fadeIn(1);
+					timerId = setTimeout(function(){
+					
+						$("#submitAutorStatus").fadeOut(200);
+
+					}, 3000);
+					
 					
 				}, "json");
+				
+				$("#txtOlid").val(null);
+				$("#txtNome").val(null);
+				$("#txtSobrenome").val(null);
+				$("#txtBio").val(null);
+				$("#txtImgUrl").val(null);
 				
 			});
 		});
@@ -43,17 +70,40 @@
 			</div>
 		</div>
 		
-		<div class = "container">
+		<div class = "container px-5">
 			
 			<form method = "post" id = "formAutor">
 				
-				<div class = "row">
+				<div class = "row my-4">
 				
-					<div class = "col-md-8">	
+					<div class = "col-md-10 mx-auto">
+						<label for = "txtOlid" class = "form-label md-2 mb-0 h4-like">OLID</label>
+						 <p class="form-text text-muted mb-4" id = "txtOlidDescription">
+					    	Informe o código OLID para o autor caso o possua. Esse código auxiliará no preenchimento dos dados.
+					    </p>
+						<input type = "text" name = "txtOlid" id = "txtOlid" placeholder = "Código OLID do autor" class = "form-control shadow-sm mb-4 py-2">
+					</div>
+					<hr>
+				</div>
 				
-						<label for = "txtOlid" class = "form-label">OLID</label>
-						<input type = "text" name = "txtOlid" id = "txtOlid" placeholder = "Código OLID do autor..." class = "form-control shadow-sm mb-4 py-2">
-		
+				<div class = "row my-4">	
+					
+					<div class = "col-md-10 mx-auto">
+					
+						<h4 class = "mb-2">Informações do Autor</h4>
+					    <p class="form-text text-muted mb-4">
+					    	Informe nesta seção os dados de identificação do autor.
+					    </p>
+				    
+				    </div>
+				    
+				</div>
+				
+				<div class = "row my-4">
+				
+				    <div class = "col"></div>
+					<div class = "col-md-7">	
+				
 						<label for = "txtNome" class = "form-label">Nome</label>
 						<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome do autor..." class = "form-control shadow-sm mb-4 py-2">
 		
@@ -63,10 +113,9 @@
 						<label for = "txtBio" class = "form-label">Biografia:</label>
 						<textarea rows = "8" name = "txtBio" id = "txtBio" placeholder = "Fale um pouco sobre o autor e seus trabalhos, gêneros etc..." class = "form-control shadow-sm mb-4 py-2"></textarea>
 					
-						<input type = "submit" id = "btn-salvar-autor" value = "Adicionar" class = "btn-gravar shadow my-4">
 					</div>
 			
-					<div class = "col-md-4">
+					<div class = "col-md-3">
 						
 						<label for = "txtImgUrl" class = "form-label">Foto:</label>
 						<input type = "text" name = "txtImgUrl" id = "txtImgUrl" class = "form-control shadow-sm mb-4 py-2" placeholder = "Url da foto..." value = "img/vendor/sem-capa.png">
@@ -75,6 +124,13 @@
 						
 					</div>	
 					
+				    <div class = "col"></div>
+				</div>
+				<div class = "row mb-5">
+					<div class = "col-md-10 mx-auto">	
+						<input type = "submit" id = "btnSalvarAutor" value = "Adicionar" class = "btn-gravar shadow my-4">
+						<span class = "notify submit-status" id = "submitAutorStatus"></span>									
+					</div>
 				</div>
 			
 			</form>

@@ -30,27 +30,7 @@
 		<div class = "container px-5">
 			<div class = "row mt-3 mb-5">
 	
-				<div class = "col-md-10 mx-auto" id = "generoOptionsContainer">
-				
-					<%
-						Autor autores = new Autor();
-						ArrayList<Autor> listarAutores = autores.listarAutores();
-						
-						for(int i = 0; i < listarAutores.size(); i++){
-				
-							out.print(
-									
-								"<div class = 'form-check my-2'>" +
-									"<input type = 'checkbox' class = 'form-check-input' name = 'selectedAutores[]' id = 'chk_" + listarAutores.get(i).getIdAutor() + "' value=" + listarAutores.get(i).getIdAutor() + ">" +
-									"<label class = 'form-check-label' for = 'chk_" + listarAutores.get(i).getIdAutor() + "'>" + listarAutores.get(i).getNome() + " " + listarAutores.get(i).getSobrenome() +  "</label>" + 
-								"</div>"
-										
-							);
-							
-						}
-					%>
-							
-				</div>
+				<div class = "col-md-10 mx-auto" id = "autorOptionsContainer"></div>
 				
 			</div>
 			<span class = "alert submit-status" id = "selectAutoresStatus"></span>

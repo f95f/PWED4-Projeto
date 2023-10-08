@@ -30,30 +30,7 @@
 		<div class = "container px-5">
 			<div class = "row mt-3 mb-5">
 	
-				<div class = "col-md-10 mx-auto" id = "generoOptionsContainer">
-				
-					<%
-						Genero generos = new Genero();
-						ArrayList<Genero> listarGeneros = generos.listarGeneros();
-						
-						if(listarGeneros.size() == 0){
-							out.print(" <div class = 'text-center my-5 py-3 text-muted background-text' id = 'optionSemGeneros'> Nenhum gênero cadastrado. </div> ");
-						}
-						
-						for(int i = 0; i < listarGeneros.size(); i++){
-				
-							out.print(
-									
-								"<div class = 'form-check my-2'>" +
-									"<input type = 'checkbox' class = 'form-check-input' name = 'selectedGeneros[]' id = 'chk_" + listarGeneros.get(i).getIdGenero() + "' value=" + listarGeneros.get(i).getIdGenero() + ">" +
-									"<label class = 'form-check-label' for = 'chk_" + listarGeneros.get(i).getIdGenero() + "'>" + listarGeneros.get(i).getNome() + "</label>" + 
-								"</div>"
-										
-							);
-							
-						}
-					%>
-				</div>
+				<div class = "col-md-10 mx-auto" id = "generoOptionsContainer"></div>
 				
 			</div>
 			<span class = "alert submit-status" id = "selectGenerosStatus">

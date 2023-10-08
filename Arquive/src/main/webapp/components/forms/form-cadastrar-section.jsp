@@ -8,7 +8,7 @@
 					
 					event.preventDefault();
 					let dataForm = $("#formSection").serialize();
-					let url = "section";
+					let url = "sections";
 					
 					$.post(url, dataForm, function(data, status){
 

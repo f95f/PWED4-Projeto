@@ -17,8 +17,106 @@
 	<script type="text/javascript">
 		
 		$(document).ready(function(){
-			getAllSections();
 			
+			getAllItems("sections", function(sectionsList){
+				
+				let sectionOptionElement;
+
+				if(sectionsList.length > 0){
+					
+					for(let i = 0; i < sectionsList.length; i++){
+						
+						sectionOptionElement = 
+							"<option " + ((i == sectionsList.length -1)? "selected" : null) + "value = " + sectionsList[i].id + ">" 
+								+ sectionsList[i].nome + 
+							"</option>";
+						$("#txtSection").append(sectionOptionElement);
+							
+					}					
+				}
+				else{
+					sectionOptionElement = 
+						"<option id = 'optionSemSection' value = -1> Nenhuma seção encontrada! </option>"
+					$("#txtSection").append(sectionOptionElement);
+					
+				}
+				
+			});
+			getAllItems("editoras", function(editorasList){
+				
+				let editoraOptionElement;
+				if(editorasList.length > 0){
+					
+					for(let i = 0; i < editorasList.length; i++){
+						
+						editoraOptionElement = 
+							"<option " + ((i == editorasList.length -1)? "selected" : null) + "value = " + editorasList[i].id + ">" 
+								+ editorasList[i].nome + 
+							"</option>";
+						$("#txtEditora").append(editoraOptionElement);
+							
+					}					
+				}
+				else{
+					
+					editoraOptionElement = 
+						"<option id = 'optionSemEditora' value = -1> Nenhuma editora encontrada! </option>"
+					$("#txtEditora").append(editoraOptionElement);
+					
+				}
+				
+			});
+			getAllItems("generos", function(generosList){
+				
+				let generoElement;
+				if(generosList.length > 0){
+					
+					for(let i = 0; i < generosList.length; i++){
+						
+						generoElement = 
+							"<div class = 'form-check my-2'>" +
+								"<input type = 'checkbox' class = 'form-check-input' name = 'selectedGeneros[]' id = 'chk_" + generosList[i].id + "' value=" + generosList[i].id + ">" +
+								"<label class = 'form-check-label' for = 'chk_" + generosList[i].id + "'>" + generosList[i].nome + "</label>" + 
+							"</div>";
+						$("#generoOptionsContainer").append(generoElement);
+							
+					}					
+				}
+				else{
+					
+					generoElement = 
+						"<div class = 'text-center my-5 py-3 text-muted background-text' id = 'optionSemGeneros'> Nenhum gênero cadastrado. </div> "
+						$("#generoOptionsContainer").append(generoElement);
+					
+				}
+				
+			});
+			getAllItems("autores", function(autoresList){
+				
+				let autorElement;
+				if(autoresList.length > 0){
+					
+					for(let i = 0; i < autoresList.length; i++){
+						
+						autorElement = 
+							"<div class = 'form-check my-2'>" +
+								"<input type = 'checkbox' class = 'form-check-input' name = 'selectedAutores[]' id = 'chk_" + autoresList[i].id + "' value=" + autoresList[i].id + ">" +
+								"<label class = 'form-check-label' for = 'chk_" + autoresList[i].id + "'>" + autoresList[i].nome + "</label>" + 
+							"</div>";
+						$("#autorOptionsContainer").append(autorElement);
+							
+					}					
+				}
+				else{
+					
+					autorElement = 
+						"<div class = 'text-center my-5 py-3 text-muted background-text' id = 'optionSemAutores'> Nenhum Autor cadastrado. </div> "
+						$("#autorOptionsContainer").append(autorElement);
+					
+				}
+				
+			});
+		
 			$("#formLivro").submit(function(event){
 				
 				event.preventDefault();
@@ -141,7 +239,7 @@
 		
 		<div class = "container px-5">
 			
-			<form action="#" id = "formLivro">
+			<form action="post" id = "formLivro">
 				
 				<div class = "row my-4">
 				
@@ -158,7 +256,6 @@
 				</div>
 				
 				<div class = "row my-4">	
-					
 					
 					<div class = "col-md-10 mx-auto">
 					
@@ -331,6 +428,9 @@
 					    <div class="input-group mb-3">
 					    
 							<select class="form-select form-control shadow-sm py-2" id = "txtSection" name = "txtSection" aria-label="Selecionar seção" required>
+								
+								
+								
 								<%/*
 									Section sections = new Section();
 										

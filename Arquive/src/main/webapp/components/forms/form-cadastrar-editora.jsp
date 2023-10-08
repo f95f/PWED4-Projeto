@@ -8,7 +8,7 @@
 					
 					event.preventDefault();
 					let dataForm = $("#formEditora").serialize();
-					let url = "jsp-scripts/salvar-editora.jsp";
+					let url = "editoras";
 					
 					$.post(url, dataForm, function(data, status){
 						

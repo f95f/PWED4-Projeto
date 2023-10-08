@@ -18,6 +18,7 @@ INSERT INTO autor (nome, sobrenome, biografia, foto, olid) VALUES
 ('Alice', 'Johnson', 'Alice Johnson is a poet and essayist whose work explores themes of nature and self-discovery.', '/img/authors/alice-johnson.jpg', 'OL34567890'),
 ('David', 'Brown', 'David Brown is a historian specializing in ancient civilizations and empires.', '/img/authors/david-brown.jpg', 'OL45678901');
 select * from autor;
+-- delete from autor;
 
 drop table if exists livro;
 create table livro(
