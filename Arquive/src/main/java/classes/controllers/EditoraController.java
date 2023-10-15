@@ -49,12 +49,17 @@ public class EditoraController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		out = response.getWriter();
+		try {
+			editora.setNome(request.getParameter("txtNome"));
+			editora.setDescription(request.getParameter("txtBio"));
+			editora.salvar();	
+			out.print("{\"id\": \"" + editora.getIdEditora() + "\", \"nome\": \"" + editora.getNome() + "\", \"descr\": \"" + editora.getDescription() + "\" }");
+		} catch (Exception e) {
+			out.print("{\"id\": \"0\", \"nome\": \"\", \"descr\": \""+e.getMessage()+"\" }");
+		}
+		
 
-		editora.setNome(request.getParameter("txtNome"));
-		editora.setNome(request.getParameter("txtBio"));
-		editora.salvar();
-
-		out.print("{\"id\": \"" + editora.getIdEditora() + "\", \"nome\": \"" + editora.getNome() + "\", \"descr\": \"" + editora.getDescription() + "\" }");
+		
 
 	}
 

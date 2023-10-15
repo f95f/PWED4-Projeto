@@ -10,7 +10,7 @@
 <head>
 
 	<%@ include file = "components/head.jsp" %>
-	
+	<% //TODO: Substituir todos os includes do jsp pelo import do js %>
 	<script src="scripts/buscar-livro.js"></script>
 	
 	<title>ARQUIVE | Cadastrar Livro</title>
@@ -21,13 +21,21 @@
 			getAllItems("sections", function(sectionsList){
 				
 				let sectionOptionElement;
-
+				let option;
+				
 				if(sectionsList.length > 0){
 					
 					for(let i = 0; i < sectionsList.length; i++){
+						/*
+						sectionOptionElement = $('<option>', {
+							value = sectionsList[i].id,
+							text = sectionsList[i].nome
+							selected = (i == sectionsList.length -1)
+						});
 						
+						*/
 						sectionOptionElement = 
-							"<option " + ((i == sectionsList.length -1)? "selected" : null) + "value = " + sectionsList[i].id + ">" 
+							"<option" + ((i == sectionsList.length -1)? " selected " : " ") + "value = " + sectionsList[i].id + ">" 
 								+ sectionsList[i].nome + 
 							"</option>";
 						$("#txtSection").append(sectionOptionElement);
@@ -50,7 +58,7 @@
 					for(let i = 0; i < editorasList.length; i++){
 						
 						editoraOptionElement = 
-							"<option " + ((i == editorasList.length -1)? "selected" : null) + "value = " + editorasList[i].id + ">" 
+							"<option" + ((i == editorasList.length -1)? " selected " : " ") + "value = " + editorasList[i].id + ">" 
 								+ editorasList[i].nome + 
 							"</option>";
 						$("#txtEditora").append(editoraOptionElement);
@@ -120,10 +128,26 @@
 			$("#formLivro").submit(function(event){
 				
 				event.preventDefault();
-				getAllSections();
 				
 				let dataForm = $("#formLivro").serialize();
-				alert(dataForm);		
+				let url = "livros";
+				alert(dataForm);
+						
+				$.post(url, dataForm, function(data, status){
+					
+					if(data){
+						/*
+						sessionStorage.setItem("novoLivro", JSON.stringify(data));	
+						$("#submitAutorStatus").html("<ion-icon name = 'checkmark'></ion-icon>Autor " + data.nome + " " + data.sobrenome + " adicionado.");
+						*/
+					}
+					else{
+						//$("#submitAutorStatus").text("<ion-icon name = 'close'></ion-icon>Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
+					}	
+						
+					alert("a");
+					
+				}, "json");
 				
 			});
 			
@@ -277,8 +301,8 @@
 						<label for = "txtTitulo" class = "form-label">Título</label>
 						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "Título do livro" class = "form-control shadow-sm mb-4 py-2" required>
 						
-						<label for = "txtSubtítulo" class = "form-label">Subtítulo</label>
-						<input type = "text" name = "txtSubtítulo" id = "txtSubtítulo" placeholder = "Subtítulo, se houver" class = "form-control shadow-sm mb-4 py-2">
+						<label for = "txtSubtitulo" class = "form-label">Subtítulo</label>
+						<input type = "text" name = "txtSubtitulo" id = "txtSubtitulo" placeholder = "Subtítulo, se houver" class = "form-control shadow-sm mb-4 py-2">
 						
 						<div class = "row">
 						
@@ -364,39 +388,8 @@
 					    <div class="input-group mb-3">
 					    
 							<select class="form-select form-control shadow-sm py-2" id = "txtEditora" name = "txtEditora" aria-label="Selecionar Editora" required>
-							    
-							   
-							    <% /*
-									Editora editoras = new Editora();
-										
-									ArrayList<Editora> listEditoras = editoras.listarEditoras();
-									String selectedEditora = "";
-									
-									if(listEditoras.size() == 0){
-										
-										out.print(
-											"<option id = 'optionSemEditora' selected value = -1> " +
-												"Nenhuma encontrada!" +	
-											"</option>"
-										);
-										
-									}
-																			
-									for(int i = 0; i < listEditoras.size(); i++){
-										
-										if(i == listEditoras.size() -1){
-											selectedEditora = "selected ";
-										}
-										
-										out.print(
-											"<option " + selectedEditora + "value = " + listEditoras.get(i).getIdEditora() + ">" 
-												+ listEditoras.get(i).getNome() + 
-											"</option>"
-										);
-										
-									}
-								*/ %>
 							</select>
+							
 							<div class="input-group-append">
 							
 								<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarEditora" type="button" data-bs-toggle = "modal" data-bs-target="#addEditoraFormModal">Nova Editora</button>
@@ -428,36 +421,8 @@
 					    <div class="input-group mb-3">
 					    
 							<select class="form-select form-control shadow-sm py-2" id = "txtSection" name = "txtSection" aria-label="Selecionar seção" required>
-								
-								
-								
-								<%/*
-									Section sections = new Section();
-										
-									ArrayList<Section> listSections = sections.listSections();
-									String selectedSection = "";
-									
-									if(listSections.size() == 0){
-										
-										out.print(
-											"<option id = 'optionSemSection' selected value = -1> " +
-												"Nenhuma encontrada!" +	
-											"</option>"
-										);
-										
-									}
-																			
-									for(int i = 0; i < listSections.size(); i++){
-										
-										out.print(
-											"<option " + ((i == listSections.size() -1)? "selected" : null) + "value = " + listSections.get(i).getIdSection() + ">" 
-												+ listSections.get(i).getNome() + 
-											"</option>"
-										);
-										
-									}
-								*/%>
 							</select>
+							
 							<div class="input-group-append">
 							
 								<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarSection" type="button" data-bs-toggle = "modal" data-bs-target="#addSectionFormModal">Nova Seção</button>
@@ -490,7 +455,7 @@
 							Ao desmarcar esta opção, o livro ficará visível aos usuários, mas não poderá ser reservado para empréstimos.
 						</p>
 						<div class="form-check form-switch my-4" id = "chkDisponibilidadeContainer">
-						    <input class="form-check-input" type="checkbox" id="chkDisponibilidade" checked aria-describedby = "chkDisponibilidadeDescription">
+						    <input class="form-check-input" type="checkbox" id="chkDisponibilidade" name = "chkDisponibilidade" checked aria-describedby = "chkDisponibilidadeDescription">
 						    <label class="form-label" for="chkDisponibilidade">Disponibilizar para empréstimo</label>
 						</div>
 		
