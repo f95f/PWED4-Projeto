@@ -8,8 +8,7 @@
 					
 					event.preventDefault();
 					let dataForm = $("#formEditora").serialize();
-					alert(dataForm);
-					let url = "editoras";
+					let url = "http://localhost:8080/projeto/editoras";
 					
 					$.post(url, dataForm, function(data, status){
 						

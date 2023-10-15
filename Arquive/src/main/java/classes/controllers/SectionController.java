@@ -53,13 +53,12 @@ public class SectionController extends HttpServlet {
 
 		out = response.getWriter();
 
-		Section newSection = new Section();
-		newSection.setNome(request.getParameter("txtNome"));
-		newSection.setDescription(request.getParameter("txtDescr"));
+		sections.setNome(request.getParameter("txtNome"));
+		sections.setDescription(request.getParameter("txtDescr"));
 
-		newSection.salvar();
+		sections.salvar();
 
-		out.print("{\"id\": \"" + newSection.getIdSection() + "\", \"nome\": \"" + newSection.getNome() + "\", \"descr\": \"" + newSection.getDescription() + "\"}");
+		out.print("{\"id\": \"" + sections.getIdSection() + "\", \"nome\": \"" + sections.getNome() + "\", \"descr\": \"" + sections.getDescription() + "\"}");
 
 	}
 

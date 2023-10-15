@@ -28,12 +28,12 @@ create table livro(
     subtitulo varchar(180),
     img_url varchar(180) default '/img/livros/sem-capa.png',
     editora_id int,
-    edition int,
-    section varchar(90) not null,
+    edition varchar(10),
+    section_id int not null,
     ano_pub int,
     page_count int,
     descr varchar(600),
-    disponibilidade tinyint(1) default 1,
+    disponibilidade varchar(10) default 'false',
     estoque int default 1
 );
 

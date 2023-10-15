@@ -6,14 +6,14 @@ import java.util.ArrayList;
 
 import classes.database.DBQuery;
 
-public class Livro{
+public class Livro{ 
 
 	private int idLivro;
 	private String isbn;
 	private String titulo;
 	private String subtitulo;
-	private String editora;
-	private String section;
+	private int idEditora;
+	private int idSection;
 	private String edition;
 	private int quantidadePaginas;
 	private int quantidadeEstoque;
@@ -24,7 +24,7 @@ public class Livro{
 
 	public Livro() {}
 
-	public Livro(int idLivro, String isbn, String titulo, String subtitulo, String editora, String section,
+	public Livro(int idLivro, String isbn, String titulo, String subtitulo, int editora, int section,
 			String edition, int quantidadePaginas, int quantidadeEstoque, int anoPublication, String description,
 			String imagemCapa, Boolean disponibilidade) {
 		super();
@@ -32,8 +32,8 @@ public class Livro{
 		this.isbn = isbn;
 		this.titulo = titulo;
 		this.subtitulo = subtitulo;
-		this.editora = editora;
-		this.section = section;
+		this.idEditora = editora;
+		this.idSection = section;
 		this.edition = edition;
 		this.quantidadePaginas = quantidadePaginas;
 		this.quantidadeEstoque = quantidadeEstoque;
@@ -44,7 +44,7 @@ public class Livro{
 	}
 
 	String tableName = "arquive.livro";
-	String fieldsName = "idLivro,isbn,titulo,subtitulo,editora,section,edition,quantidadePaginas,quantidadeEstoque,anoPublication,description,imagemCapa,disponibilidade";
+	String fieldsName = "idLivro,isbn,titulo,subtitulo,editora_id,section_id,edition,page_count,estoque,ano_pub,descr,img_url,disponibilidade";
 	String fieldKey = "idLivro";
 
 	private DBQuery dbQuery = new DBQuery( tableName, fieldsName, fieldKey);
@@ -52,20 +52,20 @@ public class Livro{
 	public String[] toArray() {
 
 		String[] livroString = {
-
+	
 			this.getIdLivro() + "",
 			this.getIsbn(),
 			this.getTitulo(),
 			this.getSubtitulo(),
-			this.getEditora(),
-			this.getSection(),
+			this.getIdEditora() + "",
+			this.getIdSection() + "",
 			this.getEdition(),
 			this.getQuantidadePaginas() + "",
 			this.getQuantidadeEstoque() + "",
-			this.anoPublication + "",
-			this.description,
-			this.imagemCapa,
-			this.disponibilidade + ""
+			this.getAnoPublication() + "",
+			this.getDescription(),
+			this.getImagemCapa(),
+			this.getDisponibilidade() + ""
 
 		};
 		return livroString;
@@ -81,8 +81,8 @@ public class Livro{
 				+ "isbn=" + isbn
 				+ "titulo=" + titulo
 				+ "subtitulo=" + subtitulo
-				+ "editora=" + editora
-				+ "section=" + section
+				+ "editora=" + idEditora  
+				+ "section=" + idSection 
 				+ "edition=" + edition
 				+ "quantidadePaginas=" + quantidadePaginas
 				+ "quantidadeEstoque=" + quantidadeEstoque
@@ -93,7 +93,7 @@ public class Livro{
 			+ "]";
 	}
 
-	public ArrayList<Livro> listarLivro(){
+	public ArrayList<Livro> listarLivros(){
 
 		ArrayList<Livro> livrosLista = new ArrayList<>();
 		ResultSet rs = this.dbQuery.select("");
@@ -102,20 +102,19 @@ public class Livro{
 			while(rs.next()) {
 
 				livrosLista.add(new Livro(
-
-					rs.getInt("idLivro"),
-					rs.getString("isbn"),
-					rs.getString("titulo"),
-					rs.getString("subtitulo"),
-					rs.getString("editora"),
-					rs.getString("section"),
-					rs.getString("edition"),
-					rs.getInt("quantidadePaginas"),
-					rs.getInt("quantidadeEstoque"),
-					rs.getInt("anoPublication"),
-					rs.getString("description"),
-					rs.getString("imagemCapa"),
-					rs.getBoolean("disponibilidade")
+						rs.getInt("idLivro"),
+						rs.getString("isbn"),
+						rs.getString("titulo"),
+						rs.getString("subtitulo"),
+					 	rs.getInt("editora_id"),
+					 	rs.getInt("section_id"),
+						rs.getString("edition"),
+					 	rs.getInt("page_count"),
+					 	rs.getInt("estoque"),
+					 	rs.getInt("ano_pub"),
+						rs.getString("descr"),
+						rs.getString("img_url"),
+						rs.getBoolean("disponibilidade")
 				));
 			}
 		} catch (SQLException e) {
@@ -132,9 +131,6 @@ public class Livro{
 		return resposta;
 
 	}
-
-
-	// Só getters e setters
 
 	public int getIdLivro() {
 		return idLivro;
@@ -168,20 +164,20 @@ public class Livro{
 		this.subtitulo = subtitulo;
 	}
 
-	public String getEditora() {
-		return editora;
+	public int getIdEditora() {
+		return idEditora;
 	}
 
-	public void setEditora(String editora) {
-		this.editora = editora;
+	public void setIdEditora(int idEditora) {
+		this.idEditora = idEditora;
 	}
 
-	public String getSection() {
-		return section;
+	public int getIdSection() {
+		return idSection;
 	}
 
-	public void setSection(String section) {
-		this.section = section;
+	public void setIdSection(int idSection) {
+		this.idSection = idSection;
 	}
 
 	public String getEdition() {
@@ -240,5 +236,6 @@ public class Livro{
 		this.disponibilidade = disponibilidade;
 	}
 
+	
 
 }

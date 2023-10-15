@@ -56,7 +56,7 @@ public class GeneroController extends HttpServlet {
 		out = response.getWriter();
 
 		genero.setNome(request.getParameter("txtNome"));
-		genero.setDescription(request.getParameter("txtDesc"));
+		genero.setDescription(request.getParameter("txtDescr"));
 
 		genero.salvar();
 
