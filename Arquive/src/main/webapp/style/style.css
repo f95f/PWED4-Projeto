@@ -37,7 +37,7 @@
 	
 	/* Variáveis para cores com opacidade,
 	   de acordo com a paleta de cores principal. */
-	--ACCENT1-TP: #EEE8E166;
+	--ACCENT1-TP: #EEE8E188;
 	--DARK-TP: #362F2Acc;
 	
 	/* Variáveis para definição da tipografia principal. */
@@ -135,10 +135,25 @@ header, #nav-fade-control{
 	font-size: 1.4em;
 	letter-spacing: 1px;
 }
-
+hr{
+	border: 0;
+	border-bottom: 1px solid var(--DARK);
+}
 h1{
 	color: var(--ACCENT1);
 	font-family: var(--font-accent);
+}
+h2{
+	color: var(--DARK);
+	font-family: var(--font-accent);
+	letter-spacing: 1px;
+	
+}
+h3{
+	color: var(--DARK);
+	font-family: var(--font-content);
+	font-size: 1.2em;
+	font-weight: 100;
 }
 h4{
 	color: var(--ACCENT2);
@@ -185,17 +200,39 @@ h4{
 	font-family: var(--font-content);
 	letter-spacing: 1px;
 	border: 0;
-	border-bottom: 2px solid var(--ACCENT1);
 	box-shadow: none;
 	outline: 0;
 	transition: all .2s;
 }
 
 #search-form input:hover, #search-form input:focus{
-	box-shadow: 0px 2px 8px 2px var(--DARK-TP);
 	background-color: var(--LIGHT);
-	border-bottom: 2px solid var(--LIGHT);
 }
+.card,.card img{
+	background-color: #00000000;
+	border: 0;
+	border-radius: 0;
+	transition: all .2s;
+}
+.card:hover{
+	cursor: pointer;
+	background-color: #eee;
+}
+.card:hover img{
+	opacity: .8;
+}
+.card h3{
+	font-size: 1.6em;
+}
+.filters-card .card-body{
+	
+}
+.custom-icon{
+	margin: auto;
+	width: 120px;
+	aspect-ratio: 1;
+}
+
 .form-text{
 	font-family: var(--font-content);
 	font-size: 1em;
@@ -205,6 +242,15 @@ label{
 	font-weight: 300;
 	letter-spacing: 1px;
 }
+
+.ribbon-section{
+	background-color: var(--ACCENT1);
+	
+}
+.ribbon-section h2{
+	color: var(--DARK);
+}
+
 input, input[type = text]{
 	font-family: var(--font-content);
 }
@@ -292,9 +338,39 @@ ion-icon[name="close"]{
 	font-size: 24px;	
 	transform: translateY(5px);
 }
-
-
-
+.footer-logo{
+	margin: auto;
+	margin-top: 10%;
+	max-width: 200px;
+	
+}
+.social-logos svg{
+	width: 28px;
+	fill: var(--ACCENT1);
+	margin: 0 12px;
+	cursor: pointer;
+}
+.footer-link-container hr{
+	max-width: 60%;
+	margin-left: 0px;
+}
+footer hr{
+	border: 0;
+	margin: auto;
+	border-bottom: 2px solid var(--ACCENT1);
+}
+.footer-title{
+	color: var(--ACCENT1);
+	font-size: 1.6em;
+}
+.footer-item{
+	text-decoration: none;
+	color: var(--ACCENT1);
+	font-family: var(--font-content);
+	font-weight: 100;
+	letter-spacing: 1px;
+	
+}
 footer p{
 	color: var(--ACCENT1);
 	font-family: var(--font-accent);
