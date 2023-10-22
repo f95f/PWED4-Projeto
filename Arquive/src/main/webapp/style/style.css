@@ -340,9 +340,15 @@ ion-icon[name="close"]{
 }
 .footer-logo{
 	margin: auto;
-	margin-top: 20%;
+	margin-top: 10%;
 	max-width: 200px;
 	
+}
+.social-logos svg{
+	width: 28px;
+	fill: var(--ACCENT1);
+	margin: 0 12px;
+	cursor: pointer;
 }
 .footer-link-container hr{
 	max-width: 60%;
