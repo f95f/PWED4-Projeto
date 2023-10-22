@@ -208,8 +208,8 @@ h4{
 #search-form input:hover, #search-form input:focus{
 	background-color: var(--LIGHT);
 }
-
 .card,.card img{
+	background-color: #00000000;
 	border: 0;
 	border-radius: 0;
 	transition: all .2s;
@@ -224,7 +224,14 @@ h4{
 .card h3{
 	font-size: 1.6em;
 }
-
+.filters-card .card-body{
+	
+}
+.custom-icon{
+	margin: auto;
+	width: 120px;
+	aspect-ratio: 1;
+}
 
 .form-text{
 	font-family: var(--font-content);
@@ -331,9 +338,33 @@ ion-icon[name="close"]{
 	font-size: 24px;	
 	transform: translateY(5px);
 }
-
-
-
+.footer-logo{
+	margin: auto;
+	margin-top: 20%;
+	max-width: 200px;
+	
+}
+.footer-link-container hr{
+	max-width: 60%;
+	margin-left: 0px;
+}
+footer hr{
+	border: 0;
+	margin: auto;
+	border-bottom: 2px solid var(--ACCENT1);
+}
+.footer-title{
+	color: var(--ACCENT1);
+	font-size: 1.6em;
+}
+.footer-item{
+	text-decoration: none;
+	color: var(--ACCENT1);
+	font-family: var(--font-content);
+	font-weight: 100;
+	letter-spacing: 1px;
+	
+}
 footer p{
 	color: var(--ACCENT1);
 	font-family: var(--font-accent);
