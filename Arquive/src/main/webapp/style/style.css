@@ -149,6 +149,10 @@ h2{
 	letter-spacing: 1px;
 	
 }
+.h2-light{
+	color: var(--ACCENT2);
+	
+}
 h3{
 	color: var(--DARK);
 	font-family: var(--font-content);
@@ -164,6 +168,10 @@ h4{
 	font-family: var(--font-accent);
 	font-size: 1.5em;
 	
+}
+#book-icon{
+	width: 76px;
+	fill: var(--DARK);
 }
 /* ---> 1ª Versão: 
 
@@ -223,9 +231,6 @@ h4{
 }
 .card h3{
 	font-size: 1.6em;
-}
-.filters-card .card-body{
-	
 }
 .custom-icon{
 	margin: auto;
