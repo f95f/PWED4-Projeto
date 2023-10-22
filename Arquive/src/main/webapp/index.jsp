@@ -16,7 +16,61 @@
   	<script src="scripts/bootstrap.bundle.min.js"></script>
 	<script src="scripts/jquery.min.js"></script>
 	<script src="scripts/styling.js"></script>
+	<script src="scripts/get-all-requests.js"></script>
 	
+	<script type="text/javascript">
+			
+			$(document).ready(function(){
+				
+				getAllItems("livros", function(livrosList){
+					
+					let livrosContainer = $("#list-book-container");
+					let responseElement;
+					
+					if(livrosList.length > 0){
+						
+						responseElement = "<div class = 'row'>";
+						for(let i = 0; i < livrosList.length; i++){
+							
+							responseElement += buildLivroCard(livrosList[i]);
+							
+							if(!((i + 1) % 4)){
+								responseElement += "<hr class = 'my-5'></div>";
+								livrosContainer.append(responseElement);
+								responseElement = "<div class = 'row'>";
+							}
+						}
+					}
+					else{
+						responseElement = 
+								"<span class = 'sem-livros-notice'>" 
+								+ "Não há livros para mostrar aqui."
+							  + "</span>";
+						livrosContainer.append(responseElement);
+					}
+					
+				});
+				
+				let buildLivroCard = function(livro){
+					
+					let card = 
+						  "<div class = 'col-md'>"
+						+   "<div class='card' style='width: 18rem;'>"
+						+ 	  "<img src=" + livro.imagemCapa + " class='card-img-top' alt='Capa: " + livro.titulo + "'>"
+						+ 	  "<div class='card-body'>"
+						+ 	 	"<h3 class='card-text'>" + livro.titulo + "</h3>"
+						+		"<p class='card-text'>" + livro.subtitulo + "</p>"
+						+		"<p class='card-text'>" + livro.anoPublication + "</p>"
+						+ 	  "</div>"
+						+   "</div>"
+						+ "</div>";
+					return card;
+					
+				}
+				
+			});
+			
+			</script>
 	<title>ARQUIVE | Home</title>
 </head>
 <body>
@@ -65,25 +119,80 @@
 			
 		</div>	
 		
-		<div class = "container">
+		<div class = "container" id = "list-book-container">
 		
-			<a class = "button" href = "cadastrar-livro.jsp">cadastrar</a>		 <br>
-		
-			<%
+			<div class = "row my-4">
+				<h2>Seções</h2>
+			</div>
+			<div class = "row">
+				<h3>Todos</h3>
+			<!-- 
+				<button>Ver todos</button>
+			 -->
+			</div>
 			
-				if(request.getMethod().toLowerCase().equals("get")){
-					
-					String teste = request.getParameter("param");
-					String strSaida = "{\n\"param\": \"" + teste + "\"\n}";
-					//out.print(request.getMethod());
-					out.print(strSaida);
-	
-				}
-				
-			%>
-			<hr>
+			
 		
 		</div>	
+		
+		
+		<div class = "container-fluid py-5 ribbon-section">
+			<div class = "container text-center">
+					
+				<h2>Encontre livros por</h2>
+				
+				<div class = "row">
+					
+					<div class = "col-sm">
+					
+						<div class="card" style="width: 18rem;">
+						    <ion-icon name="person-outline"></ion-icon>
+						    <div class="card-body">
+						    	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						    </div>
+						</div>
+							
+					</div>
+									
+					<div class = "col-sm">
+					
+						<div class="card" style="width: 18rem;">
+						    <ion-icon name="book-outline"></ion-icon>
+						    <div class="card-body">
+						    	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						    </div>
+						</div>
+							
+					</div>
+									
+					<div class = "col-sm">
+					
+						<div class="card" style="width: 18rem;">
+						    <ion-icon name="person-outline"></ion-icon>
+						    <div class="card-body">
+						    	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						    </div>
+						</div>
+							
+					</div>
+									
+					<div class = "col-sm">
+					
+						<div class="card" style="width: 18rem;">
+						    <ion-icon name="person-outline"></ion-icon>
+						    <div class="card-body">
+						    	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						    </div>
+						</div>
+							
+					</div>
+				
+				</div>
+				
+			</div>
+		</div>
+		
+
 		
 	</main>
 
