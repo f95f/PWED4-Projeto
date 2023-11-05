@@ -10,12 +10,10 @@ $(document).ready(function(){
 	$(window).scroll(function(){
 		
 		if($(document).scrollTop() > 50){
-			navbar.addClass("dark-bg");
 			navbar_padding.removeClass("py-4");
 			navbar_padding.addClass("py-2");
 		}
 		else{
-			navbar.removeClass("dark-bg");
 			navbar_padding.removeClass("py-2");
 			navbar_padding.addClass("py-4");			
 		}
