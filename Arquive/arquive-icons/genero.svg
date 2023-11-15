@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="77.395348mm"
+   height="133.14886mm"
+   viewBox="0 0 77.395348 133.14886"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showguides="true">
+    <sodipodi:guide
+       position="-87.132215,297.51547"
+       orientation="0,-1"
+       id="guide4"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="96.497383,391.02903"
+       orientation="1,0"
+       id="guide5"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-1.8821669,392.08736"
+       orientation="1,0"
+       id="guide6"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-94.108338,208.22892"
+       orientation="0,-1"
+       id="guide7"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-51.577867,-81.956968)">
+    <g
+       id="g11">
+      <path
+         id="rect5"
+         style="fill:#362f2a;fill-opacity:1;stroke:#333333;stroke-width:2.11667;stroke-opacity:0"
+         d="m 65.201394,104.59509 c -6.960919,0 -12.565193,5.78677 -12.565193,12.97489 v 94.07042 c 0,0.24077 0.02258,0.47539 0.035,0.71284 l 30.418963,-36.50583 30.418976,36.50583 c 0.0124,-0.23745 0.035,-0.47207 0.035,-0.71284 v -94.07042 c 0,-7.18812 -5.60427,-12.97489 -12.56519,-12.97489 z"
+         sodipodi:nodetypes="ssscccssss" />
+      <path
+         id="path6"
+         style="fill:#362f2a;fill-opacity:1;stroke:#333333;stroke-width:2.11667;stroke-opacity:0"
+         d="m 79.572149,83.015301 c -6.960912,0 -12.565193,5.786775 -12.565193,12.97489 v 6.419039 c 0.109889,-0.003 0.21686,-0.0168 0.32745,-0.0168 h 35.777534 c 6.96091,0 12.56519,5.78678 12.56519,12.9749 v 60.76172 l 12.20275,14.6445 c 0.0124,-0.23745 0.035,-0.47208 0.035,-0.71284 V 95.990191 c 0,-7.188115 -5.60429,-12.97489 -12.5652,-12.97489 z" />
+    </g>
+  </g>
+</svg>

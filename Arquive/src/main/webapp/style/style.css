@@ -49,8 +49,6 @@
 	color: var(--DARK);
 	font-family: var(--font-content);
 }
-body{
-}
 p{
 	font-family: var(--font-content);
 	font-weight: 300;
@@ -383,7 +381,35 @@ footer p{
 	font-size: .8em;
 }
 
+/* --- Search form --- */
 
+.search-field{
+	padding: 5px 15px;
+	outline: 1px solid var(--ACCENT2);	
+}
+
+/* --- Tables --- */
+th{
+	background-color: var(--ACCENT2);
+	padding: 15px 25px;
+	color: var(--LIGHT);
+	text-align: center;
+	font-family: var(--font-accent);
+}
+th.large-width-column{
+	min-width: 220px;
+}
+td{
+	padding: 12px;
+	font-family: var(--font-content);
+}
+input.select-checkbox{
+	width: 100%
+}
+tr.even-row{
+	background-color: #efefef88;
+	outline: 1px solid #fff;
+}
 
 
 
