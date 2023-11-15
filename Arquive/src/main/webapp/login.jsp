@@ -8,7 +8,27 @@
 	<script src="scripts/buscar-livro.js"></script>
 	
 	<title>ARQUIVE | Entrar</title>
+	
+	<script type="text/javascript">
+	
+		$(document).ready(function(){
+			$("#formLogin").submit(function(event){
+				
+				event.preventDefault();
+				let dataForm = $("#formLogin").serialize();
+				let url = "http://localhost:8080/Arquive/login";
+				$.post(url, dataForm, function(data, status){
+					
+					console.log(data);
+					
+				}, "JSON");
+				
+			})
+		});
 		
+	
+	</script>
+	
 </head>
 <body>
 
@@ -46,7 +66,7 @@
 	<main class = "container-fluid login-background ">
 	
 		<div class = "container form-container px-5 py-5">
-			<form action="post" id="formLogin">
+			<form id="formLogin">
 				<h2 class ="h2-light">Identifique-se</h2>
 				
 				<div class = "row my-4">
@@ -62,7 +82,7 @@
 				</div>
 				
 				<div class = "row my-4">
-					<input type = "button" id="btnLogin" class =" mx-2" value="Entrar">
+					<input type = "submit" id="btnLogin" class =" mx-2" value="Entrar">
 				</div>
 				
 				

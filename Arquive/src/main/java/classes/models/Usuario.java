@@ -11,42 +11,46 @@ public class Usuario {
 	private int idUsuario;
 	private String email;
 	private String senha;
-	private int idNivelUsuario;
+	private String idNivelUsuario;
 	private String nome;
-	private String cpf;
-	private String endereco;
-	private String bairro;
-	private String cidade;
-	private String uf;
-	private String cep;
 	private String telefone;
-	private String foto;
-	private String ativo;
+	private String acesso;
 
-	String tableName 	= "lojinha.usuarios";
-	String fieldsName 	= "idUsuario,email,senha,idNivelUsuario,nome,cpf,endereco,bairro,cidade,uf,cep,telefone,foto,ativo";
+	String tableName 	= "arquive.usuario";
+	String fieldsName 	= "id,email,senha,nivel,nome,telefone,acesso";
 	String fieldKey 	= "idUsuario";
 	private DBQuery dbQuery = new DBQuery( tableName, fieldsName, fieldKey );
 
-	public Usuario() {
-
+	public int save() {
+	
+		return this.dbQuery.insert(this.toArray());
 	}
 
-	public Usuario(int idUsuario, String email, String senha, int idNivelUsuario, String nome, String cpf, String endereco, String bairro, String cidade, String uf, String cep, String telefone, String foto, String ativo){
+	public ResultSet buscarPorId(int id) {
+		
+		return this.dbQuery.select("id = " + id);
+		
+	}
+	public ResultSet buscarPor(String campo, String valor) {
+		
+		return this.dbQuery.select(campo + " = '" + valor + "' ");
+		
+	}
+	
+	public int remover(int id) {
+		return this.dbQuery.delete(this.toArray());
+	}
+	
+	public Usuario() {}
+
+	public Usuario(int idUsuario, String email, String senha, String idNivelUsuario, String nome, String telefone, String ativo){
 		this.setIdUsuario(idUsuario);
 		this.setEmail(email);
 		this.setSenha(senha);
 		this.setIdNivelUsuario(idNivelUsuario);
 		this.setNome(nome);
-		this.setCpf(cpf);
-		this.setEndereco(endereco);
-		this.setBairro(bairro);
-		this.setCidade(cidade);
-		this.setUf(uf);
-		this.setCep(cep);
 		this.setTelefone(telefone);
-		this.setFoto(foto);
-		this.setAtivo(ativo);
+		this.setAcesso(ativo);
 	}
 
 	public String[] toArray() {
@@ -56,15 +60,8 @@ public class Usuario {
 				this.getSenha(),
 				this.getIdNivelUsuario() + "",
 				this.getNome(),
-				this.getCpf(),
-				this.getEndereco(),
-				this.getBairro(),
-				this.getCidade(),
-				this.getUf(),
-				this.getCep(),
 				this.getTelefone(),
-				this.getFoto(),
-				this.getAtivo()
+				this.getAcesso()
 		};
 		return(temp);
 	}
@@ -78,15 +75,8 @@ public class Usuario {
 			this.getSenha() + ", " +
 			this.getIdNivelUsuario() + "" + ", " +
 			this.getNome() + ", " +
-			this.getCpf() + ", " +
-			this.getEndereco() + ", " +
-			this.getBairro() + ", " +
-			this.getCidade() + ", " +
-			this.getUf() + ", " +
-			this.getCep() + ", " +
 			this.getTelefone() + ", " +
-			this.getFoto() + ", " +
-			this.getAtivo()
+			this.getAcesso()
 		);
 
 	}
@@ -97,20 +87,13 @@ public class Usuario {
 		try {
 			while (rs.next()) {
 				tempList.add( new Usuario(
-					rs.getInt("idUsuario"),
+					rs.getInt("id"),
 					rs.getString("email"),
 					rs.getString("senha"),
-					rs.getInt("idNivelUsuario"),
+					rs.getString("nivel"),
 					rs.getString("nome"),
-					rs.getString("cpf"),
-					rs.getString("endereco"),
-					rs.getString("bairro"),
-					rs.getString("cidade"),
-					rs.getString("uf"),
-					rs.getString("cep"),
 					rs.getString("telefone"),
-					rs.getString("foto"),
-					rs.getString("ativo")
+					rs.getString("acesso")
 					)
 				);
 			}
@@ -144,11 +127,11 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public int getIdNivelUsuario() {
+	public String getIdNivelUsuario() {
 		return idNivelUsuario;
 	}
 
-	public void setIdNivelUsuario(int idNivelUsuario) {
+	public void setIdNivelUsuario(String idNivelUsuario) {
 		this.idNivelUsuario = idNivelUsuario;
 	}
 
@@ -160,54 +143,6 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-
-	public String getBairro() {
-		return bairro;
-	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
-	public String getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-
-	public String getUf() {
-		return uf;
-	}
-
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
-
-	public String getCep() {
-		return cep;
-	}
-
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
-
 	public String getTelefone() {
 		return telefone;
 	}
@@ -216,20 +151,12 @@ public class Usuario {
 		this.telefone = telefone;
 	}
 
-	public String getFoto() {
-		return foto;
+	public String getAcesso() {
+		return acesso;
 	}
 
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-
-	public String getAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(String ativo) {
-		this.ativo = ativo;
+	public void setAcesso(String ativo) {
+		this.acesso = ativo;
 	}
 
 
