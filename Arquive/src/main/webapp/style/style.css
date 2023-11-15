@@ -382,7 +382,6 @@ footer p{
 	font-size: .8em;
 }
 
-<<<<<<< HEAD
 /* --- Search form --- */
 
 .search-field{
@@ -413,14 +412,6 @@ tr.even-row{
 	outline: 1px solid #fff;
 }
 
-
-
-
-
-
-
-
-=======
 /* --- Páginas de login --- */
 
 .login-background{
@@ -452,7 +443,3 @@ tr.even-row{
 #formLogin .row{
 
 }
->>>>>>> 1b1c7ea2c65df809a6f5d639a71a7cfd327784bb
-
-
-

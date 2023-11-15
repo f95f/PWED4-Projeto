@@ -99,6 +99,26 @@ VALUES
 SELECT * FROM editora;
 -- delete from editora;
 
+drop table if exists usuario;
+create table usuario(
+	id int not null auto_increment primary key,
+    email varchar(60) not null unique,
+    senha varchar(60) not null,
+    nivel varchar(15) not null default('cliente'),
+    telefone varchar(15),
+    nome varchar(60) not null,
+    acesso varchar(15) not null default('ativo')
+);
+
+insert into usuario
+	(email, senha, telefone, nome)
+values
+	('teste3@email.com', '12345','1199998888', 'Teste 2'),
+	('admin2@email.com', '12345', '1199998888', 'Admin'),
+	('arquive3@email.com', '12345', '1199998888', 'Riobaldo')
+;
+select * from usuario;
+
 drop table if exists livro_genero;
 create table livro_genero(
 	id int not null auto_increment primary key,
