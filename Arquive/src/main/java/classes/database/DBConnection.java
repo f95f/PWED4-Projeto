@@ -29,7 +29,7 @@ public class DBConnection {
 		this.setPort	("3306");
 		this.setSchema	("arquive");
 		this.setUser	("root");
-		this.setPassword("");
+		this.setPassword("123456");
 		this.doConnection();
 	}
 
