@@ -26,14 +26,7 @@
 				if(sectionsList.length > 0){
 					
 					for(let i = 0; i < sectionsList.length; i++){
-						/*
-						sectionOptionElement = $('<option>', {
-							value = sectionsList[i].id,
-							text = sectionsList[i].nome
-							selected = (i == sectionsList.length -1)
-						});
-						
-						*/
+
 						sectionOptionElement = 
 							"<option" + ((i == sectionsList.length -1)? " selected " : " ") + "value = " + sectionsList[i].id + ">" 
 								+ sectionsList[i].nome + 
