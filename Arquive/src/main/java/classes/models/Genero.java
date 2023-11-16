@@ -63,6 +63,25 @@ public class Genero {
 		return generosLista;
 
 	}
+	public ArrayList<Genero> buscarPor(String campo, String valor) {
+		
+		ArrayList<Genero> generosList = new ArrayList<>();
+		ResultSet rs = this.dbQuery.select("LOWER(" + campo + ") like LOWER('%" + valor + "%') ");
+
+		try {
+			while(rs.next()) {
+				generosList.add(new Genero(
+					rs.getInt("id"),
+					rs.getString("nome"),
+					rs.getString("descr")
+				));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return generosList;
+		
+	}
 
 	public int getIdGenero() {
 		return idGenero;

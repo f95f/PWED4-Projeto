@@ -15,7 +15,7 @@ public class UsuarioService {
 		String errorMessage = "";
 		UserSession session = new UserSession();
 		
-		ResultSet rs = usuario.buscarPor("email", email);
+		ResultSet rs = usuario.buscarPorEmail(email);
 		
 		try {
 			
@@ -76,7 +76,7 @@ public class UsuarioService {
 		return usuario;
 	}
 	public Usuario buscarNovo(String email) {
-		ResultSet rs = usuario.buscarPor("email", email);
+		ResultSet rs = usuario.buscarPorEmail(email);
 		Usuario usuarioEncontrado;
 
 		try {

@@ -31,9 +31,35 @@ public class Usuario {
 		return this.dbQuery.select("id = " + id);
 		
 	}
-	public ResultSet buscarPor(String campo, String valor) {
+	public ResultSet buscarPorEmail(String email) {
 		
-		return this.dbQuery.select(campo + " = '" + valor + "' ");
+		return this.dbQuery.select("emali = " + email);
+		
+	}
+	public ArrayList<Usuario> buscarPor(String campo, String valor) {
+		
+		ArrayList<Usuario> usuariosList = new ArrayList<>();
+		ResultSet rs = this.dbQuery.select("LOWER(" + campo + ") like LOWER('%" + valor + "%') ");
+
+		try {
+			while(rs.next()) {
+				usuariosList.add(
+					new Usuario(
+						rs.getInt("id"),
+						rs.getString("email"),
+						rs.getString("senha"),
+						rs.getString("nivel"),
+						rs.getString("nome"),
+						rs.getString("telefone"),
+						rs.getString("acesso")
+					)
+				);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return usuariosList;
 		
 	}
 	
