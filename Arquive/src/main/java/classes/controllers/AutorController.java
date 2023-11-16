@@ -18,7 +18,6 @@ public class AutorController extends HttpServlet {
     private Autor autor = new Autor();
     private PrintWriter out;
 
-
     public AutorController() {
         super();
     }
@@ -27,19 +26,42 @@ public class AutorController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		out = response.getWriter();
-		ArrayList<Autor> listAutores = autor.listarAutores();
-
+		ArrayList<Autor> listAutores = new ArrayList<Autor>();
+		
 		String autoresJSON = "[]";
-
+		String parameter = request.getParameter("action");
+		
+		if(parameter == null) {
+			
+			listAutores = autor.listarAutores();
+	
+		}
+		else if(parameter.equals("authorName")) {
+			
+			String valor = request.getParameter("value");
+			listAutores = autor.buscarPor("nome", valor);
+			
+		}
+		else if(parameter.equals("authorOLID")) {
+			
+			String valor = request.getParameter("value");
+			listAutores = autor.buscarPor("olid", valor);
+			
+		}
+		else if(parameter.equals("authorId")) {
+			
+			String valor = request.getParameter("value");
+			listAutores = autor.buscarPor("id", valor);
+			
+		}
 		if(listAutores.size() != 0) {
-
+			
 			autoresJSON = "[";
 			for(int i = 0; i < listAutores.size(); i++) {
 
 				autoresJSON += "{\"id\": \"" + listAutores.get(i).getIdAutor() + "\", "
 							+	"\"olid\": \"" + listAutores.get(i).getOlid() + "\", "
 							+	"\"nome\": \"" + listAutores.get(i).getNome() + "\", "
-							+	"\"sobrenome\": \"" + listAutores.get(i).getSobrenome() + "\", "
 							+ 	"\"biografia\": \"" + listAutores.get(i).getBiografia() + "\", "
 							+	"\"imgUrl\": \"" + listAutores.get(i).getFoto() + "\" "
 							+  "}" + ((i < listAutores.size() -1)? ", " : "");
@@ -49,7 +71,6 @@ public class AutorController extends HttpServlet {
 			autoresJSON += "]";
 
 		}
-
 		out.print(autoresJSON);
 	}
 
@@ -60,13 +81,12 @@ public class AutorController extends HttpServlet {
 
 		autor.setOlid(request.getParameter("txtOlid"));
 		autor.setNome(request.getParameter("txtNome"));
-		autor.setSobrenome(request.getParameter("txtSobrenome"));
 		autor.setBiografia(request.getParameter("txtBio"));
 		autor.setFoto(request.getParameter("txtImgUrl"));
 
 		autor.salvar();
 
-		out.print("{\"olid\": \"" + autor.getOlid() + "\", \"nome\": \"" + autor.getNome() + "\", \"sobrenome\": \"" + autor.getSobrenome() + "\", \"imgUrl\": \"" + autor.getFoto() + "\" }");
+		out.print("{\"olid\": \"" + autor.getOlid() + "\", \"nome\": \"" + autor.getNome() + "\", \"imgUrl\": \"" + autor.getFoto() + "\" }");
 
 	}
 

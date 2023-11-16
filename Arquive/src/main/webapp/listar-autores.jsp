@@ -11,39 +11,97 @@
 	<script>
 		
 		$(document).ready(function(){
-		
-			getAllItems("autores", function(autoresList){
+			
+			getAllAuthors();
+			
+			$("#txtSearchAuthors").keyup(function(){
+			
+				doSearch();
 				
-				let autorTable = $("#authorsTable");
+			});
+			$("#txtSearchType").on("change", function(){
+				 doSearch()
+			});
+			
+		});
+		
+		let doSearch = function(){
+			
+			let queryValue = $("#txtSearchAuthors").val();
+			let queryKey = $("#txtSearchType").find('option').filter(':selected').val()
+			$("tbody").empty();
+			$("#sem-info-notice").empty();
+			
+			if(queryValue.trim() != ""){
+				getSomeAuthors(queryKey, queryValue);
+
+			}
+			else{
+				getAllAuthors();
+			}	
+		}
+		
+		let getSomeAuthors = function(key, value){
+			
+			getSomeItems("autores", key, value, function(autoresList){
+				
+				let autorTableBody = $("tbody");
 				if(autoresList.length > 0){
 					
-					for(let i = 0; i < autoresList.length; i++){
-						
-						autorRow = 
-							"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + ">" +
-								"<td> <input class = 'select-checkbox' type = 'checkbox' name = 'autor-'" + autoresList[i].id + "aria-describedby = 'selecionar-column'></td>" +
-								"<td>" + autoresList[i].id + "</td>" +
-								"<td>" + autoresList[i].olid + "</td>" +
-								"<td>" + autoresList[i].nome + ' ' + autoresList[i].sobrenome + "</td>" +
-								"<td>" + autoresList[i].biografia + "</td>" +
-							"</tr>";
-							autorTable.append(autorRow);
-							
-					}					
+					render(autoresList);
+									
 				}
 				else{
 					
-					autorTable.append(
-							+ "<span class = 'sem-info-notice'>" 
+					autorTableBody.append(
+							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
+								+ "Nenhum autor encontrado."
+						    + "</span>");
+					
+				}
+					
+			});
+			
+		}
+		
+		let getAllAuthors = function(){
+			
+			let autorTableBody = $("tbody");
+			getAllItems("autores", function(autoresList){
+				
+				if(autoresList.length > 0){
+					
+					render(autoresList);
+									
+				}
+				else{
+					
+					autorTableBody.append(
+							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
 								+ "Não há autores para mostrar aqui."
 						    + "</span>");
 					
 				}
-				
 			});
-			
-		})
+		}
 		
+		let render = function(autoresList){
+			let autorTable = $("#authorsTable");
+			for(let i = 0; i < autoresList.length; i++){
+				
+				autorRow = 
+					"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + ">" +
+						"<td>" + autoresList[i].id + "</td>" +
+						"<td>" + autoresList[i].olid + "</td>" +
+						"<td>" + autoresList[i].nome + ' ' + autoresList[i].sobrenome + "</td>" +
+						"<td>" + autoresList[i].biografia + "</td>" +
+						"<td> Editar/Excluir </td>" +
+					"</tr>";
+					autorTable.append(autorRow);
+					
+			}	
+			
+		}
 	
 	</script>
 </head>
@@ -58,39 +116,46 @@
 			</div>
 		</div>
 				
-		<div class = "container">
-			<div class = "row mb-5">
-				<div class = "input-group mb-4">						
-								
-					<input class="btn btn-outline-secondary shadow-sm py-2 px-3 inline-select-button " id = "txtSearch">
-	
-					<div class="input-group-append">
-					
-						<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnPesquisar" type="button">Pesquisar</button>
+		<div class = "container mb-5 search-internal-container ">
+
+			<form id = "formSearchAuthors">
 				
-					</div>
-										
-				</div>
-			</div>
+				<label for="txtSearchAuthors">Pesquisar:</label>
+				<select name = "txtSearchType" id = "txtSearchType">
+					<option value = "authorName" selected>Por Nome</option>
+					<option value = "authorOLID">Por OLID</option>
+					<option value = "authorId">Por ID</option>
+				</select>
+				<input 
+					type = "text" 	
+					id = "txtSearchAuthors" 
+					name = "txtSearchAuthors"
+					placeholder = "pesquisar..."
+				>
+			</form>	
+		
 		</div>
 		
-		<div class = "container px-5" id = "authorTableContainer">
+		<div class = "container mx-auto" id = "authorTableContainer">
 			<div class = "table-responsive">
 				<table id = "authorsTable">
-				
+					<thead>
 					<tr>
-						<th id = "selecionar-column">Selecionar</th>	<!-- TODO: Style this later -->
 						<th>Id</th>
-						<th>Código OLID</th>
+						<th>OLID</th>
 						<th>Nome</th>
 						<th class = "large-width-column">Biografia</th>
+						<th>Operações</th>
 					</tr>
+					</thead>
+					<tbody>
+					
+					</tbody>
 				</table>
-			
 			</div>
 		</div>
 	</main>
 	<%@ include file = "components/footer-internal.jsp" %>
-	
+
 </body>
 </html>

@@ -20,6 +20,7 @@
 				$.post(url, dataForm, function(data, status){
 					
 					console.log(data);
+					// TODO: Jogar este objeto no session storage caso "canLogin" seja true.
 					
 				}, "JSON");
 				

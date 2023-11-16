@@ -1,0 +1,61 @@
+[   ] decidir qual modelo de menu fica melhor
+[ | ] nome do usuário logado em algum lugar
+[   ] generos
+	[   ] adicionar botão para novo item
+	[   ] formatar pagina de listar
+	[   ] adicionar opção de editar 
+	[   ] adicionar opção de excluir
+	[   ] atualizar tabela automaticamente
+	[   ] adicionar função de pesquisar
+	[ | ] paginação
+[   ] editoras
+	[   ] adicionar botão para novo item
+	[   ] formatar pagina de listar
+	[   ] adicionar opção de editar 
+	[   ] adicionar opção de excluir
+	[   ] atualizar tabela automaticamente
+	[   ] adicionar função de pesquisar
+	[ | ] paginação
+[   ] autores
+	[ | ] adicionar botão para novo item
+	[   ] formatar pagina de listar
+	[   ] adicionar opção de editar 
+	[   ] adicionar opção de excluir
+	[   ] atualizar tabela automaticamente
+	[   ] adicionar função de pesquisar
+	[ | ] paginação
+[   ] livros
+	[ | ] adicionar botão para novo item
+	[   ] formatar pagina de listar
+	[   ] adicionar opção de editar 
+	[   ] adicionar opção de excluir
+	[   ] atualizar tabela automaticamente
+	[   ] adicionar função de pesquisar
+	[ | ] paginação
+[   ] usuarios
+	[   ] adicionar botão para novo item
+	[   ] criar pagina
+	[   ] formatar pagina de listar
+	[   ] adicionar opção de editar 
+		[   ] editar ativo/inativo
+		[   ] editar nível de acesso
+	[   ] adicionar opção de excluir
+	[   ] atualizar tabela automaticamente
+	[   ] adicionar função de pesquisar
+	[ | ] paginação
+[   ] consertar tabela para caso não haja dados
+[   ] integrar login/logout com o sessionStorage
+[   ] adicionar perfil pessoal
+[ | ] adicionar opção de alterar senha
+[   ] adicionar modal com mais detalhes para autores
+[   ] adicionar modal com mais detalhes para livros
+[ | ] adicionar modal com mais detalhes para usuários (perfil?)
+[ | ] adicionar autenticação em todas as páginas
+[   ] adicionar página de sobre no site público
+[   ] adicionar página de contato no site público
+[ | ] refatorar estilo
+[ | ] refatorar jquery
+[ | ] separar login de usuário do login de funcionário
+	(...)
+
+

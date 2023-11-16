@@ -15,25 +15,61 @@
 					
 					<li class = "nav-item mx-3"> 
 					
-						<div class="dropdown">
-						
+						<div class="dropdown">		
 							<button type="button" class = "btn dropdown-toggle header-dropdown" data-bs-toggle = "dropdown">
-							    Cadastrar
+							    Livros
 							</button>
 							<ul class="dropdown-menu">
-							    <li> <a class="dropdown-item" href = "cadastrar-livro.jsp">Livros</a> </li> 
-								<li> <a class="dropdown-item" href = "cadastrar-autor.jsp">Autores</a> </li> 
-								<li> <a class="dropdown-item" href = "cadastrar-genero.jsp">Gêneros</a> </li> 
-								<li> <a class="dropdown-item" href = "cadastrar-section.jsp">Seções</a> </li> 
-								<li> <a class="dropdown-item" href = "cadastrar-editora.jsp">Editoras</a> </li> 
+							    <li> <a class="dropdown-item" href = "cadastrar-livro.jsp">Novo</a> </li> 
+								<li> <a class="dropdown-item" href = "listar-livros.jsp">Pesquisar</a> </li> 
 							</ul>
-							  
 						</div>
+					</li>
 					
+					<li class = "nav-item mx-3">
+						<div class="dropdown">		
+							<button type="button" class = "btn dropdown-toggle header-dropdown" data-bs-toggle = "dropdown">
+							    Autores
+							</button>
+							<ul class="dropdown-menu">
+							    <li> <a class="dropdown-item" href = "cadastrar-autor.jsp">Novo</a> </li> 
+								<li> <a class="dropdown-item" href = "listar-autores.jsp">Pesquisar</a> </li> 
+							</ul>
+						</div>
+					</li>
+					
+					<li class = "nav-item mx-3">
+						<div class = "menu-item-container mt-1">
+						    <a class="menu-item" href = "listar-editoras.jsp">Editoras</a>
+						</div>
+					</li>
+					
+					<li class = "nav-item mx-3">
+						<div class = "menu-item-container mt-1">
+						    <a class="menu-item" href = "listar-sections.jsp">Seções</a>
+						</div>
+					</li>
+					
+					<li class = "nav-item mx-3">
+						<div class = "menu-item-container mt-1">
+						    <a class="menu-item" href = "listar-generos.jsp">Gêneros</a>
+						</div>
+					</li>
+					
+					<li class = "nav-item mx-3">
+						<div class="dropdown">		
+							<button type="button" class = "btn dropdown-toggle header-dropdown" data-bs-toggle = "dropdown">
+							    Usuários
+							</button>
+							<ul class="dropdown-menu">
+							    <li> <a class="dropdown-item" href = "cadastrar-usuarios.jsp">Novo</a> </li> 
+								<li> <a class="dropdown-item" href = "listar-usuarios.jsp">Pesquisar</a> </li> 
+							</ul>
+						</div>
 					</li>
 
 					<li class = "nav-item mx-3"> 
-						<a class = "nav-link" href = "#">Sair</a>
+						<a class = "nav-link" href = "index.jsp">Sair</a>
 					</li>
 				</ul>
 			</div>

@@ -21,7 +21,6 @@ public class UsuarioService {
 			
 			rs.next();
 
-			//System.out.println(" \n\n > " + rs.getString("acesso") + " \n\n");
 			String userAccessStatus = rs.getString("acesso");
 			String userPassword = rs.getString("senha");
 			

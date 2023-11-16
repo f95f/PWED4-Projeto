@@ -55,8 +55,8 @@ p{
 	font-weight: 300;
 }
 /* classe para teste/visualização do componente na página */
-.outline{  
-	outline: 2px solid red;
+.debug{  
+	outline: 2px solid lime;
 }
 .background-text{
 	font-family: var(--font-accent);
@@ -168,23 +168,18 @@ h4{
 	font-size: 1.5em;
 	
 }
+.menu-item{
+	color: var(--ACCENT1);
+	font-family: var(--font-accent);
+	letter-spacing: 2px;
+	font-size: 1em;
+	text-decoration: none;
+	transition: all .2s;
+}
 #book-icon{
 	width: 76px;
 	fill: var(--DARK);
 }
-/* ---> 1ª Versão: 
-
-#search-form input{
-	border-radius: 50px;
-	background-color: var(--LIGHT);
-	color: var(--DARK);
-	font-family: var(--font-content);
-	box-shadow: 2px 2px 6px 2px #333333cc;
-	transition: all .2s;
-	border: 0;
-	outline: 0;
-}
-*/
 .multi-select-span{
 	display: block;
 	font-family: var(--font-content);
@@ -342,6 +337,11 @@ ion-icon[name="close"]{
 	font-size: 24px;	
 	transform: translateY(5px);
 }
+.footer-internal{
+	position: absolute;
+	width: 100%;
+	bottom: 0;	
+}
 .footer-logo{
 	margin: auto;
 	margin-top: 10%;
@@ -390,18 +390,31 @@ footer p{
 }
 
 /* --- Tables --- */
+.search-internal-container{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+table{
+	width: 100%;
+	border-bottom: 3px solid var(--ACCENT2);
+	margin-bottom: 100px;
+}
 th{
 	background-color: var(--ACCENT2);
-	padding: 15px 25px;
+	padding: 20px 25px;
 	color: var(--LIGHT);
 	text-align: center;
+	font-size: 1.2em;
 	font-family: var(--font-accent);
 }
 th.large-width-column{
 	min-width: 220px;
 }
 td{
-	padding: 12px;
+	padding: 20px 12px;
+	padding-left: 32px;
 	font-family: var(--font-content);
 }
 input.select-checkbox{
@@ -420,12 +433,8 @@ tr.even-row{
 	background-attachment: fixed;	
 	padding: 0;
 }
-#formLogin{/*
-	margin-bottom: 80px;
-*/
+#formLogin{
 	margin-top: 130px;
-}
-#formLogin label{
 }
 #formLogin input{
 	max-width: 380px;
@@ -440,6 +449,3 @@ tr.even-row{
 	box-shadow: 0 4px 16px var(--DARK-TP);
 }
 
-#formLogin .row{
-
-}

@@ -12,24 +12,22 @@ public class Autor {
 	private int idAutor;
 	private String olid;
 	private String nome;
-	private String sobrenome;
 	private String biografia;
 	private String foto;
 
 	String tableName = "arquive.autor";
-	String fieldsName = "id,olid,nome,sobrenome,biografia,foto";
+	String fieldsName = "id,olid,nome,biografia,foto";
 	String fieldKey = "idAutor";
 
 	private DBQuery dbQuery = new DBQuery( tableName, fieldsName, fieldKey);
 
 	public Autor(){}
 
-	public Autor(int idAutor, String olid, String nome, String sobrenome, String biografia, String foto) {
+	public Autor(int idAutor, String olid, String nome, String biografia, String foto) {
 		super();
 		this.setIdAutor(idAutor);
 		this.setOlid(olid);
 		this.setNome(nome);
-		this.setSobrenome(sobrenome);
 		this.setBiografia(biografia);
 		this.setFoto(foto);
 	}
@@ -41,7 +39,6 @@ public class Autor {
 			this.getIdAutor() + "",
 			this.getOlid(),
 			this.getNome(),
-			this.getSobrenome(),
 			this.getBiografia(),
 			this.getFoto()
 		};
@@ -55,7 +52,6 @@ public class Autor {
 				+ "idAutor=" + idAutor
 				+ ", olid=" + olid
 				+ ", nome=" + nome
-				+ ", sobrenome=" + sobrenome
 				+ ", biografia=" + biografia
 				+ ", foto=" + foto
 			+ "]";
@@ -67,7 +63,34 @@ public class Autor {
 		return resposta;
 
 	}
+	
+	public ArrayList<Autor> buscarPor(String campo, String valor) {
+		
+		ArrayList<Autor> autoresLista = new ArrayList<>();
+		ResultSet rs = this.dbQuery.select("LOWER(" + campo + ") like LOWER('%" + valor + "%') ");
 
+		try {
+			while(rs.next()) {
+				autoresLista.add(
+					new Autor(
+
+						rs.getInt("id"),
+						rs.getString("olid"),
+						rs.getString("nome"),
+						rs.getString("biografia"),
+						rs.getString("foto")
+
+					)
+				);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return autoresLista;
+		
+	}
+	
 	public ArrayList<Autor> listarAutores(){
 
 		ArrayList<Autor> autoresLista = new ArrayList<>();
@@ -81,7 +104,6 @@ public class Autor {
 						rs.getInt("id"),
 						rs.getString("olid"),
 						rs.getString("nome"),
-						rs.getString("sobrenome"),
 						rs.getString("biografia"),
 						rs.getString("foto")
 
@@ -118,14 +140,6 @@ public class Autor {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
 	}
 
 	public String getBiografia() {

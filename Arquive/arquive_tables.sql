@@ -7,16 +7,15 @@ drop table if exists autor;
 create table autor(
 	id int not null auto_increment primary key,
     olid varchar(15),
-    nome varchar(90) not null,
-    sobrenome varchar(180),
+    nome varchar(120) not null,
     biografia text(300),
     foto varchar(90) default '/img/autores/sem-foto.png'
 );
 INSERT INTO autor (nome, sobrenome, biografia, foto, olid) VALUES
-('John', 'Doe', 'John Doe is a bestselling author known for his mystery novels.', '/img/authors/john-doe.jpg', 'OL12345678'),
-('Jane', 'Smith', 'Jane Smith is a renowned science fiction writer with a passion for technology.', '/img/authors/jane-smith.jpg', 'OL23456789'),
-('Alice', 'Johnson', 'Alice Johnson is a poet and essayist whose work explores themes of nature and self-discovery.', '/img/authors/alice-johnson.jpg', 'OL34567890'),
-('David', 'Brown', 'David Brown is a historian specializing in ancient civilizations and empires.', '/img/authors/david-brown.jpg', 'OL45678901');
+('John Doe', 'John Doe is a bestselling author known for his mystery novels.', '/img/authors/john-doe.jpg', 'OL12345678'),
+('Jane Smith', 'Jane Smith is a renowned science fiction writer with a passion for technology.', '/img/authors/jane-smith.jpg', 'OL23456789'),
+('Alice Johnson', 'Alice Johnson is a poet and essayist whose work explores themes of nature and self-discovery.', '/img/authors/alice-johnson.jpg', 'OL34567890'),
+('David Brown', 'David Brown is a historian specializing in ancient civilizations and empires.', '/img/authors/david-brown.jpg', 'OL45678901');
 select * from autor;
 -- delete from autor;
 
