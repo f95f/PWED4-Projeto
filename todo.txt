@@ -6,7 +6,7 @@
 	[   ] adicionar opção de editar 
 	[   ] adicionar opção de excluir
 	[   ] atualizar tabela automaticamente
-	[   ] adicionar função de pesquisar
+	[ x ] adicionar função de pesquisar
 	[ | ] paginação
 [   ] editoras
 	[   ] adicionar botão para novo item
@@ -18,11 +18,11 @@
 	[ | ] paginação
 [   ] autores
 	[ | ] adicionar botão para novo item
-	[   ] formatar pagina de listar
+	[ x ] formatar pagina de listar
 	[   ] adicionar opção de editar 
 	[   ] adicionar opção de excluir
 	[   ] atualizar tabela automaticamente
-	[   ] adicionar função de pesquisar
+	[ x ] adicionar função de pesquisar
 	[ | ] paginação
 [   ] livros
 	[ | ] adicionar botão para novo item
@@ -35,13 +35,12 @@
 [   ] usuarios
 	[   ] adicionar botão para novo item
 	[   ] criar pagina
-	[   ] formatar pagina de listar
 	[   ] adicionar opção de editar 
 		[   ] editar ativo/inativo
 		[   ] editar nível de acesso
 	[   ] adicionar opção de excluir
 	[   ] atualizar tabela automaticamente
-	[   ] adicionar função de pesquisar
+	[ x ] adicionar função de pesquisar
 	[ | ] paginação
 [   ] consertar tabela para caso não haja dados
 [   ] integrar login/logout com o sessionStorage

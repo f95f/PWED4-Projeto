@@ -17,7 +17,7 @@ public class SectionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private PrintWriter out;
-	private Section sections = new Section();
+	private Section section = new Section();
     public SectionController() {
         super();
     }
@@ -26,10 +26,34 @@ public class SectionController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		out = response.getWriter();
 
-		ArrayList<Section> listSections = sections.listSections();
+		ArrayList<Section> listSections = section.listSections();
 
 		String sectionsJSON = "[]";
-
+		String parameter = request.getParameter("action");
+		
+		if(parameter == null) {
+			
+			listSections = section.listSections();
+	
+		}
+		else if(parameter.equals("sectionName")) {
+			
+			String valor = request.getParameter("value");
+			listSections = section.buscarPor("nome", valor);
+			
+		}
+		else if(parameter.equals("sectionDescr")) {
+			
+			String valor = request.getParameter("value");
+			listSections = section.buscarPor("descr", valor);
+			
+		}
+		else if(parameter.equals("sectionId")) {
+			
+			String valor = request.getParameter("value");
+			listSections = section.buscarPor("id", valor);
+			
+		}
 		if(listSections.size() != 0){
 
 			sectionsJSON = "[";
@@ -53,12 +77,12 @@ public class SectionController extends HttpServlet {
 
 		out = response.getWriter();
 
-		sections.setNome(request.getParameter("txtNome"));
-		sections.setDescription(request.getParameter("txtDescr"));
+		section.setNome(request.getParameter("txtNome"));
+		section.setDescription(request.getParameter("txtDescr"));
 
-		sections.salvar();
+		section.salvar();
 
-		out.print("{\"id\": \"" + sections.getIdSection() + "\", \"nome\": \"" + sections.getNome() + "\", \"descr\": \"" + sections.getDescription() + "\"}");
+		out.print("{\"id\": \"" + section.getIdSection() + "\", \"nome\": \"" + section.getNome() + "\", \"descr\": \"" + section.getDescription() + "\"}");
 
 	}
 

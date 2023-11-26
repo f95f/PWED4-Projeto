@@ -6,43 +6,92 @@
 	
 	<%@ include file = "components/head.jsp" %>
 	
-	<title>ARQUIVE | Consultar Gêneros</title>
+	<title>ARQUIVE | Consultar Seções</title>
 	
 	<script>
 		
 		$(document).ready(function(){
+			
+			getAllSections();
+			
+			$("#txtSearchSections").keyup(function(){
+				doSearch();	
+			});
+			
+			$("#txtSearchType").on("change", function(){
+				doSearch()
+			});
+			
+		});
 		
-			getAllItems("sections", function(sectionsList){
+		let doSearch = function(){
+			
+			let queryValue = $("#txtSearchSections").val();
+			let queryKey = $("#txtSearchType").find('option').filter(':selected').val()
+			$("tbody").empty();
+			$("#sem-info-notice").empty();
+			
+			if(queryValue.trim() != ""){
+				getSomeSections(queryKey, queryValue);
+	
+			}
+			else{
+				getAllSections();
+			}	
+		}
+		
+		let getSomeSections = function(key, value){
+			
+			getSomeItems("sections", key, value, function(sectionsList){
 				
-				let sectionsTable = $("#sectionsTable");
+				let sectionsTableBody = $("tbody");
 				if(sectionsList.length > 0){
 					
-					for(let i = 0; i < sectionsList.length; i++){
-						
-						sectionsRow = 
-							"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + ">" +
-								"<td> <input class = 'select-checkbox' type = 'checkbox' name = 'autor-'" + sectionsList[i].id + "aria-describedby = 'selecionar-column'></td>" +
-								"<td>" + sectionsList[i].id + "</td>" +
-								"<td>" + sectionsList[i].nome + "</td>" +
-								"<td>" + sectionsList[i].descr + "</td>" +
-							"</tr>";
-							sectionsTable.append(sectionsRow);
-							
-					}					
+					render(sectionsList);
+									
 				}
 				else{
 					
-					sectionsTable.append(
-							+ "<span class = 'sem-info-notice'>" 
-								+ "Não há gêneros para mostrar aqui."
+					sectionsTableBody.append(
+							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
+								+ "Nenhuma seção encontrada."
 						    + "</span>");
-					
 				}
-				
 			});
-			
-		})
+		}
 		
+		let getAllSections = function(){
+			
+			let sectionsTableBody = $("tbody");
+			getAllItems("sections", function(sectionsList){
+				
+				if(sectionsList.length > 0){
+	
+					render(sectionsList);
+									
+				}
+				else{		
+					sectionsTableBody.append(
+							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
+								+ "Não há seções para mostrar aqui."
+						    + "</span>");
+				}
+			});
+		}
+		
+		let render = function(sectionsList){
+			let sectionsTable = $("#sectionsTable");
+			for(let i = 0; i < sectionsList.length; i++){
+				
+				sectionsRow = 
+					"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + ">" +
+						"<td>" + sectionsList[i].id + "</td>" +
+						"<td>" + sectionsList[i].nome + "</td>" +
+						"<td>" + sectionsList[i].descr + "</td>" +
+					"</tr>";
+				sectionsTable.append(sectionsRow);
+			}	
+		}
 	
 	</script>
 </head>
@@ -57,37 +106,67 @@
 			</div>
 		</div>
 		
-		<div class = "container">
-			<div class = "row mb-5">
-				<div class = "input-group mb-4">						
-								
-					<input class="btn btn-outline-secondary shadow-sm py-2 px-3 inline-select-button " id = "txtSearch">
-	
-					<div class="input-group-append">
-					
-						<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnPesquisar" type="button">Pesquisar</button>
+		<div class = "container mb-5 search-internal-container ">
+
+			<form id = "formSearchSections">
 				
-					</div>
-										
-				</div>
-			</div>
+				<label for="txtSearchSections">Pesquisar:</label>
+				<select name = "txtSearchType" id = "txtSearchType">
+					<option value = "sectionName">Por Nome</option>
+					<option value = "sectionDescr" selected>Por Descrição</option>
+					<option value = "sectionId">Por Código</option>
+				</select>
+				<input 
+					type = "text" 	
+					id = "txtSearchSections" 
+					name = "txtSearchSections"
+					placeholder = "pesquisar..."
+				>
+			</form>	
+			<input type = "submit" value = " + Nova Seção" class = "btn-novo shadow my-4 px-5" data-bs-toggle = "modal" data-bs-target="#addSectionFormModal">		
+			
 		</div>
 		
 		<div class = "container px-5" id = "sectionTableContainer">
 			<div class = "table-responsive">
 				<table id = "sectionsTable">
-				
-					<tr>
-						<th id = "selecionar-column">Selecionar</th>	<!-- TODO: Style this later -->
-						<th>Id</th>
-						<th>Nome</th>
-						<th class = "large-width-column">Descrição</th>
-					</tr>
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nome</th>
+							<th class = "large-width-column">Descrição</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+					</tbody>
 				</table>
 			
 			</div>
 		</div>
 	</main>
+	
+	<div id="addSectionFormModal" class="modal modal-lg fade" role="dialog">
+		<div class="modal-dialog">
+		    <div class="modal-content">
+			    <div class="modal-body mx-0 my-0 px-0 py-0">
+						
+					<%@ include file = "components/forms/form-cadastrar-section.jsp" %>
+
+			    </div>
+		    
+	    		<div class = "container-fluid footer-bg py-3 px-0 mx-0 my-0">
+					<div class = "d-flex justify-content-end">
+					
+				        <button type="button" class="btn text-white mx-5 btn-fechar-modal" data-bs-dismiss="modal">Cancelar</button>
+				
+					</div>		
+				</div>
+			    
+		    </div>
+		
+		</div>
+	</div>
 	<%@ include file = "components/footer-internal.jsp" %>
 	
 </body>

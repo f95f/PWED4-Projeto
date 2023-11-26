@@ -11,37 +11,87 @@
 	<script>
 		
 		$(document).ready(function(){
+	
+			getAllEditoras();
+			
+			$("#txtSearchEditoras").keyup(function(){
+				doSearch();	
+			});
+			
+			$("#txtSearchType").on("change", function(){
+				doSearch()
+			});
+			
+		});
 		
-			getAllItems("editoras", function(editorasList){
+		let doSearch = function(){
+			
+			let queryValue = $("#txtSearchEditoras").val();
+			let queryKey = $("#txtSearchType").find('option').filter(':selected').val()
+			$("tbody").empty();
+			$("#sem-info-notice").empty();
+			
+			if(queryValue.trim() != ""){
+				getSomeEditoras(queryKey, queryValue);
+
+			}
+			else{
+				getAllEditoras();
+			}	
+		}
+		
+		let getSomeEditoras = function(key, value){
+			
+			getSomeItems("editoras", key, value, function(editorasList){
 				
-				let editorasTable = $("#editorasTable");
+				let editorasTableBody = $("tbody");
 				if(editorasList.length > 0){
 					
-					for(let i = 0; i < editorasList.length; i++){
-						
-						editorasRow = 
-							"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + ">" +
-								"<td> <input class = 'select-checkbox' type = 'checkbox' name = 'autor-'" + editorasList[i].id + "aria-describedby = 'selecionar-column'></td>" +
-								"<td>" + editorasList[i].id + "</td>" +
-								"<td>" + editorasList[i].nome + "</td>" +
-								"<td>" + editorasList[i].descr + "</td>" +
-							"</tr>";
-						editorasTable.append(editorasRow);
-							
-					}					
+					render(editorasList);
+									
 				}
 				else{
 					
-					editorasTable.append(
-							+ "<span class = 'sem-info-notice'>" 
+					editorasTableBody.append(
+							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
+								+ "Nenhuma editora encontrada."
+						    + "</span>");
+				}
+			});
+		}
+		
+		let getAllEditoras = function(){
+			
+			let editorasTableBody = $("tbody");
+			getAllItems("editoras", function(editorasList){
+				
+				if(editorasList.length > 0){
+	
+					render(editorasList);
+									
+				}
+				else{		
+					editorasTableBody.append(
+							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
 								+ "Não há editoras para mostrar aqui."
 						    + "</span>");
-					
 				}
-				
 			});
-			
-		})
+		}
+		
+		let render = function(editorasList){
+			let editorasTable = $("#editorasTable");
+			for(let i = 0; i < editorasList.length; i++){
+				
+				editorasRow = 
+					"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + ">" +
+						"<td>" + editorasList[i].id + "</td>" +
+						"<td>" + editorasList[i].nome + "</td>" +
+						"<td>" + editorasList[i].descr + "</td>" +
+					"</tr>";
+				editorasTable.append(editorasRow);
+			}	
+		}
 		
 	</script>
 </head>
@@ -56,37 +106,68 @@
 			</div>
 		</div>
 				
-		<div class = "container">
-			<div class = "row mb-5">
-				<div class = "input-group mb-4">						
-								
-					<input class="btn btn-outline-secondary shadow-sm py-2 px-3 inline-select-button " id = "txtSearch">
-	
-					<div class="input-group-append">
-					
-						<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnPesquisar" type="button">Pesquisar</button>
+		<div class = "container mb-5 search-internal-container ">
+
+			<form id = "formSearchEditoras">
 				
-					</div>
-										
-				</div>
-			</div>
+				<label for="txtSearchEditoras">Pesquisar:</label><br>
+				<select name = "txtSearchType" id = "txtSearchType">
+					<option value = "editoraName">Por Nome</option>
+					<option value = "editoraDescr" selected>Por Descrição</option>
+					<option value = "editoraId">Por Código</option>
+				</select>
+				<input 
+					type = "text" 	
+					id = "txtSearchEditoras" 
+					name = "txtSearchEditoras"
+					placeholder = "pesquisar..."
+				>
+			</form>	
+			<input type = "submit" value = " + Nova Editora" class = "btn-novo shadow my-4 px-5" data-bs-toggle = "modal" data-bs-target="#addEditoraFormModal">		
 		</div>
 		
 		<div class = "container px-5" id = "editoraTableContainer">
 			<div class = "table-responsive">
 				<table id = "editorasTable">
 				
-					<tr>
-						<th id = "selecionar-column">Selecionar</th>	<!-- TODO: Style this later -->
-						<th>Id</th>
-						<th>Nome</th>
-						<th class = "large-width-column">Descrição</th>
-					</tr>
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nome</th>
+							<th class = "large-width-column">Descrição</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+					</tbody>
 				</table>
 			
 			</div>
 		</div>
 	</main>
+	
+	<div id="addEditoraFormModal" class="modal modal-lg fade" role="dialog">
+		<div class="modal-dialog">
+		    <div class="modal-content">
+			    <div class="modal-body mx-0 my-0 px-0 py-0">
+						
+					<%@ include file = "components/forms/form-cadastrar-editora.jsp" %>
+
+			    </div>
+		    
+	    		<div class = "container-fluid footer-bg py-3 px-0 mx-0 my-0">
+					<div class = "d-flex justify-content-end">
+					
+				        <button type="button" class="btn text-white mx-5 btn-fechar-modal" data-bs-dismiss="modal">Cancelar</button>
+				
+					</div>		
+				</div>
+			    
+		    </div>
+		
+		</div>
+	</div>
+		
 	<%@ include file = "components/footer-internal.jsp" %>
 	
 </body>

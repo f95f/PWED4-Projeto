@@ -124,6 +124,38 @@ public class Livro{
 		return livrosLista;
 
 	}
+	
+	public ArrayList<Livro> buscarPor(String campo, String valor) {
+		
+		ArrayList<Livro> livrosList = new ArrayList<>();
+		ResultSet rs = this.dbQuery.select("LOWER(" + campo + ") like LOWER('%" + valor + "%') ");
+
+		try {
+			while(rs.next()) {
+				livrosList.add(
+					new Livro(
+						rs.getInt("idLivro"),
+						rs.getString("isbn"),
+						rs.getString("titulo"),
+						rs.getString("subtitulo"),
+					 	rs.getInt("editora_id"),
+					 	rs.getInt("section_id"),
+						rs.getString("edition"),
+					 	rs.getInt("page_count"),
+					 	rs.getInt("estoque"),
+					 	rs.getInt("ano_pub"),
+						rs.getString("descr"),
+						rs.getString("img_url"),
+						rs.getBoolean("disponibilidade")
+					)
+				);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return livrosList;	
+	}
 
 	public int salvar() {
 

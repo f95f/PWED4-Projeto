@@ -15,10 +15,9 @@
 			getAllAuthors();
 			
 			$("#txtSearchAuthors").keyup(function(){
-			
-				doSearch();
-				
+				doSearch();	
 			});
+			
 			$("#txtSearchType").on("change", function(){
 				 doSearch()
 			});
@@ -57,11 +56,8 @@
 							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
 								+ "Nenhum autor encontrado."
 						    + "</span>");
-					
 				}
-					
 			});
-			
 		}
 		
 		let getAllAuthors = function(){
@@ -80,7 +76,6 @@
 							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
 								+ "Não há autores para mostrar aqui."
 						    + "</span>");
-					
 				}
 			});
 		}
@@ -97,10 +92,8 @@
 						"<td>" + autoresList[i].biografia + "</td>" +
 						"<td> Editar/Excluir </td>" +
 					"</tr>";
-					autorTable.append(autorRow);
-					
+				autorTable.append(autorRow);	
 			}	
-			
 		}
 	
 	</script>
@@ -133,6 +126,11 @@
 					placeholder = "pesquisar..."
 				>
 			</form>	
+			
+			<a class="btn-novo shadow my-4 px-5" type="button" href = "cadastrar-autor.jsp" target = "_blank">
+				+ Novo 
+				<ion-icon name="arrow-forward-outline" class = "icon-redirect"></ion-icon>
+			</a>	
 		
 		</div>
 		
@@ -140,13 +138,13 @@
 			<div class = "table-responsive">
 				<table id = "authorsTable">
 					<thead>
-					<tr>
-						<th>Id</th>
-						<th>OLID</th>
-						<th>Nome</th>
-						<th class = "large-width-column">Biografia</th>
-						<th>Operações</th>
-					</tr>
+						<tr>
+							<th>Id</th>
+							<th>OLID</th>
+							<th>Nome</th>
+							<th class = "large-width-column">Biografia</th>
+							<th>Operações</th>
+						</tr>
 					</thead>
 					<tbody>
 					

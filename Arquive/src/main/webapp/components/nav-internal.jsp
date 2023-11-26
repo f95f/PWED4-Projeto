@@ -62,7 +62,7 @@
 							    Usuários
 							</button>
 							<ul class="dropdown-menu">
-							    <li> <a class="dropdown-item" href = "cadastrar-usuarios.jsp">Novo</a> </li> 
+							    <li> <a class="dropdown-item" href = "cadastrar-usuario.jsp">Novo</a> </li> 
 								<li> <a class="dropdown-item" href = "listar-usuarios.jsp">Pesquisar</a> </li> 
 							</ul>
 						</div>

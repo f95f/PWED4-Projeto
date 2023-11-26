@@ -11,42 +11,88 @@
 	<script>
 		
 		$(document).ready(function(){
+			
+			getAllBooks();
+			
+			$("#txtSearchBooks").keyup(function(){
+				doSearch();	
+			});
+			
+			$("#txtSearchType").on("change", function(){
+				 doSearch()
+			});
+			
+		});
 		
-			getAllItems("livros", function(livrosList){
+		let doSearch = function(){
+			
+			let queryValue = $("#txtSearchBooks").val();
+			let queryKey = $("#txtSearchType").find('option').filter(':selected').val()
+			$("tbody").empty();
+			$("#sem-info-notice").empty();
+			
+			if(queryValue.trim() != ""){
+				getSomeBooks(queryKey, queryValue);
+
+			}
+			else{
+				getAllBooks();
+			}	
+		}
+		
+		let getSomeBooks = function(key, value){
+			
+			getSomeItems("livros", key, value, function(booksList){
 				
-				let bookTable = $("#booksTable");
-				if(bookTable.length > 0){
+				let bookTableBody = $("tbody");
+				if(booksList.length > 0){
 					
-					for(let i = 0; i < bookTable.length; i++){
-						
-						bookRow = 
-							"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + ">" +
-								"<td> <input class = 'select-checkbox' type = 'checkbox' name = 'autor-'" + bookTable[i].id + "aria-describedby = 'selecionar-column'></td>" +
-								"<td>" + bookTable[i].id + "</td>" +
-								"<td>" + bookTable[i].isbn + "</td>" +
-								"<td>" + bookTable[i].titulo + ' ' + bookTable[i].subtitulo + "</td>" +
-								"<td> Autor <td>"	//<td>" + bookTable[i].description + "</td>" +
-								"<td>" + bookTable[i].description + "</td>" +
-								"<td>" + bookTable[i].editora + "</td>" +
-								"<td>" + ((bookTable[i].disponibilidade)? ("Sim") : ("Não")) + "</td>" +
-							"</tr>"
-						bookTable.append(bookRow);
-					}					
+					render(booksList);
+									
 				}
 				else{
 					
+					bookTableBody.append(
+							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
+								+ "Nenhum livro encontrado."
+						    + "</span>");
+				}
+			});
+		}
+		
+		let getAllBooks = function(){
+			let bookTableBody = $("tbody");
+			getAllItems("livros", function(booksList){
+				
+				if(booksList.length > 0){
+					render(booksList);				
+				}
+				else{
 					bookTable.append(
 							+ "<span class = 'sem-info-notice'>" 
 								+ "Não há livros para mostrar aqui."
-						    + "</span>");
-					
+						    + "</span>"
+				    );
 				}
-				
 			});
-			
-		})
+		}
 		
-	
+		let render = function(livrosList){
+			let bookTable = $("#booksTable	");
+			for(let i = 0; i < livrosList.length; i++){
+				
+				bookRow = 
+					"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + ">" +
+						"<td>" + livrosList[i].id + "</td>" +
+						"<td>" + livrosList[i].isbn + "</td>" +
+						"<td>" + livrosList[i].titulo + ' - ' + livrosList[i].subtitulo + "</td>" +
+						"<td> Autor </td>" +
+						"<td>" + livrosList[i].description + "</td>" +
+						"<td>" + ((livrosList[i].disponibilidade)? ("Sim") : ("Não")) + "</td>" +
+					"</tr>"
+				bookTable.append(bookRow);
+			}		
+		}
 	</script>
 </head>
 <body>
@@ -60,38 +106,47 @@
 			</div>
 		</div>
 				
-		<div class = "container">
-			<div class = "row mb-5">
-				<div class = "input-group mb-4">						
-								
-					<input class="btn btn-outline-secondary shadow-sm py-2 px-3 inline-select-button " id = "txtSearch">
-	
-					<div class="input-group-append">
-					
-						<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnPesquisar" type="button">Pesquisar</button>
+		<div class = "container mb-5 search-internal-container ">
+
+			<form id = "formSearchBookss">
 				
-					</div>
-										
-				</div>
-			</div>
+				<label for="txtSearchBooks">Pesquisar:</label>
+				<select name = "txtSearchType" id = "txtSearchType">
+					<option value = "bookTitle" selected>Por Título</option>
+					<option value = "bookIsbn">Por ISBN</option>
+				</select>
+				<input 
+					type = "text" 	
+					id = "txtSearchBooks" 
+					name = "txtSearchBooks"
+					placeholder = "pesquisar..."
+				>
+			</form>	
+			
+			<a class="btn-novo shadow my-4 px-5" type="button" href = "cadastrar-livro.jsp" target = "_blank">
+				+ Novo 
+				<ion-icon name="arrow-forward-outline" class = "icon-redirect"></ion-icon>
+			</a>
+		
 		</div>
 		
 		<div class = "container px-5" id = "bookTableContainer">
 			<div class = "table-responsive">
 				<table id = "booksTable">
-				
-					<tr>
-						<th id = "selecionar-column">Selecionar</th>	<!-- TODO: Style this later -->
-						<th>Id</th>
-						<th class = "large-width-column">Código ISBN</th>
-						<th class = "large-width-column">Título</th>
-						<th>Autor</th>
-						<th class = "large-width-column">Sinopse</th>
-						<th>Editora</th>
-						<th>Disponível</th>
-					</tr>
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th class = "large-width-column">Código ISBN</th>
+							<th class = "large-width-column">Título</th>
+							<th>Autor</th>
+							<th class = "large-width-column">Sinopse</th>
+							<th>Disponível</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+					</tbody>
 				</table>
-			
 			</div>
 		</div>
 	</main>

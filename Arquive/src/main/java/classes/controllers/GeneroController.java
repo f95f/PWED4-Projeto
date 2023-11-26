@@ -44,6 +44,12 @@ public class GeneroController extends HttpServlet {
 			listGeneros = genero.buscarPor("nome", valor);
 			
 		}
+		else if(parameter.equals("genreDescr")) {
+			
+			String valor = request.getParameter("value");
+			listGeneros = genero.buscarPor("descr", valor);
+			
+		}
 		else if(parameter.equals("genreId")) {
 			
 			String valor = request.getParameter("value");

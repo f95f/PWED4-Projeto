@@ -28,7 +28,32 @@ public class EditoraController extends HttpServlet {
 		ArrayList<Editora> listEditoras = editora.listarEditoras();
 
 		String editorasJSON = "[]";
-
+		String parameter = request.getParameter("action");
+		
+		if(parameter == null) {
+			
+			listEditoras = editora.listarEditoras();
+	
+		}
+		else if(parameter.equals("editoraName")) {
+			
+			String valor = request.getParameter("value");
+			listEditoras = editora.buscarPor("nome", valor);
+			
+		}
+		else if(parameter.equals("editoraDescr")) {
+			
+			String valor = request.getParameter("value");
+			listEditoras = editora.buscarPor("descr", valor);
+			
+		}
+		else if(parameter.equals("editoraId")) {
+			
+			String valor = request.getParameter("value");
+			listEditoras = editora.buscarPor("id", valor);
+			
+		}
+		
 		if(listEditoras.size() != 0) {
 
 			editorasJSON = "[";

@@ -45,7 +45,7 @@
 
 </script>
 <div class = "container-fluid header-bg mb-5 shadow">
-	<div class = "container py-5 mt-5">
+	<div class = "container py-5">
 		<h1 class = "mt-3">Cadastrar Gêneros</h1>
 		<p>Use este formulário para adicionar um novo gênero ou uma nova categoria de livros.</p>
 	</div>

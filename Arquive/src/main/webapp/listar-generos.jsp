@@ -12,37 +12,86 @@
 		
 		$(document).ready(function(){
 		
-			getAllItems("generos", function(generosList){
+			getAllGenres();
+			
+			$("#txtSearchGenres").keyup(function(){
+				doSearch();	
+			});
+			
+			$("#txtSearchType").on("change", function(){
+				doSearch()
+			});
+			
+		});
+		
+		let doSearch = function(){
+			
+			let queryValue = $("#txtSearchGenres").val();
+			let queryKey = $("#txtSearchType").find('option').filter(':selected').val()
+			$("tbody").empty();
+			$("#sem-info-notice").empty();
+			
+			if(queryValue.trim() != ""){
+				getSomeGenres(queryKey, queryValue);
+
+			}
+			else{
+				getAllGenres();
+			}	
+		}
+		
+		let getSomeGenres = function(key, value){
+			
+			getSomeItems("generos", key, value, function(genresList){
 				
-				let genresTable = $("#genresTable");
-				if(generosList.length > 0){
+				let genreTableBody = $("tbody");
+				if(genresList.length > 0){
 					
-					for(let i = 0; i < generosList.length; i++){
-						
-						genresRow = 
-							"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + ">" +
-								"<td> <input class = 'select-checkbox' type = 'checkbox' name = 'autor-'" + generosList[i].id + "aria-describedby = 'selecionar-column'></td>" +
-								"<td>" + generosList[i].id + "</td>" +
-								"<td>" + generosList[i].nome + "</td>" +
-								"<td>" + generosList[i].descr + "</td>" +
-							"</tr>";
-							genresTable.append(genresRow);
-							
-					}					
+					render(genresList);
+									
 				}
 				else{
 					
-					genresTable.append(
-							+ "<span class = 'sem-info-notice'>" 
+					genreTableBody.append(
+							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
+								+ "Nenhum gênero encontrado."
+						    + "</span>");
+				}
+			});
+		}
+		
+		let getAllGenres = function(){
+			
+			let genreTableBody = $("tbody");
+			getAllItems("generos", function(genresList){
+				
+				if(genresList.length > 0){
+	
+					render(genresList);
+									
+				}
+				else{		
+					genreTableBody.append(
+							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
 								+ "Não há gêneros para mostrar aqui."
 						    + "</span>");
-					
 				}
-				
 			});
-			
-		})
+		}
 		
+		let render = function(genresList){
+			let genresTable = $("#genresTable");
+			for(let i = 0; i < genresList.length; i++){
+				
+				genreRow = 
+					"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + ">" +
+						"<td>" + genresList[i].id + "</td>" +
+						"<td>" + genresList[i].nome + "</td>" +
+						"<td>" + genresList[i].descr + "</td>" +
+					"</tr>";
+				genresTable.append(genreRow);	
+			}	
+		}
 	
 	</script>
 </head>
@@ -56,38 +105,67 @@
 				<h1 class = "mt-3">Consultar Gêneros</h1>
 			</div>
 		</div>
-					
-		<div class = "container">
-			<div class = "row mb-5">
-				<div class = "input-group mb-4">						
-								
-					<input class="btn btn-outline-secondary shadow-sm py-2 px-3 inline-select-button " id = "txtSearch">
-	
-					<div class="input-group-append">
-					
-						<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnPesquisar" type="button">Pesquisar</button>
+		
+		<div class = "container mb-5 search-internal-container ">
+
+			<form id = "formSearchGenres">
 				
-					</div>
-										
-				</div>
-			</div>
+				<label for="txtSearchGenres">Pesquisar:</label>
+				<select name = "txtSearchType" id = "txtSearchType">
+					<option value = "genreName">Por Nome</option>
+					<option value = "genreDescr" selected>Por Descrição</option>
+					<option value = "genreId">Por Código</option>
+				</select>
+				<input 
+					type = "text" 	
+					id = "txtSearchGenres" 
+					name = "txtSearchGenres"
+					placeholder = "pesquisar..."
+				>
+			</form>
+			<input type = "submit" value = " + Novo Gênero" class = "btn-novo shadow my-4 px-5" data-bs-toggle = "modal" data-bs-target="#addGeneroFormModal">		
+			
 		</div>
 		
 		<div class = "container px-5" id = "genreTableContainer">
 			<div class = "table-responsive">
 				<table id = "genresTable">
-				
-					<tr>
-						<th id = "selecionar-column">Selecionar</th>	<!-- TODO: Style this later -->
-						<th>Id</th>
-						<th>Nome</th>
-						<th class = "large-width-column">Descrição</th>
-					</tr>
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nome</th>
+							<th class = "large-width-column">Descrição</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+					</tbody>
 				</table>
-			
 			</div>
 		</div>
 	</main>
+	
+	<div id="addGeneroFormModal" class="modal modal-lg fade" role="dialog">
+		<div class="modal-dialog">
+		    <div class="modal-content">
+			    <div class="modal-body mx-0 my-0 px-0 py-0">
+						
+					<%@ include file = "components/forms/form-cadastrar-genero.jsp" %>
+
+			    </div>
+		    
+	    		<div class = "container-fluid footer-bg py-3 px-0 mx-0 my-0">
+					<div class = "d-flex justify-content-end">
+					
+				        <button type="button" class="btn text-white mx-5 btn-fechar-modal" data-bs-dismiss="modal">Cancelar</button>
+				
+					</div>		
+				</div>
+			    
+		    </div>
+		
+		</div>
+	</div>
 	<%@ include file = "components/footer-internal.jsp" %>
 	
 </body>

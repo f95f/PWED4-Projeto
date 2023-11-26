@@ -29,6 +29,25 @@ public class LivroController extends HttpServlet {
 		out = response.getWriter();
 		ArrayList<Livro> listLivros = livro.listarLivros();
 		String livrosJSON = "[]";
+		String parameter = request.getParameter("action");
+		
+		if(parameter == null) {
+			
+			listLivros = livro.listarLivros();
+	
+		}
+		else if(parameter.equals("bookTitle")) {
+			
+			String valor = request.getParameter("value");
+			listLivros = livro.buscarPor("titulo", valor);
+			
+		}
+		else if(parameter.equals("bookIsbn")) {
+			
+			String valor = request.getParameter("value");
+			listLivros = livro.buscarPor("isbn", valor);
+			
+		}
 		
 		if(listLivros.size() != 0) {
 			

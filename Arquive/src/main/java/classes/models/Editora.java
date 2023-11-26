@@ -63,6 +63,25 @@ public class Editora {
 		return editorasLista;
 
 	}
+	
+	public ArrayList<Editora> buscarPor(String campo, String valor) {
+		
+		ArrayList<Editora> editorasList = new ArrayList<>();
+		ResultSet rs = this.dbQuery.select("LOWER(" + campo + ") like LOWER('%" + valor + "%') ");
+
+		try {
+			while(rs.next()) {
+				editorasList.add(new Editora(
+					rs.getInt("id"),
+					rs.getString("nome"),
+					rs.getString("descr")
+				));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return editorasList;
+	}
 
 	public int getIdEditora() {
 		return idEditora;

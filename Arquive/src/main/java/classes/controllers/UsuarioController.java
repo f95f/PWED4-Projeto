@@ -43,16 +43,10 @@ public class UsuarioController extends HttpServlet {
 			listUsuarios = usuario.buscarPor("nome", valor);
 			
 		}
-		else if(parameter.equals("userEmail")) {
+		else if(parameter.equals("userLevel")) {
 			
 			String valor = request.getParameter("value");
-			listUsuarios = usuario.buscarPor("email", valor);
-			
-		}
-		else if(parameter.equals("userTelefone")) {
-			
-			String valor = request.getParameter("value");
-			listUsuarios = usuario.buscarPor("telefone", valor);
+			listUsuarios = usuario.buscarPor("nivel", valor);
 			
 		}
 		else if(parameter.equals("userId")) {
@@ -85,20 +79,19 @@ public class UsuarioController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		usuario.setNome(request.getParameter("txtNome"));
-		usuario.setEmail(request.getParameter("txtEmail"));
+		out = response.getWriter();
+		
+		usuario.setNome(request.getParameter("txtNome") + " " + request.getParameter("txtSobrenome"));
+		usuario.setEmail(request.getParameter("txtEmail")); 
+		usuario.setTelefone(request.getParameter("txtTelefone")); 
 		usuario.setSenha("senha");
 		
-		String nivelUsuario = request.getParameter("txtNivel");
+		String nivelUsuario = request.getParameter("txtAcesso");
 		usuario.setIdNivelUsuario(nivelUsuario);
-		if(nivelUsuario == "") { nivelUsuario = "Cliente"; }
-		
-		String acesso = request.getParameter("chkAcesso");
-		if(acesso == "") { acesso = "Ativo"; }
+		if(nivelUsuario == "") { nivelUsuario = "Visitante"; }
+		String acesso = (request.getParameter("chkStatus") != null)? "Ativo" : "Inativo";
 		usuario.setAcesso(acesso);
-		
-		usuario.setTelefone(request.getParameter("txtTelefone"));
-		
+
 		System.out.println("\n > " + usuario.getNome());
 		System.out.println("\n > " + usuario.getEmail());
 		System.out.println("\n > " + usuario.getTelefone());
@@ -111,17 +104,6 @@ public class UsuarioController extends HttpServlet {
 			out.print("{ \"erro\": \" Erro ao salvar usuário. \"}");
 			return;
 		}
-		
-		Usuario usuarioNovo = usuarioService.buscarNovo(usuario.getEmail());
-		
-		out.print(
-			"{\"id\": \"" + usuarioNovo.getIdUsuario() 
-			+ "\", \"nome\": \"" + usuarioNovo.getNome() 
-			+ "\", \"email\": \"" + usuarioNovo.getEmail() 
-			+ "\", \"telefone\": \"" + usuarioNovo.getTelefone()
-			+ "\", \"nivel\": \"" + usuarioNovo.getIdNivelUsuario()
-			+ "\", \"acesso\": \"" + usuarioNovo.getAcesso()
-		+ "}");
 		
 	}
 }

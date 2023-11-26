@@ -87,8 +87,7 @@ public class Autor {
 			e.printStackTrace();
 		}
 
-		return autoresLista;
-		
+		return autoresLista;	
 	}
 	
 	public ArrayList<Autor> listarAutores(){

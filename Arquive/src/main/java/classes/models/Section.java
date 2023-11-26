@@ -63,7 +63,27 @@ public class Section{
 
 		return sectionList;
 	}
+	
+	public ArrayList<Section> buscarPor(String campo, String valor) {
+		
+		ArrayList<Section> sectionsList = new ArrayList<>();
+		ResultSet rs = this.dbQuery.select("LOWER(" + campo + ") like LOWER('%" + valor + "%') ");
 
+		try {
+			while(rs.next()) {
+				sectionsList.add(new Section(
+					rs.getInt("id"),
+					rs.getString("nome"),
+					rs.getString("descr")
+				));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sectionsList;
+		
+	}
+	
 	public int getIdSection() {
 		return idSection;
 	}
