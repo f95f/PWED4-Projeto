@@ -92,12 +92,6 @@ public class UsuarioController extends HttpServlet {
 		String acesso = (request.getParameter("chkStatus") != null)? "Ativo" : "Inativo";
 		usuario.setAcesso(acesso);
 
-		System.out.println("\n > " + usuario.getNome());
-		System.out.println("\n > " + usuario.getEmail());
-		System.out.println("\n > " + usuario.getTelefone());
-		System.out.println("\n > " + usuario.getIdNivelUsuario());
-		System.out.println("\n > " + usuario.getAcesso());
-		
 		int status = usuario.save();
 		
 		if(status == 1) {

@@ -87,11 +87,22 @@
 						"<td>" + livrosList[i].isbn + "</td>" +
 						"<td>" + livrosList[i].titulo + ' - ' + livrosList[i].subtitulo + "</td>" +
 						"<td> Autor </td>" +
-						"<td>" + livrosList[i].description + "</td>" +
+						"<td>" + livrosList[i].idSection + "</td>" +
 						"<td>" + ((livrosList[i].disponibilidade)? ("Sim") : ("Não")) + "</td>" +
+						"<td>" + 
+							"<button class = 'table-action' value = 'ver' onClick = 'displayBookInfo(" + livrosList[i].id + ")' " +
+								" data-bs-toggle = 'modal' data-bs-target='#detailsModal'>ver</button>" +
+							"<button class = 'table-action' value = 'editar' onClick = 'displayBookInfo(" + livrosList[i].id + ")'>editar</button>" +
+							"<button class = 'table-action' value = 'excluir' onClick = 'displayBookInfo(" + livrosList[i].id + ")'>excluir</button>" +
+						"</td>"
 					"</tr>"
 				bookTable.append(bookRow);
 			}		
+		}
+		
+		let displayBookInfo = function(bookId){
+
+		
 		}
 	</script>
 </head>
@@ -139,17 +150,43 @@
 							<th class = "large-width-column">Código ISBN</th>
 							<th class = "large-width-column">Título</th>
 							<th>Autor</th>
-							<th class = "large-width-column">Sinopse</th>
+							<th class = "large-width-column">Seção</th>
 							<th>Disponível</th>
+							<th>Ações</th>
 						</tr>
 					</thead>
 					<tbody>
 					
 					</tbody>
 				</table>
+
 			</div>
 		</div>
+
 	</main>
+	
+	<div id="detailsModal" class="modal modal-lg fade" role="dialog">
+		<div class="modal-dialog">
+		    <div class="modal-content">
+			    <div class="modal-body mx-0 my-0 px-0 py-0">
+						
+					<%@ include file = "components/detalhes-livro.jsp" %>
+
+			    </div>
+		    
+	    		<div class = "container-fluid footer-bg py-3 px-0 mx-0 my-0">
+					<div class = "d-flex justify-content-end">
+					
+				        <button type="button" class="btn text-white mx-5 btn-fechar-modal" data-bs-dismiss="modal">Cancelar</button>
+				
+					</div>		
+				</div>
+			    
+		    </div>
+		
+		</div>
+	</div>
+	
 	<%@ include file = "components/footer-internal.jsp" %>
 	
 </body>

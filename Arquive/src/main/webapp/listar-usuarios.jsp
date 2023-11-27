@@ -84,7 +84,7 @@
 			for(let i = 0; i < usersList.length; i++){
 				
 				usersRow = 
-					"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + ">" +
+					"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + " onClick='alert(" + usersList[i].nome + ")'>" +
 						"<td>" + usersList[i].id + "</td>" +
 						"<td>" + usersList[i].nome + "</td>" +
 						"<td>" + usersList[i].email + "</td>" +
