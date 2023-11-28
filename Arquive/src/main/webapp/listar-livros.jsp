@@ -70,7 +70,7 @@
 				else{
 					bookTable.append(
 							+ "<span class = 'sem-info-notice'>" 
-								+ "Não há livros para mostrar aqui."
+								+ "NÃ£o hÃ¡ livros para mostrar aqui."
 						    + "</span>"
 				    );
 				}
@@ -88,7 +88,7 @@
 						"<td>" + livrosList[i].titulo + ' - ' + livrosList[i].subtitulo + "</td>" +
 						"<td> Autor </td>" +
 						"<td>" + livrosList[i].idSection + "</td>" +
-						"<td>" + ((livrosList[i].disponibilidade)? ("Sim") : ("Não")) + "</td>" +
+						"<td>" + ((livrosList[i].disponibilidade)? ("Sim") : ("NÃ£o")) + "</td>" +
 						"<td>" + 
 							"<button class = 'table-action' value = 'ver' onClick = 'displayBookInfo(" + livrosList[i].id + ")' " +
 								" data-bs-toggle = 'modal' data-bs-target='#detailsModal'>ver</button>" +
@@ -104,6 +104,28 @@
 
 		
 		}
+
+let deleteBook = function(bookId){
+
+	$.ajax({
+    url: `livros?id=${bookId}`,
+    type: 'DELETE',
+    cache: false,
+    dataType: 'json',
+    success: function(response) {
+        
+    },
+    error: function(xhr, status, error) {
+        q
+    }
+});
+
+
+
+}
+
+
+
 	</script>
 </head>
 <body>
@@ -123,7 +145,19 @@
 				
 				<label for="txtSearchBooks">Pesquisar:</label>
 				<select name = "txtSearchType" id = "txtSearchType">
-					<option value = "bookTitle" selected>Por Título</option>
+					<option value = "bookTitle" selected>Por TÃ­$.ajax({
+    url: `livros?id=${bookId}`,
+    type: 'DELETE',
+    cache: false,
+    dataType: 'json',
+    success: function(response) {
+        // Handle the success response here
+    },
+    error: function(xhr, status, error) {
+        // Handle any errors here
+    }
+});
+tulo</option>
 					<option value = "bookIsbn">Por ISBN</option>
 				</select>
 				<input 
@@ -147,12 +181,12 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th class = "large-width-column">Código ISBN</th>
-							<th class = "large-width-column">Título</th>
+							<th class = "large-width-column">CÃ³digo ISBN</th>
+							<th class = "large-width-column">TÃ­tulo</th>
 							<th>Autor</th>
-							<th class = "large-width-column">Seção</th>
-							<th>Disponível</th>
-							<th>Ações</th>
+							<th class = "large-width-column">SeÃ§Ã£o</th>
+							<th>DisponÃ­vel</th>
+							<th>AÃ§Ãµes</th>
 						</tr>
 					</thead>
 					<tbody>
