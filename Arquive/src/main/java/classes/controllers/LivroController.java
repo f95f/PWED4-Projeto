@@ -104,8 +104,11 @@ public class LivroController extends HttpServlet {
 
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+out = response.getWriter();
+		bookId = request.getParameter("bookId");
 
-
+		return this.livro.delete(bookId);
+		
 	}
 
 }
