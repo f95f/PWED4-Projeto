@@ -54,14 +54,14 @@
 					
 					let card = 
 						  "<div class = 'col-md mx-0 px-0'>"
-						+   "<div class='card p-4' style='width: 18rem;'>"
+						+   "<div class='card p-4' style='width: 18rem ;'>"
 						+ 	  "<img src=" + livro.imagemCapa + " class='card-img-top' alt='Capa: " + livro.titulo + "'>"
 						+ 	  "<div class='card-body p-0 mt-3'>"
 						+ 	 	"<h3 class='card-text'>" + livro.titulo + "</h3>"
 						+		"<p class='card-text'>" + livro.subtitulo + "</p>"
 						+		"<p class='card-text'>" + livro.anoPublication + "</p>"
-						+ 	  	"<button class = 'table-action' value = 'ver' onClick = 'displayBookInfo(" + livrosList[i].id + ")' " +
-									" data-bs-toggle = 'modal' data-bs-target='#detailsModal'>Ver Mais</button>" +
+						+ 	  	"<button class = 'details-button debug' onClick = 'displayBookInfo(" + livro.id + ")' " 
+						+			" data-bs-toggle = 'modal' data-bs-target='#detailsModal'>Ver Mais</button>" 
 						+		"</div>"
 						+   "</div>"
 						+ "</div>";

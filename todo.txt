@@ -1,0 +1,60 @@
+[ x ] decidir qual modelo de menu fica melhor
+[ | ] nome do usuário logado em algum lugar
+[   ] generos
+	[ x ] adicionar botão para novo item
+	[   ] formatar pagina de listar
+	[ x ] adicionar opção de editar 
+	[ x ] adicionar opção de excluir
+	[ x ] atualizar tabela automaticamente
+	[ x ] adicionar função de pesquisar
+	[ | ] paginação
+[   ] editoras
+	[ x ] adicionar botão para novo item
+	[   ] formatar pagina de listar
+	[ x ] adicionar opção de editar 
+	[ x ] adicionar opção de excluir
+	[ x ] atualizar tabela automaticamente
+	[ x ] adicionar função de pesquisar
+	[ | ] paginação
+[ x ] autores
+	[ x ] adicionar botão para novo item
+	[ x ] formatar pagina de listar
+	[ x ] adicionar opção de editar 
+	[ x ] adicionar opção de excluir
+	[ x ] atualizar tabela automaticamente
+	[ x ] adicionar função de pesquisar
+	[ | ] paginação
+[   ] livros
+	[ x ] adicionar botão para novo item
+	[   ] formatar pagina de listar
+	[ x ] adicionar opção de editar 
+	[ x ] adicionar opção de excluir
+	[ x ] atualizar tabela automaticamente
+	[ x ] adicionar função de pesquisar
+	[ | ] paginação
+[ x ] usuarios
+	[ x ] adicionar botão para novo item
+	[ x ] criar pagina
+	[ x ] adicionar opção de editar 
+		[ x ] editar ativo/inativo
+		[ x ] editar nível de acesso
+	[ x ] adicionar opção de excluir
+	[ x ] atualizar tabela automaticamente
+	[ x ] adicionar função de pesquisar
+	[ | ] paginação
+[ x ] consertar tabela para caso não haja dados
+[   ] integrar login/logout com o sessionStorage
+[   ] adicionar perfil pessoal
+[ | ] adicionar opção de alterar senha
+[ x ] adicionar modal com mais detalhes para autores
+[ x ] adicionar modal com mais detalhes para livros
+[ x ] adicionar modal com mais detalhes para usuários (perfil?)
+[ | ] adicionar autenticação em todas as páginas
+[ | ] adicionar página de sobre no site público
+[ | ] adicionar página de contato no site público
+[ | ] refatorar estilo
+[ | ] refatorar jquery
+[ | ] separar login de usuário do login de funcionário
+	(...)
+
+
