@@ -7,6 +7,14 @@
 	
 	<title>ARQUIVE | Cadastrar Gêneros</title>
 	
+	<script type="text/javascript">
+	
+		$(document).ready(function(){
+
+			grantAccess(["funcionario", "admin"])
+			
+		});
+	</script>
 </head>
 <body>
 	

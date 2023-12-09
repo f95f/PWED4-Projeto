@@ -10,7 +10,7 @@
 	<script>
 	
 		$(document).ready(function(){
-	
+			grantAccess(["admin"]);
 			$("#formUser").submit(function(event){ 
 				
 				event.preventDefault();

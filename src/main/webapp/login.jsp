@@ -75,16 +75,7 @@
 				<div class = "navbar-collapse justify-content-end">			
 					<ul class = "navbar-nav ml-auto">
 						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "index.jsp">Início</a>
-						</li>
-						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "#">Sobre</a>
-						</li>
-						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "#">Contato</a>
-						</li>
-						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "login.jsp">Login</a>
+							<a class = "nav-link" href = "index.jsp">INÍCIO</a>
 						</li>
 					</ul>
 				</div>

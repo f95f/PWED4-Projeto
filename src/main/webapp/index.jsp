@@ -117,16 +117,7 @@
 				<div class = "navbar-collapse justify-content-end">			
 					<ul class = "navbar-nav ml-auto">
 						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "index.jsp">Início</a>
-						</li>
-						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "#">Sobre</a>
-						</li>
-						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "#">Contato</a>
-						</li>
-						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "login.jsp">Login</a>
+							<a class = "nav-link" href = "login.jsp">ENTRAR</a>
 						</li>
 					</ul>
 				</div>
@@ -140,8 +131,8 @@
 		<div id = "banner">
 			<div class = "row mx-0 px-0 text-center banner-mask">
 			
-				<form action="#" method="" id = "search-form" class = "my-5">
-					<h1>Reserve um Livro:</h1>
+				<form id = "search-form" class = "my-5">
+					<h1>Procure um Livro:</h1>
 					<input type = "text" class = "form-control form-control-lg mt-4 w-50 p-3 mx-auto" placeholder = "Buscar...">
 				</form>
 				

@@ -36,6 +36,7 @@
 		    else("Não há livro.")
 		}
 		$(document).ready(function(){
+			grantAccess(["funcionario", "admin"])
 			fillData();
 			getAllItems("sections", function(sectionsList){
 				

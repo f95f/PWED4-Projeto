@@ -11,7 +11,7 @@
 	<script>
 	
 		$(document).ready(function(){
-	
+			grantAccess(["funcionario", "admin"]);
 			$("#formAutor").submit(function(event){ 
 				
 				event.preventDefault();

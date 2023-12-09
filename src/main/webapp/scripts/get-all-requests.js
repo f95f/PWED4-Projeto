@@ -34,3 +34,60 @@ let getSomeItems = function(url, key, value, callback){
 let goto = function(url){
 	window.location.replace(url);
 }
+
+let grantAccess = function(accessPermitted){
+	let sessionObject = sessionStorage.getItem("session");
+	let hasAccess = false;
+	
+	if(sessionObject){
+		session = JSON.parse(sessionObject);
+		
+		for(let i = 0; i < accessPermitted.length; i++){
+						
+			if (session.nivel === accessPermitted[i]) {
+                hasAccess = true;
+                break;
+            }
+		}
+		accessPermitted.forEach((nivel) => function(){
+			
+		});
+		if(!hasAccess){
+			setTimeout(notify(), 1000);
+			goto("main-menu.jsp");
+		}
+	}
+	else{ goto("login.jsp"); }
+	return false;
+}
+
+let notify = function(){
+	$("#cardStatus").html("<ion-icon name = 'close'></ion-icon>Você não tem acesso à essa função.");							
+				
+	let timerId = 0;
+	if(timerId){
+		clearInterval(timer);
+	}
+	
+	$("#cardStatus").fadeIn(1);
+	timerId = setTimeout(function(){
+	
+		$("#cardStatus").fadeOut(200);
+
+	}, 3000);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

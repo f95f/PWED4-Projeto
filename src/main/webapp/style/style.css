@@ -393,6 +393,15 @@ footer p{
 	bottom: 0;
 	width: 100%;
 }
+.card-status{
+	position: absolute;
+	bottom: 25px;
+	right: 25px;
+	padding: 15px 25px;
+	color: var(--LIGHT);
+	background-color: var(--ACCENT2);
+	z-index: 1000;
+}
 /* --- Search form --- */
 
 .search-field{

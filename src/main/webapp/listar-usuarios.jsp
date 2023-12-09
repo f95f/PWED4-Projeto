@@ -11,6 +11,7 @@
 	<script>
 		
 		$(document).ready(function(){
+			grantAccess(["admin"])
 			getAllUsers();
 			
 			$("#txtSearchUsers").keyup(function(){

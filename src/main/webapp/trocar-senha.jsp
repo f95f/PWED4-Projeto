@@ -11,6 +11,9 @@
 	<script type="text/javascript">
 	
 		$(document).ready(function(){
+
+			grantAccess(["funcionario", "admin"])
+
 			$("#formTrocarSenha").submit(function(event){
 				
 				event.preventDefault();

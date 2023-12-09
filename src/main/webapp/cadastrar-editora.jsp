@@ -6,7 +6,14 @@
 	<%@ include file = "components/head.jsp" %>
 	
 	<title>ARQUIVE | Cadastrar Editoras</title>
+	<script type="text/javascript">
+	
+		$(document).ready(function(){
 
+			grantAccess(["funcionario", "admin"])
+			
+		});
+	</script>
 </head>
 <body>
 	
