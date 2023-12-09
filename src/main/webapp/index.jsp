@@ -35,11 +35,11 @@
 							responseElement += buildLivroCard(livrosList[i]);
 							
 							if(!((i + 1) % 4)){
-								responseElement += "</div>";
-								livrosContainer.append(responseElement);
-								responseElement = "<div class = 'row'>";
+								responseElement += "</div><div class='row'>";
 							}
 						}
+						responseElement += "</div>";
+						livrosContainer.append(responseElement);
 					}
 					else{
 						responseElement = 

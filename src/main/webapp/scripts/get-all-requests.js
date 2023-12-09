@@ -30,3 +30,7 @@ let getSomeItems = function(url, key, value, callback){
 	}, "json");
 	
 }
+
+let goto = function(url){
+	window.location.replace(url);
+}

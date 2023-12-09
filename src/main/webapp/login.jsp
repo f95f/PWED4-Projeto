@@ -12,15 +12,45 @@
 	<script type="text/javascript">
 	
 		$(document).ready(function(){
+			sessionObject = sessionStorage.getItem('session');
+			if(sessionObject){
+				sessionObject = JSON.parse(sessionObject);
+				if(sessionObject.canLogin === "true"){
+					console.log(sessionObject.canLogin === "true")
+					goto("main-menu.jsp");
+				}
+			}
+			
 			$("#formLogin").submit(function(event){
 				
 				event.preventDefault();
 				let dataForm = $("#formLogin").serialize();
-				let url = "http://localhost:8080/Arquive/login";
+				let url = "login";
 				$.post(url, dataForm, function(data, status){
-					
-					console.log(data);
-					// TODO: Jogar este objeto no session storage caso "canLogin" seja true.
+					console.log(data)
+					if(data && data.canLogin === "true"){						
+					    let session = {
+					    	id: data.id,
+				    		nome: data.nome,
+							nivel: data.nivel
+					    }
+					    sessionStorage.setItem('session', JSON.stringify(session));
+					    goto("main-menu.jsp");
+					}
+					else{
+						$("#loginStatus").html("<ion-icon name = 'close'></ion-icon>Email ou senha incorretos.");	
+						let timerId = 0;
+						if(timerId){
+							clearInterval(timer);
+						}
+						
+						$("#loginStatus").fadeIn(1);
+						timerId = setTimeout(function(){
+						
+							$("#loginStatus").fadeOut(200);
+
+						}, 3000);
+					}	
 					
 				}, "JSON");
 				
@@ -83,9 +113,11 @@
 				</div>
 				
 				<div class = "row my-4">
-					<input type = "submit" id="btnLogin" class =" mx-2" value="Entrar">
+					<div class = "col-md mx-auto">	
+						<input type = "submit" id="btnLogin" class =" mx-2" value="Entrar">
+						<span class = "notify submit-status" id = "loginStatus"></span>									
+					</div>
 				</div>
-				
 				
 			</form>
 		</div>

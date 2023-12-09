@@ -33,7 +33,7 @@ public class Usuario {
 	}
 	public ResultSet buscarPorEmail(String email) {
 		
-		return this.dbQuery.select("emali = " + email);
+		return this.dbQuery.select("email = '" + email + "' ");
 		
 	}
 	

@@ -14,14 +14,14 @@ import classes.models.UserSession;
 import classes.models.Usuario;
 
 @WebServlet("/login")
-public class LoginController extends HttpServlet {
+public class AuthenticationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private Usuario usuario;
     private UserSession session;
     private UsuarioService usuarioService = new UsuarioService();
     private PrintWriter out;
     
-    public LoginController() { super(); }
+    public AuthenticationController() { super(); }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -50,7 +50,7 @@ public class LoginController extends HttpServlet {
 						   + "\"nome\": \"" + session.getNome() + "\","
 						   + "\"nivel\": \"" + session.getIdNivelUsuario() + "\","
 						   + "\"status\": \"" + session.getStatus() + "\","
-						   + "\"can-login\": \"" + session.isPodeEntrar() + "\""
+						   + "\"canLogin\": \"" + session.isPodeEntrar() + "\""
 					   + "}";
 		
 		out.print(loginResponse);	

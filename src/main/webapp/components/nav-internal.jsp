@@ -69,7 +69,9 @@
 					</li>
 
 					<li class = "nav-item mx-3"> 
-						<a class = "nav-link" href = "index.jsp">Sair</a>
+						<button type="button" class = "btn nav-button" onclick="logout()">
+						    Sair
+						</button>
 					</li>
 				</ul>
 			</div>
@@ -78,3 +80,11 @@
 	</div>
 
 </header>
+<script>
+	
+	let logout = function(){
+		sessionStorage.removeItem("session");
+		goto("index.jsp");
+	}
+
+</script>
