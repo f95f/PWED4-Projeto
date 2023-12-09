@@ -136,15 +136,15 @@
 			});
 		}
 		
-		let loadUserInfo = function(userId){
+		let loadAutorInfo = function(authorId){
 
-			$.get('autores?action=authorId&value=' + userId, function(data, status){
+			$.get('autores?action=authorId&value=' + authorId, function(data, status){
 			    if(!data){
 			    	return;
 			    }
 			    data = JSON.parse(data);
 			    let autor = {
-			    	id: userId,
+			    	id: authorId,
 		    		nome: data[0].nome,
 					olid: data[0].olid,
 					biografia: data[0].biografia,

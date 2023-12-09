@@ -89,7 +89,8 @@
 						"<td>" + editorasList[i].nome + "</td>" +
 						"<td>" + editorasList[i].descr + "</td>" +
 						"<td>" + 
-							"<button class = 'table-action' value = 'editar' onClick = 'loadEditoraInfo(" + editorasList[i].id + ")'>editar</button>" +
+							"<button class = 'table-action' value = 'editar' onClick = 'loadEditoraInfo(" + editorasList[i].id + ")'" +
+								" data-bs-toggle = 'modal' data-bs-target='#editModal'>Editar</button>" +
 							"<button class = 'table-action' value = 'excluir' onClick = 'deleteEditora(" + editorasList[i].id + ")'>excluir</button>" +
 						"</td>"+
 					"</tr>";
@@ -115,7 +116,7 @@
 		
 		let loadEditoraInfo = function(editoraId){
 
-			$.get('editoras?action=idEditora&value=' + editoraId, function(data, status){
+			$.get('editoras?action=editoraId&value=' + editoraId, function(data, status){
 			    if(!data){
 			    	return;
 			    }

@@ -1,25 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 	<script type="text/javascript">
-
+	
 		let fillData = function(){
-			
-			let section = JSON.parse(sessionStorage.getItem('editora'));
-			$("#txtNome").val( editora.nome );
-			$("#txtDescription").val( editora.description );
-			
-		}
+		    let storedSection = sessionStorage.getItem('editora');
+		    
+		    if (storedSection) {
+		        let object = JSON.parse(storedSection);
+		        $('#txtNome').val(object.nome);
+		        $("#txtDescription").val(object.description);
+		    } 
+	    }
 		
 		$(document).ready(function(){
 		
 			$("#formDescription").submit(function(event){ 
 				
 				event.preventDefault();
-				let section = JSON.parse(sessionStorage.getItem('editora')); // <-- que?
+				let editora = JSON.parse(sessionStorage.getItem('editora'));
 				
 				let dataForm = $("#formDescription").serialize();
-				let url = "editora?idEditora=" + editora.id + "&" + dataForm;
-				
+				let url = "editoras?idEditora=" + editora.id + "&" + dataForm;
+				 
 				$.ajax({
 				    url: url,
 				    type: 'PUT',
@@ -28,12 +30,12 @@
 				    success: function(response) {
 				    	if(response){
 							
-							$("#submitEditoraStatus").html("<ion-icon name = 'checkmark'></ion-icon>Dados atualizados com sucesso.");
+							$("#submitStatus").html("<ion-icon name = 'checkmark'></ion-icon>Dados atualizados com sucesso.");
 
 						}
 						else{
 							
-							$("#submitEditoraStatus").html("<ion-icon name = 'close'></ion-icon>Erro ao atualizar. Por favor, tente novamente.");							
+							$("#submitStatus").html("<ion-icon name = 'close'></ion-icon>Erro ao atualizar. Por favor, tente novamente.");							
 						}	
 												
 						let timerId = 0;
@@ -41,10 +43,10 @@
 							clearInterval(timer);
 						}
 						
-						$("#submitEditoraStatus").fadeIn(1);
+						$("#submitStatus").fadeIn(1);
 						timerId = setTimeout(function(){
 						
-							$("#submitEditoraStatus").fadeOut(200);
+							$("#submitStatus").fadeOut(200);
 
 						}, 3000);
 						
@@ -92,7 +94,7 @@
 					<div class = "row mb-5 ml-5 px-5">
 						<div class = "col-md mx-auto">	
 							<input type = "submit" id = "btnSalvarEditora" value = "Atualizar" class = "btn-gravar shadow my-4">
-							<span class = "notify submit-status" id = "submitEditoraStatus"></span>									
+							<span class = "notify submit-status" id = "submitStatus"></span>									
 						</div>
 					</div>
 				</form>

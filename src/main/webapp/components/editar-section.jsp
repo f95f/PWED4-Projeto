@@ -3,19 +3,22 @@
 	<script type="text/javascript">
 
 		let fillData = function(){
-			
-			let section = JSON.parse(sessionStorage.getItem('section'));
-			$("#txtNome").val( section.nome );
-			$("#txtDescription").val( section.description );
-			
-		}
+		    let storedSection = sessionStorage.getItem('section');
+		    
+		    if (storedSection) {
+		        let object = JSON.parse(storedSection);
+		        
+		        $('#txtNome').val(object.nome);
+		        $("#txtDescription").val(object.description);
+		    } 
+	    }
 		
 		$(document).ready(function(){
 		
 			$("#formDescription").submit(function(event){ 
 				
 				event.preventDefault();
-				let section = JSON.parse(sessionStorage.getItem('section')); // <-- que?
+				let section = JSON.parse(sessionStorage.getItem('section'));
 				
 				let dataForm = $("#formDescription").serialize();
 				let url = "sections?sectionId=" + section.id + "&" + dataForm;
@@ -28,12 +31,12 @@
 				    success: function(response) {
 				    	if(response){
 							
-							$("#submitSectionStatus").html("<ion-icon name = 'checkmark'></ion-icon>Dados atualizados com sucesso.");
+							$("#submitStatus").html("<ion-icon name = 'checkmark'></ion-icon>Dados atualizados com sucesso.");
 
 						}
 						else{
 							
-							$("#submitSectionStatus").html("<ion-icon name = 'close'></ion-icon>Erro ao atualizar. Por favor, tente novamente.");							
+							$("#submitStatus").html("<ion-icon name = 'close'></ion-icon>Erro ao atualizar. Por favor, tente novamente.");							
 						}	
 												
 						let timerId = 0;
@@ -41,10 +44,10 @@
 							clearInterval(timer);
 						}
 						
-						$("#submitSectionStatus").fadeIn(1);
+						$("#submitStatus").fadeIn(1);
 						timerId = setTimeout(function(){
 						
-							$("#submitSectionStatus").fadeOut(200);
+							$("#submitStatus").fadeOut(200);
 
 						}, 3000);
 						
@@ -92,7 +95,7 @@
 					<div class = "row mb-5 ml-5 px-5">
 						<div class = "col-md mx-auto">	
 							<input type = "submit" id = "btnSalvarSection" value = "Atualizar" class = "btn-gravar shadow my-4">
-							<span class = "notify submit-status" id = "submitSectionStatus"></span>									
+							<span class = "notify submit-status" id = "submitStatus"></span>									
 						</div>
 					</div>
 				</form>

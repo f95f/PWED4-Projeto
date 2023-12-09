@@ -179,9 +179,9 @@ public class Livro{
 					+ "ano_pub = '" +  this.getAnoPublication() + "', "
 					+ "page_count = '" +  this.getQuantidadePaginas() + "', "
 					+ "estoque = '" +  this.getQuantidadeEstoque() + "', "
-					+ "disponibilidade = '" +  this.getDisponibilidade() + "', "
+					+ "disponibilidade = '" +  this.getDisponibilidade() + "' "
 				+ "where"
-					+ " id = '" + this.getIdLivro() + "' "
+					+ " idLivro = '" + this.getIdLivro() + "' "
 				+ ";");
 	}
 	

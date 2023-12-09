@@ -73,7 +73,7 @@ public class Editora {
 				+ "update editora "
 				+ "set "
 					+ "nome = '" +  this.getNome() + "', "
-					+ "descr = '" +  this.getDescription() 
+					+ "descr = '" +  this.getDescription()  + "' "
 				+ "where"
 					+ " id = '" + this.getIdEditora() + "' "
 				+ ";");

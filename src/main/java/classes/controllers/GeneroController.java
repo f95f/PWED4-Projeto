@@ -96,9 +96,9 @@ public class GeneroController extends HttpServlet {
 		out = response.getWriter();
 		String generoId = request.getParameter("generoId");
 		int status = 0;
-		
 		ArrayList<Genero> generoEncontrado = genero.buscarPor("id", generoId);
 		if(generoEncontrado.size() != 0) {
+			System.out.println("a");
 			
 			generoEncontrado.get(0).setNome(request.getParameter("txtNome"));
 			generoEncontrado.get(0).setDescription(request.getParameter("txtDescription"));

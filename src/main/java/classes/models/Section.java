@@ -90,7 +90,7 @@ public class Section{
 				+ "update section "
 				+ "set "
 					+ "nome = '" +  this.getNome() + "', "
-					+ "descr = '" +  this.getDescription() 
+					+ "descr = '" +  this.getDescription() + "' "
 				+ "where"
 					+ " id = '" + this.getIdSection() + "' "
 				+ ";");

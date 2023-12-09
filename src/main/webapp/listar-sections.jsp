@@ -89,7 +89,8 @@
 						"<td>" + sectionsList[i].nome + "</td>" +
 						"<td>" + sectionsList[i].descr + "</td>" +
 						"<td>" + 
-							"<button class = 'table-action' value = 'editar' onClick = 'loadSectionInfo(" + sectionsList[i].id + ")'>editar</button>" +
+							"<button class = 'table-action' value = 'editar' onClick = 'loadSectionInfo(" + sectionsList[i].id + ")'"+
+								" data-bs-toggle = 'modal' data-bs-target='#editModal'>Editar</button>" +
 							"<button class = 'table-action' value = 'excluir' onClick = 'deleteSection(" + sectionsList[i].id + ")'>excluir</button>" +
 						"</td>"
 					"</tr>";
@@ -121,9 +122,9 @@
 			    }
 			    data = JSON.parse(data);
 			    let section = {
-			    	id: idSection,
+			    	id: sectionId,
 		    		nome: data[0].nome,
-		    		description: data[0].description
+		    		description: data[0].descr
 			    }
 			    sessionStorage.setItem('section', JSON.stringify(section));
 

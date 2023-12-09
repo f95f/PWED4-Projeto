@@ -17,22 +17,26 @@
 	<script type="text/javascript">
 	
 		let fillData = function(){
-			
-			let livro = JSON.parse(sessionStorage.getItem('livro'));
-			$("#txtIsbn").val( livro.isbn );
-			$("#txtTitulo").val( livro.titulo );
-			$("#txtSubtitulo").val( livro.subtitulo );
-			$("#txtDescription").val( livro.descr );
-			$("#txtImgUrl").val( livro.imgUrl );
-			$("#txtEdition").val( livro.edition );
-			$("#txtAnoPublication").val( livro.anoPublication );
-			$("#txtPageCount").val( livro.pageCount );
-			$("#txtEstoque").val( livro.estoque );
-			$("#txtDisponibilidade").val( livro.disponibilidade );
-			
+		    let storedSection = sessionStorage.getItem('livro');
+		    
+		    if (storedSection) {
+		        let livro = JSON.parse(storedSection);
+		        console.log(livro)
+				$("#txtIsbn").val( livro.isbn );
+				$("#txtTitulo").val( livro.titulo );
+				$("#txtSubtitulo").val( livro.subtitulo );
+				$("#txtDescription").val( livro.description );
+				$("#txtImgUrl").val( livro.imgUrl );
+				$("#txtEdition").val( livro.edition );
+				$("#txtAnoPublication").val( livro.anoPublication );
+				$("#txtPageCount").val( livro.pageCount );
+				$("#txtEstoque").val( livro.estoque );
+				$("#txtDisponibilidade").val( livro.disponibilidade );
+		    }
+		    else("Não há livro.")
 		}
 		$(document).ready(function(){
-			
+			fillData();
 			getAllItems("sections", function(sectionsList){
 				
 				let sectionOptionElement;
@@ -139,7 +143,7 @@
 				let livro = JSON.parse(sessionStorage.getItem('livro')); 
 				
 				let dataForm = $("#formDescription").serialize();
-				let url = "livro?livroId=" + livro.id + "&" + dataForm;
+				let url = "livros?livroId=" + livro.id + "&" + dataForm;
 				
 				$.ajax({
 				    url: url,

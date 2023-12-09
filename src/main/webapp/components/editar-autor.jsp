@@ -3,15 +3,17 @@
 	<script type="text/javascript">
 
 		let fillData = function(){
-			
-			let autor = JSON.parse(sessionStorage.getItem('autor'));
-			$("#txtNome").val( autor.nome );
-			$("#txtOlid").val( autor.olid );
-			$("#txtBiografia").val( autor.biografia);
-			$("#txtFoto").html( autor.imgUrl );	
-			
-		}
-		
+		    let storedSection = sessionStorage.getItem('genero');
+		    
+		    if (storedSection) {
+				let autor = JSON.parse(sessionStorage.getItem('autor'));
+				$("#txtNome").val( autor.nome );
+				$("#txtOlid").val( autor.olid );
+				$("#txtBiografia").val( autor.biografia);
+				$("#txtFoto").html( autor.imgUrl );	
+		    } 
+	    }
+
 		$(document).ready(function(){
 		
 			$("#formAutor").submit(function(event){ 
@@ -77,12 +79,12 @@
 		<div class = "row">
 			
 			<div class = "col-md mx-auto">
-				<form method = "put" id = "formUser">
+				<form method = "put" id = "formAutor">
 					   
 					<div class = "row my-4">	
 						<div class = "col-md-8 mx-auto">
-							<label for = "txtOlid" class = "form-label">Código OLID</label>
-							<input type = "text" name = "txtOlid" id = "txtOlid" placeholder = "Código OLID" class = "form-control shadow-sm mb-4 py-2">
+							<label for = "txtOlid" class = "form-label">CÃ³digo OLID</label>
+							<input type = "text" name = "txtOlid" id = "txtOlid" placeholder = "Cï¿½digo OLID" class = "form-control shadow-sm mb-4 py-2">
 					    </div>
 				    </div>
 

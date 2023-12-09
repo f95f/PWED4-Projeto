@@ -53,9 +53,9 @@
 				else{
 					
 					genreTableBody.append(
-							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
-								+ "Nenhum gênero encontrado."
-						    + "</span>");
+						+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
+							+ "Nenhum gênero encontrado."
+					    + "</span>");
 				}
 			});
 		}
@@ -72,9 +72,9 @@
 				}
 				else{		
 					genreTableBody.append(
-							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
-								+ "Não há gêneros para mostrar aqui."
-						    + "</span>");
+						+ "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
+							+ "Não há gêneros para mostrar aqui."
+					    + "</span>");
 				}
 			});
 		}
@@ -89,7 +89,8 @@
 						"<td>" + genresList[i].nome + "</td>" +
 						"<td>" + genresList[i].descr + "</td>" +
 						"<td>" + 
-							"<button class = 'table-action' value = 'editar' onClick = 'loadGeneroInfo(" + genresList[i].id + ")'>editar</button>" +
+							"<button class = 'table-action' value = 'editar' onClick = 'loadGeneroInfo(" + genresList[i].id + ")'" +
+								" data-bs-toggle = 'modal' data-bs-target='#editModal'>Editar</button>" +
 							"<button class = 'table-action' value = 'excluir' onClick = 'deleteGenero(" + genresList[i].id + ")'>excluir</button>" +
 						"</td>"
 					"</tr>";
@@ -113,9 +114,9 @@
 			});
 		}
 		
-		let loadEditoraInfo = function(generoId){
+		let loadGeneroInfo = function(generoId){
 
-			$.get('genero?action=idGenero&value=' + generoId, function(data, status){
+			$.get('generos?action=genreId&value=' + generoId, function(data, status){
 			    if(!data){
 			    	return;
 			    }
@@ -123,17 +124,16 @@
 			    let genero = {
 			    	id: generoId,
 		    		nome: data[0].nome,
-		    		description: data[0].description
+					descr: data[0].description
 			    }
-			    sessionStorage.setItem('genero', JSON.stringify(genero));
+			    sessionStorage.setItem('genre', JSON.stringify(genero));
 
 			    fillData();
 			});
 			
 		}
-		
 		$("#editModal").on("hidden.bs.modal", (function(){
-			sessionStorage.removeItem("genero");
+			sessionStorage.removeItem("genre");
 		}));
 	</script>
 </head>
@@ -209,7 +209,8 @@
 		
 		</div>
 	</div>
-		<div id="editModal" class="modal modal-lg fade" role="dialog">
+	
+	<div id="editModal" class="modal modal-lg fade" role="dialog">
 		<div class="modal-dialog">
 		    <div class="modal-content">
 			    <div class="modal-body mx-0 my-0 px-0 py-0">

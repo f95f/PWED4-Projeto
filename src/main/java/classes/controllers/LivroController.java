@@ -99,12 +99,11 @@ public class LivroController extends HttpServlet {
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		out = response.getWriter();
-		String bookId = request.getParameter("bookId");
+		String bookId = request.getParameter("livroId");
 		int status = 0;
 		
-		ArrayList<Livro> livroEncontrado = livro.buscarPor("id", bookId);
+		ArrayList<Livro> livroEncontrado = livro.buscarPor("idLivro", bookId);
 		if(livroEncontrado.size() != 0) {
-			
 			livroEncontrado.get(0).setIsbn(request.getParameter("txtIsbn"));
 			livroEncontrado.get(0).setTitulo(request.getParameter("txtTitulo"));
 			livroEncontrado.get(0).setSubtitulo(request.getParameter("txtSubtitulo"));

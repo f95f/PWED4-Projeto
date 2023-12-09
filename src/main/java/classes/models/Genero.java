@@ -48,11 +48,19 @@ public class Genero {
 		return this.dbQuery.execute("delete from genero where id =" +  this.getIdGenero() + ";");
 	}
 	public int update() {
+		System.out.println(""
+				+ "update genero "
+				+ "set "
+					+ "nome = '" +  this.getNome() + "', "
+					+ "descr = '" +  this.getDescription()  + "' "
+				+ "where"
+					+ " id = '" + this.getIdGenero() + "' "
+				+ ";");
 		return this.dbQuery.execute(""
 				+ "update genero "
 				+ "set "
 					+ "nome = '" +  this.getNome() + "', "
-					+ "descr = '" +  this.getDescription() 
+					+ "descr = '" +  this.getDescription()  + "' "
 				+ "where"
 					+ " id = '" + this.getIdGenero() + "' "
 				+ ";");

@@ -152,9 +152,10 @@
 			    data = JSON.parse(data);
 			    let livro = {
 			    	id: bookId,
+			    	isbn: data[0].isbn,
 		    		titulo: data[0].titulo,
 		    		subtitulo: data[0].subtitulo,
-		    		descr: data[0].descr,
+		    		description: data[0].description,
 		    		imgUrl: data[0].imgUrl,
 		    		edition: data[0].edition,
 		    		anoPublication: data[0].anoPublication,
@@ -164,8 +165,7 @@
 			    }
 			    sessionStorage.setItem('livro', JSON.stringify(livro));
 
-			    fillData();
-				window.navigate("editar-livro.jsp");
+			    window.open("editar-livro.jsp", "_blank");
 			});
 			
 		}
