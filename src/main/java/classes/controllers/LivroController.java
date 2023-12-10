@@ -55,6 +55,9 @@ public class LivroController extends HttpServlet {
 		else if(parameter.equals("bookGenre")) {
 			listLivros = service.findByGenre(valor);
 		}
+		else if(parameter.equals("sectionId")) {
+			listLivros = service.findBy("section_id", valor);
+		}
 		
 		if(listLivros.size() != 0) {
 			

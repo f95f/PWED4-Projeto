@@ -23,9 +23,8 @@ let getAllItems = function(url, callback) {
     });
 };
 let getSomeItems = function(url, key, value, callback){
-	
-	//parameter = formData + "action=" + key + "&value=" + value 
 	parameter = "action=" + key + "&value=" + value 
+	console.log(parameter);
 	$.get(url, parameter, function(data){	
 		
 		callback(data);

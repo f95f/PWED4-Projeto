@@ -197,7 +197,8 @@ h4{
 	letter-spacing: 1px;
 }
 #search-form input{
-	border-radius: 0;
+	border-radius: 50px;
+	padding-left: 20px;
 	background-color: var(--ACCENT1-TP);
 	font-family: var(--font-content);
 	letter-spacing: 1px;
@@ -209,6 +210,9 @@ h4{
 
 #search-form input:hover, #search-form input:focus{
 	background-color: var(--LIGHT);
+}
+.card{
+	margin-bottom: 50px;
 }
 .card,.card img{
 	background-color: #00000000;
@@ -225,6 +229,14 @@ h4{
 }
 .card h3{
 	font-size: 1.6em;
+}
+#card-button{
+	position: absolute;
+	right: 20px;
+	bottom: 38px;
+	border: none;
+	color: var(--ACCENT2);
+	background-color: #fff0;
 }
 .custom-icon{
 	margin: auto;
@@ -402,6 +414,9 @@ footer p{
 	background-color: var(--ACCENT2);
 	z-index: 1000;
 }
+.description{
+	color: #888;
+}
 
 /* --- Table pages --- */
 
@@ -499,8 +514,12 @@ tr.even-row{
 	width: 80%;
 	opacity: .6;
 	font-size: 2em;
+	font-family: var(--font-accent);
 	color: var(--DARK-TP);
 	padding-bottom: 120px;
+}
+.ribbon-icon{
+	width: 70px;
 }
 /* --- Páginas de login --- */
 
@@ -565,7 +584,5 @@ tr.even-row{
 .info-separator-small{
 	max-width: 330px;
 }
-
-
 
 
