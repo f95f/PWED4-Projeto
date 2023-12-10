@@ -10,7 +10,6 @@
 <head>
 
 	<%@ include file = "components/head.jsp" %>
-	<% //TODO: Substituir todos os includes do jsp pelo import do js %>
 	<script src="scripts/buscar-livro.js"></script>
 	
 	<title>ARQUIVE | Cadastrar Livro</title>
@@ -18,6 +17,8 @@
 		
 		$(document).ready(function(){
 			grantAccess(["funcionario", "admin"])
+			idGeneros = [];
+			idAutores = [];
 			
 			getAllItems("sections", function(sectionsList){
 				
@@ -114,32 +115,54 @@
 					autorElement = 
 						"<div class = 'text-center my-5 py-3 text-muted background-text' id = 'optionSemAutores'> Nenhum Autor cadastrado. </div> "
 						$("#autorOptionsContainer").append(autorElement);
-					
 				}
-				
 			});
 		
 			$("#formLivro").submit(function(event){
 				
 				event.preventDefault();
 				
+				if(idGeneros.length === 0 || idAutores.length === 0){
+					
+					$("#submitBookStatus").html("<ion-icon name = 'close'></ion-icon>Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
+					let timerId = 0;
+					if(timerId){
+						clearInterval(timer);
+					}
+					
+					$("#submitBookStatus").fadeIn(1);
+					timerId = setTimeout(function(){
+					
+						$("#submitBookStatus").fadeOut(200);
+
+					}, 3000);
+					return;
+				}
+				
 				let dataForm = $("#formLivro").serialize();
+				dataForm += "&autores=" + idAutores + "&generos=" + idGeneros;
+				console.log("> Autores: ", idAutores);console.log("> Generos: ", idGeneros);
 				let url = "livros";
-				alert(dataForm);
 						
 				$.post(url, dataForm, function(data, status){
 					
 					if(data){
-						/*
-						sessionStorage.setItem("novoLivro", JSON.stringify(data));	
-						$("#submitAutorStatus").html("<ion-icon name = 'checkmark'></ion-icon>Autor " + data.nome + " " + data.sobrenome + " adicionado.");
-						*/
+						$("#submitBookStatus").html("<ion-icon name = 'checkmark'></ion-icon> Livro adicionado.");
 					}
 					else{
-						//$("#submitAutorStatus").text("<ion-icon name = 'close'></ion-icon>Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
+						$("#submitBookStatus").text("<ion-icon name = 'close'></ion-icon>Erro ao salvar. Por favor, verifique os dados e tente novamente.");							
 					}	
-						
-					alert("a");
+					let timerId = 0;
+					if(timerId){
+						clearInterval(timer);
+					}
+					
+					$("#submitBookStatus").fadeIn(1);
+					timerId = setTimeout(function(){
+					
+						$("#submitBookStatus").fadeOut(200);
+
+					}, 3000);
 					
 				}, "json");
 				
@@ -200,11 +223,10 @@
 			
 			$("#selectGeneroModal").on("hidden.bs.modal", (function(){
 				
-				let objeto = sessionStorage.getItem("itensSelecionados");
-				let nomesSelecionados = sessionStorage.getItem("mostrarItensSelecionados");
+				idGeneros = sessionStorage.getItem("generosSelecionados");
+				let nomesSelecionados = sessionStorage.getItem("mostrarGenerosSelecionados");
 
-				if(objeto !== null){
-
+				if(idGeneros !== null){
 					$("#generosSelecionados").html("Selecionados: " + nomesSelecionados);
 					
 				}
@@ -212,19 +234,16 @@
 					$("#GenerosSelecionados").html("Nenhum selecionado");
 				}
 				
-				sessionStorage.removeItem("itensSelecionados");
-				sessionStorage.removeItem("mostrarItensSelecionados");
+				sessionStorage.removeItem("GenerosSelecionados");
+				sessionStorage.removeItem("mostrarGenerosSelecionados");
 				
 			}));
-			//  /\
-			//  ||===> Juntar estas duas funções 
-			//  \/
  			$("#selectAutorModal").on("hidden.bs.modal", (function(){
 				
-				let objeto = sessionStorage.getItem("itensSelecionados");
-				let nomesSelecionados = sessionStorage.getItem("mostrarItensSelecionados");
-
-				if(objeto !== null){
+				idAutores = sessionStorage.getItem("autoresSelecionados");
+				let nomesSelecionados = sessionStorage.getItem("mostrarAutoresSelecionados");
+				
+				if(idAutores !== null){
 
 					$("#autoresSelecionados").html("Selecionados: " + nomesSelecionados);
 					
@@ -233,8 +252,8 @@
 					$("#autoresSelecionados").html("Nenhum selecionado");
 				}
 				
-				sessionStorage.removeItem("itensSelecionados");
-				sessionStorage.removeItem("mostrarItensSelecionados");
+				sessionStorage.removeItem("autoresSelecionados");
+				sessionStorage.removeItem("mostrarAutoresSelecionados");
 				
 			}));
 			
@@ -459,10 +478,10 @@
 				
 				<div class = "row my-4">					
 					<div class = "col md-10 mx-auto">
-						<input type = "submit" id = "btn-salvar-livro" value = "Adicionar Livro" class = "btn-gravar shadow my-4 px-5">			
+						<input type = "submit" id = "btn-salvar-livro" value = "Adicionar Livro" class = "btn-gravar shadow my-4 px-5">	
+						<span class = "notify submit-status" id = "submitBookStatus"></span>				
 					</div>
 				</div>
-				
 			</form>
 		</div>
 		

@@ -100,21 +100,20 @@ public class Livro{
 
 		try {
 			while(rs.next()) {
-
 				livrosLista.add(new Livro(
-						rs.getInt("idLivro"),
-						rs.getString("isbn"),
-						rs.getString("titulo"),
-						rs.getString("subtitulo"),
-					 	rs.getInt("editora_id"),
-					 	rs.getInt("section_id"),
-						rs.getString("edition"),
-					 	rs.getInt("page_count"),
-					 	rs.getInt("estoque"),
-					 	rs.getInt("ano_pub"),
-						rs.getString("descr"),
-						rs.getString("img_url"),
-						rs.getBoolean("disponibilidade")
+					rs.getInt("idLivro"),
+					rs.getString("isbn"),
+					rs.getString("titulo"),
+					rs.getString("subtitulo"),
+				 	rs.getInt("editora_id"),
+				 	rs.getInt("section_id"),
+					rs.getString("edition"),
+				 	rs.getInt("page_count"),
+				 	rs.getInt("estoque"),
+				 	rs.getInt("ano_pub"),
+					rs.getString("descr"),
+					rs.getString("img_url"),
+					rs.getBoolean("disponibilidade")
 				));
 			}
 		} catch (SQLException e) {

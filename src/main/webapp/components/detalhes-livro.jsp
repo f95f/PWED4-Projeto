@@ -7,9 +7,11 @@
 			$("#isbn").html( livro.isbn );
 			$("#titulo").html( livro.titulo );
 			$("#subtitulo").html( livro.subtitulo );
-			$("#idEditora").html( livro.idEditora );
-			$("#idSection").html( livro.idSection );
+			$("#editora").html( livro.editora );
+			$("#section").html( livro.section );
 			$("#edition").html( livro.edition );
+			$("#autores").html( livro.autores);
+			$("#generos").html( livro.generos );
 			$("#quantidadePaginas").html( livro.quantidadePaginas );
 			$("#quantidadeEstoque").html( livro.quantidadeEstoque );
 			$("#anoPublication").html( livro.anoPublication );
@@ -91,7 +93,7 @@
 					<div class = "col-md mx-auto">
 						<p class = "info-container">						
 							<span class = "info-label">Editora:</span>
-							<span class = "info-value" id = "idEditora"></span>
+							<span class = "info-value" id = "editora"></span>
 						</p>
 					</div>
 	
@@ -109,7 +111,7 @@
 					<div class = "col-md mx-auto">
 						<p class = "info-container">						
 							<span class = "info-label">Seção:</span>
-							<span class = "info-value" id = "idSection"></span>
+							<span class = "info-value" id = "section"></span>
 						</p>
 					</div>
 	

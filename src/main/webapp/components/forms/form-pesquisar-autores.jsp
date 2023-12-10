@@ -75,11 +75,12 @@
 			}
 			else{
 					
-				sessionStorage.setItem("itensSelecionados", dataForm);
-				
+				let selectedAuthorsIds = [];
 				let displaySelectedAutores = "";
 	
 				$(':checkbox[name="selectedAutores[]"]:checked').each(function(){
+					
+					selectedAuthorsIds.push($(this).val());
 					
 					if(displaySelectedAutores !== ""){
 						displaySelectedAutores += ", ";
@@ -90,8 +91,8 @@
 				});
 					
 				displaySelectedAutores += ".";
-				sessionStorage.setItem("mostrarItensSelecionados", displaySelectedAutores);
-				
+				sessionStorage.setItem("autoresSelecionados", selectedAuthorsIds);
+				sessionStorage.setItem("mostrarAutoresSelecionados", displaySelectedAutores);
 
 				$("#selectAutorModal").modal('hide');
 			}

@@ -77,21 +77,23 @@
 			}
 			else{
 			
-				sessionStorage.setItem("itensSelecionados", dataForm);
-			
-				let displaySelected = "";
+				let selectedGenresIds = [];
+				let displaySelectedGeneros = "";
 
 				$(':checkbox[name="selectedGeneros[]"]:checked').each(function(){
-					if(displaySelected !== ""){
-						displaySelected += ", ";
+					
+					selectedGenresIds.push($(this).val());
+					if(displaySelectedGeneros !== ""){
+						displaySelectedGeneros += ", ";
 					}
 					
-					displaySelected += $('label[for="' + $(this).attr('id') + '"]').text();
+					displaySelectedGeneros += $('label[for="' + $(this).attr('id') + '"]').text();
 					
 				});
 
-				displaySelected += ".";
-				sessionStorage.setItem("mostrarItensSelecionados", displaySelected);
+				displaySelectedGeneros += ".";
+				sessionStorage.setItem("generosSelecionados", selectedGenresIds);
+				sessionStorage.setItem("mostrarGenerosSelecionados", displaySelectedGeneros);
 				$("#selectGeneroModal").modal('hide');
 				
 			}

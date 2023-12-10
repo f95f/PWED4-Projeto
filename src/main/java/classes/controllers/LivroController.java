@@ -10,13 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import classes.dtos.LivroDTO;
 import classes.models.Livro;
+import classes.services.LivroService;
 
 @WebServlet("/livros")
 public class LivroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
     private PrintWriter out;
-    private Livro livro = new Livro();
+    private Livro livro;
+    private LivroService service = new LivroService();
 
     public LivroController() {
         super();
@@ -25,29 +29,31 @@ public class LivroController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		out = response.getWriter();
-		ArrayList<Livro> listLivros = livro.listarLivros();
+		livro = new Livro();
+//		ArrayList<Livro> listLivros = livro.listarLivros();
+		ArrayList<LivroDTO> listLivros = service.list();
 		String livrosJSON = "[]";
 		String parameter = request.getParameter("action");
 		String valor = request.getParameter("value");
 		
-		if(parameter == null) {
-			
-			listLivros = livro.listarLivros();
-	
-		}
-		else if(parameter.equals("bookTitle")) {
-			
-			listLivros = livro.buscarPor("titulo", valor);
-			
-		}
-		else if(parameter.equals("bookIsbn")) {
-			
-			listLivros = livro.buscarPor("isbn", valor);
-			
-		}
-		else if(parameter.equals("id")) {
-			listLivros = livro.buscarPor("idLivro", valor);
-		}
+//		if(parameter == null) {
+//			
+//			listLivros = livro.listarLivros();
+//	
+//		}
+//		else if(parameter.equals("bookTitle")) {
+//			
+//			listLivros = livro.buscarPor("titulo", valor);
+//			
+//		}
+//		else if(parameter.equals("bookIsbn")) {
+//			
+//			listLivros = livro.buscarPor("isbn", valor);
+//			
+//		}
+//		else if(parameter.equals("id")) {
+//			listLivros = livro.buscarPor("idLivro", valor);
+//		}
 		
 		if(listLivros.size() != 0) {
 			
@@ -58,8 +64,10 @@ public class LivroController extends HttpServlet {
 							+	"\"isbn\": \"" + listLivros.get(i).getIsbn() + "\", "
 							+	"\"titulo\": \"" + listLivros.get(i).getTitulo() + "\", "
 							+	"\"subtitulo\": \"" + listLivros.get(i).getSubtitulo() + "\", "
-							+	"\"idEditora\": \"" + listLivros.get(i).getIdEditora() + "\", "
-							+	"\"idSection\": \"" + listLivros.get(i).getIdSection() + "\", "
+							+	"\"editora\": \"" + listLivros.get(i).getEditora() + "\", "
+							+	"\"section\": \"" + listLivros.get(i).getSection() + "\", "
+							+	"\"autores\": \"" + listLivros.get(i).getAutores() + "\", "
+							+	"\"generos\": \"" + listLivros.get(i).getGeneros() + "\", "
 							+	"\"edition\": \"" + listLivros.get(i).getEdition() + "\", "
 							+	"\"quantidadePaginas\": \"" + listLivros.get(i).getQuantidadePaginas() + "\", "
 							+	"\"quantidadeEstoque\": \"" + listLivros.get(i).getQuantidadeEstoque() + "\", "
@@ -78,7 +86,13 @@ public class LivroController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		out = response.getWriter();
-	
+		livro = new Livro();
+		String autoresList = request.getParameter("autores");
+		String generosList = request.getParameter("generos");
+
+		String[] autores = autoresList.split(",");
+		String[] generos = generosList.split(",");
+
 		livro.setIsbn(request.getParameter("txtIsbn"));
 		livro.setTitulo(request.getParameter("txtTitulo"));
 		livro.setSubtitulo(request.getParameter("txtSubtitulo"));
@@ -93,12 +107,20 @@ public class LivroController extends HttpServlet {
 		livro.setDisponibilidade(Boolean.parseBoolean(request.getParameter("chkDisponibilidade")));
 
 		livro.salvar();
+		Livro livroNovo = service.findBy("isbn", livro.getIsbn());
+		if(livroNovo != null) {
+			service.salvarAutores(livroNovo.getIdLivro(), autores);	
+			service.salvarGeneros(livroNovo.getIdLivro(), generos);
+		}
 	}
 
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		livro = new Livro();
 		out = response.getWriter();
+		String[] autores = request.getParameterValues("autores");
+		String[] generos = request.getParameterValues("generos");
 		String bookId = request.getParameter("livroId");
 		int status = 0;
 		
@@ -117,6 +139,8 @@ public class LivroController extends HttpServlet {
 			livroEncontrado.get(0).setQuantidadeEstoque(Integer.parseInt(request.getParameter("txtQuantidade")));
 			livroEncontrado.get(0).setDisponibilidade(Boolean.parseBoolean(request.getParameter("chkDisponibilidade")));
 			status = livroEncontrado.get(0).update();
+			service.updateAutores(Integer.parseInt(bookId), autores);	
+			service.updateGeneros(Integer.parseInt(bookId), generos);
 		}
 		out.print(status);
 	}
@@ -124,6 +148,7 @@ public class LivroController extends HttpServlet {
 
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		livro = new Livro();
 		out = response.getWriter();
 		String bookId = request.getParameter("bookId");
 		int status = 0;

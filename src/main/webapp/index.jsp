@@ -59,7 +59,8 @@
 						+ 	  "<div class='card-body p-0 mt-3'>"
 						+ 	 	"<h3 class='card-text'>" + livro.titulo + "</h3>"
 						+		"<p class='card-text'>" + livro.subtitulo + "</p>"
-						+		"<p class='card-text'>" + livro.anoPublication + "</p>"
+						+		"<p class='card-text'>" + livro.autores + "</p>"
+						+		"<p class='card-text'>" + livro.section + "</p>"
 						+ 	  	"<button class = 'details-button debug' onClick = 'displayBookInfo(" + livro.id + ")' " 
 						+			" data-bs-toggle = 'modal' data-bs-target='#detailsModal'>Ver Mais</button>" 
 						+		"</div>"
@@ -82,9 +83,11 @@
 			    		isbn: data[0].isbn,
 						titulo: data[0].titulo,
 						subtitulo: data[0].subtitulo,
-						idEditora: data[0].idEditora,
-						idSection: data[0].idSection,
+						editora: data[0].editora,
+						section: data[0].section,
 						edition: data[0].edition,
+						generos: data[0].generos,
+						autores: data[0].autores,
 						quantidadePaginas: data[0].quantidadePaginas,
 						quantidadeEstoque: data[0].quantidadeEstoque,
 						anoPublication: data[0].anoPublication,
