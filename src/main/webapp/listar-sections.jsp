@@ -41,10 +41,10 @@
 		}
 		
 		let getSomeSections = function(key, value){
+			$(".sem-info-notice").remove();
 			
 			getSomeItems("sections", key, value, function(sectionsList){
 				
-				let sectionsTableBody = $("tbody");
 				if(sectionsList.length > 0){
 					
 					render(sectionsList);
@@ -52,8 +52,8 @@
 				}
 				else{
 					
-					sectionsTableBody.append(
-							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
+					$("#no-data-notice").append(
+							 "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
 								+ "Nenhuma seção encontrada."
 						    + "</span>");
 				}
@@ -61,8 +61,8 @@
 		}
 		
 		let getAllSections = function(){
+			$(".sem-info-notice").remove();
 			
-			let sectionsTableBody = $("tbody");
 			getAllItems("sections", function(sectionsList){
 				
 				if(sectionsList.length > 0){
@@ -71,8 +71,8 @@
 									
 				}
 				else{		
-					sectionsTableBody.append(
-							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
+					$("#no-data-notice").append(
+							 "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
 								+ "Não há seções para mostrar aqui."
 						    + "</span>");
 				}
@@ -90,9 +90,13 @@
 						"<td>" + sectionsList[i].descr + "</td>" +
 						"<td>" + 
 							"<button class = 'table-action' value = 'editar' onClick = 'loadSectionInfo(" + sectionsList[i].id + ")'"+
-								" data-bs-toggle = 'modal' data-bs-target='#editModal'>Editar</button>" +
-							"<button class = 'table-action' value = 'excluir' onClick = 'deleteSection(" + sectionsList[i].id + ")'>excluir</button>" +
-						"</td>"
+								" data-bs-toggle = 'modal' data-bs-target='#editModal'>" +
+									"<ion-icon name='create-outline'></ion-icon>" +
+								"</button>" +
+							"<button class = 'table-action' value = 'excluir' onClick = 'deleteSection(" + sectionsList[i].id + ")'>" + 
+								"<ion-icon name='trash-bin-outline'></ion-icon>" +
+							"</button>" +
+						"</td>"+
 					"</tr>";
 				sectionsTable.append(sectionsRow);
 			}	
@@ -149,25 +153,30 @@
 			</div>
 		</div>
 		
-		<div class = "container mb-5 search-internal-container ">
+		<div class = "container px-5 search-internal-container ">
 
 			<form id = "formSearchSections">
 				
 				<label for="txtSearchSections">Pesquisar:</label>
-				<select name = "txtSearchType" id = "txtSearchType">
-					<option value = "sectionName">Por Nome</option>
-					<option value = "sectionDescr" selected>Por Descrição</option>
-					<option value = "sectionId">Por Código</option>
-				</select>
-				<input 
-					type = "text" 	
-					id = "txtSearchSections" 
-					name = "txtSearchSections"
-					placeholder = "pesquisar..."
-				>
+				<div class="input-group">
+					<div class="input-group-prepend">
+					   <select name = "txtSearchType" id = "txtSearchType" class="btn btn-outline-secondary search-select">	
+							<option value = "sectionName">Por Nome</option>
+							<option value = "sectionDescr" selected>Por Descrição</option>
+							<option value = "sectionId">Por Código</option>
+						</select>
+					</div>
+				    <input 
+						type = "text" 	
+						id = "txtSearchSections" 
+						name = "txtSearchSections"
+						placeholder = "pesquisar..."
+						class="form-control"
+					>
+				</div>
 			</form>	
-			<input type = "submit" value = " + Nova Editora" class = "btn-novo shadow my-4 px-5" data-bs-toggle = "modal" data-bs-target="#addSectionFormModal">		
-			
+			<a class = "btn-novo my-4 px-5" type="button" data-bs-toggle = "modal" data-bs-target="#addSectionFormModal">+ Nova Seção</a>	
+				
 		</div>
 		
 		<div class = "container px-5" id = "sectionTableContainer">
@@ -185,6 +194,7 @@
 					
 					</tbody>
 				</table>
+				<div id = "no-data-notice"></div>
 			
 			</div>
 		</div>

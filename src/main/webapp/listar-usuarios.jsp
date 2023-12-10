@@ -41,40 +41,43 @@
 		}
 		
 		let getSomeUsers = function(key, value){
+			$(".sem-info-notice").remove();
 			
 			getSomeItems("usuarios", key, value, function(usersList){
-				
-				let usersTableBody = $("tbody");
+
 				if(usersList.length > 0){
 					
 					render(usersList);
 									
 				}
 				else{
-					
-					usersTableBody.append(
-							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
+					$("#no-data-notice").append(
+							 "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
 								+ "Nenhum usuário encontrado."
-						    + "</span>");
+						    + "</span>"
+				    );
 				}
 			});
 		}
 		
 		let getAllUsers = function(){
-			
-			let usersTableBody = $("tbody");
+			$(".sem-info-notice").remove();
+
 			getAllItems("usuarios", function(usersList){
 				
 				if(usersList.length > 0){
 	
 					render(usersList);
+					$(footer).removeClass("fixed-footer");
 									
 				}
 				else{		
-					usersTableBody.append(
-							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
+					$("#no-data-notice").append(
+							 "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
 								+ "Não há usuários para mostrar aqui."
-						    + "</span>");
+						    + "</span>"
+				    );
+					$(footer).addClass("fixed-footer");
 				}
 			});
 		}
@@ -93,11 +96,17 @@
 						"<td>" + usersList[i].acesso + "</td>" +
 						"<td>" + 
 							"<button class = 'table-action' value = 'ver' onClick = 'displayUserInfo(" + usersList[i].id + ")' " +
-								" data-bs-toggle = 'modal' data-bs-target='#detailsModal'>ver</button>" +
+								" data-bs-toggle = 'modal' data-bs-target='#detailsModal'>" + 
+								"<ion-icon name='search-outline'></ion-icon>" +
+							"</button>" +
 							"<button class = 'table-action' value = 'editar' onClick = 'loadUserInfo(" + usersList[i].id + ")' " +
-								" data-bs-toggle = 'modal' data-bs-target='#editModal'>Editar</button>" +
-							"<button class = 'table-action' value = 'excluir' onClick = 'deleteUser(" + usersList[i].id + ")'>excluir</button>" +
-						"</td>"
+								" data-bs-toggle = 'modal' data-bs-target='#editModal'>" +
+								"<ion-icon name='create-outline'></ion-icon>" +
+							"</button>" +
+							"<button class = 'table-action' value = 'excluir' onClick = 'deleteUser(" + usersList[i].id + ")'>" + 
+								"<ion-icon name='trash-bin-outline'></ion-icon>" +
+							"</button>" +
+						"</td>" +
 					"</tr>";
 				usersTable.append(usersRow);
 			}	
@@ -111,7 +120,7 @@
 			    cache: false,
 			    dataType: 'json',
 			    success: function(response) {
-			        response == 1? alert("ok deletado") : alert("fodeo")
+			        response == 1? alert("ok deletado") : alert("")
 			    },
 			    error: function(xhr, status, error) {
 					alert(error)		        
@@ -178,26 +187,29 @@
 			</div>
 		</div>
 				
-		<div class = "container mb-5 search-internal-container ">
+		<div class = "container px-5 search-internal-container ">
 
 			<form id = "formSearchUsers">
-				
 				<label for="txtSearchUsers">Pesquisar:</label>
-				<select name = "txtSearchType" id = "txtSearchType">
-					<option value = "userName">Por Nome</option>
-					<option value = "userLevel">Por Nível</option>
-					<option value = "userId">Por Código</option>
-				</select>
-				<input 
-					type = "text" 	
-					id = "txtSearchUsers" 
-					name = "txtSearchUsers"
-					placeholder = "pesquisar..."
-				>
+				<div class="input-group">
+					<div class="input-group-prepend">
+					   <select name = "txtSearchType" id = "txtSearchType" class="btn btn-outline-secondary search-select">
+							<option value = "userName">Por Nome</option>
+							<option value = "userLevel">Por Nível</option>
+							<option value = "userId">Por Código</option>
+						</select>
+					</div>
+				    <input 
+						type = "text" 	
+						id = "txtSearchUsers" 
+						name = "txtSearchUsers"
+						placeholder = "pesquisar..."
+						class="form-control"
+					>
+				</div>
 			</form>	
-			<a class="btn-novo shadow my-4 px-5" type="button" href = "cadastrar-usuario.jsp" target = "_blank">
+			<a class="btn-novo my-4" type="button" href = "cadastrar-usuario.jsp">
 				+ Novo 
-				<ion-icon name="arrow-forward-outline" class = "icon-redirect"></ion-icon>
 			</a>			
 		</div>
 		
@@ -220,7 +232,7 @@
 					
 					</tbody>
 				</table>
-			
+				<div id = "no-data-notice"></div>
 			</div>
 		</div>
 	</main>

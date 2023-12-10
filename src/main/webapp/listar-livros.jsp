@@ -41,6 +41,7 @@
 		}
 		
 		let getSomeBooks = function(key, value){
+			$(".sem-info-notice").remove();
 			
 			getSomeItems("livros", key, value, function(booksList){
 				
@@ -52,8 +53,8 @@
 				}
 				else{
 					
-					bookTableBody.append(
-							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
+					$("#no-data-notice").append(
+							 "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
 								+ "Nenhum livro encontrado."
 						    + "</span>");
 				}
@@ -61,15 +62,16 @@
 		}
 		
 		let getAllBooks = function(){
-			let bookTableBody = $("tbody");
+			$(".sem-info-notice").remove();
+			
 			getAllItems("livros", function(booksList){
 				
 				if(booksList.length > 0){
 					render(booksList);				
 				}
 				else{
-					bookTable.append(
-							+ "<span class = 'sem-info-notice'>" 
+					$("#no-data-notice").append(
+							 "<span class = 'sem-info-notice'>" 
 								+ "NÃ£o hÃ¡ livros para mostrar aqui."
 						    + "</span>"
 				    );
@@ -78,23 +80,28 @@
 		}
 		
 		let render = function(livrosList){
-			let bookTable = $("#booksTable	");
+			let bookTable = $("#booksTable");
 			for(let i = 0; i < livrosList.length; i++){
-				
 				bookRow = 
 					"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + ">" +
 						"<td>" + livrosList[i].id + "</td>" +
 						"<td>" + livrosList[i].isbn + "</td>" +
 						"<td>" + livrosList[i].titulo + ' - ' + livrosList[i].subtitulo + "</td>" +
-						"<td> Autor </td>" +
-						"<td>" + livrosList[i].idSection + "</td>" +
+						"<td>" + livrosList[i].autores + "</td>" +
+						"<td>" + livrosList[i].section + "</td>" +
 						"<td>" + ((livrosList[i].disponibilidade)? ("Sim") : ("NÃ£o")) + "</td>" +
 						"<td>" + 
 							"<button class = 'table-action' value = 'ver' onClick = 'displayBookInfo(" + livrosList[i].id + ")' " +
-								" data-bs-toggle = 'modal' data-bs-target='#detailsModal'>ver</button>" +
-							"<button class = 'table-action' value = 'editar' onClick = 'loadBookInfo(" + livrosList[i].id + ")'>editar</button>" +
-							"<button class = 'table-action' value = 'excluir' onClick = 'deleteBook(" + livrosList[i].id + ")'>excluir</button>" +
-						"</td>"
+								" data-bs-toggle = 'modal' data-bs-target='#detailsModal'>" + 
+								"<ion-icon name='search-outline'></ion-icon>" +
+							"</button>" +
+							"<button class = 'table-action' value = 'editar' onClick = 'loadBookInfo(" + livrosList[i].id + ")'>" +
+								"<ion-icon name='create-outline'></ion-icon>" +
+							"</button>" +
+							"<button class = 'table-action' value = 'excluir' onClick = 'deleteBook(" + livrosList[i].id + ")'>" + 
+								"<ion-icon name='trash-bin-outline'></ion-icon>" +
+							"</button>" +
+						"</td>" +
 					"</tr>"
 				bookTable.append(bookRow);
 			}		
@@ -111,9 +118,11 @@
 		    		isbn: data[0].isbn,
 					titulo: data[0].titulo,
 					subtitulo: data[0].subtitulo,
-					idEditora: data[0].idEditora,
-					idSection: data[0].idSection,
+					editora: data[0].editora,
+					section: data[0].section,
 					edition: data[0].edition,
+					generos: data[0].generos,
+					autores: data[0].autores,
 					quantidadePaginas: data[0].quantidadePaginas,
 					quantidadeEstoque: data[0].quantidadeEstoque,
 					anoPublication: data[0].anoPublication,
@@ -187,26 +196,33 @@
 			</div>
 		</div>
 				
-		<div class = "container mb-5 search-internal-container ">
+		<div class = "container px-5 search-internal-container ">
 
 			<form id = "formSearchBookss">
 				
 				<label for="txtSearchBooks">Pesquisar:</label>
-				<select name = "txtSearchType" id = "txtSearchType">
-					<option value = "bookTitle" selected>Por Título</option>
-					<option value = "bookIsbn">Por ISBN</option>
-				</select>
-				<input 
-					type = "text" 	
-					id = "txtSearchBooks" 
-					name = "txtSearchBooks"
-					placeholder = "pesquisar..."
-				>
+				<div class="input-group">
+					<div class="input-group-prepend">
+					   <select name = "txtSearchType" id = "txtSearchType" class="btn btn-outline-secondary search-select">
+							<option value = "bookTitle" selected>Por TÃ­tulo</option>
+							<option value = "bookAuthor">Por Autor</option>
+							<option value = "bookGenre">Por GÃªnero</option>
+							<option value = "bookIsbn">Por ISBN</option>
+						</select>
+					</div>
+				    <input  
+						type = "text" 	
+						id = "txtSearchBooks" 
+						name = "txtSearchBooks"
+						placeholder = "pesquisar..."
+						class="form-control"
+					>
+				</div>
+				
 			</form>	
 			
-			<a class="btn-novo shadow my-4 px-5" type="button" href = "cadastrar-livro.jsp" target = "_blank">
+			<a class="btn-novo my-4 px-5" type="button" href = "cadastrar-livro.jsp" target = "_blank">
 				+ Novo 
-				<ion-icon name="arrow-forward-outline" class = "icon-redirect"></ion-icon>
 			</a>
 		
 		</div>
@@ -217,18 +233,19 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th class = "large-width-column">Código ISBN</th>
-							<th class = "large-width-column">Título</th>
+							<th class = "large-width-column">CÃ³digo ISBN</th>
+							<th class = "large-width-column">TÃ­tulo</th>
 							<th>Autor</th>
-							<th class = "large-width-column">Seção</th>
-							<th>Disponível</th>
-							<th>Ações</th>
+							<th class = "large-width-column">SeÃ§Ã£o</th>
+							<th>DisponÃ­vel?</th>
+							<th>AÃ§Ãµes</th>
 						</tr>
 					</thead>
 					<tbody>
 					
 					</tbody>
 				</table>
+				<div id = "no-data-notice"></div>
 
 			</div>
 		</div>

@@ -402,20 +402,31 @@ footer p{
 	background-color: var(--ACCENT2);
 	z-index: 1000;
 }
-/* --- Search form --- */
+
+/* --- Table pages --- */
 
 .search-field{
 	padding: 5px 15px;
 	outline: 1px solid var(--ACCENT2);	
 }
 
-/* --- Tables --- */
 .search-internal-container{
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
 }
-
+.search-internal-container form{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+}
+.search-internal-container form label{
+	line-height: 48px;
+}
+.search-internal-container{
+	border-radius: 0 4px 4px 0;	
+}
 table{
 	width: 100%;
 	border-bottom: 3px solid var(--ACCENT2);
@@ -444,7 +455,53 @@ tr.even-row{
 	background-color: #efefef88;
 	outline: 1px solid #fff;
 }
-
+.btn-novo{
+	display: inline-block;
+	font-family: var(--font-content);
+	background-color: var(--ACCENT2);
+	color: var(--LIGHT);
+	text-decoration: none;
+	border-radius: 4px;
+	font-size: 1.2em;
+	padding: 8px 36px 10px 38px;
+	transition: all .4s
+}
+.btn-novo:hover{
+	filter: brightness(1.2);
+}
+.search-select{
+	height: 48px;
+	border-radius: 4px 0 0 4px;	
+}
+.search-select:hover option{
+	color: var(--LIGHT);
+}
+.table-action{
+	border: none;
+	padding: 8px;	
+	background-color: #fff0;
+	transition: all .2s;
+}
+.table-action ion-icon{
+	color: var(--ACCENT2);
+	font-size: 1.4em;
+	display: block;
+	margin: 0;
+}
+.table-action:hover{
+	background-color: var(--ACCENT2);
+}
+.table-action:hover ion-icon{
+	color: var(--LIGHT);	
+}
+.sem-info-notice{
+	display: inline-block;
+	width: 80%;
+	opacity: .6;
+	font-size: 2em;
+	color: var(--DARK-TP);
+	padding-bottom: 120px;
+}
 /* --- Páginas de login --- */
 
 .login-background{
@@ -471,9 +528,15 @@ tr.even-row{
 
 /* Modais de detalhes */
 
-
-
-
+.info-label{
+	display: inline-block;
+	color: #444;
+	width: 160px;
+}
+.info-value{
+	margin-left: 20px;
+	color: #111;
+}
 
 
 

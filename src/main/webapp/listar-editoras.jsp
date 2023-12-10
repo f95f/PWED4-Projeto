@@ -41,10 +41,10 @@
 		}
 		
 		let getSomeEditoras = function(key, value){
+			$(".sem-info-notice").remove();
 			
 			getSomeItems("editoras", key, value, function(editorasList){
 				
-				let editorasTableBody = $("tbody");
 				if(editorasList.length > 0){
 					
 					render(editorasList);
@@ -52,8 +52,8 @@
 				}
 				else{
 					
-					editorasTableBody.append(
-							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
+					$("#no-data-notice").append(
+							 "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
 								+ "Nenhuma editora encontrada."
 						    + "</span>");
 				}
@@ -61,8 +61,8 @@
 		}
 		
 		let getAllEditoras = function(){
+			$(".sem-info-notice").remove();
 			
-			let editorasTableBody = $("tbody");
 			getAllItems("editoras", function(editorasList){
 				
 				if(editorasList.length > 0){
@@ -71,8 +71,8 @@
 									
 				}
 				else{		
-					editorasTableBody.append(
-							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
+					$("#no-data-notice").append(
+							 "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
 								+ "Não há editoras para mostrar aqui."
 						    + "</span>");
 				}
@@ -90,8 +90,12 @@
 						"<td>" + editorasList[i].descr + "</td>" +
 						"<td>" + 
 							"<button class = 'table-action' value = 'editar' onClick = 'loadEditoraInfo(" + editorasList[i].id + ")'" +
-								" data-bs-toggle = 'modal' data-bs-target='#editModal'>Editar</button>" +
-							"<button class = 'table-action' value = 'excluir' onClick = 'deleteEditora(" + editorasList[i].id + ")'>excluir</button>" +
+								" data-bs-toggle = 'modal' data-bs-target='#editModal'>" +
+									"<ion-icon name='create-outline'></ion-icon>" +
+								"</button>" +
+							"<button class = 'table-action' value = 'excluir' onClick = 'deleteEditora(" + editorasList[i].id + ")'>" + 
+								"<ion-icon name='trash-bin-outline'></ion-icon>" +
+							"</button>" +
 						"</td>"+
 					"</tr>";
 				editorasTable.append(editorasRow);
@@ -106,7 +110,7 @@
 			    cache: false,
 			    dataType: 'json',
 			    success: function(response) {
-			        response == 1? alert("ok deletado") : alert("fodeo")
+			        response == 1? alert("ok deletado") : alert("")
 			    },
 			    error: function(xhr, status, error) {
 					alert(error)		        
@@ -149,24 +153,29 @@
 			</div>
 		</div>
 				
-		<div class = "container mb-5 search-internal-container ">
+		<div class = "container px-5 search-internal-container ">
 
 			<form id = "formSearchEditoras">
 				
 				<label for="txtSearchEditoras">Pesquisar:</label><br>
-				<select name = "txtSearchType" id = "txtSearchType">
-					<option value = "editoraName">Por Nome</option>
-					<option value = "editoraDescr" selected>Por Descrição</option>
-					<option value = "editoraId">Por Código</option>
-				</select>
-				<input 
-					type = "text" 	
-					id = "txtSearchEditoras" 
-					name = "txtSearchEditoras"
-					placeholder = "pesquisar..."
-				>
+				<div class="input-group">
+					<div class="input-group-prepend">
+					   <select name = "txtSearchType" id = "txtSearchType" class="btn btn-outline-secondary search-select">
+							<option value = "editoraName">Por Nome</option>
+							<option value = "editoraDescr" selected>Por Descrição</option>
+							<option value = "editoraId">Por Código</option>
+						</select>
+					</div>
+				    <input 
+						type = "text" 	
+						id = "txtSearchEditoras" 
+						name = "txtSearchEditoras"
+						placeholder = "pesquisar..."
+						class="form-control"
+					>
+				</div>
 			</form>	
-			<input type = "submit" value = " + Nova Editora" class = "btn-novo shadow my-4 px-5" data-bs-toggle = "modal" data-bs-target="#addEditoraFormModal">		
+			<a class = "btn-novo my-4 px-5" type="button" data-bs-toggle = "modal" data-bs-target="#addEditoraFormModal"> + Nova Editora</a>	
 		</div>
 		
 		<div class = "container px-5" id = "editoraTableContainer">
@@ -185,6 +194,7 @@
 					
 					</tbody>
 				</table>
+				<div id = "no-data-notice"></div>
 			
 			</div>
 		</div>

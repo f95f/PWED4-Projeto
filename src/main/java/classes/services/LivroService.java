@@ -26,7 +26,6 @@ public class LivroService {
 			autorDAO.setLivroId(idLivro);
 			autorDAO.setAutorId(Integer.parseInt(id));
 			autorDAO.salvar();
-			System.out.println("\n > id livro - " + idLivro);
 		}
 		return 0;
 	}
@@ -53,11 +52,41 @@ public class LivroService {
 		return salvarGeneros(idLivro, idGeneros);
 	}
 	
-	public Livro findBy(String field, String valor) {
+	public Livro findFirst(String field, String valor) {
 		
 		ArrayList<Livro> encontrado =  livro.buscarPor(field, valor);
 		return encontrado.get(0);				
 		
+	}
+	
+	public ArrayList<LivroDTO> findBy(String field, String valor) {
+
+		ArrayList<Livro> livrosList = livro.buscarPor(field, valor);
+		ArrayList<LivroDTO> livros = new ArrayList<>();
+		
+		if(livrosList == null) { return null; }
+			
+			for(Livro item: livrosList) {
+				LivroDTO tempLivro = new LivroDTO();
+				tempLivro.setIdLivro(item.getIdLivro());
+				tempLivro.setTitulo(item.getTitulo());
+				tempLivro.setSubtitulo(item.getTitulo());
+				tempLivro.setDescription(item.getDescription());
+				tempLivro.setAnoPublication(item.getAnoPublication());
+				tempLivro.setDisponibilidade(item.getDisponibilidade());
+				tempLivro.setEdition(item.getEdition());
+				tempLivro.setEditora(editora.buscarPor("id", item.getIdEditora() + "").get(0).getNome());
+				tempLivro.setImagemCapa(item.getImagemCapa());
+				tempLivro.setIsbn(item.getIsbn());
+				tempLivro.setQuantidadeEstoque(item.getQuantidadeEstoque());
+				tempLivro.setQuantidadePaginas(item.getQuantidadePaginas());
+				tempLivro.setSection(section.buscarPor("id", item.getIdSection() + "").get(0).getNome());
+				tempLivro.setGeneros(getGenerosToString(item.getIdLivro()));
+				tempLivro.setAutores(getAutoresToString(item.getIdLivro()));
+				
+				livros.add(tempLivro);
+			}
+		return livros;				
 	}
 	
 	public ArrayList<LivroDTO> list(){
@@ -98,7 +127,6 @@ public class LivroService {
 		
 		for(int i = 0; i < generosIds.size(); i++) {
 			generosFormatado += genero.buscarPor("id", generosIds.get(i).getGeneroId() + "").get(0).getNome();
-			System.out.println("\n\n <> " + generosIds.get(i) + "\n\n");System.out.println("\n\n <> " + generosFormatado + "\n\n");
 			if(i < generosIds.size() -1) {
 				generosFormatado += ", ";
 			}
@@ -122,5 +150,50 @@ public class LivroService {
 		}
 		autoressFormatado += ".";
 		return autoressFormatado;
+	}
+	
+	public ArrayList<LivroDTO> findByAuthor(String authorName) {
+		
+		LivroAutorDAO autorDAO = new LivroAutorDAO();
+		ArrayList<LivroDTO> livros = new ArrayList<LivroDTO>();
+		ArrayList<LivroAutorDAO> autoresIds = new ArrayList<>();
+		ArrayList<Autor> autoresList = autor.buscarPor("nome", authorName);
+		
+		if(autoresList == null) { return null; }
+		
+		for(Autor item: autoresList) {
+			ArrayList<LivroAutorDAO> livrosAutoresList = autorDAO.findByAuthor(item.getIdAutor());
+			if(livrosAutoresList.size() != 0) {
+				autoresIds.add(livrosAutoresList.get(0));
+			}
+			
+		}
+		for(LivroAutorDAO item: autoresIds) {
+			livros.add(this.findBy("idLivro", item.getLivroId() + "").get(0));
+		}
+		
+		return livros;
+	}
+	public ArrayList<LivroDTO> findByGenre(String genreName) {
+		
+		LivroGeneroDAO genreDAO = new LivroGeneroDAO();
+		ArrayList<LivroDTO> livros = new ArrayList<LivroDTO>();
+		ArrayList<LivroGeneroDAO> generosIds = new ArrayList<>();
+		ArrayList<Genero> generosList = genero.buscarPor("nome", genreName);
+		
+		if(generosList == null) { return null; }
+		
+		for(Genero item: generosList) {
+			ArrayList<LivroGeneroDAO> livrosGenerosList = genreDAO.findByGenero(item.getIdGenero());
+			
+			if(livrosGenerosList.size() != 0) {
+				generosIds.add(livrosGenerosList.get(0));				
+			}
+		}
+		for(LivroGeneroDAO item: generosIds) {
+			livros.add(this.findBy("idLivro", item.getLivroId() + "").get(0));
+		}
+		
+		return livros;
 	}
 }

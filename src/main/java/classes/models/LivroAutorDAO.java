@@ -37,11 +37,26 @@ public class LivroAutorDAO {
 			}
 		} catch (SQLException e) {
 
-				e.printStackTrace();
+			e.printStackTrace();
 		}
 		return lista;
 	}
-	
+	public ArrayList<LivroAutorDAO> findByAuthor(int authorId){
+		ArrayList<LivroAutorDAO> lista = new ArrayList<>();
+		ResultSet rs = this.dbQuery.select("autor_id = '" + authorId + "'; ");
+		try {
+			while(rs.next()) {
+				lista.add(new LivroAutorDAO(
+					rs.getInt("livro_id"),
+					rs.getInt("autor_id")
+				));
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return lista;
+	}
 	public String[] toArray() {
 
 		String[] livroString = {

@@ -41,6 +41,22 @@ public class LivroGeneroDAO {
 		}
 		return lista;
 	}
+	public ArrayList<LivroGeneroDAO> findByGenero(int generoId){
+		ArrayList<LivroGeneroDAO> lista = new ArrayList<>();
+		ResultSet rs = this.dbQuery.select("genero_id = '" + generoId + "'; ");
+		try {
+			while(rs.next()) {
+				lista.add(new LivroGeneroDAO(
+					rs.getInt("livro_id"),
+					rs.getInt("genero_id")
+				));
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return lista;
+	}
 	
 	public String[] toArray() {
 

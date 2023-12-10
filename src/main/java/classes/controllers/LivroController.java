@@ -30,30 +30,31 @@ public class LivroController extends HttpServlet {
 		
 		out = response.getWriter();
 		livro = new Livro();
-//		ArrayList<Livro> listLivros = livro.listarLivros();
-		ArrayList<LivroDTO> listLivros = service.list();
+		ArrayList<LivroDTO> listLivros = new ArrayList<>();
 		String livrosJSON = "[]";
 		String parameter = request.getParameter("action");
 		String valor = request.getParameter("value");
 		
-//		if(parameter == null) {
-//			
-//			listLivros = livro.listarLivros();
-//	
-//		}
-//		else if(parameter.equals("bookTitle")) {
-//			
-//			listLivros = livro.buscarPor("titulo", valor);
-//			
-//		}
-//		else if(parameter.equals("bookIsbn")) {
-//			
-//			listLivros = livro.buscarPor("isbn", valor);
-//			
-//		}
-//		else if(parameter.equals("id")) {
-//			listLivros = livro.buscarPor("idLivro", valor);
-//		}
+		if(parameter == null) {
+			
+			listLivros = service.list();
+	
+		}
+		else if(parameter.equals("bookTitle")) {
+			listLivros = service.findBy("titulo", valor);
+		}
+		else if(parameter.equals("bookIsbn")) {
+			listLivros = service.findBy("isbn", valor);
+		}
+		else if(parameter.equals("id")) {
+			listLivros = service.findBy("idLivro", valor);
+		}
+		else if(parameter.equals("bookAuthor")) {		
+			listLivros = service.findByAuthor(valor);
+		}
+		else if(parameter.equals("bookGenre")) {
+			listLivros = service.findByGenre(valor);
+		}
 		
 		if(listLivros.size() != 0) {
 			
@@ -107,7 +108,7 @@ public class LivroController extends HttpServlet {
 		livro.setDisponibilidade(Boolean.parseBoolean(request.getParameter("chkDisponibilidade")));
 
 		livro.salvar();
-		Livro livroNovo = service.findBy("isbn", livro.getIsbn());
+		Livro livroNovo = service.findFirst("isbn", livro.getIsbn());
 		if(livroNovo != null) {
 			service.salvarAutores(livroNovo.getIdLivro(), autores);	
 			service.salvarGeneros(livroNovo.getIdLivro(), generos);

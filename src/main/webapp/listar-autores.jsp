@@ -41,10 +41,9 @@
 		}
 		
 		let getSomeAuthors = function(key, value){
+			$(".sem-info-notice").remove();
 			
 			getSomeItems("autores", key, value, function(autoresList){
-				
-				let autorTableBody = $("tbody");
 				if(autoresList.length > 0){
 					
 					render(autoresList);
@@ -52,8 +51,8 @@
 				}
 				else{
 					
-					autorTableBody.append(
-							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
+					$("#no-data-notice").append(
+							 "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
 								+ "Nenhum autor encontrado."
 						    + "</span>");
 				}
@@ -61,8 +60,8 @@
 		}
 		
 		let getAllAuthors = function(){
+			$(".sem-info-notice").remove(); 
 			
-			let autorTableBody = $("tbody");
 			getAllItems("autores", function(autoresList){
 				
 				if(autoresList.length > 0){
@@ -72,8 +71,8 @@
 				}
 				else{
 					
-					autorTableBody.append(
-							+ "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
+					$("#no-data-notice").append(
+							 "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
 								+ "Não há autores para mostrar aqui."
 						    + "</span>");
 				}
@@ -88,14 +87,20 @@
 					"<tr" + ((i % 2)? (" class = 'even-row' ") : ("")) + ">" +
 						"<td>" + autoresList[i].id + "</td>" +
 						"<td>" + autoresList[i].olid + "</td>" +
-						"<td>" + autoresList[i].nome + ' ' + autoresList[i].sobrenome + "</td>" +
+						"<td>" + autoresList[i].nome + "</td>" +
 						"<td>" + autoresList[i].biografia + "</td>" +
 						"<td>" + 
 							"<button class = 'table-action' value = 'ver' onClick = 'displayAutorInfo(" + autoresList[i].id + ")' " +
-								" data-bs-toggle = 'modal' data-bs-target='#detailsModal'>ver</button>" +
+								" data-bs-toggle = 'modal' data-bs-target='#detailsModal'>" + 
+								"<ion-icon name='search-outline'></ion-icon>" +
+							"</button>" +
 							"<button class = 'table-action' value = 'editar' onClick = 'loadAutorInfo(" + autoresList[i].id + ")' " +
-								" data-bs-toggle = 'modal' data-bs-target='#editModal'>Editar</button>" +
-							"<button class = 'table-action' value = 'excluir' onClick = 'deleteAutor(" + autoresList[i].id + ")'>excluir</button>" +
+								" data-bs-toggle = 'modal' data-bs-target='#editModal'>" +
+								"<ion-icon name='create-outline'></ion-icon>" +
+							"</button>" +
+							"<button class = 'table-action' value = 'excluir' onClick = 'deleteAutor(" + autoresList[i].id + ")'>" + 
+								"<ion-icon name='trash-bin-outline'></ion-icon>" +
+							"</button>" +
 						"</td>"
 					"</tr>";
 				autorTable.append(autorRow);	
@@ -177,27 +182,30 @@
 			</div>
 		</div>
 				
-		<div class = "container mb-5 search-internal-container ">
+		<div class = "container search-internal-container ">
 
 			<form id = "formSearchAuthors">
-				
 				<label for="txtSearchAuthors">Pesquisar:</label>
-				<select name = "txtSearchType" id = "txtSearchType">
-					<option value = "authorName" selected>Por Nome</option>
-					<option value = "authorOLID">Por OLID</option>
-					<option value = "authorId">Por ID</option>
-				</select>
-				<input 
-					type = "text" 	
-					id = "txtSearchAuthors" 
-					name = "txtSearchAuthors"
-					placeholder = "pesquisar..."
-				>
+				<div class="input-group">
+					<div class="input-group-prepend">
+					   <select name = "txtSearchType" id = "txtSearchType" class="btn btn-outline-secondary search-select">
+							<option value = "authorName" selected>Por Nome</option>
+							<option value = "authorOLID">Por OLID</option>
+							<option value = "authorId">Por ID</option>
+						</select>
+					</div>
+				    <input 
+						type = "text" 	
+						id = "txtSearchAuthors" 
+						name = "txtSearchAuthors"
+						placeholder = "pesquisar..."
+						class="form-control"
+					>
+				</div>
 			</form>	
 			
-			<a class="btn-novo shadow my-4 px-5" type="button" href = "cadastrar-autor.jsp" target = "_blank">
+			<a class="btn-novo my-4 px-5" type="button" href = "cadastrar-autor.jsp" target = "_blank">
 				+ Novo 
-				<ion-icon name="arrow-forward-outline" class = "icon-redirect"></ion-icon>
 			</a>	
 		
 		</div>
@@ -218,6 +226,7 @@
 					
 					</tbody>
 				</table>
+				<div id = "no-data-notice"></div>
 			</div>
 		</div>
 	</main>

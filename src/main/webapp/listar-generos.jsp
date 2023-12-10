@@ -41,10 +41,10 @@
 		}
 		
 		let getSomeGenres = function(key, value){
+			$(".sem-info-notice").remove();
 			
 			getSomeItems("generos", key, value, function(genresList){
 				
-				let genreTableBody = $("tbody");
 				if(genresList.length > 0){
 					
 					render(genresList);
@@ -52,8 +52,8 @@
 				}
 				else{
 					
-					genreTableBody.append(
-						+ "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
+					$("#no-data-notice").append(
+						 "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
 							+ "Nenhum gênero encontrado."
 					    + "</span>");
 				}
@@ -61,8 +61,8 @@
 		}
 		
 		let getAllGenres = function(){
+			$(".sem-info-notice").remove();
 			
-			let genreTableBody = $("tbody");
 			getAllItems("generos", function(genresList){
 				
 				if(genresList.length > 0){
@@ -71,8 +71,8 @@
 									
 				}
 				else{		
-					genreTableBody.append(
-						+ "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
+					$("#no-data-notice").append(
+						 "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
 							+ "Não há gêneros para mostrar aqui."
 					    + "</span>");
 				}
@@ -90,9 +90,13 @@
 						"<td>" + genresList[i].descr + "</td>" +
 						"<td>" + 
 							"<button class = 'table-action' value = 'editar' onClick = 'loadGeneroInfo(" + genresList[i].id + ")'" +
-								" data-bs-toggle = 'modal' data-bs-target='#editModal'>Editar</button>" +
-							"<button class = 'table-action' value = 'excluir' onClick = 'deleteGenero(" + genresList[i].id + ")'>excluir</button>" +
-						"</td>"
+								" data-bs-toggle = 'modal' data-bs-target='#editModal'>" +
+									"<ion-icon name='create-outline'></ion-icon>" +
+								"</button>" +
+							"<button class = 'table-action' value = 'excluir' onClick = 'deleteGenero(" + genresList[i].id + ")'>" + 
+								"<ion-icon name='trash-bin-outline'></ion-icon>" +
+							"</button>" +
+						"</td>" +
 					"</tr>";
 				genresTable.append(genreRow);	
 			}	
@@ -148,24 +152,29 @@
 			</div>
 		</div>
 		
-		<div class = "container mb-5 search-internal-container ">
+		<div class = "container px-5 search-internal-container ">
 
 			<form id = "formSearchGenres">
 				
 				<label for="txtSearchGenres">Pesquisar:</label>
-				<select name = "txtSearchType" id = "txtSearchType">
-					<option value = "genreName">Por Nome</option>
-					<option value = "genreDescr" selected>Por Descrição</option>
-					<option value = "genreId">Por Código</option>
-				</select>
-				<input 
-					type = "text" 	
-					id = "txtSearchGenres" 
-					name = "txtSearchGenres"
-					placeholder = "pesquisar..."
-				>
+				<div class="input-group">
+					<div class="input-group-prepend">
+					   <select name = "txtSearchType" id = "txtSearchType" class="btn btn-outline-secondary search-select">
+							<option value = "genreName">Por Nome</option>
+							<option value = "genreDescr" selected>Por Descrição</option>
+							<option value = "genreId">Por Código</option>
+						</select>
+					</div>
+				    <input  
+						type = "text" 	
+						id = "txtSearchGenres" 
+						name = "txtSearchGenres"
+						placeholder = "pesquisar..."
+						class="form-control"
+					>
+				</div>
 			</form>
-			<input type = "submit" value = " + Novo Gênero" class = "btn-novo shadow my-4 px-5" data-bs-toggle = "modal" data-bs-target="#addGeneroFormModal">		
+			<a class = "btn-novo my-4 px-5" type="button" class = "btn-novo shadow my-4 px-5" data-bs-toggle = "modal" data-bs-target="#addGeneroFormModal">+ Novo Gênero</a>	
 			
 		</div>
 		
@@ -184,6 +193,7 @@
 					
 					</tbody>
 				</table>
+				<div id = "no-data-notice"></div>
 			</div>
 		</div>
 	</main>
