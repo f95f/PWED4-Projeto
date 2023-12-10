@@ -16,7 +16,10 @@ let getAllItems = function(url, callback) {
         dataType: 'json',
         success: function(data) {
             callback(data);
-        }
+        },
+        error: function(data){
+			console.log(data)
+		}
     });
 };
 let getSomeItems = function(url, key, value, callback){

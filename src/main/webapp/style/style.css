@@ -527,7 +527,10 @@ tr.even-row{
 }
 
 /* Modais de detalhes */
-
+.label{
+	display: inline-block;
+	color: #444;
+}
 .info-label{
 	display: inline-block;
 	color: #444;
@@ -535,15 +538,33 @@ tr.even-row{
 }
 .info-value{
 	margin-left: 20px;
+	font-family: var(--font-content);
+	font-weight: 400;
 	color: #111;
 }
 
-
-
-
-
-
-
+#olid, #subtitulo{
+	font-weight: 100;
+	font-size: 1em;
+	color: #888;
+}
+#subtitulo{
+	margin-bottom: 20px;
+}
+#autores{
+	margin: 0;
+	font-weight: 400;
+	font-family: var(--font-content);
+}
+#biografia{
+	width: 80%;
+}
+.info-separator{
+	max-width: 630px;
+}
+.info-separator-small{
+	max-width: 330px;
+}
 
 
 

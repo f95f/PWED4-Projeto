@@ -25,7 +25,7 @@
 		});
 		
 		let doSearch = function(){
-			
+
 			let queryValue = $("#txtSearchBooks").val();
 			let queryKey = $("#txtSearchType").find('option').filter(':selected').val()
 			$("tbody").empty();
@@ -144,7 +144,7 @@
 			    cache: false,
 			    dataType: 'json',
 			    success: function(response) {
-			        response == 1? alert("ok deletado") : alert("fodeo")
+			        response == 1? alert("ok deletado") : alert("")
 			    },
 			    error: function(xhr, status, error) {
 					alert(error)		        
@@ -221,7 +221,7 @@
 				
 			</form>	
 			
-			<a class="btn-novo my-4 px-5" type="button" href = "cadastrar-livro.jsp" target = "_blank">
+			<a class="btn-novo my-4 px-5" type="button" href = "cadastrar-livro.jsp">
 				+ Novo 
 			</a>
 		
