@@ -187,7 +187,9 @@ public class Livro{
 	public int deletar() {
 		return this.dbQuery.delete(this.toArray());
 	}
-
+	public int deletar(String id) {
+		return this.dbQuery.execute("delete from livro where idLivro = '" + idLivro + "'; ");
+	}
 	public int getIdLivro() {
 		return idLivro;
 	}

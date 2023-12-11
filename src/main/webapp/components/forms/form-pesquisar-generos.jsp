@@ -8,23 +8,6 @@
 	<div class = "row header-bg py-3">
 		<h1 class = "mt-3 text-center">Selecionar Gêneros</h1>
 	</div>
-
-	<div class = "container px-5">
-		
-		<form method = "post" id = "formBuscarGenero">
-			
-			<div class = "row mt-5">
-					
-				<div class = "col-md-10 mx-auto">
-								
-					<label for = "txtPesquisar" class = "form-label my-2" >Pesquisar:</label>
-					<input type = "text" name = "txtPesquisar" id = "txtPesquisar" placeholder = "Nome do gênero ou categoria..." class = "form-control shadow-sm mb-4 py-3" disabled>
-					
-				</div>
-			</div>
-			
-		</form>
-	</div>
 	
 	<form method = "post" id = "formSelecionarGenero">
 		<div class = "container px-5">

@@ -9,22 +9,6 @@
 		<h1 class = "mt-3 text-center">Selecionar Autores</h1>
 	</div>
 
-	<div class = "container px-5">
-		
-		<form method = "post" id = "formBuscarAutor">
-			
-			<div class = "row mt-5">
-					
-				<div class = "col-md-10 mx-auto">
-								
-					<label for = "txtPesquisar" class = "form-label my-2" >Pesquisar:</label>
-					<input type = "text" name = "txtPesquisar" id = "txtPesquisar" placeholder = "Nome do autor..." class = "form-control shadow-sm mb-4 py-3" disabled>
-					
-				</div>
-			</div>
-		</form>
-	</div>
-	
 	<form method = "post" id = "formSelecionarAutor">
 		<div class = "container px-5">
 			<div class = "row mt-3 mb-5">

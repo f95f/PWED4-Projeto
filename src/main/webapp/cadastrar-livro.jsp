@@ -20,6 +20,11 @@
 			idGeneros = [];
 			idAutores = [];
 			
+			$("#txtImgurl").blur(function(){
+				let url = $("#txtImgurl").val();
+				$("#capa-container").attr("src",url);
+			});
+			
 			getAllItems("sections", function(sectionsList){
 				
 				let sectionOptionElement;
@@ -141,7 +146,6 @@
 				
 				let dataForm = $("#formLivro").serialize();
 				dataForm += "&autores=" + idAutores + "&generos=" + idGeneros;
-				console.log("> Autores: ", idAutores);console.log("> Generos: ", idGeneros);
 				let url = "livros";
 						
 				$.post(url, dataForm, function(data, status){
@@ -165,7 +169,6 @@
 					}, 3000);
 					
 				}, "json");
-				
 			});
 			
 			$("#addEditoraFormModal").on("hidden.bs.modal", (function(){
@@ -176,7 +179,7 @@
 					
 					$("#optionSemEditora").remove();
 
-					let option = "<option selected value = " + objeto.id + "> " + objeto.nome + " </option>";
+					let option = "<option value = " + objeto.id + "> " + objeto.nome + " </option>";
 					$("#txtEditora").append(option);
 					
 				}
@@ -186,12 +189,12 @@
 			$("#addSectionFormModal").on("hidden.bs.modal", (function(){
 				
 				let objeto = JSON.parse(sessionStorage.getItem("newSection"));
-				
+				console.log(objeto)
 				if(objeto !== null){
 					
 					$("#optionSemSection").remove();
 
-					let option = "<option selected value = " + objeto.id + "> " + objeto.nome + " </option>";
+					let option = "<option value = " + objeto.id + "> " + objeto.nome + " </option>";
 					$("#txtSection").append(option);
 					
 				}
@@ -330,7 +333,7 @@
 		
 									<div class="input-group-append">
 									
-										<a class="btn btn-outline-secondary shadow-sm py-2 px-3 inline-add-button" id = "btnAdicionarAutor" type="button" href = "cadastrar-autor.jsp" target = "_blank">
+										<a class="btn btn-outline-secondary shadow-sm py-2 px-3 inline-add-button" id = "btnAdicionarAutor" type="button" href = "cadastrar-autor.jsp">
 											Novo 
 											<ion-icon name="arrow-forward-outline" class = "icon-redirect"></ion-icon>
 										</a>
@@ -362,14 +365,14 @@
 						</div>
 						
 						<label for = "txtDescription" class = "form-label">Descrição</label>
-						<textarea rows = "4" name = "txtDescription" id = "txtDescription" placeholder = "Informe uma breve sinopse para o livro..." class = "form-control shadow-sm mb-4 py-2" maxlength = 300></textarea>
+						<textarea rows = "4" name = "txtDescription" id = "txtDescription" placeholder = "Informe uma breve sinopse para o livro..." class = "form-control shadow-sm mb-4 py-2"></textarea>
 
 					</div>
 					
 					<div class = "col-md-3">
 					
 						<label for = "txtImgurl" class = "form-label">Capa:</label>
-						<input type = "text" name = "txtImgurl" id = "txtImgurl" class = "form-control shadow-sm mb-4 py-2" placeholder = "Url da imagem.">
+						<input type = "text" name = "txtImgurl" id = "txtImgurl" class = "form-control shadow-sm mb-4 py-2" placeholder = "Url da imagem." value = "img/vendor/sem-capa.png">
 					
 						<img alt="sem capa" src="img/vendor/sem-capa.png" class = "form-control" id = "capa-container">
 						

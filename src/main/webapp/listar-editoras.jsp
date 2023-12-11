@@ -110,7 +110,7 @@
 			    cache: false,
 			    dataType: 'json',
 			    success: function(response) {
-			        response == 1? alert("ok deletado") : alert("")
+			    	location.reload()
 			    },
 			    error: function(xhr, status, error) {
 					alert(error)		        

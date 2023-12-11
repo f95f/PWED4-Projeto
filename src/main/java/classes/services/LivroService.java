@@ -43,12 +43,12 @@ public class LivroService {
 	
 	public int updateAutores(int idLivro, String[] idAutores) {
 		LivroAutorDAO autorDAO = new LivroAutorDAO();
-		autorDAO.clear(idLivro);
+		autorDAO.clear(idLivro + "");
 		return salvarAutores(idLivro, idAutores);
 	}
 	public int updateGeneros(int idLivro, String[] idGeneros) {
 		LivroGeneroDAO generoDAO = new LivroGeneroDAO();
-		generoDAO.clear(idLivro);
+		generoDAO.clear(idLivro + "");
 		return salvarGeneros(idLivro, idGeneros);
 	}
 	
@@ -195,5 +195,16 @@ public class LivroService {
 		}
 		
 		return livros;
+	}
+	public int excluirLivro(String idLivro) {
+		LivroGeneroDAO genreDAO = new LivroGeneroDAO();
+		LivroAutorDAO autorDAO = new LivroAutorDAO();
+		Livro tempLivro = livro.buscarPor("idLivro", idLivro).get(0);
+		
+		genreDAO.clear(idLivro);
+		autorDAO.clear(idLivro);
+		
+		return tempLivro.deletar();
+		
 	}
 }

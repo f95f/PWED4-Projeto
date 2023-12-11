@@ -72,9 +72,9 @@
 				else{
 					
 					$("#no-data-notice").append(
-							 "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
-								+ "Não há autores para mostrar aqui."
-						    + "</span>");
+						 "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
+							+ "Não há autores para mostrar aqui."
+					    + "</span>");
 				}
 			});
 		}
@@ -98,15 +98,14 @@
 								" data-bs-toggle = 'modal' data-bs-target='#editModal'>" +
 								"<ion-icon name='create-outline'></ion-icon>" +
 							"</button>" +
-							"<button class = 'table-action' value = 'excluir' onClick = 'deleteAutor(" + autoresList[i].id + ")'>" + 
+							"<button class = 'table-action' value = 'excluir' onClick = 'deleteAutor(" + autoresList[i].id + ")'>" +
 								"<ion-icon name='trash-bin-outline'></ion-icon>" +
 							"</button>" +
-						"</td>"
+						"</td>" +
 					"</tr>";
 				autorTable.append(autorRow);	
 			}	
 		}
-		
 		let deleteAutor = function(autorId){
 			
 			$.ajax({
@@ -115,7 +114,7 @@
 			    cache: false,
 			    dataType: 'json',
 			    success: function(response) {
-			        response == 1? alert("ok deletado") : alert("fodeo")
+			    	location.reload()
 			    },
 			    error: function(xhr, status, error) {
 					alert(error)		        
@@ -204,7 +203,7 @@
 				</div>
 			</form>	
 			
-			<a class="btn-novo my-4 px-5" type="button" href = "cadastrar-autor.jsp" target = "_blank">
+			<a class="btn-novo my-4 px-5" type="button" href = "cadastrar-autor.jsp">
 				+ Novo 
 			</a>	
 		
@@ -219,7 +218,7 @@
 							<th>OLID</th>
 							<th>Nome</th>
 							<th class = "large-width-column">Biografia</th>
-							<th>Ações</th>
+							<th class = "actions-column">Ações</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -274,7 +273,7 @@
 		
 		</div>
 	</div>
-	
+
 	<%@ include file = "components/footer-internal.jsp" %>
 
 </body>

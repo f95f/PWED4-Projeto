@@ -1,7 +1,3 @@
-/**
- * Script para controle de estilos e animações.
- */
-
 $(document).ready(function(){
 	
 	let navbar = $("header");

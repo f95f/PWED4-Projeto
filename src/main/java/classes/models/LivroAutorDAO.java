@@ -22,8 +22,8 @@ public class LivroAutorDAO {
 		return resposta;
 
 	}
-	public int clear(int idLivro) {
-		return this.dbQuery.execute("delete * from tb livro_autor where livro_id = '" + idLivro + "'; ");
+	public int clear(String idLivro) {
+		return this.dbQuery.execute("delete from livro_autor where livro_id = '" + idLivro + "'; ");
 	}
 	public ArrayList<LivroAutorDAO> findById(int bookId){
 		ArrayList<LivroAutorDAO> lista = new ArrayList<>();

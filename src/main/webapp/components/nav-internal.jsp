@@ -11,7 +11,7 @@
 			</a>
 
 			<div class = "navbar-collapse justify-content-end">			
-				<ul class = "navbar-nav ml-auto">
+				<ul class = "navbar-nav ml-auto align-items-center">
 					
 					<li class = "nav-item mx-3"> 
 					
@@ -39,19 +39,19 @@
 					</li>
 					
 					<li class = "nav-item mx-3">
-						<div class = "menu-item-container mt-1">
+						<div class = "menu-item-container">
 						    <a class="menu-item" href = "listar-editoras.jsp">Editoras</a>
 						</div>
 					</li>
 					
 					<li class = "nav-item mx-3">
-						<div class = "menu-item-container mt-1">
+						<div class = "menu-item-container">
 						    <a class="menu-item" href = "listar-sections.jsp">Seções</a>
 						</div>
 					</li>
 					
 					<li class = "nav-item mx-3">
-						<div class = "menu-item-container mt-1">
+						<div class = "menu-item-container">
 						    <a class="menu-item" href = "listar-generos.jsp">Gêneros</a>
 						</div>
 					</li>
@@ -69,9 +69,9 @@
 					</li>
 
 					<li class = "nav-item mx-3"> 
-						<button type="button" class = "btn nav-button" onclick="logout()">
-						    Sair
-						</button>
+						<div class = "menu-item-container ">
+						    <a class="menu-item" type="button" onclick="logout()">Sair</a>
+						</div>
 					</li>
 				</ul>
 			</div>

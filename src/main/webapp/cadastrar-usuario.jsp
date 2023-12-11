@@ -22,7 +22,7 @@
 					
 					if(data){
 						
-						$("#submitUsuarioStatus").html("<ion-icon name = 'checkmark'></ion-icon>Usuário " + data.nome + " " + data.sobrenome + " adicionado.");
+						$("#submitUsuarioStatus").html("<ion-icon name = 'checkmark'></ion-icon>Usuário adicionado.");
 
 					}
 					else{

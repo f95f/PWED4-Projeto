@@ -81,10 +81,12 @@ public class AutorController extends HttpServlet {
 
 		out = response.getWriter();
 
+		String imgUrl = (request.getParameter("txtImgurl") != null)? request.getParameter("txtImgurl") : "img/vendor/sem-foto.png";
+		
 		autor.setOlid(request.getParameter("txtOlid"));
 		autor.setNome(request.getParameter("txtNome"));
 		autor.setBiografia(request.getParameter("txtBio"));
-		autor.setFoto(request.getParameter("txtImgUrl"));
+		autor.setFoto(imgUrl);
 
 		autor.salvar();
 

@@ -144,10 +144,10 @@
 			    cache: false,
 			    dataType: 'json',
 			    success: function(response) {
-			        response == 1? alert("ok deletado") : alert("")
+
+			    	location.reload()
 			    },
-			    error: function(xhr, status, error) {
-					alert(error)		        
+			    error: function(xhr, status, error) {	        
 			    }
 			});
 
@@ -238,7 +238,7 @@
 							<th>Autor</th>
 							<th class = "large-width-column">Seção</th>
 							<th>Disponível?</th>
-							<th>Ações</th>
+							<th class = "actions-column">Ações</th>
 						</tr>
 					</thead>
 					<tbody>

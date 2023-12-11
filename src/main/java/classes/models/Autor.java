@@ -57,7 +57,6 @@ public class Autor {
 	}
 
 	public int salvar() {
-
 		int resposta = this.dbQuery.insert(this.toArray());
 		return resposta;
 

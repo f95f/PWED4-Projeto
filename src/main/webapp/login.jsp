@@ -38,7 +38,7 @@
 					    goto("main-menu.jsp");
 					}
 					else{
-						$("#loginStatus").html("<ion-icon name = 'close'></ion-icon>Email ou senha incorretos.");	
+						$("#loginStatus").html("Email ou senha incorretos.");	
 						let timerId = 0;
 						if(timerId){
 							clearInterval(timer);
@@ -93,7 +93,7 @@
 				
 				<div class = "row my-4">
 					<label for="txtUsuario" class="form-label ">Usuário</label>
-					<input type = "text" id="txtUsuario" name="txtUsuario" class="form-control mx-2 py-2" placeholder="Email ou telefone">	
+					<input type = "text" id="txtUsuario" name="txtUsuario" class="form-control mx-2 py-2" placeholder="Email">	
 					
 				</div>
 				
@@ -103,11 +103,9 @@
 					
 				</div>
 				
-				<div class = "row my-4">
-					<div class = "col-md mx-auto">	
-						<input type = "submit" id="btnLogin" class =" mx-2" value="Entrar">
-						<span class = "notify submit-status" id = "loginStatus"></span>									
-					</div>
+				<div class = "row my-4">	
+					<input type = "submit" id="btnLogin" value="Entrar" class="form-control mx-2 py-2" >
+					<span class = "notify submit-status" id = "loginStatus"></span>									
 				</div>
 				
 			</form>

@@ -96,7 +96,8 @@ public class LivroController extends HttpServlet {
 
 		String[] autores = autoresList.split(",");
 		String[] generos = generosList.split(",");
-
+		
+		
 		livro.setIsbn(request.getParameter("txtIsbn"));
 		livro.setTitulo(request.getParameter("txtTitulo"));
 		livro.setSubtitulo(request.getParameter("txtSubtitulo"));
@@ -115,7 +116,9 @@ public class LivroController extends HttpServlet {
 		if(livroNovo != null) {
 			service.salvarAutores(livroNovo.getIdLivro(), autores);	
 			service.salvarGeneros(livroNovo.getIdLivro(), generos);
+			out.print(1);
 		}
+		out.print(0);
 	}
 
 
@@ -149,8 +152,6 @@ public class LivroController extends HttpServlet {
 		out.print(status);
 	}
 
-
-
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		livro = new Livro();
 		out = response.getWriter();
@@ -158,8 +159,10 @@ public class LivroController extends HttpServlet {
 		int status = 0;
 		
 		ArrayList<Livro> livroEncontrado = livro.buscarPor("idLivro", bookId);
+		
+		
 		if(livroEncontrado.size() != 0) {
-			status = livroEncontrado.get(0).deletar();
+			status = service.excluirLivro(bookId);
 		}
 		out.print(status);
 		

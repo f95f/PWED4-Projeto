@@ -9,28 +9,27 @@ let getAllItems = function(url, callback){
 	
 }*/
 let getAllItems = function(url, callback) {
+	
     $.ajax({
         url: url,
         type: 'GET',
         cache: false, 
         dataType: 'json',
         success: function(data) {
-            callback(data);
+			callback(data);
         },
         error: function(data){
-			console.log(data)
+			callback(data);
 		}
     });
 };
 let getSomeItems = function(url, key, value, callback){
 	parameter = "action=" + key + "&value=" + value 
-	console.log(parameter);
 	$.get(url, parameter, function(data){	
 		
 		callback(data);
 		
 	}, "json");
-	
 }
 
 let goto = function(url){

@@ -12,6 +12,12 @@
 	
 		$(document).ready(function(){
 			grantAccess(["funcionario", "admin"]);
+			
+			$("#txtImgurl").blur(function(){
+				let url = $("#txtImgurl").val();
+				$("#capa-container").attr("src",url);
+			});
+			
 			$("#formAutor").submit(function(event){ 
 				
 				event.preventDefault();
@@ -24,7 +30,7 @@
 					if(data){
 						
 						sessionStorage.setItem("novoAutor", JSON.stringify(data));	
-						$("#submitAutorStatus").html("<ion-icon name = 'checkmark'></ion-icon>Autor " + data.nome + " " + data.sobrenome + " adicionado.");
+						$("#submitAutorStatus").html("<ion-icon name = 'checkmark'></ion-icon>Autor " + data.nome + " adicionado.");
 
 					}
 					else{
@@ -48,7 +54,6 @@
 				
 				$("#txtOlid").val(null);
 				$("#txtNome").val(null);
-				$("#txtSobrenome").val(null);
 				$("#txtBio").val(null);
 				$("#txtImgUrl").val(null);
 				
@@ -106,10 +111,7 @@
 				
 						<label for = "txtNome" class = "form-label">Nome</label>
 						<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome do autor..." class = "form-control shadow-sm mb-4 py-2">
-		
-						<label for = "txtSobrenome" class = "form-label">Sobrenome</label>
-						<input type = "text" name = "txtSobrenome" id = "txtSobrenome" placeholder = "Sobrenome do autor..." class = "form-control shadow-sm mb-4 py-2">
-		
+
 						<label for = "txtBio" class = "form-label">Biografia:</label>
 						<textarea rows = "8" name = "txtBio" id = "txtBio" placeholder = "Fale um pouco sobre o autor e seus trabalhos, gêneros etc..." class = "form-control shadow-sm mb-4 py-2"></textarea>
 					
@@ -118,7 +120,7 @@
 					<div class = "col-md-3">
 						
 						<label for = "txtImgUrl" class = "form-label">Foto:</label>
-						<input type = "text" name = "txtImgUrl" id = "txtImgUrl" class = "form-control shadow-sm mb-4 py-2" placeholder = "Url da foto..." value = "img/vendor/sem-capa.png">
+						<input type = "text" name = "txtImgurl" id = "txtImgurl" class = "form-control shadow-sm mb-4 py-2" placeholder = "Url da foto..." value = "img/vendor/sem-capa.png">
 					
 						<img alt="sem capa" src="img/vendor/sem-capa.png" class = "form-control" id = "capa-container">
 						

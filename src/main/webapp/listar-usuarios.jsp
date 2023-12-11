@@ -68,7 +68,6 @@
 				if(usersList.length > 0){
 	
 					render(usersList);
-					$(footer).removeClass("fixed-footer");
 									
 				}
 				else{		
@@ -120,7 +119,8 @@
 			    cache: false,
 			    dataType: 'json',
 			    success: function(response) {
-			        response == 1? alert("ok deletado") : alert("")
+
+			    	location.reload()
 			    },
 			    error: function(xhr, status, error) {
 					alert(error)		        
@@ -173,6 +173,7 @@
 		}));
 		$("#editModal").on("hidden.bs.modal", (function(){
 			sessionStorage.removeItem("user");
+	    	location.reload()
 		}));
 	</script>
 </head>
@@ -225,7 +226,7 @@
 							<th>Telefone</th>
 							<th>Nível</th>
 							<th>Conta</th>
-							<th>Ações</th>
+							<th class = "actions-column">Ações</th>
 						</tr>
 					</thead>
 					<tbody>
