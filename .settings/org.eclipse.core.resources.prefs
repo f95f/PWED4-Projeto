@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/cadastrar-autor.jsp=UTF-8
+encoding//src/main/webapp/cadastrar-editora.jsp=UTF-8
 encoding//src/main/webapp/components/editar-autor.jsp=UTF-8
 encoding//src/main/webapp/listar-livros.jsp=UTF-8
 encoding/<project>=UTF-8

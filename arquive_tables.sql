@@ -11,7 +11,7 @@ create table autor(
     biografia text(300),
     foto varchar(90) default '/img/autores/sem-foto.png'
 );
-INSERT INTO autor (nome, sobrenome, biografia, foto, olid) VALUES
+INSERT INTO autor (nome, biografia, foto, olid) VALUES
 ('John Doe', 'John Doe is a bestselling author known for his mystery novels.', '/img/authors/john-doe.jpg', 'OL12345678'),
 ('Jane Smith', 'Jane Smith is a renowned science fiction writer with a passion for technology.', '/img/authors/jane-smith.jpg', 'OL23456789'),
 ('Alice Johnson', 'Alice Johnson is a poet and essayist whose work explores themes of nature and self-discovery.', '/img/authors/alice-johnson.jpg', 'OL34567890'),
@@ -22,7 +22,7 @@ select * from autor;
 drop table if exists livro;
 create table livro(
 	idLivro int not null auto_increment primary key,
-    isbn varchar(13),
+    isbn varchar(13) unique,
     titulo varchar(90) not null,
     subtitulo varchar(180),
     img_url varchar(180) default '/img/livros/sem-capa.png',
@@ -44,15 +44,16 @@ create table genero(
 );
 INSERT INTO genero (nome, descr)
 VALUES
-    ('Science Fiction', 'Books that explore futuristic and speculative concepts.'),
-    ('Fantasy', 'Books set in fantastical worlds with magical elements.'),
-    ('Mystery', 'Books that involve solving mysteries or crimes.'),
-    ('Romance', 'Books centered around love and romantic relationships.'),
-    ('Historical Fiction', 'Books set in a historical time period with fictional elements.'),
-    ('Thriller', 'Books that create suspense and excitement.'),
-    ('Non-Fiction', 'Books based on facts and real-life events.'),
-    ('Biography', 'Books detailing the life stories of real individuals.'),
-    ('Self-Help', 'Books that offer advice and guidance for personal development.');
+	('Ficção Científica', 'Livros que exploram cenários futuristas, tecnologias avançadas e conceitos científicos imaginativos.'),
+    ('Fantasia', 'Obras que apresentam elementos sobrenaturais, mágicos ou mundos fictícios.'),
+    ('Romance', 'Histórias que se concentram principalmente em relacionamentos interpessoais e amorosos.'),
+    ('Mistério', 'Livros com enredos intrincados e reviravoltas, frequentemente envolvendo crimes ou situações enigmáticas.'),
+    ('Não Ficção', 'Livros baseados em fatos reais, como biografias, ensaios, ou livros de referência.'),
+    ('Terror', 'Narrativas que visam provocar medo, suspense e tensão psicológica nos leitores.'),
+    ('Aventura', 'Histórias cheias de ação, viagens e desafios emocionantes.'),
+    ('Autoajuda', 'Livros que oferecem conselhos e orientações para o desenvolvimento pessoal.'),
+    ('História', 'Obras que narram eventos passados, oferecendo insights sobre períodos históricos.'),
+    ('Poesia', 'Expressão artística por meio de versos, explorando emoções e reflexões.');
 select * from genero;
 -- delete from genero;
 
@@ -72,29 +73,30 @@ create table section(
 );
 INSERT INTO section (nome, descr)
 VALUES
-    ('Fiction', 'Books of imaginative storytelling and creativity.'),
-    ('Non-Fiction', 'Books based on facts and real-life events.'),
-    ('Mystery', 'Books that involve solving mysteries or crimes.'),
-    ('Science Fiction', 'Books that explore futuristic and speculative concepts.'),
-    ('Biography', 'Books detailing the life stories of real individuals.'),
-    ('History', 'Books about past events, civilizations, and societies.'),
-    ('Self-Help', 'Books that offer advice and guidance for personal development.'),
-    ('Romance', 'Books centered around love and romantic relationships.'),
-    ('Fantasy', 'Books set in fantastical worlds with magical elements.');
+('Ficção', 'Livros de ficção, incluindo romances, ficção científica, fantasia, etc.'),
+    ('Não Ficção', 'Livros baseados em fatos reais, como biografias, ensaios, livros de referência, etc.'),
+    ('História', 'Livros que abrangem períodos históricos e eventos passados.'),
+    ('Arte e Fotografia', 'Livros relacionados a arte, fotografia e design.'),
+    ('Ciência e Tecnologia', 'Livros científicos, tecnológicos e acadêmicos.'),
+    ('Infantil', 'Livros destinados ao público infantil, incluindo livros ilustrados e de histórias.'),
+    ('Autoajuda e Desenvolvimento Pessoal', 'Livros que oferecem conselhos e orientações para o desenvolvimento pessoal.'),
+    ('Referência', 'Livros de consulta rápida, dicionários, enciclopédias, etc.'),
+    ('Mistério e Suspense', 'Livros com enredos intrincados e de suspense.'),
+    ('Viagens', 'Livros relacionados a viagens, guias turísticos e aventuras.');
 select * from section;
 -- delete from section;
 
 INSERT INTO editora (nome, descr)
 VALUES
-    ('Penguin Random House', 'One of the largest and most well-known publishing companies.'),
-    ('HarperCollins', 'A global publishing company with a wide range of titles.'),
-    ('Simon & Schuster', 'Publishes a diverse range of books across various genres.'),
-    ('Macmillan Publishers', 'Known for its academic and educational publications.'),
-    ('Hachette Book Group', 'Publishes books for both adults and children.'),
-    ('Scholastic Corporation', 'Specializes in publishing books for young readers and educational materials.'),
-    ('Oxford University Press', 'Focuses on academic and scholarly publishing.'),
-    ('Wiley', 'Publishes scientific, technical, and academic books.'),
-    ('Random House', 'A division of Penguin Random House, known for its literary fiction and non-fiction.');
+	('Penguin Random House', 'Uma das maiores e mais conhecidas editoras.'),
+    ('HarperCollins', 'Uma editora global com uma ampla variedade de títulos.'),
+    ('Simon & Schuster', 'Publica uma variedade diversificada de livros em vários gêneros.'),
+    ('Macmillan Publishers', 'Conhecida por suas publicações acadêmicas e educacionais.'),
+    ('Hachette Book Group', 'Publica livros tanto para adultos quanto para crianças.'),
+    ('Scholastic Corporation', 'Especializa-se na publicação de livros para jovens leitores e materiais educativos.'),
+    ('Oxford University Press', 'Concentra-se na publicação acadêmica e científica.'),
+    ('Wiley', 'Publica livros científicos, técnicos e acadêmicos.'),
+    ('Random House', 'Uma divisão da Penguin Random House, conhecida por sua ficção literária e não-ficção.');
 SELECT * FROM editora;
 -- delete from editora;
 
@@ -110,24 +112,26 @@ create table usuario(
 );
 
 insert into usuario
-	(email, senha, telefone, nome)
+	(email, senha, nivel, telefone, nome)
 values
-	('teste3@email.com', '12345','1199998888', 'Teste 2'),
-	('admin2@email.com', '12345', '1199998888', 'Admin'),
-	('arquive3@email.com', '12345', '1199998888', 'Riobaldo')
+	('felipe@email.com', '12345', 'admin','1199998888', 'Teste 2')
 ;
 select * from usuario;
 
 drop table if exists livro_genero;
 create table livro_genero(
-	id int not null auto_increment primary key,
     livro_id int not null,
-    genero_id int not null
+    genero_id int not null,
+	constraint fk_livro_genero foreign key (livro_id) references livro(idLivro),
+	constraint fk_genero foreign key (genero_id) references genero(id)
 );
+select * from livro_genero;
 
 drop table if exists livro_autor;
 create table livro_autor(
-	id int not null auto_increment primary key,
     livro_id int not null,
-    autor_id int not null
+    autor_id int not null,
+	constraint fk_livro_autor foreign key (livro_id) references livro(idLivro),
+	constraint fk_autor foreign key (autor_id) references autor(id)
 );
+select * from livro_autor;

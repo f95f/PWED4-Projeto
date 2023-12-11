@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
     
 <script>
 
@@ -17,7 +17,7 @@
 				if(data){
 					
 					sessionStorage.setItem("novoGenero", JSON.stringify(data));	
-					$("#submitGeneroStatus").html("<ion-icon name = 'checkmark'></ion-icon>Gênero " + data.nome + " adicionado.");
+					$("#submitGeneroStatus").html("<ion-icon name = 'checkmark'></ion-icon>GÃªnero " + data.nome + " adicionado.");
 
 				}
 				else{
@@ -46,8 +46,8 @@
 </script>
 <div class = "container-fluid header-bg mb-5 shadow">
 	<div class = "container py-5">
-		<h1 class = "mt-3">Cadastrar Gêneros</h1>
-		<p>Use este formulário para adicionar um novo gênero ou uma nova categoria de livros.</p>
+		<h1 class = "mt-3">Cadastrar GÃªneros</h1>
+		<p>Use este formulÃ¡rio para adicionar um novo gÃªnero ou uma nova categoria de livros.</p>
 	</div>
 </div>
 
@@ -60,10 +60,10 @@
 			<div class = "col">
 		
 				<label for = "txtNome" class = "form-label">Nome</label>
-				<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome do gênero ou categoria" class = "form-control shadow-sm mb-4 py-2" required>
+				<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome do gÃªnero ou categoria" class = "form-control shadow-sm mb-4 py-2" required>
 
-				<label for = "txtDescr" class = "form-label">Descrição:</label>
-				<textarea rows = "5" name = "txtDescr" id = "txtDescr" placeholder = "Fale um pouco sobre este gênero ou categoria..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
+				<label for = "txtDescr" class = "form-label">DescriÃ§Ã£o:</label>
+				<textarea rows = "5" name = "txtDescr" id = "txtDescr" placeholder = "Fale um pouco sobre este gÃªnero ou categoria..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
 			
 			</div>
 			
@@ -72,7 +72,7 @@
 		
 			<div class = "col-sm">	
 				<input type = "submit" id = "btnSalvarGenero" value = "Adicionar" class = "btn-gravar shadow my-4">
-				<span class = "notify submit-status" id = "submitEditoraStatus"></span>									
+				<span class = "notify submit-status" id = "submitGeneroStatus"></span>									
 			</div>	
 		
 		</div>

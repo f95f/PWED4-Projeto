@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 	
 	<%@ include file = "components/head.jsp" %>
 	
-	<title>ARQUIVE | Consultar Seções</title>
+	<title>ARQUIVE | Consultar SeÃ§Ãµes</title>
 	
 	<script>
 		
@@ -54,7 +54,7 @@
 					
 					$("#no-data-notice").append(
 							 "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
-								+ "Nenhuma seção encontrada."
+								+ "Nenhuma seÃ§Ã£o encontrada."
 						    + "</span>");
 				}
 			});
@@ -73,7 +73,7 @@
 				else{		
 					$("#no-data-notice").append(
 							 "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
-								+ "Não há seções para mostrar aqui."
+								+ "NÃ£o hÃ¡ seÃ§Ãµes para mostrar aqui."
 						    + "</span>");
 				}
 			});
@@ -150,7 +150,7 @@
 
 		<div class = "container-fluid header-bg my-5 shadow">
 			<div class = "container py-5">
-				<h1 class = "mt-3">Consultar Seções</h1>
+				<h1 class = "mt-3">Consultar SeÃ§Ãµes</h1>
 			</div>
 		</div>
 		
@@ -163,8 +163,8 @@
 					<div class="input-group-prepend">
 					   <select name = "txtSearchType" id = "txtSearchType" class="btn btn-outline-secondary search-select">	
 							<option value = "sectionName">Por Nome</option>
-							<option value = "sectionDescr" selected>Por Descrição</option>
-							<option value = "sectionId">Por Código</option>
+							<option value = "sectionDescr" selected>Por DescriÃ§Ã£o</option>
+							<option value = "sectionId">Por CÃ³digo</option>
 						</select>
 					</div>
 				    <input 
@@ -176,7 +176,7 @@
 					>
 				</div>
 			</form>	
-			<a class = "btn-novo my-4 px-5" type="button" data-bs-toggle = "modal" data-bs-target="#addSectionFormModal">+ Nova Seção</a>	
+			<a class = "btn-novo my-4 px-5" type="button" data-bs-toggle = "modal" data-bs-target="#addSectionFormModal">+ Nova SeÃ§Ã£o</a>	
 				
 		</div>
 		
@@ -187,8 +187,8 @@
 						<tr>
 							<th>Id</th>
 							<th>Nome</th>
-							<th class = "large-width-column">Descrição</th>
-							<th>Ações</th>
+							<th class = "large-width-column">DescriÃ§Ã£o</th>
+							<th>AÃ§Ãµes</th>
 						</tr>
 					</thead>
 					<tbody>

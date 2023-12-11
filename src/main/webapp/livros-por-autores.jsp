@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +47,7 @@
 			else{
 				responseElement = 
 						"<span class = 'sem-info-notice' style='margin-bottom:200px'>" 
-						+ "N�o h� livros para mostrar aqui."
+						+ "Não há livros para mostrar aqui."
 						+ "</span>";
 				livrosContainer.append(responseElement);
 			}
@@ -108,7 +108,7 @@
 			<div class = "navbar navbar-expand-md">
 	
 				<a class = "navbar-brand" href = "index.jsp">
-					<img alt="Arquive - P�gina Inicial" style = "height: 30px;" src="img/vendor/logomarca-h.png">
+					<img alt="Arquive - Pï¿½gina Inicial" style = "height: 30px;" src="img/vendor/logomarca-h.png">
 				</a>
 	
 				<div class = "navbar-collapse justify-content-end">			

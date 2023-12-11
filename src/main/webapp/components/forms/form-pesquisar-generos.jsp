@@ -1,12 +1,9 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="classes.models.Genero"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <div class = "container-fluid mt-0 shadow">
 	
 	<div class = "row header-bg py-3">
-		<h1 class = "mt-3 text-center">Selecionar Gêneros</h1>
+		<h1 class = "mt-3 text-center">Selecionar GÃªneros</h1>
 	</div>
 	
 	<form method = "post" id = "formSelecionarGenero">
@@ -43,7 +40,7 @@
 			let dataForm = $("#formSelecionarGenero").serialize();
 			if(!dataForm){
 				
-				$("#selectGenerosStatus").html("<ion-icon name = 'close'></ion-icon>Selecione as opções para adicionar.");	
+				$("#selectGenerosStatus").html("<ion-icon name = 'close'></ion-icon>Selecione as opÃ§Ãµes para adicionar.");	
 				
 				let timerId = 0;
 				if(timerId){

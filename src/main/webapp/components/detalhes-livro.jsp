@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 	<script type="text/javascript">
 		let loadData = function(){
@@ -12,12 +12,12 @@
 			$("#edition").html( livro.edition );
 			$("#autores").html( livro.autores);
 			$("#generos").html( livro.generos );
-			$("#quantidadePaginas").html( livro.quantidadePaginas + " p·ginas");
+			$("#quantidadePaginas").html( livro.quantidadePaginas + " p√°ginas");
 			$("#quantidadeEstoque").html( livro.quantidadeEstoque );
 			$("#anoPublication").html( livro.anoPublication );
 			$("#description").html( livro.description );
 			$("#imagemCapa").html( livro.imagemCapa );
-			$("#disponibilidade").html( livro.disponibilidade === false? "N„o" : "Sim");
+			$("#disponibilidade").html( livro.disponibilidade === false? "N√£o" : "Sim");
 				
 		}
 	</script>
@@ -84,13 +84,13 @@
 				<div class = "row my-4">
 					<div class = "col-md mx-auto">
 						<p class = "info-container">						
-							<span class = "label">SeÁ„o:</span>
+							<span class = "label">Se√ß√£o:</span>
 							<span class = "info-value" id = "section"></span>
 						</p>
 					</div>
 					<div class = "col-md mx-auto">
 						<p class = "info-container">							
-							<span class = "label">EdiÁ„o:</span>
+							<span class = "label">Edi√ß√£o:</span>
 							<span class = "info-value" id = "edition"></span>
 						</p>
 					</div>
@@ -113,7 +113,7 @@
 					
 					<div class = "col-md mx-auto">
 						<p class = "info-container">							
-							<span class = "label">DisponÌvel para emprÈstimo?</span>
+							<span class = "label">Dispon√≠vel para empr√©stimo?</span>
 							<span class = "info-value" id = "disponibilidade"></span>
 						</p>
 					</div>

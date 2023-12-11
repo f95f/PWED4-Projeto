@@ -1,10 +1,5 @@
-<%@page import="classes.models.Section"%>
-<%@page import="classes.models.Genero"%>
-<%@page import="classes.models.Editora"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="classes.models.Autor"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +28,7 @@
 				$("#txtEstoque").val( livro.estoque );
 				$("#txtDisponibilidade").val( livro.disponibilidade );
 		    }
-		    else("Não há livro.")
+		    else("NÃ£o hÃ¡ livro.")
 		}
 		$(document).ready(function(){
 			grantAccess(["funcionario", "admin"])
@@ -57,7 +52,7 @@
 				}
 				else{
 					sectionOptionElement = 
-						"<option id = 'optionSemSection' value = -1> Nenhuma seção encontrada! </option>"
+						"<option id = 'optionSemSection' value = -1> Nenhuma seÃ§Ã£o encontrada! </option>"
 					$("#txtSection").append(sectionOptionElement);
 					
 				}
@@ -106,7 +101,7 @@
 				else{
 					
 					generoElement = 
-						"<div class = 'text-center my-5 py-3 text-muted background-text' id = 'optionSemGeneros'> Nenhum gênero cadastrado. </div> "
+						"<div class = 'text-center my-5 py-3 text-muted background-text' id = 'optionSemGeneros'> Nenhum gÃªnero cadastrado. </div> "
 						$("#generoOptionsContainer").append(generoElement);
 					
 				}
@@ -254,7 +249,7 @@
 				
 			}));
 			//  /\
-			//  ||===> Juntar estas duas funções 
+			//  ||===> Juntar estas duas funÃ§Ãµes 
 			//  \/
  			$("#selectAutorModal").on("hidden.bs.modal", (function(){
 				
@@ -288,7 +283,7 @@
 		<div class = "container-fluid header-bg my-5 shadow">
 			<div class = "container py-5">
 				<h1 class = "mt-3">Cadastrar Livro</h1>
-				<p>Informe as informações pertinentes ao livro.</p>
+				<p>Informe as informaÃ§Ãµes pertinentes ao livro.</p>
 			</div>
 		</div>
 		
@@ -301,7 +296,7 @@
 					<div class = "col-md-10 mx-auto">							
 				    
 						<label for = "txtIsbn" class = "form-label md-2 mb-0 h4-like">ISBN</label>
-						<input type = "text" name = "txtIsbn" id = "txtIsbn" placeholder = "Código ISBN" class = "form-control shadow-sm mb-4 py-2" maxlength = "15" aria-describedby = "txtIsbnDescription">
+						<input type = "text" name = "txtIsbn" id = "txtIsbn" placeholder = "CÃ³digo ISBN" class = "form-control shadow-sm mb-4 py-2" maxlength = "15" aria-describedby = "txtIsbnDescription">
 						
 					</div>
 					<hr>
@@ -313,11 +308,11 @@
 				    
 					<div class = "col-md-7">						
 					    
-						<label for = "txtTitulo" class = "form-label">Título</label>
-						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "Título do livro" class = "form-control shadow-sm mb-4 py-2" required>
+						<label for = "txtTitulo" class = "form-label">TÃ­tulo</label>
+						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "TÃ­tulo do livro" class = "form-control shadow-sm mb-4 py-2" required>
 						
-						<label for = "txtSubtitulo" class = "form-label">Subtítulo</label>
-						<input type = "text" name = "txtSubtitulo" id = "txtSubtitulo" placeholder = "Subtítulo, se houver" class = "form-control shadow-sm mb-4 py-2">
+						<label for = "txtSubtitulo" class = "form-label">SubtÃ­tulo</label>
+						<input type = "text" name = "txtSubtitulo" id = "txtSubtitulo" placeholder = "SubtÃ­tulo, se houver" class = "form-control shadow-sm mb-4 py-2">
 						
 						<div class = "row">
 						
@@ -344,7 +339,7 @@
 			
 							<div class = "col-lg">
 							
-								<label for = "btnSelecionarGenero" class = "form-label">Gêneros</label>
+								<label for = "btnSelecionarGenero" class = "form-label">GÃªneros</label>
 								<span id = "generosSelecionados" class = "mb-2 px-2 multi-select-span">Nenhum selecionado.</span>
 		
 								<div class = "input-group mb-4">						
@@ -363,7 +358,7 @@
 						
 						</div>
 						
-						<label for = "txtDescription" class = "form-label">Descrição</label>
+						<label for = "txtDescription" class = "form-label">DescriÃ§Ã£o</label>
 						<textarea rows = "4" name = "txtDescription" id = "txtDescription" placeholder = "Informe uma breve sinopse para o livro..." class = "form-control shadow-sm mb-4 py-2" maxlength = 300></textarea>
 
 					</div>
@@ -403,11 +398,11 @@
 							
 					<div class = "col-md-2">
 						<label for = "txtAno" class = "form-label">Ano</label>
-						<input type = "number" name = "txtAno" id = "txtAno" placeholder = "Ano de publicação" class = "form-control shadow-sm py-2" min = 0>		
+						<input type = "number" name = "txtAno" id = "txtAno" placeholder = "Ano de publicaÃ§Ã£o" class = "form-control shadow-sm py-2" min = 0>		
 					</div>
 					<div class = "col-md-2">
-						<label for = "txtPages" class = "form-label">Páginas</label>
-						<input type = "number" name = "txtPages" id = "txtPages" placeholder = "Número de páginas" class = "form-control shadow-sm mb-4 py-2" min = 0>
+						<label for = "txtPages" class = "form-label">PÃ¡ginas</label>
+						<input type = "number" name = "txtPages" id = "txtPages" placeholder = "NÃºmero de pÃ¡ginas" class = "form-control shadow-sm mb-4 py-2" min = 0>
 					</div>
 						
 					<div class = "col"></div>
@@ -420,23 +415,23 @@
 					
 					<div class = "col-md-6">
 							
-						<label for = "txtSection" class = "form-label">Seção</label>
+						<label for = "txtSection" class = "form-label">SeÃ§Ã£o</label>
 					    <div class="input-group mb-3">
 					    
-							<select class="form-select form-control shadow-sm py-2" id = "txtSection" name = "txtSection" aria-label="Selecionar seção" required>
+							<select class="form-select form-control shadow-sm py-2" id = "txtSection" name = "txtSection" aria-label="Selecionar seÃ§Ã£o" required>
 							</select>
 							
 							<div class="input-group-append">
 							
-								<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarSection" type="button" data-bs-toggle = "modal" data-bs-target="#addSectionFormModal">Nova Seção</button>
+								<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarSection" type="button" data-bs-toggle = "modal" data-bs-target="#addSectionFormModal">Nova SeÃ§Ã£o</button>
 										
 							</div>
 						</div>
 					</div>
 					
 					<div class = "col-md-2">
-						<label for = "txtEdition" class = "form-label">Edição</label>
-						<input type = "text" name = "txtEdition" id = "txtEdition" placeholder = "Edição do exemplar..." class = "form-control shadow-sm mb-4 py-2">
+						<label for = "txtEdition" class = "form-label">EdiÃ§Ã£o</label>
+						<input type = "text" name = "txtEdition" id = "txtEdition" placeholder = "EdiÃ§Ã£o do exemplar..." class = "form-control shadow-sm mb-4 py-2">
 					</div>
 					
 					<div class = "col-md-2">
@@ -456,7 +451,7 @@
 						<h4 class = "mt-3 mb-2">Disponibilidade</h4>
 						<div class="form-check form-switch my-4" id = "chkDisponibilidadeContainer">
 						    <input class="form-check-input" type="checkbox" id="chkDisponibilidade" name = "chkDisponibilidade" checked aria-describedby = "chkDisponibilidadeDescription">
-						    <label class="form-label" for="chkDisponibilidade">Disponibilizar para empréstimo</label>
+						    <label class="form-label" for="chkDisponibilidade">Disponibilizar para emprÃ©stimo</label>
 						</div>
 		
 					</div>

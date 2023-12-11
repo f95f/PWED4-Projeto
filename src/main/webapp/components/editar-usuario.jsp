@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<script type="text/javascript">
 
 		let fillData = function(){
@@ -81,7 +81,7 @@
 					<div class = "row my-4">
 						<div class = "col-md-8 mx-auto">
 							<label for = "txtNome" class = "form-label">Nome</label>
-							<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome do usuário" class = "form-control shadow-sm mb-4 py-2">
+							<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome do usuÃ¡rio" class = "form-control shadow-sm mb-4 py-2">
 					    </div>
 				    </div>
 
@@ -89,22 +89,22 @@
 
 						<div class = "col-md-8 mx-auto">
 							<label for = "txtEmail" class = "form-label">Email</label>
-							<input type = "email" name = "txtEmail" id = "txtEmail" placeholder = "Email do usuário" class = "form-control shadow-sm mb-4 py-2">
+							<input type = "email" name = "txtEmail" id = "txtEmail" placeholder = "Email do usuÃ¡rio" class = "form-control shadow-sm mb-4 py-2">
 					    </div>
 				    </div>
 					
 					<div class = "row my-4">
 					    <div class = "col-md-8 mx-auto">
 							<label for = "txtTelefone" class = "form-label">Telefone</label>
-							<input type = "text" name = "txtTelefone" id = "txtTelefone" placeholder = "Telefone do usuário..." class = "form-control shadow-sm mb-4 py-2">
+							<input type = "text" name = "txtTelefone" id = "txtTelefone" placeholder = "Telefone do usuÃ¡rio..." class = "form-control shadow-sm mb-4 py-2">
 					    </div>
 					</div>
 				
 					<div class = "row my-4">	
 						<div class = "col-md-8 mx-auto">
-							<label for = "txtAcesso" class = "form-label">Nível de Acesso</label>
-							<select class="form-select form-control shadow-sm py-2" id = "txtAcesso" name = "txtAcesso" aria-label="Selecionar Nível de acesso" required>
-								<option selected value = "Funcionário"> Funcionário </option>
+							<label for = "txtAcesso" class = "form-label">NÃ­vel de Acesso</label>
+							<select class="form-select form-control shadow-sm py-2" id = "txtAcesso" name = "txtAcesso" aria-label="Selecionar NÃ­vel de acesso" required>
+								<option selected value = "FuncionÃ¡rio"> FuncionÃ¡rio </option>
 								<option value = "Administrador"> Administrador </option>
 								<option value = "visitante"> Visitante </option>
 							</select>

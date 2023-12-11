@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +71,7 @@
 		<div class = "container-fluid header-bg my-5 shadow">
 			<div class = "container py-5">
 				<h1 class = "mt-3">Cadastrar Autor</h1>
-				<p>Use este formulário para adicionar um novo autor.</p>
+				<p>Use este formulÃ¡rio para adicionar um novo autor.</p>
 			</div>
 		</div>
 		
@@ -84,9 +84,9 @@
 					<div class = "col-md-10 mx-auto">
 						<label for = "txtOlid" class = "form-label md-2 mb-0 h4-like">OLID</label>
 						 <p class="form-text text-muted mb-4" id = "txtOlidDescription">
-					    	Informe o código OLID para o autor caso o possua. Esse código auxiliará no preenchimento dos dados.
+					    	Informe o cÃ³digo OLID para o autor caso o possua.
 					    </p>
-						<input type = "text" name = "txtOlid" id = "txtOlid" placeholder = "Código OLID do autor" class = "form-control shadow-sm mb-4 py-2">
+						<input type = "text" name = "txtOlid" id = "txtOlid" placeholder = "CÃ³digo OLID do autor" class = "form-control shadow-sm mb-4 py-2">
 					</div>
 					<hr>
 				</div>
@@ -95,9 +95,9 @@
 					
 					<div class = "col-md-10 mx-auto">
 					
-						<h4 class = "mb-2">Informações do Autor</h4>
+						<h4 class = "mb-2">InformaÃ§Ãµes do Autor</h4>
 					    <p class="form-text text-muted mb-4">
-					    	Informe nesta seção os dados de identificação do autor.
+					    	Informe nesta seÃ§Ã£o os dados de identificaÃ§Ã£o do autor.
 					    </p>
 				    
 				    </div>
@@ -113,14 +113,14 @@
 						<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome do autor..." class = "form-control shadow-sm mb-4 py-2">
 
 						<label for = "txtBio" class = "form-label">Biografia:</label>
-						<textarea rows = "8" name = "txtBio" id = "txtBio" placeholder = "Fale um pouco sobre o autor e seus trabalhos, gêneros etc..." class = "form-control shadow-sm mb-4 py-2"></textarea>
+						<textarea rows = "8" name = "txtBio" id = "txtBio" placeholder = "Fale um pouco sobre o autor e seus trabalhos, gÃªneros etc..." class = "form-control shadow-sm mb-4 py-2"></textarea>
 					
 					</div>
 			
 					<div class = "col-md-3">
 						
 						<label for = "txtImgUrl" class = "form-label">Foto:</label>
-						<input type = "text" name = "txtImgurl" id = "txtImgurl" class = "form-control shadow-sm mb-4 py-2" placeholder = "Url da foto..." value = "img/vendor/sem-capa.png">
+						<input type = "text" name = "txtImgurl" id = "txtImgurl" class = "form-control shadow-sm mb-4 py-2" placeholder = "Url da foto..." value = "img/vendor/sem-foto.png">
 					
 						<img alt="sem capa" src="img/vendor/sem-capa.png" class = "form-control" id = "capa-container">
 						

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +73,7 @@
 				else{		
 					$("#no-data-notice").append(
 							 "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
-								+ "Não há editoras para mostrar aqui."
+								+ "NÃ£o hÃ¡ editoras para mostrar aqui."
 						    + "</span>");
 				}
 			});
@@ -162,8 +162,8 @@
 					<div class="input-group-prepend">
 					   <select name = "txtSearchType" id = "txtSearchType" class="btn btn-outline-secondary search-select">
 							<option value = "editoraName">Por Nome</option>
-							<option value = "editoraDescr" selected>Por Descrição</option>
-							<option value = "editoraId">Por Código</option>
+							<option value = "editoraDescr" selected>Por DescriÃ§Ã£o</option>
+							<option value = "editoraId">Por CÃ³digo</option>
 						</select>
 					</div>
 				    <input 
@@ -186,8 +186,8 @@
 						<tr>
 							<th>Id</th>
 							<th>Nome</th>
-							<th class = "large-width-column">Descrição</th>
-							<th>Ações</th>
+							<th class = "large-width-column">DescriÃ§Ã£o</th>
+							<th>AÃ§Ãµes</th>
 						</tr>
 					</thead>
 					<tbody>

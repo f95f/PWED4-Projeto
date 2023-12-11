@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+>
 <!DOCTYPE html>
 <html>
 <head>
 	
 	<%@ include file = "components/head.jsp" %>
 	
-	<title>ARQUIVE | Consultar Gêneros</title>
+	<title>ARQUIVE | Consultar GÃªneros</title>
 	
 	<script>
 		
@@ -54,7 +54,7 @@
 					
 					$("#no-data-notice").append(
 						 "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
-							+ "Nenhum gênero encontrado."
+							+ "Nenhum gÃªnero encontrado."
 					    + "</span>");
 				}
 			});
@@ -73,7 +73,7 @@
 				else{		
 					$("#no-data-notice").append(
 						 "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
-							+ "Não há gêneros para mostrar aqui."
+							+ "NÃ£o hÃ¡ gÃªneros para mostrar aqui."
 					    + "</span>");
 				}
 			});
@@ -147,9 +147,9 @@
 	<%@ include file = "components/nav-internal.jsp" %>	
 	<main class = "container-fluid px-0">
 
-		<div class = "container-fluid header-bg my-5 shadow">
+		<div class = "container-fluid header-bg my-4 shadow">
 			<div class = "container py-5">
-				<h1 class = "mt-3">Consultar Gêneros</h1>
+				<h1 class = "mt-3">Consultar GÃªneros</h1>
 			</div>
 		</div>
 		
@@ -162,8 +162,8 @@
 					<div class="input-group-prepend">
 					   <select name = "txtSearchType" id = "txtSearchType" class="btn btn-outline-secondary search-select">
 							<option value = "genreName">Por Nome</option>
-							<option value = "genreDescr" selected>Por Descrição</option>
-							<option value = "genreId">Por Código</option>
+							<option value = "genreDescr" selected>Por DescriÃ§Ã£o</option>
+							<option value = "genreId">Por CÃ³digo</option>
 						</select>
 					</div>
 				    <input  
@@ -175,7 +175,7 @@
 					>
 				</div>
 			</form>
-			<a class = "btn-novo my-4 px-5" type="button" class = "btn-novo shadow my-4 px-5" data-bs-toggle = "modal" data-bs-target="#addGeneroFormModal">+ Novo Gênero</a>	
+			<a class = "btn-novo my-4 px-5" type="button" class = "btn-novo shadow my-4 px-5" data-bs-toggle = "modal" data-bs-target="#addGeneroFormModal">+ Novo GÃªnero</a>	
 			
 		</div>
 		
@@ -186,8 +186,8 @@
 						<tr>
 							<th>Id</th>
 							<th>Nome</th>
-							<th class = "large-width-column">Descrição</th>
-							<th>Ações</th>
+							<th class = "large-width-column">DescriÃ§Ã£o</th>
+							<th>AÃ§Ãµes</th>
 						</tr>
 					</thead>
 					<tbody>

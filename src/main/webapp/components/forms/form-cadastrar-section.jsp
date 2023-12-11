@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 		<script type="text/javascript">
 		
@@ -15,7 +15,7 @@
 						if(data){
 							
 							sessionStorage.setItem("newSection", JSON.stringify(data));	
-							$("#submitSectionStatus").html("<ion-icon name = 'checkmark'></ion-icon>Seção " + data.nome + " adicionada.");
+							$("#submitSectionStatus").html("<ion-icon name = 'checkmark'></ion-icon>SeÃ§Ã£o " + data.nome + " adicionada.");
 							$("ion-icon").css("color", "var(--ACCENT2)");
 						}
 						else{
@@ -46,8 +46,8 @@
 		
 		<div class = "container-fluid header-bg mb-5 shadow">
 			<div class = "container py-5">
-				<h1 class = "mt-3">Cadastrar Seções</h1>
-				<p>Use este formulário para adicionar uma nova seção.</p>
+				<h1 class = "mt-3">Cadastrar SeÃ§Ãµes</h1>
+				<p>Use este formulÃ¡rio para adicionar uma nova seÃ§Ã£o.</p>
 			</div>
 		</div>
 		
@@ -59,10 +59,10 @@
 					<div class = "col">	
 				
 						<label for = "txtNome" class = "form-label">Nome</label>
-						<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome da seção..." class = "form-control shadow-sm mb-4 py-2" required>
+						<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome da seÃ§Ã£o..." class = "form-control shadow-sm mb-4 py-2" required>
 		
-						<label for = "txtDescr" class = "form-label">Descrição:</label>
-						<textarea rows = "5" name = "txtDescr" id = "txtDescr" placeholder = "Descreva brevemente sobre a seção..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
+						<label for = "txtDescr" class = "form-label">DescriÃ§Ã£o:</label>
+						<textarea rows = "5" name = "txtDescr" id = "txtDescr" placeholder = "Descreva brevemente sobre a seÃ§Ã£o..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
 					
 					</div>
 				</div>

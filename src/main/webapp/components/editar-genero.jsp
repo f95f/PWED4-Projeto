@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<script type="text/javascript">
 
 		let fillData = function(){
@@ -85,8 +85,8 @@
 					<div class = "row my-4">	
 
 						<div class = "col-md-8 mx-auto">
-							<label for = "txtDescription" class = "form-label">Descrição</label>
-							<textarea name = "txtDescription" id = "txtDescription" placeholder = "Descrição" class = "form-control shadow-sm mb-4 py-2"></textarea>
+							<label for = "txtDescription" class = "form-label">DescriÃ§Ã£o</label>
+							<textarea name = "txtDescription" id = "txtDescription" placeholder = "DescriÃ§Ã£o" class = "form-control shadow-sm mb-4 py-2"></textarea>
 					    </div>
 				    </div>
 					

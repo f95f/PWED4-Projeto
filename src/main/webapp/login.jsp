@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,13 +69,13 @@
 			<div class = "navbar navbar-expand-md">
 	
 				<a class = "navbar-brand" href = "index.jsp">
-					<img alt="Arquive - Página Inicial" style = "height: 30px;" src="img/vendor/logomarca-h.png">
+					<img alt="Arquive - PÃ¡gina Inicial" style = "height: 30px;" src="img/vendor/logomarca-h.png">
 				</a>
 	
 				<div class = "navbar-collapse justify-content-end">			
 					<ul class = "navbar-nav ml-auto">
 						<li class = "nav-item mx-3"> 
-							<a class = "nav-link" href = "index.jsp">INÍCIO</a>
+							<a class = "nav-link" href = "index.jsp">INÃCIO</a>
 						</li>
 					</ul>
 				</div>
@@ -92,7 +92,7 @@
 				<h2 class ="h2-light">Identifique-se</h2>
 				
 				<div class = "row my-4">
-					<label for="txtUsuario" class="form-label ">Usuário</label>
+					<label for="txtUsuario" class="form-label ">UsuÃ¡rio</label>
 					<input type = "text" id="txtUsuario" name="txtUsuario" class="form-control mx-2 py-2" placeholder="Email">	
 					
 				</div>
@@ -119,7 +119,7 @@
 			<div class = "row py-4 my-5">
 				<div class = "col-sm-3 text-center">
 					<a class = "footer-brand" href = "index.jsp">
-						<img class = "footer-logo" alt="Arquive - Página Inicial" src="img/vendor/logomarca.png">
+						<img class = "footer-logo" alt="Arquive - PÃ¡gina Inicial" src="img/vendor/logomarca.png">
 					</a><br>
 					<div class = "social-logos text-center my-4">
 					<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M480 257.35c0-123.7-100.3-224-224-224s-224 100.3-224 224c0 111.8 81.9 204.47 189 221.29V322.12h-56.89v-64.77H221V208c0-56.13 33.45-87.16 84.61-87.16 24.51 0 50.15 4.38 50.15 4.38v55.13H327.5c-27.81 0-36.51 17.26-36.51 35v42h62.12l-9.92 64.77H291v156.54c107.1-16.81 189-109.48 189-221.31z" fill-rule="evenodd"/></svg>
@@ -132,11 +132,11 @@
 				</div>
 				<div class = "col-sm-3">	
 					<div class = "footer-link-container">
-						<h2 class = "footer-title mb-4">Links Úteis</h2>	
+						<h2 class = "footer-title mb-4">Links Ãšteis</h2>	
 						<hr>
 						<ul class = "footer-links px-0 mt-4">
 							<li class = "mb-4"> 
-								<a class = "footer-item" href = "index.jsp">Página Inicial</a>
+								<a class = "footer-item" href = "index.jsp">PÃ¡gina Inicial</a>
 							</li>
 							<li class = "my-4">  
 								<a class = "footer-item" href = "#">Sobre a Arquive</a>
@@ -181,13 +181,13 @@
 								<a class = "footer-item" href = "index.jsp">Buscar por Autor</a>
 							</li>
 							<li class = "my-4">  
-								<a class = "footer-item" href = "#">Buscar por Gênero</a>
+								<a class = "footer-item" href = "#">Buscar por GÃªnero</a>
 							</li>
 							<li class = "my-4"> 
 								<a class = "footer-item" href = "#">Buscar por Editora</a>
 							</li>
 							<li class = "mt-4"> 
-								<a class = "footer-item" href = "#">Buscar por Seção</a>
+								<a class = "footer-item" href = "#">Buscar por SeÃ§Ã£o</a>
 							</li>
 						</ul>
 					</div>	

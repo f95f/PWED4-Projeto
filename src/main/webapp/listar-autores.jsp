@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +73,7 @@
 					
 					$("#no-data-notice").append(
 						 "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
-							+ "Não há autores para mostrar aqui."
+							+ "NÃ£o hÃ¡ autores para mostrar aqui."
 					    + "</span>");
 				}
 			});
@@ -218,7 +218,7 @@
 							<th>OLID</th>
 							<th>Nome</th>
 							<th class = "large-width-column">Biografia</th>
-							<th class = "actions-column">Ações</th>
+							<th class = "actions-column">AÃ§Ãµes</th>
 						</tr>
 					</thead>
 					<tbody>

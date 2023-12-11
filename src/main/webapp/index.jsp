@@ -1,7 +1,5 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="classes.models.Autor"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +47,7 @@
 					else{
 						responseElement = 
 								"<span class = 'no-data-notice'>" 
-								+ "N�o h� autores para mostrar aqui."
+								+ "Não há autores para mostrar aqui."
 							  + "</span>";
 						autoresContainer.append(responseElement);
 					}
@@ -76,7 +74,7 @@
 					else{
 						responseElement = 
 							"<span class = 'sem-info-notice'>" 
-							+ "N�o h� categorias para mostrar aqui."
+							+ "Não há categorias para mostrar aqui."
 						  + "</span>";
 					  sectionsContainer.append(responseElement);
 					}
@@ -105,7 +103,7 @@
 				else{
 					responseElement = 
 							"<span class = 'sem-info-notice'>" 
-							+ "N�o h� livros para mostrar aqui."
+							+ "Não há livros para mostrar aqui."
 							+ "</span>";
 					livrosContainer.append(responseElement);
 				}
@@ -147,7 +145,7 @@
 				let card = 
 					  "<div class = 'col-md mx-0 px-0' onclick='goto(`livros-por-categoria.jsp?section=" + section.nome+ "&id=" + section.id + "`)'>"
 					+   "<div class='card p-4' style='width: 18rem;'>"
-					+ 	  "<img alt='�cone - generos' src='img/icons/section.svg' class='ribbon-icon'>"
+					+ 	  "<img alt='ï¿½cone - generos' src='img/icons/section.svg' class='ribbon-icon'>"
 					+ 	  "<div class='card-body p-0 mt-3'>"
 					+		"<p class='card-text '>" + section.nome + "</p>"
 					+		"<p class='card-text description'>" + section.descr + "</p>"
@@ -226,7 +224,7 @@
 			<div class = "navbar navbar-expand-md">
 	
 				<a class = "navbar-brand" href = "index.jsp">
-					<img alt="Arquive - P�gina Inicial" style = "height: 30px;" src="img/vendor/logomarca-h.png">
+					<img alt="Arquive - Pï¿½gina Inicial" style = "height: 30px;" src="img/vendor/logomarca-h.png">
 				</a>
 	
 				<div class = "navbar-collapse justify-content-end">			
@@ -278,7 +276,7 @@
 			<div class = "container py-4">
 				<div class = "row my-4">
 					<div class="col" style="max-width: 70px">
-						<img alt="�cone - autores" src="img/icons/autor.svg" class="ribbon-icon">
+						<img alt="ï¿½cone - autores" src="img/icons/autor.svg" class="ribbon-icon">
 					</div>
 					<div class = "col mx-4">
 						<h2 class = "h2-light">Autores</h2>
@@ -297,10 +295,10 @@
 			<div class = "container py-4">
 				<div class = "row my-4">
 					<div class="col" style="max-width: 70px">
-						<img alt="�cone - generos" src="img/icons/section.svg" class="ribbon-icon">
+						<img alt="ï¿½cone - generos" src="img/icons/section.svg" class="ribbon-icon">
 					</div>
 					<div class = "col mx-4">
-						<h2 class = "h2-light">Se��es</h2>
+						<h2 class = "h2-light">Seções</h2>
 						<p class = "text-muted">Categorias de livros.</p>
 					</div>
 				</div>
@@ -320,7 +318,7 @@
 			<div class = "row">
 				<div class = "col-sm-3 text-center mx-auto">
 					<a class = "footer-brand" href = "index.jsp">
-						<img class = "footer-logo" alt="Arquive - P�gina Inicial" src="img/vendor/logomarca.png">
+						<img class = "footer-logo" alt="Arquive - Pï¿½gina Inicial" src="img/vendor/logomarca.png">
 					</a><br>
 					<div class = "social-logos text-center my-4">
 						<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M480 257.35c0-123.7-100.3-224-224-224s-224 100.3-224 224c0 111.8 81.9 204.47 189 221.29V322.12h-56.89v-64.77H221V208c0-56.13 33.45-87.16 84.61-87.16 24.51 0 50.15 4.38 50.15 4.38v55.13H327.5c-27.81 0-36.51 17.26-36.51 35v42h62.12l-9.92 64.77H291v156.54c107.1-16.81 189-109.48 189-221.31z" fill-rule="evenodd"/></svg>

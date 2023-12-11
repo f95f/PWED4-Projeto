@@ -1,7 +1,5 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="classes.models.Autor"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 
 <div class = "container-fluid mt-0 shadow">
 	
@@ -43,7 +41,7 @@
 			let dataForm = $("#formSelecionarAutor").serialize();
 			if(!dataForm){
 				
-				$("#selectAutoresStatus").html("<ion-icon name = 'close'></ion-icon>Selecione as opções para adicionar.");	
+				$("#selectAutoresStatus").html("<ion-icon name = 'close'></ion-icon>Selecione as opÃ§Ãµes para adicionar.");	
 				
 				let timerId = 0;
 				if(timerId){

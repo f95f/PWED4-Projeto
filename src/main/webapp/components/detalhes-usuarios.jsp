@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 	<script type="text/javascript">
 
@@ -16,7 +16,7 @@
 	
 	<div class = "container-fluid header-bg mb-5 shadow">
 		<div class = "container py-4">
-			<h1 class = "mt-2">Detalhes do Usu·rio</h1>
+			<h1 class = "mt-2">Detalhes do Usu√°rio</h1>
 		</div>
 	</div>
 
@@ -44,7 +44,7 @@
 				<div class = "row my-4">
 					<h3 class = "mb-3">Conta:</h3>
 					<p class = "info-container">						
-						<span class = "info-label">NÌvel:</span>
+						<span class = "info-label">N√≠vel:</span>
 						<span class = "info-value" id = "nivel"></span>
 					</p>
 					<p class = "info-container">					

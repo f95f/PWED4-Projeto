@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 	
 	<%@ include file = "components/head.jsp" %>
 	
-	<title>ARQUIVE | Consultar Usu·rios</title>
+	<title>ARQUIVE | Consultar Usu√°rios</title>
 	
 	<script>
 		
@@ -53,7 +53,7 @@
 				else{
 					$("#no-data-notice").append(
 							 "<span class = 'sem-info-notice' id = 'sem-info-notice'> " 
-								+ "Nenhum usu·rio encontrado."
+								+ "Nenhum usu√°rio encontrado."
 						    + "</span>"
 				    );
 				}
@@ -73,7 +73,7 @@
 				else{		
 					$("#no-data-notice").append(
 							 "<span class = 'sem-info-notice' id = 'sem-info-notice'>" 
-								+ "N„o h· usu·rios para mostrar aqui."
+								+ "N√£o h√° usu√°rios para mostrar aqui."
 						    + "</span>"
 				    );
 					$(footer).addClass("fixed-footer");
@@ -184,7 +184,7 @@
 
 		<div class = "container-fluid header-bg my-5 shadow">
 			<div class = "container py-5">
-				<h1 class = "mt-3">Consultar Usu·rios</h1>
+				<h1 class = "mt-3">Consultar Usu√°rios</h1>
 			</div>
 		</div>
 				
@@ -196,8 +196,8 @@
 					<div class="input-group-prepend">
 					   <select name = "txtSearchType" id = "txtSearchType" class="btn btn-outline-secondary search-select">
 							<option value = "userName">Por Nome</option>
-							<option value = "userLevel">Por NÌvel</option>
-							<option value = "userId">Por CÛdigo</option>
+							<option value = "userLevel">Por N√≠vel</option>
+							<option value = "userId">Por C√≥digo</option>
 						</select>
 					</div>
 				    <input 
@@ -224,9 +224,9 @@
 							<th>Nome</th>
 							<th>Email</th>
 							<th>Telefone</th>
-							<th>NÌvel</th>
+							<th>N√≠vel</th>
 							<th>Conta</th>
-							<th class = "actions-column">AÁıes</th>
+							<th class = "actions-column">A√ß√µes</th>
 						</tr>
 					</thead>
 					<tbody>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
     
 <header class = "container-fluid fixed-top dark-bg shadow">
 
@@ -7,7 +7,7 @@
 		<div class = "navbar navbar-expand-md">
 
 			<a class = "navbar-brand" href = "index.jsp">
-				<img alt="Arquive - Página Inicial" style = "height: 30px;" src="img/vendor/logomarca-h.png">
+				<img alt="Arquive - PÃ¡gina Inicial" style = "height: 30px;" src="img/vendor/logomarca-h.png">
 			</a>
 
 			<div class = "navbar-collapse justify-content-end">			
@@ -46,20 +46,20 @@
 					
 					<li class = "nav-item mx-3">
 						<div class = "menu-item-container">
-						    <a class="menu-item" href = "listar-sections.jsp">Seções</a>
+						    <a class="menu-item" href = "listar-sections.jsp">SeÃ§Ãµes</a>
 						</div>
 					</li>
 					
 					<li class = "nav-item mx-3">
 						<div class = "menu-item-container">
-						    <a class="menu-item" href = "listar-generos.jsp">Gêneros</a>
+						    <a class="menu-item" href = "listar-generos.jsp">GÃªneros</a>
 						</div>
 					</li>
 					
 					<li class = "nav-item mx-3">
 						<div class="dropdown">		
 							<button type="button" class = "btn dropdown-toggle header-dropdown" data-bs-toggle = "dropdown">
-							    Usuários
+							    UsuÃ¡rios
 							</button>
 							<ul class="dropdown-menu">
 							    <li> <a class="dropdown-item" href = "cadastrar-usuario.jsp">Novo</a> </li> 

@@ -1,10 +1,5 @@
-<%@page import="classes.models.Section"%>
-<%@page import="classes.models.Genero"%>
-<%@page import="classes.models.Editora"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="classes.models.Autor"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +39,7 @@
 				}
 				else{
 					sectionOptionElement = 
-						"<option id = 'optionSemSection' value = -1> Nenhuma seÁ„o encontrada! </option>"
+						"<option id = 'optionSemSection' value = -1> Nenhuma se√ß√£o encontrada! </option>"
 					$("#txtSection").append(sectionOptionElement);
 					
 				}
@@ -93,7 +88,7 @@
 				else{
 					
 					generoElement = 
-						"<div class = 'text-center my-5 py-3 text-muted background-text' id = 'optionSemGeneros'> Nenhum gÍnero cadastrado. </div> "
+						"<div class = 'text-center my-5 py-3 text-muted background-text' id = 'optionSemGeneros'> Nenhum g√™nero cadastrado. </div> "
 						$("#generoOptionsContainer").append(generoElement);
 					
 				}
@@ -273,7 +268,7 @@
 		<div class = "container-fluid header-bg my-5 shadow">
 			<div class = "container py-5">
 				<h1 class = "mt-3">Cadastrar Livro</h1>
-				<p>Informe as informaÁıes pertinentes ao livro.</p>
+				<p>Informe as informa√ß√µes pertinentes ao livro.</p>
 			</div>
 		</div>
 		
@@ -287,9 +282,9 @@
 				    
 						<label for = "txtIsbn" class = "form-label md-2 mb-0 h4-like">ISBN</label>
 					    <p class="form-text text-muted mb-4" id = "txtIsbnDescription">
-					    	Informe o cÛdigo de barra ISBN para o livro. Esse cÛdigo pode ser encontrado atr·s do livro, ou na contra-capa.
+					    	Informe o c√≥digo de barra ISBN para o livro. Esse c√≥digo pode ser encontrado atr√°s do livro, ou na contra-capa.
 					    </p>
-						<input type = "text" name = "txtIsbn" id = "txtIsbn" placeholder = "CÛdigo ISBN" class = "form-control shadow-sm mb-4 py-2" maxlength = "15" aria-describedby = "txtIsbnDescription">
+						<input type = "text" name = "txtIsbn" id = "txtIsbn" placeholder = "C√≥digo ISBN" class = "form-control shadow-sm mb-4 py-2" maxlength = "15" aria-describedby = "txtIsbnDescription">
 						
 					</div>
 					<hr>
@@ -299,9 +294,9 @@
 					
 					<div class = "col-md-10 mx-auto">
 					
-						<h4 class = "mb-2">InformaÁıes de Capa</h4>
+						<h4 class = "mb-2">Informa√ß√µes de Capa</h4>
 					    <p class="form-text text-muted mb-4">
-					    	Os dados informados nesta seÁ„o ser„o as primeiras informaÁıes exibidas ao usu·rio em pesquisas e na p·gina principal.
+					    	Os dados informados nesta se√ß√£o ser√£o as primeiras informa√ß√µes exibidas ao usu√°rio em pesquisas e na p√°gina principal.
 					    </p>
 				    
 				    </div>
@@ -314,11 +309,11 @@
 				    
 					<div class = "col-md-7">						
 					    
-						<label for = "txtTitulo" class = "form-label">TÌtulo</label>
-						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "TÌtulo do livro" class = "form-control shadow-sm mb-4 py-2" required>
+						<label for = "txtTitulo" class = "form-label">T√≠tulo</label>
+						<input type = "text" name = "txtTitulo" id = "txtTitulo" placeholder = "T√≠tulo do livro" class = "form-control shadow-sm mb-4 py-2" required>
 						
-						<label for = "txtSubtitulo" class = "form-label">SubtÌtulo</label>
-						<input type = "text" name = "txtSubtitulo" id = "txtSubtitulo" placeholder = "SubtÌtulo, se houver" class = "form-control shadow-sm mb-4 py-2">
+						<label for = "txtSubtitulo" class = "form-label">Subt√≠tulo</label>
+						<input type = "text" name = "txtSubtitulo" id = "txtSubtitulo" placeholder = "Subt√≠tulo, se houver" class = "form-control shadow-sm mb-4 py-2">
 						
 						<div class = "row">
 						
@@ -345,7 +340,7 @@
 			
 							<div class = "col-lg">
 							
-								<label for = "btnSelecionarGenero" class = "form-label">GÍneros</label>
+								<label for = "btnSelecionarGenero" class = "form-label">G√™neros</label>
 								<span id = "generosSelecionados" class = "mb-2 px-2 multi-select-span">Nenhum selecionado.</span>
 		
 								<div class = "input-group mb-4">						
@@ -364,7 +359,7 @@
 						
 						</div>
 						
-						<label for = "txtDescription" class = "form-label">DescriÁ„o</label>
+						<label for = "txtDescription" class = "form-label">Descri√ß√£o</label>
 						<textarea rows = "4" name = "txtDescription" id = "txtDescription" placeholder = "Informe uma breve sinopse para o livro..." class = "form-control shadow-sm mb-4 py-2"></textarea>
 
 					</div>
@@ -386,9 +381,9 @@
 					
 					<div class = "col-md-10 mx-auto">
 					
-						<h4 class = "mb-2">Dados de Cat·logo</h4>
+						<h4 class = "mb-2">Dados de Cat√°logo</h4>
 					    <p class="form-text text-muted mb-4">
-					    	Informe aqui os dados tÈcnicos e demais detalhes sobre o livro.
+					    	Informe aqui os dados t√©cnicos e demais detalhes sobre o livro.
 					    </p>
 				    
 				    </div>
@@ -416,11 +411,11 @@
 							
 					<div class = "col-md-2">
 						<label for = "txtAno" class = "form-label">Ano</label>
-						<input type = "number" name = "txtAno" id = "txtAno" placeholder = "Ano de publicaÁ„o" class = "form-control shadow-sm py-2" min = 0>		
+						<input type = "number" name = "txtAno" id = "txtAno" placeholder = "Ano de publica√ß√£o" class = "form-control shadow-sm py-2" min = 0>		
 					</div>
 					<div class = "col-md-2">
-						<label for = "txtPages" class = "form-label">P·ginas</label>
-						<input type = "number" name = "txtPages" id = "txtPages" placeholder = "N˙mero de p·ginas" class = "form-control shadow-sm mb-4 py-2" min = 0>
+						<label for = "txtPages" class = "form-label">P√°ginas</label>
+						<input type = "number" name = "txtPages" id = "txtPages" placeholder = "N√∫mero de p√°ginas" class = "form-control shadow-sm mb-4 py-2" min = 0>
 					</div>
 						
 					<div class = "col"></div>
@@ -433,23 +428,23 @@
 					
 					<div class = "col-md-6">
 							
-						<label for = "txtSection" class = "form-label">SeÁ„o</label>
+						<label for = "txtSection" class = "form-label">Se√ß√£o</label>
 					    <div class="input-group mb-3">
 					    
-							<select class="form-select form-control shadow-sm py-2" id = "txtSection" name = "txtSection" aria-label="Selecionar seÁ„o" required>
+							<select class="form-select form-control shadow-sm py-2" id = "txtSection" name = "txtSection" aria-label="Selecionar se√ß√£o" required>
 							</select>
 							
 							<div class="input-group-append">
 							
-								<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarSection" type="button" data-bs-toggle = "modal" data-bs-target="#addSectionFormModal">Nova SeÁ„o</button>
+								<button class="btn btn-outline-secondary shadow-sm py-2 inline-add-button" id = "btnAdicionarSection" type="button" data-bs-toggle = "modal" data-bs-target="#addSectionFormModal">Nova Se√ß√£o</button>
 										
 							</div>
 						</div>
 					</div>
 					
 					<div class = "col-md-2">
-						<label for = "txtEdition" class = "form-label">EdiÁ„o</label>
-						<input type = "text" name = "txtEdition" id = "txtEdition" placeholder = "EdiÁ„o do exemplar..." class = "form-control shadow-sm mb-4 py-2">
+						<label for = "txtEdition" class = "form-label">Edi√ß√£o</label>
+						<input type = "text" name = "txtEdition" id = "txtEdition" placeholder = "Edi√ß√£o do exemplar..." class = "form-control shadow-sm mb-4 py-2">
 					</div>
 					
 					<div class = "col-md-2">
@@ -468,11 +463,11 @@
 								
 						<h4 class = "mt-3 mb-2">Disponibilidade</h4>
 					    <p id="chkDisponibilidadeDescription" class="form-text text-muted">
-							Ao desmarcar esta opÁ„o, o livro ficar· visÌvel aos usu·rios, mas n„o poder· ser reservado para emprÈstimos.
+							Ao desmarcar esta op√ß√£o, o livro ficar√° vis√≠vel aos usu√°rios, mas n√£o poder√° ser reservado para empr√©stimos.
 						</p>
 						<div class="form-check form-switch my-4" id = "chkDisponibilidadeContainer">
 						    <input class="form-check-input" type="checkbox" id="chkDisponibilidade" name = "chkDisponibilidade" checked aria-describedby = "chkDisponibilidadeDescription">
-						    <label class="form-label" for="chkDisponibilidade">Disponibilizar para emprÈstimo</label>
+						    <label class="form-label" for="chkDisponibilidade">Disponibilizar para empr√©stimo</label>
 						</div>
 		
 					</div>

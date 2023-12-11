@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 		<script type="text/javascript">
 		
@@ -51,7 +51,7 @@
 		<div class = "container-fluid header-bg mb-5 shadow">
 			<div class = "container py-5">
 				<h1 class = "mt-3">Cadastrar Editoras</h1>
-				<p>Use este formul·rio para adicionar uma nova editora.</p>
+				<p>Use este formul√°rio para adicionar uma nova editora.</p>
 			</div>
 		</div>
 		
@@ -64,8 +64,8 @@
 						<label for = "txtNome" class = "form-label">Nome</label>
 						<input type = "text" name = "txtNome" id = "txtNome" placeholder = "Nome da editora..." class = "form-control shadow-sm mb-4 py-2" required>
 		
-						<label for = "txtBio" class = "form-label">DescriÁ„o:</label>
-						<textarea rows = "5" name = "txtBio" id = "txtBio" placeholder = "InformaÁ„o adicional sobre a editora..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
+						<label for = "txtBio" class = "form-label">Descri√ß√£o:</label>
+						<textarea rows = "5" name = "txtBio" id = "txtBio" placeholder = "Informa√ß√£o adicional sobre a editora..." class = "form-control shadow-sm mb-4 py-2"  maxlength = 300></textarea>
 												
 					</div>
 				</div>
